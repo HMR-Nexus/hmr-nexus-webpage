@@ -63,7 +63,7 @@ export function Services() {
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold">{t('services.fiber.title')}</h3>
-                <span className="text-[#00d4ff] text-sm">Fiber Optic Solutions</span>
+                <span className="text-[#00d4ff] text-sm">{t('services.fiber.subtitle')}</span>
               </div>
             </div>
 
@@ -114,7 +114,7 @@ export function Services() {
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl font-bold">{t('services.software.title')}</h3>
-                <span className="text-[#c084fc] text-sm">Digital Solutions</span>
+                <span className="text-[#c084fc] text-sm">{t('services.software.subtitle')}</span>
               </div>
             </div>
 

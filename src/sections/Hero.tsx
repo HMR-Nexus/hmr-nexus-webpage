@@ -69,7 +69,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
 
           {/* Main Title */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-5"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-5 text-balance"
             variants={childVariants}
           >
             <span className="block text-white mb-1">{t('hero.title1')}</span>
@@ -100,7 +100,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               whileTap={{ scale: 0.97 }}
             >
               <span>{t('hero.btnPrimary')}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
             </motion.button>
 
             <motion.button
@@ -109,7 +109,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              <Play className="w-4 h-4" />
+              <Play className="w-4 h-4" aria-hidden="true" />
               {t('hero.btnSecondary')}
             </motion.button>
           </motion.div>
@@ -128,7 +128,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
                 key={index}
                 className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:bg-white/[0.05] transition-colors duration-200"
               >
-                <div className="text-2xl md:text-3xl font-bold text-white">
+                <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">
                   {stat.value}
                 </div>
                 <div className="text-[#64748b] text-xs mt-1">{stat.label}</div>
@@ -144,8 +144,8 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
           initial="hidden"
           animate="visible"
         >
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <ChevronDown className="w-5 h-5 animate-bounce" />
+          <span className="text-xs uppercase tracking-widest">{t('hero.scroll', 'Scroll')}</span>
+          <ChevronDown className="w-5 h-5 animate-bounce" aria-hidden="true" />
         </motion.div>
       </div>
     </section>

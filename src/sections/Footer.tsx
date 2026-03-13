@@ -24,7 +24,7 @@ export function Footer() {
               {/* Brand */}
               <div className="lg:col-span-1">
                 <div className="mb-2">
-                  <img src="/logo-full.png" alt="HMR Nexus Engineering" className="h-16 w-auto" />
+                  <img src="/logo-full.png" alt="HMR Nexus Engineering" width={200} height={64} loading="lazy" className="h-16 w-auto" />
                 </div>
                 <p className="text-[#64748b] text-sm mb-2">{t('footer.description')}</p>
                 <p className="text-sm text-[#94a3b8]">{t('footer.tagline')}</p>

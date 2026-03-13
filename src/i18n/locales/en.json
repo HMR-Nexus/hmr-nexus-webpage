@@ -36,6 +36,7 @@
     "subtitle": "From physical infrastructure to digital transformation – we offer comprehensive solutions for the telecommunications industry.",
     "fiber": {
       "title": "Fiber Infrastructure",
+      "subtitle": "Fiber Optic Solutions",
       "description": "Professional deployment of fiber networks to the highest quality standards for network operators and municipalities.",
       "items": {
         "ne3_label": "NE3 Deployment",
@@ -50,6 +51,7 @@
     },
     "software": {
       "title": "Software & Digital",
+      "subtitle": "Digital Solutions",
       "description": "Custom software solutions and digital products for efficiency and scalability in the telecom industry.",
       "items": {
         "control_label": "Control System",
@@ -68,6 +70,12 @@
     "title": "Software that",
     "titleHighlight": "Transforms",
     "subtitle": "Real tools in active use — from field technician apps to financial control systems and AI-powered analytics.",
+    "status": {
+      "live": "Live",
+      "beta": "Beta",
+      "dev": "In Development",
+      "roadmap": "Roadmap"
+    },
     "cta": {
       "title": "Have a project in mind?",
       "subtitle": "We build custom solutions for telecoms, automation, and business management.",
@@ -193,6 +201,10 @@
     "title": "Successful",
     "titleHighlight": "Projects",
     "subtitle": "A selection of our infrastructure and software projects across Germany and Colombia.",
+    "status": {
+      "active": "Active",
+      "completed": "Completed"
+    },
     "comingSoon": {
       "title": "Coming Soon",
       "description": "We are working on our first projects. Soon you will see our success stories here."

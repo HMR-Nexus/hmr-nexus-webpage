@@ -61,7 +61,7 @@ function App() {
       <Navbar onScrollToContact={() => scrollToContact()} />
 
       {/* Main Content */}
-      <main>
+      <main id="main-content">
         {/* Hero — eager (above the fold) */}
         <Hero
           onScrollToServices={scrollToServices}
@@ -69,15 +69,19 @@ function App() {
         />
         <TrustBanner />
 
-        {/* Below-the-fold — lazy loaded */}
+        {/* Below-the-fold — lazy loaded with split boundaries to avoid waterfalls */}
         <Suspense fallback={null}>
           <Values />
           <Services />
           <Products onRequestDemo={() => scrollToContact('saas')} />
           <Stats />
+        </Suspense>
+        <Suspense fallback={null}>
           <DualMap />
           <TeamSection />
           <Portfolio />
+        </Suspense>
+        <Suspense fallback={null}>
           <div ref={contactRef}>
             <Contact preselectedType={preselectedProjectType} />
           </div>

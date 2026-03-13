@@ -67,15 +67,16 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
       }`}
     >
       {/* Logo */}
-      <div
-        className="flex items-center gap-2 shrink-0 cursor-pointer"
+      <button
+        className="flex items-center gap-2 shrink-0"
         onClick={() => scrollToSection('home')}
+        aria-label="HMR Nexus — Home"
       >
-        <img src="/logo.png" alt="HMR Nexus" className="h-8 w-auto" />
+        <img src="/logo.png" alt="" aria-hidden="true" className="h-8 w-8" />
         <span className="font-bold text-white text-sm hidden sm:block">
           HMR <span className="text-[#3d8bff]">Nexus</span>
         </span>
-      </div>
+      </button>
 
       {/* Desktop Navigation */}
       <ul className="hidden lg:flex items-center gap-1">
@@ -116,7 +117,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
           className="hidden md:flex items-center gap-1.5 bg-white text-[#050a14] px-4 py-2 rounded-full text-sm font-medium hover:bg-[#00d4ff] transition-colors"
         >
           {t('nav.cta')}
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-4 h-4" aria-hidden="true" />
         </button>
 
         {/* Mobile Menu Toggle */}
@@ -128,6 +129,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-1.5 text-white"
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -169,7 +171,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
                   className="w-full flex items-center justify-center gap-2 bg-white text-[#050a14] px-4 py-2.5 rounded-full text-sm font-medium"
                 >
                   {t('nav.cta')}
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </button>
               </li>
             </ul>

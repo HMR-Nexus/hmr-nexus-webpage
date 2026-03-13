@@ -36,6 +36,7 @@
     "subtitle": "Von der physischen Infrastruktur bis zur digitalen Transformation – wir bieten ganzheitliche Lösungen für die Telekommunikationsbranche.",
     "fiber": {
       "title": "Glasfaser-Infrastruktur",
+      "subtitle": "Glasfaser-Lösungen",
       "description": "Professioneller Ausbau von Glasfasernetzen nach höchsten Qualitätsstandards für Netzbetreiber und Kommunen.",
       "items": {
         "ne3_label": "NE3 Ausbau",
@@ -50,6 +51,7 @@
     },
     "software": {
       "title": "Software & Digital",
+      "subtitle": "Digitale Lösungen",
       "description": "Maßgeschneiderte Softwarelösungen und digitale Produkte für Effizienz und Skalierbarkeit in der Telekom-Branche.",
       "items": {
         "control_label": "Control System",
@@ -68,6 +70,12 @@
     "title": "Software die",
     "titleHighlight": "Transformiert",
     "subtitle": "Reale Tools im aktiven Einsatz — von Field-Ops-Apps für Techniker bis hin zu Finanzkontrollsystemen und KI-Analytik.",
+    "status": {
+      "live": "Live",
+      "beta": "Beta",
+      "dev": "In Entwicklung",
+      "roadmap": "Roadmap"
+    },
     "cta": {
       "title": "Haben Sie ein Projekt im Sinn?",
       "subtitle": "Wir entwickeln maßgeschneiderte Lösungen für Telekommunikation, Automatisierung und Unternehmensmanagement.",
@@ -193,6 +201,10 @@
     "title": "Erfolgreiche",
     "titleHighlight": "Projekte",
     "subtitle": "Eine Auswahl unserer Infrastruktur- und Softwareprojekte in Deutschland und Kolumbien.",
+    "status": {
+      "active": "Laufend",
+      "completed": "Abgeschlossen"
+    },
     "comingSoon": {
       "title": "Demnächst",
       "description": "Wir arbeiten an unseren ersten Projekten. Bald finden Sie hier unsere Erfolgsgeschichten."

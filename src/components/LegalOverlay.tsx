@@ -35,7 +35,10 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
     <AnimatePresence>
       {page && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#050a14]/95 backdrop-blur-sm overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label={page === 'imprint' ? 'Legal Notice' : page === 'privacy' ? 'Privacy Policy' : 'Terms and Conditions'}
+          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#050a14]/95 backdrop-blur-sm overflow-y-auto overscroll-contain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

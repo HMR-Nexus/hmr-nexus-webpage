@@ -36,6 +36,7 @@
     "subtitle": "Desde la infraestructura física hasta la transformación digital – ofrecemos soluciones integrales para la industria de telecomunicaciones.",
     "fiber": {
       "title": "Infraestructura de Fibra",
+      "subtitle": "Soluciones de Fibra Óptica",
       "description": "Despliegue profesional de redes de fibra óptica con los más altos estándares de calidad para operadores de red y municipios.",
       "items": {
         "ne3_label": "NE3 Ausbau",
@@ -50,6 +51,7 @@
     },
     "software": {
       "title": "Software & Digital",
+      "subtitle": "Soluciones Digitales",
       "description": "Soluciones de software a medida y productos digitales para eficiencia y escalabilidad en la industria de telecomunicaciones.",
       "items": {
         "control_label": "Sistema de Control",
@@ -68,6 +70,12 @@
     "title": "Software que",
     "titleHighlight": "Transforma",
     "subtitle": "Desarrollamos herramientas reales en uso activo — desde apps para técnicos de campo hasta sistemas de control financiero y analítica con IA.",
+    "status": {
+      "live": "Live",
+      "beta": "Beta",
+      "dev": "En Desarrollo",
+      "roadmap": "Roadmap"
+    },
     "cta": {
       "title": "¿Tienes un proyecto en mente?",
       "subtitle": "Desarrollamos soluciones a medida para telecomunicaciones, automatización y gestión empresarial.",
@@ -213,6 +221,10 @@
     "title": "Proyectos",
     "titleHighlight": "Exitosos",
     "subtitle": "Una selección de nuestros proyectos de infraestructura y software en Alemania y Colombia.",
+    "status": {
+      "active": "En Curso",
+      "completed": "Completado"
+    },
     "comingSoon": {
       "title": "Próximamente",
       "description": "Estamos trabajando en nuestros primeros proyectos. Muy pronto podrás ver aquí nuestros casos de éxito."

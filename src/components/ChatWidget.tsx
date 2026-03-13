@@ -8,6 +8,9 @@ const TG_BOT  = 'https://t.me/NexusEngineeringBot';
 // Unique session ID per browser tab
 const SESSION_ID = Math.random().toString(36).slice(2);
 
+// Rate limiting: max messages per window
+const RATE_LIMIT = { maxMessages: 10, windowMs: 60_000 };
+
 interface Message {
   role: 'user' | 'bot';
   text: string;
@@ -29,6 +32,7 @@ export function ChatWidget() {
   const [hasGreeted, setHasGreeted] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef  = useRef<HTMLInputElement>(null);
+  const sendTimestamps = useRef<number[]>([]);
 
   // Scroll to bottom on new message
   useEffect(() => {
@@ -57,7 +61,20 @@ export function ChatWidget() {
   const sendMessage = useCallback(async (text: string) => {
     if (!text.trim() || loading) return;
 
-    const userMsg: Message = { role: 'user', text: text.trim(), ts: Date.now() };
+    // Rate limiting
+    const now = Date.now();
+    sendTimestamps.current = sendTimestamps.current.filter(ts => now - ts < RATE_LIMIT.windowMs);
+    if (sendTimestamps.current.length >= RATE_LIMIT.maxMessages) {
+      setMessages(prev => [...prev, {
+        role: 'bot',
+        text: 'Has enviado muchos mensajes. Por favor espera un momento antes de continuar.',
+        ts: now,
+      }]);
+      return;
+    }
+    sendTimestamps.current.push(now);
+
+    const userMsg: Message = { role: 'user', text: text.trim(), ts: now };
     setMessages(prev => [...prev, userMsg]);
     setInput('');
     setLoading(true);
@@ -68,8 +85,12 @@ export function ChatWidget() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text.trim(), sessionId: SESSION_ID }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      setMessages(prev => [...prev, { role: 'bot', text: data.reply, ts: Date.now() }]);
+      const reply = typeof data.reply === 'string'
+        ? data.reply.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]*>/g, '')
+        : 'Respuesta no válida.';
+      setMessages(prev => [...prev, { role: 'bot', text: reply, ts: Date.now() }]);
     } catch {
       setMessages(prev => [...prev, {
         role: 'bot',
@@ -86,19 +107,19 @@ export function ChatWidget() {
     sendMessage(input);
   };
 
-  const renderText = (text: string) => {
-    // Basic markdown: **bold**
-    return text.split('\n').map((line, i) => (
+  const renderText = useCallback((text: string) => {
+    const lines = text.split('\n');
+    return lines.map((line, i) => (
       <span key={i}>
         {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
           part.startsWith('**') && part.endsWith('**')
             ? <strong key={j}>{part.slice(2, -2)}</strong>
             : part
         )}
-        {i < text.split('\n').length - 1 && <br />}
+        {i < lines.length - 1 && <br />}
       </span>
     ));
-  };
+  }, []);
 
   return (
     <>
@@ -157,7 +178,7 @@ export function ChatWidget() {
                   href={TG_BOT}
                   target="_blank"
                   rel="noopener noreferrer"
-                  title="Continuar en Telegram"
+                  aria-label="Continuar en Telegram"
                   className="p-1.5 rounded-lg text-[#94a3b8] hover:text-white hover:bg-white/10 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -173,7 +194,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3 scrollbar-thin">
+            <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3 scrollbar-thin overscroll-contain">
               {messages.length === 0 && !loading && (
                 <div className="text-center text-[#475569] text-xs mt-8">
                   Iniciando conversación...
@@ -246,10 +267,12 @@ export function ChatWidget() {
                 ref={inputRef}
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="Escribe tu mensaje..."
+                aria-label="Message"
+                placeholder="Escribe tu mensaje…"
                 disabled={loading}
+                autoComplete="off"
                 maxLength={500}
-                className="flex-1 bg-white/[0.05] border border-white/[0.08] rounded-xl px-3 py-2 text-sm text-white placeholder-[#475569] outline-none focus:border-[#0066ff]/50 transition-colors disabled:opacity-50"
+                className="flex-1 bg-white/[0.05] border border-white/[0.08] rounded-xl px-3 py-2 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff]/50 transition-colors disabled:opacity-50"
               />
               <motion.button
                 type="submit"

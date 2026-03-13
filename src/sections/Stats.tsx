@@ -23,7 +23,7 @@ function AnimatedStat({ stat, inView }: { stat: StatItem; inView: boolean }) {
       <div className={`w-14 h-14 rounded-2xl ${stat.gradient} flex items-center justify-center mb-4`}>
         <stat.icon className="w-7 h-7 text-white" />
       </div>
-      <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+      <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight tabular-nums">
         {count}{stat.suffix}
       </div>
       <div className="text-[#94a3b8] text-sm font-medium">{stat.label}</div>

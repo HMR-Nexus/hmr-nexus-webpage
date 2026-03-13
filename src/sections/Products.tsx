@@ -9,11 +9,11 @@ interface ProductsProps {
   onRequestDemo: () => void;
 }
 
-const STATUS_LABELS: Record<string, { label: string; color: string; bg: string }> = {
-  live:     { label: 'Live',        color: '#10b981', bg: 'rgba(16,185,129,0.15)' },
-  beta:     { label: 'Beta',        color: '#3d8bff', bg: 'rgba(61,139,255,0.15)' },
-  dev:      { label: 'En Desarrollo', color: '#f59e0b', bg: 'rgba(245,158,11,0.15)' },
-  roadmap:  { label: 'Roadmap',     color: '#a855f7', bg: 'rgba(168,85,247,0.15)' },
+const STATUS_STYLES: Record<string, { color: string; bg: string }> = {
+  live:     { color: '#10b981', bg: 'rgba(16,185,129,0.15)' },
+  beta:     { color: '#3d8bff', bg: 'rgba(61,139,255,0.15)' },
+  dev:      { color: '#f59e0b', bg: 'rgba(245,158,11,0.15)' },
+  roadmap:  { color: '#a855f7', bg: 'rgba(168,85,247,0.15)' },
 };
 
 interface Product {
@@ -89,7 +89,8 @@ export function Products({ onRequestDemo }: ProductsProps) {
         >
           {products.map((p) => {
             const Icon = p.icon;
-            const status = STATUS_LABELS[p.status];
+            const status = STATUS_STYLES[p.status];
+            const statusLabel = t(`products.status.${p.status}`);
             const featureCount = p.status === 'roadmap' ? 2 : 3;
 
             return (
@@ -130,7 +131,7 @@ export function Products({ onRequestDemo }: ProductsProps) {
                       className="text-xs font-semibold px-2.5 py-1 rounded-full flex-shrink-0 ml-2"
                       style={{ color: status.color, background: status.bg }}
                     >
-                      {status.label}
+                      {statusLabel}
                     </span>
                   </div>
 

@@ -131,12 +131,12 @@ export function Portfolio() {
                         animate={{ opacity: [1, 0.3, 1] }}
                         transition={{ duration: 1.2, repeat: Infinity }}
                       />
-                      En Curso
+                      {t('portfolio.status.active')}
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#64748b] bg-white/[0.04] px-2.5 py-1 rounded-full">
-                      <CheckCircle2 className="w-3 h-3" />
-                      Completado
+                      <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
+                      {t('portfolio.status.completed')}
                     </span>
                   )}
                 </div>

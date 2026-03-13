@@ -93,15 +93,13 @@ export function TeamSection() {
                 </ul>
 
                 {/* LinkedIn */}
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#3d8bff] hover:text-[#00d4ff] text-sm transition-colors"
+                <span
+                  className="inline-flex items-center gap-2 text-[#3d8bff]/50 text-sm cursor-default"
+                  aria-label={`${name} LinkedIn — coming soon`}
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-4 h-4" aria-hidden="true" />
                   LinkedIn
-                </a>
+                </span>
               </motion.div>
             );
           })}

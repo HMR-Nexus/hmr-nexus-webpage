@@ -8,7 +8,8 @@ import { staggerContainer, cardEntrance } from '@/lib/motion';
 import {
   FORMSPREE_CONFIG,
   validateEmail,
-  checkSpamPatterns
+  checkSpamPatterns,
+  sanitizeInput
 } from '../config/formspree';
 
 interface ContactProps {
@@ -69,6 +70,14 @@ export function Contact({ preselectedType }: ContactProps) {
       return;
     }
 
+    // Sanitize text fields before submission
+    const form = e.currentTarget;
+    const textFields = ['firstName', 'lastName', 'message'] as const;
+    for (const field of textFields) {
+      const input = form.elements.namedItem(field) as HTMLInputElement | HTMLTextAreaElement | null;
+      if (input) input.value = sanitizeInput(input.value);
+    }
+
     await handleFormspreeSubmit(e);
   };
 
@@ -106,7 +115,7 @@ export function Contact({ preselectedType }: ContactProps) {
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 bg-[#0066ff]/10 rounded-lg flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5 text-[#00d4ff]" />
+                  <MapPin className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium text-sm">{t('contact.info.address.title')}</h4>
@@ -119,7 +128,7 @@ export function Contact({ preselectedType }: ContactProps) {
 
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 bg-[#0066ff]/10 rounded-lg flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-[#00d4ff]" />
+                  <Phone className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium text-sm">{t('contact.info.phone.title')}</h4>
@@ -129,7 +138,7 @@ export function Contact({ preselectedType }: ContactProps) {
 
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 bg-[#0066ff]/10 rounded-lg flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-[#00d4ff]" />
+                  <Mail className="w-5 h-5 text-[#00d4ff]" aria-hidden="true" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium text-sm">{t('contact.info.email.title')}</h4>
@@ -141,11 +150,11 @@ export function Contact({ preselectedType }: ContactProps) {
             {/* Security Badge */}
             <div className="mt-6 pt-4 border-t border-white/[0.08]">
               <div className="flex items-center gap-2 text-[#64748b] text-xs">
-                <Shield className="w-4 h-4 text-[#00d4ff]" />
+                <Shield className="w-4 h-4 text-[#00d4ff]" aria-hidden="true" />
                 <span>SSL encryption</span>
               </div>
               <div className="flex items-center gap-2 text-[#64748b] text-xs mt-1">
-                <Lock className="w-4 h-4 text-[#a855f7]" />
+                <Lock className="w-4 h-4 text-[#a855f7]" aria-hidden="true" />
                 <span>Anti-spam protection</span>
               </div>
             </div>
@@ -169,27 +178,31 @@ export function Contact({ preselectedType }: ContactProps) {
               {/* Name Row */}
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.firstName')} *</label>
+                  <label htmlFor="firstName" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.firstName')} *</label>
                   <input
+                    id="firstName"
                     type="text"
                     name="firstName"
-                    placeholder="Max"
+                    autoComplete="given-name"
+                    placeholder="Max…"
                     required
                     minLength={2}
                     maxLength={50}
-                    className={`w-full bg-white/[0.03] border ${localErrors.firstName ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] focus:outline-none focus:border-[#0066ff]`}
+                    className={`w-full bg-white/[0.03] border ${localErrors.firstName ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff]`}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.lastName')} *</label>
+                  <label htmlFor="lastName" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.lastName')} *</label>
                   <input
+                    id="lastName"
                     type="text"
                     name="lastName"
-                    placeholder="Mustermann"
+                    autoComplete="family-name"
+                    placeholder="Mustermann…"
                     required
                     minLength={2}
                     maxLength={50}
-                    className={`w-full bg-white/[0.03] border ${localErrors.lastName ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] focus:outline-none focus:border-[#0066ff]`}
+                    className={`w-full bg-white/[0.03] border ${localErrors.lastName ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff]`}
                   />
                 </div>
               </div>
@@ -197,36 +210,42 @@ export function Contact({ preselectedType }: ContactProps) {
               {/* Contact Row */}
               <div className="grid sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.email')} *</label>
+                  <label htmlFor="email" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.email')} *</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
-                    placeholder="max@firma.de"
+                    autoComplete="email"
+                    spellCheck={false}
+                    placeholder="max@firma.de…"
                     required
                     maxLength={100}
-                    className={`w-full bg-white/[0.03] border ${localErrors.email ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] focus:outline-none focus:border-[#0066ff]`}
+                    className={`w-full bg-white/[0.03] border ${localErrors.email ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff]`}
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.phone')}</label>
+                  <label htmlFor="phone" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.phone')}</label>
                   <input
+                    id="phone"
                     type="tel"
                     name="phone"
-                    placeholder="+49 ..."
+                    autoComplete="tel"
+                    placeholder="+49…"
                     maxLength={20}
-                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] focus:outline-none focus:border-[#0066ff]"
+                    className="w-full bg-white/[0.03] border border-white/[0.08] rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff]"
                   />
                 </div>
               </div>
 
               {/* Project Type */}
               <div>
-                <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.projectType')} *</label>
+                <label htmlFor="projectType" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.projectType')} *</label>
                 <select
+                  id="projectType"
                   name="projectType"
                   defaultValue={preselectedType || ''}
                   required
-                  className={`w-full bg-white/[0.03] border ${localErrors.projectType ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-[#0066ff] appearance-none cursor-pointer`}
+                  className={`w-full bg-white/[0.03] border ${localErrors.projectType ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white bg-[#0a1220] outline-none focus-visible:border-[#0066ff] appearance-none cursor-pointer`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
                     backgroundRepeat: 'no-repeat',
@@ -243,11 +262,12 @@ export function Contact({ preselectedType }: ContactProps) {
 
               {/* Message */}
               <div>
-                <label className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.message')} *</label>
+                <label htmlFor="message" className="block text-xs text-[#94a3b8] mb-1.5">{t('contact.form.message')} *</label>
                 <textarea
+                  id="message"
                   name="message"
                   rows={3}
-                  placeholder={t('contact.form.message')}
+                  placeholder={`${t('contact.form.message')}…`}
                   required
                   minLength={10}
                   maxLength={1000}
@@ -256,38 +276,42 @@ export function Contact({ preselectedType }: ContactProps) {
                       e.target.style.borderColor = '#ef4444';
                     }
                   }}
-                  className={`w-full bg-white/[0.03] border ${localErrors.message ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] focus:outline-none focus:border-[#0066ff] resize-y min-h-[80px]`}
+                  className={`w-full bg-white/[0.03] border ${localErrors.message ? 'border-red-500' : 'border-white/[0.08]'} rounded-lg px-3 py-2.5 text-sm text-white placeholder-[#475569] outline-none focus-visible:border-[#0066ff] resize-y min-h-[80px]`}
                 />
               </div>
 
               {/* Status Messages */}
-              <AnimatePresence>
-                {formspreeState.succeeded && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="flex items-center gap-2 text-green-400 bg-green-400/10 border border-green-400/30 rounded-lg px-3 py-2"
-                  >
-                    <CheckCircle className="w-4 h-4" />
-                    <span className="text-xs">{t('contact.form.success')}</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <div aria-live="polite">
+                <AnimatePresence>
+                  {formspreeState.succeeded && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      role="status"
+                      className="flex items-center gap-2 text-green-400 bg-green-400/10 border border-green-400/30 rounded-lg px-3 py-2"
+                    >
+                      <CheckCircle className="w-4 h-4" aria-hidden="true" />
+                      <span className="text-xs">{t('contact.form.success')}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-              <AnimatePresence>
-                {formspreeState.errors && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="flex items-center gap-2 text-red-400 bg-red-400/10 border border-red-400/30 rounded-lg px-3 py-2"
-                  >
-                    <AlertCircle className="w-4 h-4" />
-                    <span className="text-xs">{t('contact.form.error')}</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                <AnimatePresence>
+                  {formspreeState.errors && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      role="alert"
+                      className="flex items-center gap-2 text-red-400 bg-red-400/10 border border-red-400/30 rounded-lg px-3 py-2"
+                    >
+                      <AlertCircle className="w-4 h-4" aria-hidden="true" />
+                      <span className="text-xs">{t('contact.form.error')}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               {/* Submit Button */}
               <motion.button
@@ -305,7 +329,7 @@ export function Contact({ preselectedType }: ContactProps) {
                 ) : (
                   <>
                     {t('contact.form.submit')}
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4" aria-hidden="true" />
                   </>
                 )}
               </motion.button>
