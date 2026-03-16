@@ -5,3 +5,8 @@ dist/
 .DS_Store
 *.log
 .vercel
+
+# AI agent configs
+.agents/
+.claude/
+skills-lock.json
