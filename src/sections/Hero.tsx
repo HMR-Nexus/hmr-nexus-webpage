@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, Play, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -7,21 +7,20 @@ interface HeroProps {
   onScrollToProducts: () => void;
 }
 
+const NOTHING_EASE = [0.25, 0.1, 0.25, 1] as const;
+
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.12 },
   },
 };
 
 const childVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: 'easeOut' as const },
+    transition: { duration: 0.5, ease: NOTHING_EASE },
   },
 };
 
@@ -30,59 +29,46 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Orbs with floating animation */}
-      <motion.div
-        className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#0066ff]/20 to-transparent opacity-40 blur-[80px] -top-[200px] -right-[150px]"
-        animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#a855f7]/20 to-transparent opacity-40 blur-[80px] bottom-[0px] -left-[150px]"
-        animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Background handled by global LiveGrid in App.tsx */}
 
-      {/* Subtle Grid Pattern */}
+      {/* Single accent moment: a subtle Nexus blue dot-glow, top-right */}
       <div
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
-          backgroundSize: '100px 100px'
-        }}
+        className="absolute -top-32 -right-32 w-[400px] h-[400px] rounded-full opacity-[0.06]"
+        style={{ background: 'radial-gradient(circle, var(--nexus-blue) 0%, transparent 70%)' }}
       />
 
       <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-24 pb-20">
         <motion.div
-          className="text-center max-w-3xl mx-auto"
+          className="text-center max-w-[1200px] mx-auto"
           initial="hidden"
           animate="visible"
           variants={containerVariants}
         >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center gap-2 bg-white/[0.05] border border-white/[0.1] px-4 py-2 rounded-full text-sm text-[#94a3b8] mb-6"
+            className="inline-flex items-center gap-2 mb-8"
             variants={childVariants}
           >
-            <span className="w-2 h-2 rounded-full bg-[#00d4ff]" />
-            <span className="font-medium">{t('hero.badge')}</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-nexus-blue" />
+            <span className="nothing-label">{t('hero.badge')}</span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title — Space Grotesk for words (legible), sweep for flair */}
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight mb-5 text-balance"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold leading-[1.05] tracking-tight text-nd-text-display mb-8"
             variants={childVariants}
           >
-            <span className="block text-white mb-1">{t('hero.title1')}</span>
-            <span className="block text-shimmer mb-1">{t('hero.title2')}</span>
-            <span className="block text-white/90 mb-1">{t('hero.title3')}</span>
-            <span className="block text-shimmer mb-1">{t('hero.title4')}</span>
-            <span className="block text-white/90 mb-1">{t('hero.title5')}</span>
-            <span className="block text-shimmer mb-1">{t('hero.title6')}</span>
+            <span className="block nexus-sweep">{t('hero.title1')}</span>
+            <span className="block nexus-sweep" style={{ animationDelay: '0.4s' }}>{t('hero.title2')}</span>
+            <span className="block text-nd-text-secondary font-light">{t('hero.title3')}</span>
+            <span className="block nexus-sweep" style={{ animationDelay: '0.8s' }}>{t('hero.title4')}</span>
+            <span className="block text-nd-text-secondary font-light">{t('hero.title5')}</span>
+            <span className="block nexus-sweep" style={{ animationDelay: '1.2s' }}>{t('hero.title6')}</span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtitle — wider container so it doesn't clip */}
           <motion.p
-            className="text-[#94a3b8] text-base md:text-lg max-w-xl mx-auto mb-8 leading-relaxed"
+            className="text-nd-text-secondary text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
             variants={childVariants}
           >
             {t('hero.subtitle')}
@@ -90,33 +76,28 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 justify-center mb-12"
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-16"
             variants={childVariants}
           >
-            <motion.button
+            <button
               onClick={onScrollToServices}
-              className="group inline-flex items-center justify-center gap-2 bg-white text-[#050a14] px-6 py-3.5 rounded-full font-semibold text-base hover:bg-[#00d4ff] transition-colors duration-200"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-2 bg-nd-text-display text-nd-black px-6 py-3.5 rounded-full font-mono text-[13px] uppercase tracking-[0.06em] hover:bg-nd-text-primary transition-colors duration-200"
             >
-              <span>{t('hero.btnPrimary')}</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
-            </motion.button>
+              {t('hero.btnPrimary')}
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </button>
 
-            <motion.button
+            <button
               onClick={onScrollToProducts}
-              className="group inline-flex items-center justify-center gap-2 bg-white/5 text-white px-6 py-3.5 rounded-full font-medium text-base border border-white/10 hover:bg-white/10 transition-colors duration-200"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center justify-center gap-2 bg-transparent text-nd-text-primary px-6 py-3.5 rounded-full font-mono text-[13px] uppercase tracking-[0.06em] border border-nd-border-visible hover:border-nd-text-secondary transition-colors duration-200"
             >
-              <Play className="w-4 h-4" aria-hidden="true" />
               {t('hero.btnSecondary')}
-            </motion.button>
+            </button>
           </motion.div>
 
-          {/* Stats Row */}
+          {/* Stats Row — Doto only for numbers (where pixel look shines) */}
           <motion.div
-            className="grid grid-cols-3 gap-3 max-w-lg mx-auto"
+            className="flex justify-center gap-10 md:gap-16"
             variants={childVariants}
           >
             {[
@@ -124,14 +105,11 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               { value: '150+', label: t('hero.stats.connections') },
               { value: '2', label: t('hero.stats.countries') },
             ].map((stat, index) => (
-              <div
-                key={index}
-                className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 hover:bg-white/[0.05] transition-colors duration-200"
-              >
-                <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">
+              <div key={index}>
+                <div className="nothing-data text-3xl md:text-4xl tabular-nums">
                   {stat.value}
                 </div>
-                <div className="text-[#64748b] text-xs mt-1">{stat.label}</div>
+                <div className="nothing-label mt-1">{stat.label}</div>
               </div>
             ))}
           </motion.div>
@@ -139,13 +117,15 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
 
         {/* Scroll Indicator */}
         <motion.div
-          className="mt-16 flex flex-col items-center gap-2 text-[#64748b]"
+          className="mt-20 flex flex-col items-center gap-2 text-nd-text-disabled"
           variants={childVariants}
           initial="hidden"
           animate="visible"
         >
-          <span className="text-xs uppercase tracking-widest">{t('hero.scroll', 'Scroll')}</span>
-          <ChevronDown className="w-5 h-5 animate-bounce" aria-hidden="true" />
+          <span className="font-mono text-[10px] uppercase tracking-[0.1em]">
+            {t('hero.scroll', 'Scroll')}
+          </span>
+          <ChevronDown className="w-4 h-4" aria-hidden="true" />
         </motion.div>
       </div>
     </section>

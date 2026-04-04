@@ -13,10 +13,10 @@ export function Values() {
   ];
 
   return (
-    <div className="py-8 md:py-12 border-y border-white/[0.05]">
+    <div className="py-8 md:py-12 border-b border-nd-border">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="flex flex-wrap justify-center items-center gap-8 md:gap-16"
+          className="flex flex-wrap justify-center items-center gap-10 md:gap-16"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -25,13 +25,11 @@ export function Values() {
           {values.map((value, index) => (
             <motion.div
               key={index}
-              className="flex items-center gap-3 text-[#94a3b8]"
+              className="flex items-center gap-3"
               variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: 'spring', stiffness: 300 }}
             >
-              <value.icon className="w-5 h-5 text-[#00d4ff]" />
-              <span className="text-white font-medium">{value.label}</span>
+              <value.icon className="w-5 h-5 text-nd-text-disabled" strokeWidth={1.5} />
+              <span className="text-nd-text-display font-medium">{value.label}</span>
             </motion.div>
           ))}
         </motion.div>

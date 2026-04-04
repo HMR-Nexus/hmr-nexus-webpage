@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './sections/Navbar';
 import { Hero } from './sections/Hero';
 import { TrustBanner } from './components/TrustBanner';
+import { LiveGrid } from './components/LiveGrid';
 import './i18n';
 
 // Lazy-load below-the-fold sections for faster initial paint
@@ -15,7 +16,17 @@ const TeamSection = lazy(() => import('./components/TeamSection').then(m => ({ d
 const Portfolio   = lazy(() => import('./sections/Portfolio').then(m => ({ default: m.Portfolio })));
 const Contact     = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 const Footer      = lazy(() => import('./sections/Footer').then(m => ({ default: m.Footer })));
-const ChatWidget  = lazy(() => import('./components/ChatWidget').then(m => ({ default: m.ChatWidget })));
+
+/* Nothing-style loading indicator */
+function SectionLoader() {
+  return (
+    <div className="py-16 flex justify-center">
+      <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-nd-text-disabled">
+        [LOADING...]
+      </span>
+    </div>
+  );
+}
 
 function App() {
   const [preselectedProjectType, setPreselectedProjectType] = useState<string>('');
@@ -50,18 +61,23 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050a14] text-white font-sans overflow-x-hidden">
-      {/* Scroll Progress Bar */}
+    <div className="min-h-screen bg-nd-black text-nd-text-primary font-sans overflow-x-hidden relative">
+      {/* Global LiveGrid — dots breathe and code flashes across entire page */}
+      <div className="fixed inset-0 z-0">
+        <LiveGrid />
+      </div>
+
+      {/* Scroll Progress Bar — Nothing: thin, monochrome, Nexus blue accent */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 z-50 bg-gradient-to-r from-[#0066ff] to-[#a855f7] origin-left"
+        className="fixed top-0 left-0 right-0 h-px z-50 bg-nexus-blue origin-left"
         style={{ scaleX }}
       />
 
       {/* Navbar — always eager */}
       <Navbar onScrollToContact={() => scrollToContact()} />
 
-      {/* Main Content */}
-      <main id="main-content">
+      {/* Main Content — above LiveGrid */}
+      <main id="main-content" className="relative z-10">
         {/* Hero — eager (above the fold) */}
         <Hero
           onScrollToServices={scrollToServices}
@@ -69,19 +85,19 @@ function App() {
         />
         <TrustBanner />
 
-        {/* Below-the-fold — lazy loaded with split boundaries to avoid waterfalls */}
-        <Suspense fallback={null}>
+        {/* Below-the-fold — lazy loaded */}
+        <Suspense fallback={<SectionLoader />}>
           <Values />
           <Services />
           <Products onRequestDemo={() => scrollToContact('saas')} />
           <Stats />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense fallback={<SectionLoader />}>
           <DualMap />
           <TeamSection />
           <Portfolio />
         </Suspense>
-        <Suspense fallback={null}>
+        <Suspense fallback={<SectionLoader />}>
           <div ref={contactRef}>
             <Contact preselectedType={preselectedProjectType} />
           </div>
@@ -90,7 +106,6 @@ function App() {
 
       <Suspense fallback={null}>
         <Footer />
-        <ChatWidget />
       </Suspense>
     </div>
   );

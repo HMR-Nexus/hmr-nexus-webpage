@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface NavbarProps {
@@ -14,22 +14,15 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
   const [currentLang, setCurrentLang] = useState(i18n.language);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const handleLanguageChanged = (lng: string) => {
-      setCurrentLang(lng);
-    };
+    const handleLanguageChanged = (lng: string) => setCurrentLang(lng);
     i18n.on('languageChanged', handleLanguageChanged);
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged);
-    };
+    return () => { i18n.off('languageChanged', handleLanguageChanged); };
   }, [i18n]);
 
   const changeLanguage = useCallback((lng: string) => {
@@ -38,9 +31,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
 
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
   }, []);
 
@@ -60,10 +51,10 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 px-4 md:px-6 py-2.5 flex items-center gap-4 md:gap-6 rounded-full transition-all duration-200 max-w-[95vw] ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 px-4 md:px-6 py-2.5 flex items-center gap-4 md:gap-6 rounded-sm transition-colors duration-200 max-w-[95vw] ${
         isScrolled
-          ? 'bg-[#050a14]/95 border border-white/10'
-          : 'bg-white/[0.03] border border-white/[0.08]'
+          ? 'bg-nd-surface border border-nd-border-visible'
+          : 'bg-nd-black/80 border border-nd-border'
       }`}
     >
       {/* Logo */}
@@ -73,18 +64,19 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
         aria-label="HMR Nexus — Home"
       >
         <img src="/logo.png" alt="" aria-hidden="true" className="h-8 w-8" />
-        <span className="font-bold text-white text-sm hidden sm:block">
-          HMR <span className="text-[#3d8bff]">Nexus</span>
+        <span className="font-mono text-sm tracking-wider text-nd-text-display hidden sm:block">
+          NEXUS
         </span>
       </button>
 
-      {/* Desktop Navigation */}
-      <ul className="hidden lg:flex items-center gap-1">
-        {navLinks.map((link) => (
-          <li key={link.id}>
+      {/* Desktop Navigation — Nothing pipe style */}
+      <ul className="hidden lg:flex items-center gap-0">
+        {navLinks.map((link, i) => (
+          <li key={link.id} className="flex items-center">
+            {i > 0 && <span className="text-nd-border-visible mx-1 select-none">|</span>}
             <button
               onClick={() => scrollToSection(link.id)}
-              className="px-3 py-1.5 rounded-full text-sm text-[#94a3b8] hover:text-white hover:bg-white/5 transition-colors"
+              className="px-2 py-1 font-mono text-[11px] uppercase tracking-[0.08em] text-nd-text-secondary hover:text-nd-text-display transition-colors duration-200"
             >
               {link.label}
             </button>
@@ -93,17 +85,17 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
       </ul>
 
       {/* Right Side */}
-      <div className="flex items-center gap-2 ml-auto">
-        {/* Language Selector */}
-        <div className="flex bg-white/[0.03] rounded-full p-0.5 border border-white/[0.08]">
+      <div className="flex items-center gap-3 ml-auto">
+        {/* Language Selector — Nothing segmented control */}
+        <div className="flex border border-nd-border-visible rounded-sm p-0.5">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => changeLanguage(lang.code)}
-              className={`px-2 py-0.5 rounded-full text-xs font-medium transition-colors ${
+              className={`px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] transition-colors duration-200 ${
                 currentLang === lang.code
-                  ? 'bg-white text-[#050a14]'
-                  : 'text-[#64748b] hover:text-[#94a3b8]'
+                  ? 'bg-nd-text-display text-nd-black'
+                  : 'text-nd-text-disabled hover:text-nd-text-secondary'
               }`}
             >
               {lang.label}
@@ -111,67 +103,57 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
           ))}
         </div>
 
-        {/* CTA Button - Desktop */}
+        {/* CTA Button — Nothing primary pill */}
         <button
           onClick={onScrollToContact}
-          className="hidden md:flex items-center gap-1.5 bg-white text-[#050a14] px-4 py-2 rounded-full text-sm font-medium hover:bg-[#00d4ff] transition-colors"
+          className="hidden md:flex items-center gap-1.5 bg-nd-text-display text-nd-black px-4 py-2 rounded-full font-mono text-[11px] uppercase tracking-[0.06em] hover:bg-nd-text-primary transition-colors duration-200"
         >
           {t('nav.cta')}
-          <ChevronRight className="w-4 h-4" aria-hidden="true" />
+          <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
         </button>
 
         {/* Mobile Menu Toggle */}
-        <motion.div
-          animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
-          transition={{ duration: 0.2 }}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden p-1.5 text-nd-text-display"
+          aria-label="Toggle menu"
+          aria-expanded={isMobileMenuOpen}
         >
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-1.5 text-white"
-            aria-label="Toggle menu"
-            aria-expanded={isMobileMenuOpen}
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </motion.div>
+          {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-[#050a14]/98 border border-white/10 rounded-xl p-3"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:hidden absolute top-full left-0 right-0 mt-2 bg-nd-surface border border-nd-border-visible rounded-sm p-3"
           >
-            <ul className="flex flex-col gap-1">
-              {navLinks.map((link, index) => (
-                <motion.li
-                  key={link.id}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
+            <ul className="flex flex-col">
+              {navLinks.map((link) => (
+                <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="w-full text-left px-3 py-2 rounded-lg text-sm text-[#94a3b8] hover:text-white hover:bg-white/5 transition-colors"
+                    className="w-full text-left px-3 py-2.5 font-mono text-[11px] uppercase tracking-[0.08em] text-nd-text-secondary hover:text-nd-text-display border-b border-nd-border last:border-0 transition-colors duration-200"
                   >
                     {link.label}
                   </button>
-                </motion.li>
+                </li>
               ))}
-              <li className="pt-2 border-t border-white/10 mt-2">
+              <li className="pt-3 mt-1">
                 <button
                   onClick={() => {
                     onScrollToContact();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-center gap-2 bg-white text-[#050a14] px-4 py-2.5 rounded-full text-sm font-medium"
+                  className="w-full flex items-center justify-center gap-2 bg-nd-text-display text-nd-black px-4 py-2.5 rounded-full font-mono text-[11px] uppercase tracking-[0.06em]"
                 >
                   {t('nav.cta')}
-                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               </li>
             </ul>

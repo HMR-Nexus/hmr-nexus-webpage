@@ -10,35 +10,33 @@ export function Footer() {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <>
-      <footer className="py-12 border-t border-white/[0.08]">
+      <footer className="py-12 border-t border-nd-border">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <MotionSection>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
               {/* Brand */}
               <div className="lg:col-span-1">
-                <div className="mb-2">
-                  <img src="/logo-full.png" alt="HMR Nexus Engineering" width={200} height={64} loading="lazy" className="h-16 w-auto" />
+                <div className="mb-3">
+                  <span className="font-display text-2xl font-bold text-nd-text-display tracking-tight">NEXUS</span>
                 </div>
-                <p className="text-[#64748b] text-sm mb-2">{t('footer.description')}</p>
-                <p className="text-sm text-[#94a3b8]">{t('footer.tagline')}</p>
+                <p className="text-nd-text-disabled text-sm mb-2">{t('footer.description')}</p>
+                <p className="text-nd-text-secondary text-sm">{t('footer.tagline')}</p>
               </div>
 
               {/* Navigation */}
               <div>
-                <h4 className="text-white font-medium mb-3 text-sm">{t('footer.navigation')}</h4>
+                <h4 className="nothing-label block mb-3">{t('footer.navigation')}</h4>
                 <ul className="space-y-2">
                   {['home', 'services', 'products', 'portfolio', 'contact'].map((id) => (
                     <li key={id}>
                       <button
                         onClick={() => scrollToSection(id)}
-                        className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors"
+                        className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200"
                       >
                         {t(`nav.${id}`)}
                       </button>
@@ -49,20 +47,20 @@ export function Footer() {
 
               {/* Services */}
               <div>
-                <h4 className="text-white font-medium mb-3 text-sm">{t('footer.services')}</h4>
+                <h4 className="nothing-label block mb-3">{t('footer.services')}</h4>
                 <ul className="space-y-2">
                   <li>
-                    <button onClick={() => scrollToSection('services')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('services.fiber.items.ne3_label')}
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => scrollToSection('services')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('services.fiber.items.ne4_label')}
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => scrollToSection('services')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('services.software.title')}
                     </button>
                   </li>
@@ -71,20 +69,20 @@ export function Footer() {
 
               {/* Legal */}
               <div>
-                <h4 className="text-white font-medium mb-3 text-sm">{t('footer.legal')}</h4>
+                <h4 className="nothing-label block mb-3">{t('footer.legal')}</h4>
                 <ul className="space-y-2">
                   <li>
-                    <button onClick={() => setLegalPage('imprint')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => setLegalPage('imprint')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('footer.legalLinks.imprint')}
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setLegalPage('privacy')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => setLegalPage('privacy')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('footer.legalLinks.privacy')}
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => setLegalPage('terms')} className="text-[#64748b] text-sm hover:text-[#00d4ff] transition-colors">
+                    <button onClick={() => setLegalPage('terms')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
                       {t('footer.legalLinks.terms')}
                     </button>
                   </li>
@@ -95,9 +93,9 @@ export function Footer() {
 
           {/* Bottom */}
           <MotionSection delay={0.2}>
-            <div className="pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-[#64748b]">
-              <p>{t('footer.copyright')}</p>
-              <p>{t('footer.madeIn')}</p>
+            <div className="pt-6 border-t border-nd-border flex flex-col sm:flex-row justify-between items-center gap-2">
+              <p className="nothing-label">{t('footer.copyright')}</p>
+              <p className="nothing-label">{t('footer.madeIn')}</p>
             </div>
           </MotionSection>
         </div>

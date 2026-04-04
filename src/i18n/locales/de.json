@@ -8,12 +8,12 @@
     "cta": "Projekt anfragen"
   },
   "hero": {
-    "badge": "Fiber & Software Solutions",
+    "badge": "FTTH-Infrastruktur · Field-Ops-Software · KI-Automatisierung",
     "title1": "Wir bauen",
     "title2": "Netzwerke.",
     "title3": "Wir entwickeln",
     "title4": "Technologie.",
-    "subtitle": "Ihr strategischer Partner für Glasfaser-Infrastruktur (NE3/NE4) und maßgeschneiderte Softwarelösungen für die Telekommunikationsbranche in Deutschland und Europa.",
+    "subtitle": "Wir bauen NE3/NE4-Glasfasernetze und die Software, die sie betreibt — von Techniker-Apps und Projekttrackern bis hin zu KI-Bots für automatisierte Terminplanung und Berichterstellung.",
     "btnPrimary": "Leistungen entdecken",
     "btnSecondary": "Unsere Software",
     "stats": {
@@ -31,8 +31,8 @@
   },
   "services": {
     "label": "Unsere Expertise",
-    "title": "Zwei Welten,",
-    "titleHighlight": "eine Vision",
+    "title": "Infrastruktur &",
+    "titleHighlight": "digitale Lösungen",
     "subtitle": "Von der physischen Infrastruktur bis zur digitalen Transformation – wir bieten ganzheitliche Lösungen für die Telekommunikationsbranche.",
     "fiber": {
       "title": "Glasfaser-Infrastruktur",
@@ -160,27 +160,27 @@
       "cta": "Mehr erfahren"
     },
     "aianalytics": {
-      "title": "Analytics Dashboard",
-      "type": "Python · Streamlit · KI",
+      "title": "KI & Daten",
+      "type": "RAG · Bots · Data Pipelines",
       "badge": "Roadmap",
-      "description": "KI-gestützte Datenanalyseplattform für strategische Entscheidungen in Telekommunikationsprojekten.",
+      "description": "Maßgeschneiderte KI-Lösungen für Telekom-Betrieb: RAG-Systeme über interne Dokumente, automatisierte Reporting-Bots und Datenpipelines vom Feld zum Dashboard.",
       "metrics": [
         {
-          "value": "KI",
-          "label": "Kern"
+          "value": "RAG",
+          "label": "Systeme"
         },
         {
-          "value": "Live",
-          "label": "Daten"
+          "value": "ETL",
+          "label": "Pipelines"
         },
         {
-          "value": "KPI",
-          "label": "Tracking"
+          "value": "LLM",
+          "label": "Bots"
         }
       ],
       "features": {
-        "0": "Prädiktive Analytik mit Machine-Learning-Modellen",
-        "1": "Bloomberg-Style-Dashboards mit Livedaten"
+        "0": "RAG über Projektdokumente, SOPs und Compliance-Datenbanken",
+        "1": "Automatisierte Datenpipelines vom Feld zum Reporting-Dashboard"
       },
       "cta": "Demnächst"
     }
@@ -356,6 +356,24 @@
       "fiber": "Hallo, ich interessiere mich für den Glasfaser NE3/NE4 Service",
       "bot": "Hallo, ich interessiere mich für den Termin-Bot",
       "custom": "Hallo, ich brauche eine maßgeschneiderte Softwarelösung"
+    }
+  },
+  "dualMap": {
+    "label": "Globale Präsenz",
+    "title": "Zwei Länder,",
+    "titleHighlight": "eine Vision",
+    "subtitle": "Wir kombinieren deutsche technische Präzision mit kolumbianischer Innovation.",
+    "germany": {
+      "city": "Deutschland",
+      "role": "Hauptsitz",
+      "description": "Operationszentrum für Glasfaserprojekte in Deutschland und Europa.",
+      "stats": { "fiber": "km Glasfaser", "quality": "Qualität" }
+    },
+    "colombia": {
+      "city": "Kolumbien",
+      "role": "Entwicklungszentrum",
+      "description": "Software-Entwicklungsteam und LATAM-Operationen.",
+      "stats": { "connections": "Anschlüsse", "support": "Support" }
     }
   },
   "footer": {

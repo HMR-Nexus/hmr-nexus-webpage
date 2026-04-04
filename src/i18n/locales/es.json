@@ -8,12 +8,12 @@
     "cta": "Solicitar Proyecto"
   },
   "hero": {
-    "badge": "Fiber & Software Solutions",
+    "badge": "Infraestructura FTTH · Software de Campo · Automatización IA",
     "title1": "Construimos",
     "title2": "Redes.",
     "title3": "Desarrollamos",
     "title4": "Tecnología.",
-    "subtitle": "Su socio estratégico para infraestructura de fibra óptica (NE3/NE4) y soluciones de software a medida para la industria de telecomunicaciones en Alemania y Europa.",
+    "subtitle": "Desplegamos redes de fibra NE3/NE4 y construimos el software que las opera — desde apps para técnicos y gestión de proyectos hasta bots de IA que automatizan agendamiento y reportes.",
     "btnPrimary": "Descubrir Servicios",
     "btnSecondary": "Nuestro Software",
     "stats": {
@@ -31,8 +31,8 @@
   },
   "services": {
     "label": "Nuestra Experiencia",
-    "title": "Dos Mundos,",
-    "titleHighlight": "Una Visión",
+    "title": "Infraestructura &",
+    "titleHighlight": "Soluciones Digitales",
     "subtitle": "Desde la infraestructura física hasta la transformación digital – ofrecemos soluciones integrales para la industria de telecomunicaciones.",
     "fiber": {
       "title": "Infraestructura de Fibra",
@@ -160,27 +160,27 @@
       "cta": "Conocer Más"
     },
     "aianalytics": {
-      "title": "Analytics Dashboard",
-      "type": "Python · Streamlit · IA",
+      "title": "IA & Datos",
+      "type": "RAG · Bots · Data Pipelines",
       "badge": "Roadmap",
-      "description": "Plataforma de análisis de datos con inteligencia artificial para decisiones estratégicas en proyectos de telecomunicaciones e inversión.",
+      "description": "Soluciones de IA para operaciones telecom: sistemas RAG sobre documentación interna, bots de reportes automatizados y pipelines de datos que conectan campo con dashboards.",
       "metrics": [
         {
-          "value": "AI",
-          "label": "Core"
+          "value": "RAG",
+          "label": "Sistemas"
         },
         {
-          "value": "Live",
-          "label": "Data"
+          "value": "ETL",
+          "label": "Pipelines"
         },
         {
-          "value": "KPI",
-          "label": "Tracking"
+          "value": "LLM",
+          "label": "Bots"
         }
       ],
       "features": {
-        "0": "Análisis predictivo con modelos de machine learning",
-        "1": "Dashboards Bloomberg-style con datos en tiempo real"
+        "0": "RAG sobre docs de proyecto, SOPs y bases de compliance",
+        "1": "Pipelines automatizados de campo a dashboard de reporting"
       },
       "cta": "Próximamente"
     }
@@ -376,6 +376,24 @@
       "fiber": "Hola, me interesa el servicio de Fibra Óptica NE3/NE4",
       "bot": "Hola, me interesa el Bot de Citas",
       "custom": "Hola, necesito un software a medida"
+    }
+  },
+  "dualMap": {
+    "label": "Presencia Global",
+    "title": "Dos Países,",
+    "titleHighlight": "Una Visión",
+    "subtitle": "Combinamos la precisión técnica alemana con la innovación colombiana.",
+    "germany": {
+      "city": "Alemania",
+      "role": "Sede Central",
+      "description": "Centro de operaciones para proyectos de fibra óptica en Alemania y Europa.",
+      "stats": { "fiber": "km Fibra", "quality": "Calidad" }
+    },
+    "colombia": {
+      "city": "Colombia",
+      "role": "Centro de Desarrollo",
+      "description": "Equipo de desarrollo de software y operaciones LATAM.",
+      "stats": { "connections": "Conexiones", "support": "Soporte" }
     }
   },
   "footer": {

@@ -6,39 +6,35 @@ import { staggerContainer, cardEntrance } from '@/lib/motion';
 
 interface TeamMember {
   key: string;
-  gradient: string;
 }
 
 export function TeamSection() {
   const { t } = useTranslation();
 
   const team: TeamMember[] = [
-    { key: 'ceo', gradient: 'from-[#0066ff] to-[#00d4ff]' },
-    { key: 'coo', gradient: 'from-[#a855f7] to-[#c084fc]' },
-    { key: 'cto', gradient: 'from-[#3d8bff] to-[#0066ff]' },
+    { key: 'ceo' },
+    { key: 'coo' },
+    { key: 'cto' },
   ];
 
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <MotionSection className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#3d8bff] uppercase tracking-widest mb-3">
-            <span className="w-2 h-2 bg-[#3d8bff] rounded-full" />
-            {t('teamSection.label')}
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
+          <span className="nothing-label block mb-3">{t('teamSection.label')}</span>
+          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
             {t('teamSection.title')}{' '}
-            <span className="text-[#3d8bff]">{t('teamSection.titleHighlight')}</span>
+            <span className="text-nd-text-secondary">{t('teamSection.titleHighlight')}</span>
           </h2>
-          <p className="text-[#94a3b8] max-w-xl mx-auto">
+          <p className="text-nd-text-secondary max-w-xl mx-auto">
             {t('teamSection.description')}
           </p>
         </MotionSection>
 
         {/* Team Grid */}
         <motion.div
-          className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto"
+          className="grid md:grid-cols-3 gap-px bg-nd-border max-w-4xl mx-auto rounded-lg overflow-hidden"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -52,41 +48,34 @@ export function TeamSection() {
               <motion.div
                 key={member.key}
                 variants={cardEntrance}
-                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.05] transition-colors"
+                className="bg-nd-surface p-6"
               >
-                {/* Avatar */}
-                <motion.div
-                  initial={{ scale: 0, rotate: -10 }}
-                  whileInView={{ scale: 1, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-                >
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${member.gradient} flex items-center justify-center mb-4`}>
-                    <span className="text-xl font-bold text-white">{initials}</span>
-                  </div>
-                </motion.div>
+                {/* Avatar — Nothing: monochrome square with initials */}
+                <div className="w-14 h-14 rounded-sm bg-nd-surface-raised border border-nd-border-visible flex items-center justify-center mb-4">
+                  <span className="font-mono text-lg text-nd-text-display">{initials}</span>
+                </div>
 
                 {/* Info */}
-                <h3 className="text-lg font-bold mb-1">{name}</h3>
-                <p className="text-[#c084fc] text-sm font-medium mb-2">
+                <h3 className="text-base font-medium text-nd-text-display mb-1">{name}</h3>
+                <p className="nothing-label mb-2">
                   {t(`teamSection.members.${member.key}.role`)}
                 </p>
 
-                <div className="flex items-center gap-1 text-[#64748b] text-sm mb-4">
-                  <MapPin className="w-4 h-4" />
+                <div className="flex items-center gap-1.5 text-nd-text-disabled text-xs mb-4">
+                  <MapPin className="w-3.5 h-3.5" strokeWidth={1.5} />
                   <span>{t(`teamSection.members.${member.key}.location`)}</span>
                 </div>
 
                 {/* Bio */}
-                <p className="text-[#94a3b8] text-sm mb-4 leading-relaxed">
+                <p className="text-nd-text-secondary text-sm mb-4 leading-relaxed">
                   {t(`teamSection.members.${member.key}.bio`)}
                 </p>
 
                 {/* Experience */}
                 <ul className="space-y-1.5 mb-4">
                   {(Array.isArray(t(`teamSection.members.${member.key}.experience`, { returnObjects: true })) ? t(`teamSection.members.${member.key}.experience`, { returnObjects: true }) as string[] : []).map((exp, i) => (
-                    <li key={i} className="flex items-center gap-2 text-[#94a3b8] text-sm">
-                      <span className="w-1 h-1 bg-[#00d4ff] rounded-full" />
+                    <li key={i} className="flex items-center gap-2 text-nd-text-secondary text-sm">
+                      <span className="w-1 h-1 bg-nd-text-disabled rounded-full" />
                       {exp}
                     </li>
                   ))}
@@ -94,11 +83,11 @@ export function TeamSection() {
 
                 {/* LinkedIn */}
                 <span
-                  className="inline-flex items-center gap-2 text-[#3d8bff]/50 text-sm cursor-default"
+                  className="inline-flex items-center gap-1.5 nothing-label text-nd-text-disabled cursor-default"
                   aria-label={`${name} LinkedIn — coming soon`}
                 >
-                  <Linkedin className="w-4 h-4" aria-hidden="true" />
-                  LinkedIn
+                  <Linkedin className="w-3.5 h-3.5" strokeWidth={1.5} />
+                  LINKEDIN
                 </span>
               </motion.div>
             );

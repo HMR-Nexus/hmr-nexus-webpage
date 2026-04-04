@@ -38,7 +38,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
           role="dialog"
           aria-modal="true"
           aria-label={page === 'imprint' ? 'Legal Notice' : page === 'privacy' ? 'Privacy Policy' : 'Terms and Conditions'}
-          className="fixed inset-0 z-[100] flex items-start justify-center bg-[#050a14]/95 backdrop-blur-sm overflow-y-auto overscroll-contain"
+          className="fixed inset-0 z-[100] flex items-start justify-center bg-black/90 overflow-y-auto overscroll-contain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -46,7 +46,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
           onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
           <motion.div
-            className="relative w-full max-w-3xl mx-4 my-12 bg-[#0a1420] border border-white/10 rounded-2xl p-6 sm:p-10"
+            className="relative w-full max-w-3xl mx-4 my-12 bg-nd-surface border border-nd-border-visible rounded-lg p-6 sm:p-10"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
@@ -55,7 +55,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full text-[#64748b] hover:text-white hover:bg-white/10 transition-colors"
+              className="absolute top-4 right-4 p-2 text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
               aria-label="Close"
             >
               <X className="w-5 h-5" />
@@ -63,21 +63,21 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
 
             {/* Content */}
             <div className="legal-content prose prose-invert prose-sm max-w-none
-              [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:text-white [&_h1]:mb-6
-              [&_h2]:text-lg [&_h2]:font-semibold [&_h2]:text-white [&_h2]:mt-8 [&_h2]:mb-3
-              [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-[#94a3b8] [&_h3]:mt-6 [&_h3]:mb-2
-              [&_p]:text-[#94a3b8] [&_p]:text-sm [&_p]:leading-relaxed [&_p]:mb-3
-              [&_ul]:text-[#94a3b8] [&_ul]:text-sm [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ul]:space-y-1
-              [&_li]:text-[#94a3b8]
-              [&_a]:text-[#3d8bff] [&_a]:underline
-              [&_strong]:text-white
+              [&_h1]:text-2xl [&_h1]:font-light [&_h1]:text-nd-text-display [&_h1]:mb-6
+              [&_h2]:text-lg [&_h2]:font-medium [&_h2]:text-nd-text-display [&_h2]:mt-8 [&_h2]:mb-3
+              [&_h3]:text-base [&_h3]:font-medium [&_h3]:text-nd-text-secondary [&_h3]:mt-6 [&_h3]:mb-2
+              [&_p]:text-nd-text-secondary [&_p]:text-sm [&_p]:leading-relaxed [&_p]:mb-3
+              [&_ul]:text-nd-text-secondary [&_ul]:text-sm [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_ul]:space-y-1
+              [&_li]:text-nd-text-secondary
+              [&_a]:text-nd-interactive [&_a]:underline
+              [&_strong]:text-nd-text-display
             ">
               {page === 'imprint' && <ImprintContent lang={lang} />}
               {page === 'privacy' && <PrivacyContent lang={lang} />}
               {page === 'terms' && <TermsContent lang={lang} />}
             </div>
 
-            <p className="mt-8 pt-4 border-t border-white/10 text-[#475569] text-xs">
+            <p className="mt-8 pt-4 border-t border-nd-border nothing-label">
               {lang === 'es' ? 'Última actualización: Febrero 2026'
                 : lang === 'en' ? 'Last updated: February 2026'
                 : 'Zuletzt aktualisiert: Februar 2026'}

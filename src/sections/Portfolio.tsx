@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { Briefcase, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
 import { staggerContainer, cardEntrance } from '@/lib/motion';
@@ -11,8 +10,6 @@ interface Metric {
 
 interface Project {
   key: string;
-  gradient: string;
-  accentColor: string;
   metrics: Metric[];
   status: 'completed' | 'active';
 }
@@ -20,44 +17,36 @@ interface Project {
 const projects: Project[] = [
   {
     key: 'celle',
-    gradient: 'from-[#0066ff] to-[#00d4ff]',
-    accentColor: '#00d4ff',
     status: 'completed',
     metrics: [
-      { key: 'km',     value: '45' },
-      { key: 'hup',    value: '320' },
+      { key: 'km', value: '45' },
+      { key: 'hup', value: '320' },
       { key: 'months', value: '8' },
     ],
   },
   {
     key: 'suedheide',
-    gradient: 'from-[#00d4ff] to-[#0066ff]',
-    accentColor: '#3d8bff',
     status: 'completed',
     metrics: [
-      { key: 'units',  value: '500+' },
-      { key: 'km',     value: '28' },
+      { key: 'units', value: '500+' },
+      { key: 'km', value: '28' },
       { key: 'ontime', value: '✓' },
     ],
   },
   {
     key: 'saas',
-    gradient: 'from-[#a855f7] to-[#c084fc]',
-    accentColor: '#c084fc',
     status: 'completed',
     metrics: [
-      { key: 'cloud',     value: 'Cloud' },
+      { key: 'cloud', value: 'Cloud' },
       { key: 'available', value: '99.9%' },
       { key: 'languages', value: '3 Lang' },
     ],
   },
   {
     key: 'mdu',
-    gradient: 'from-[#f59e0b] to-[#10b981]',
-    accentColor: '#10b981',
     status: 'active',
     metrics: [
-      { key: 'type',  value: 'MDU' },
+      { key: 'type', value: 'MDU' },
       { key: 'level', value: 'NE4' },
       { key: 'start', value: '2026' },
     ],
@@ -68,110 +57,78 @@ export function Portfolio() {
   const { t } = useTranslation();
 
   return (
-    <section id="portfolio" className="py-12 md:py-20">
+    <section id="portfolio" className="py-16 md:py-24">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Section Header */}
-        <MotionSection className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#3d8bff] uppercase tracking-widest mb-3">
-            <Briefcase className="w-4 h-4" />
-            {t('portfolio.label')}
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+        <MotionSection className="mb-12">
+          <span className="nothing-label block mb-3">{t('portfolio.label')}</span>
+          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
             {t('portfolio.title')}{' '}
-            <span className="text-[#3d8bff]">{t('portfolio.titleHighlight')}</span>
+            <span className="text-nd-text-secondary">{t('portfolio.titleHighlight')}</span>
           </h2>
-          <p className="text-[#94a3b8] text-lg max-w-2xl mx-auto">
+          <p className="text-nd-text-secondary text-base max-w-2xl">
             {t('portfolio.subtitle')}
           </p>
         </MotionSection>
 
-        {/* Project Cards 2×2 */}
+        {/* Project Cards */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
-          className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5"
+          className="grid sm:grid-cols-2 gap-4"
         >
           {projects.map((project) => (
             <motion.div
               key={project.key}
               variants={cardEntrance}
-              whileHover={{ y: -5 }}
-              transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-              className="group relative bg-white/[0.03] border border-white/[0.07] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all duration-300"
+              className="bg-nd-surface border border-nd-border rounded-lg p-6 hover:border-nd-border-visible transition-colors duration-200"
             >
-              {/* Top gradient bar */}
-              <div className={`h-[2px] bg-gradient-to-r ${project.gradient}`} />
+              {/* Tag + status */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-nd-text-display px-2 py-0.5 border border-nd-border-visible rounded-sm">
+                  {t(`portfolio.projects.${project.key}.tag`)}
+                </span>
 
-              {/* Active project: subtle animated glow */}
-              {project.status === 'active' && (
-                <motion.div
-                  className="absolute inset-0 pointer-events-none rounded-2xl"
-                  animate={{ opacity: [0, 0.06, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ background: `radial-gradient(ellipse at 50% 0%, ${project.accentColor}, transparent 70%)` }}
-                />
-              )}
-
-              <div className="p-6">
-                {/* Tag + status */}
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`inline-block text-xs font-semibold px-3 py-1 rounded-full bg-gradient-to-r ${project.gradient} text-white`}
-                  >
-                    {t(`portfolio.projects.${project.key}.tag`)}
+                {project.status === 'active' ? (
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-nd-success">
+                    <span className="w-1.5 h-1.5 rounded-full bg-nd-success animate-pulse" />
+                    {t('portfolio.status.active')}
                   </span>
+                ) : (
+                  <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-nd-text-disabled">
+                    {t('portfolio.status.completed')}
+                  </span>
+                )}
+              </div>
 
-                  {project.status === 'active' ? (
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#10b981] bg-[#10b981]/10 px-2.5 py-1 rounded-full border border-[#10b981]/20">
-                      <motion.span
-                        className="w-1.5 h-1.5 rounded-full bg-[#10b981] flex-shrink-0"
-                        animate={{ opacity: [1, 0.3, 1] }}
-                        transition={{ duration: 1.2, repeat: Infinity }}
-                      />
-                      {t('portfolio.status.active')}
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#64748b] bg-white/[0.04] px-2.5 py-1 rounded-full">
-                      <CheckCircle2 className="w-3 h-3" aria-hidden="true" />
-                      {t('portfolio.status.completed')}
-                    </span>
-                  )}
-                </div>
+              {/* Title */}
+              <h3 className="text-base font-medium text-nd-text-display mb-2">
+                {t(`portfolio.projects.${project.key}.title`)}
+              </h3>
 
-                {/* Title */}
-                <h3 className="text-lg font-bold mb-2">
-                  {t(`portfolio.projects.${project.key}.title`)}
-                </h3>
+              {/* Description */}
+              <p className="text-nd-text-secondary text-sm mb-5 leading-relaxed">
+                {t(`portfolio.projects.${project.key}.description`)}
+              </p>
 
-                {/* Description */}
-                <p className="text-[#94a3b8] text-sm mb-5 leading-relaxed">
-                  {t(`portfolio.projects.${project.key}.description`)}
-                </p>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-2">
-                  {project.metrics.map((m) => (
-                    <div key={m.key} className="bg-white/[0.04] rounded-lg p-2.5 text-center">
-                      <div
-                        className="font-bold text-sm"
-                        style={{ color: project.accentColor }}
-                      >
-                        {m.value}
-                      </div>
-                      <div className="text-[#64748b] text-[10px] mt-0.5">
-                        {t(`portfolio.projects.${project.key}.metrics.${m.key}`)}
-                      </div>
+              {/* Metrics — Nothing data row */}
+              <div className="flex gap-4 pt-4 border-t border-nd-border">
+                {project.metrics.map((m) => (
+                  <div key={m.key} className="flex-1">
+                    <div className="nothing-data text-sm tabular-nums">
+                      {m.value}
                     </div>
-                  ))}
-                </div>
+                    <div className="nothing-label mt-0.5">
+                      {t(`portfolio.projects.${project.key}.metrics.${m.key}`)}
+                    </div>
+                  </div>
+                ))}
               </div>
             </motion.div>
           ))}
         </motion.div>
-
       </div>
     </section>
   );

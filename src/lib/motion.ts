@@ -1,40 +1,40 @@
 import { type Variants, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-// --- Shared animation variants ---
+// Nothing Design: subtle ease-out, opacity-first. No spring, no bounce.
+const NOTHING_EASE = [0.25, 0.1, 0.25, 1] as const;
 
+// Note: initial="hidden" sets opacity:0 only after JS hydrates.
+// Before that, elements are visible via CSS (no layout shift on slow connections).
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.4, ease: NOTHING_EASE } },
 };
 
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.1,
     },
   },
 };
 
 export const cardEntrance: Variants = {
-  hidden: { opacity: 0, y: 30, scale: 0.98 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.35, ease: NOTHING_EASE },
   },
 };
 
 export const listItemSlide: Variants = {
-  hidden: { opacity: 0, x: -15 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.25, ease: NOTHING_EASE } },
 };
 
-// --- Reduced motion helper ---
-
+// Reduced motion helper
 export function safeVariants(variants: Variants, reducedMotion: boolean): Variants {
   if (reducedMotion) {
     return {
@@ -45,8 +45,7 @@ export function safeVariants(variants: Variants, reducedMotion: boolean): Varian
   return variants;
 }
 
-// --- Count-up hook for animated numbers ---
-
+// Count-up hook for animated numbers
 export function useCountUp(target: number, duration = 2, trigger = false) {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (v) => Math.round(v));
