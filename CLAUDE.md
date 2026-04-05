@@ -15,7 +15,7 @@ npm run build        # build to dist/
 - **Local:** `~/Dev/hmr-nexus-webpage/`
 - **GitHub:** jarl9801/hmr-nexus-webpage (public)
 - **Live:** https://voluble-gumdrop-d9c57f.netlify.app
-- **Domain:** hmr-nexus.com
+- **Domain:** hmr-nexus.com (custom domain on Netlify)
 
 ### Deploy Process (⚠️ NOT direct from this repo)
 ```bash

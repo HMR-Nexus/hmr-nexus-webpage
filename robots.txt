@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hmrnexus.de/sitemap.xml
+Sitemap: https://hmr-nexus.com/sitemap.xml
