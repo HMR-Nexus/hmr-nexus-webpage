@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { MapPin, Phone, Mail, Send, Shield, Lock } from 'lucide-react';
+import { MapPin, Phone, Mail, Send } from 'lucide-react';
 import { useForm } from '@formspree/react';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
@@ -82,34 +82,31 @@ export function Contact({ preselectedType }: ContactProps) {
   const inputError = 'border-nd-accent';
 
   return (
-    <section id="contact" className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <MotionSection className="mb-10">
-          <span className="nothing-label block mb-3">{t('contact.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
+    <section id="contact" className="py-32 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section Header — big, confident */}
+        <MotionSection className="mb-20 md:mb-28">
+          <span className="nothing-label block mb-4">{t('contact.label')}</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
             {t('contact.title')}{' '}
             <span className="text-nd-text-secondary">{t('contact.titleHighlight')}</span>
           </h2>
-          <p className="text-nd-text-secondary max-w-xl">
-            {t('contact.subtitle')}
-          </p>
         </MotionSection>
 
-        {/* Contact Grid */}
+        {/* Contact Grid — form takes center stage */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-px bg-nd-border rounded-lg overflow-hidden"
+          className="grid lg:grid-cols-[1fr_1.5fr] gap-16 lg:gap-24"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {/* Contact Info */}
-          <motion.div variants={cardEntrance} className="bg-nd-surface p-6 md:p-8">
-            <h3 className="text-lg font-medium text-nd-text-display mb-2">{t('contact.info.title')}</h3>
-            <p className="text-nd-text-secondary text-sm mb-6">{t('contact.info.description')}</p>
+          {/* Contact Info — minimal */}
+          <motion.div variants={cardEntrance}>
+            <h3 className="text-xl font-medium text-nd-text-display mb-2">{t('contact.info.title')}</h3>
+            <p className="text-nd-text-secondary text-sm mb-10 leading-relaxed">{t('contact.info.description')}</p>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-nd-text-disabled mt-0.5" strokeWidth={1.5} />
                 <div>
@@ -137,23 +134,11 @@ export function Contact({ preselectedType }: ContactProps) {
                 </div>
               </div>
             </div>
-
-            {/* Security — Nothing inline labels */}
-            <div className="mt-6 pt-4 border-t border-nd-border space-y-1.5">
-              <div className="flex items-center gap-2">
-                <Shield className="w-3.5 h-3.5 text-nd-text-disabled" strokeWidth={1.5} />
-                <span className="nothing-label">SSL ENCRYPTION</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Lock className="w-3.5 h-3.5 text-nd-text-disabled" strokeWidth={1.5} />
-                <span className="nothing-label">ANTI-SPAM PROTECTION</span>
-              </div>
-            </div>
           </motion.div>
 
-          {/* Contact Form — Nothing underline inputs */}
-          <motion.div variants={cardEntrance} className="bg-nd-surface p-6 md:p-8">
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
+          {/* Contact Form */}
+          <motion.div variants={cardEntrance}>
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               {/* Honeypot */}
               <div className="hidden">
                 <input
@@ -167,7 +152,7 @@ export function Contact({ preselectedType }: ContactProps) {
               </div>
 
               {/* Name Row */}
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="firstName" className="nothing-label block mb-2">{t('contact.form.firstName')} *</label>
                   <input
@@ -199,7 +184,7 @@ export function Contact({ preselectedType }: ContactProps) {
               </div>
 
               {/* Contact Row */}
-              <div className="grid sm:grid-cols-2 gap-5">
+              <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="email" className="nothing-label block mb-2">{t('contact.form.email')} *</label>
                   <input
@@ -257,7 +242,7 @@ export function Contact({ preselectedType }: ContactProps) {
                 <textarea
                   id="message"
                   name="message"
-                  rows={3}
+                  rows={4}
                   placeholder={`${t('contact.form.message')}…`}
                   required
                   minLength={10}
@@ -267,7 +252,7 @@ export function Contact({ preselectedType }: ContactProps) {
                       e.target.style.borderColor = 'var(--nd-accent)';
                     }
                   }}
-                  className={`${inputBase} resize-y min-h-[80px] border border-nd-border-visible rounded-sm px-3 py-2.5 ${localErrors.message ? inputError : ''}`}
+                  className={`${inputBase} resize-y min-h-[100px] border border-nd-border-visible rounded-sm px-3 py-2.5 ${localErrors.message ? inputError : ''}`}
                 />
               </div>
 
@@ -281,11 +266,11 @@ export function Contact({ preselectedType }: ContactProps) {
                 )}
               </div>
 
-              {/* Submit Button — Nothing primary pill */}
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={formspreeState.submitting || !!honeypot}
-                className="inline-flex items-center justify-center gap-2 bg-nd-text-display text-nd-black px-6 py-3 rounded-full font-mono text-[13px] uppercase tracking-[0.06em] hover:bg-nd-text-primary disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 bg-nd-text-display text-nd-black px-8 py-4 rounded-full font-mono text-[13px] uppercase tracking-[0.06em] hover:bg-nd-text-primary disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200"
               >
                 {formspreeState.submitting ? (
                   <span>{t('contact.form.sending')}...</span>

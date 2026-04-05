@@ -141,6 +141,13 @@
 
 /* Nexus light sweep — dual-pulse fiber optic signal.
    Two light beams: a bright primary + a dim echo trailing behind. */
+/* Section divider — thin horizontal rule */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
 .nexus-sweep {
   background: linear-gradient(
     90deg,
@@ -160,23 +167,23 @@
   background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   color: transparent !important;
-  animation: sweep 3s ease-in-out infinite;
+  animation: sweep 4s ease-in-out infinite;
 }
 
 @keyframes sweep {
   0% {
     background-position: 110% 0;
   }
-  30% {
+  35% {
     background-position: -60% 0;
   }
-  32% {
+  38% {
     background-position: -60% 0;
   }
-  60% {
+  65% {
     background-position: -110% 0;
   }
-  62% {
+  68% {
     background-position: -110% 0;
   }
   100% {

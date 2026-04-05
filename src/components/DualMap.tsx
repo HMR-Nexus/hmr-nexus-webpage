@@ -95,20 +95,19 @@ export function DualMap() {
   const connectionPath = 'M 287,236 Q 420,140 516,100';
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Header */}
-        <MotionSection className="mb-10">
-          <span className="nothing-label block mb-3">{t('dualMap.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
+        <MotionSection className="mb-20 md:mb-28">
+          <span className="nothing-label block mb-4">{t('dualMap.label')}</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
             {t('dualMap.title')}{' '}
             <span className="text-nd-text-secondary">{t('dualMap.titleHighlight')}</span>
           </h2>
-          <p className="text-nd-text-secondary max-w-xl">{t('dualMap.subtitle')}</p>
         </MotionSection>
 
-        {/* Map Container — Nothing: monochrome, Nexus blue as single accent */}
-        <MotionSection className="relative max-w-4xl mx-auto">
+        {/* Map Container */}
+        <MotionSection className="relative max-w-5xl">
           <div className="relative aspect-[16/9] rounded-lg overflow-hidden border border-nd-border bg-nd-surface">
             <WorldMapSVG className="absolute inset-0 w-full h-full" />
 
@@ -117,7 +116,7 @@ export function DualMap() {
               viewBox="0 0 1000 500"
               preserveAspectRatio="xMidYMid slice"
             >
-              {/* Germany — Nexus blue highlight (the one accent moment) */}
+              {/* Germany — Nexus blue highlight */}
               <motion.path
                 d={germanyPath}
                 fill="rgba(0,102,255,0.2)"
@@ -131,8 +130,6 @@ export function DualMap() {
                 onMouseLeave={() => setActiveLocation(null)}
                 className="cursor-pointer"
               />
-
-              {/* Germany ping */}
               <circle cx="516" cy="100" r="3" fill="#0066ff" />
 
               {/* Colombia — white/gray */}
@@ -149,11 +146,9 @@ export function DualMap() {
                 onMouseLeave={() => setActiveLocation(null)}
                 className="cursor-pointer"
               />
-
-              {/* Colombia ping */}
               <circle cx="287" cy="236" r="3" fill="#E8E8E8" />
 
-              {/* Connection line — dashed, monochrome */}
+              {/* Connection line */}
               <motion.path
                 d={connectionPath}
                 stroke="#333333"
@@ -208,7 +203,7 @@ export function DualMap() {
             </svg>
           </div>
 
-          {/* Info Cards */}
+          {/* Info Cards — simplified */}
           <motion.div
             className="grid md:grid-cols-2 gap-px bg-nd-border mt-px rounded-b-lg overflow-hidden"
             initial="hidden"
@@ -220,13 +215,13 @@ export function DualMap() {
               <motion.div
                 key={location.id}
                 variants={cardEntrance}
-                className={`bg-nd-surface p-6 transition-colors duration-200 ${
-                  activeLocation === location.id ? 'bg-nd-surface-raised' : ''
+                className={`bg-nd-black p-6 md:p-8 transition-colors duration-200 ${
+                  activeLocation === location.id ? 'bg-nd-surface' : ''
                 }`}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                    {location.id === 'germany' ? <FlagDE size={32} /> : <FlagCO size={32} />}
+                  <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
+                    {location.id === 'germany' ? <FlagDE size={28} /> : <FlagCO size={28} />}
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-nd-text-display">{location.city}</h4>
@@ -234,12 +229,10 @@ export function DualMap() {
                   </div>
                 </div>
 
-                <p className="text-nd-text-secondary text-sm mb-4">{location.description}</p>
-
-                <div className="flex gap-4 mb-4">
+                <div className="flex gap-6 mb-4">
                   {location.stats.map((stat, idx) => (
                     <div key={idx}>
-                      <div className="nothing-data text-sm tabular-nums">{stat.value}</div>
+                      <div className="nothing-data text-lg tabular-nums">{stat.value}</div>
                       <div className="nothing-label mt-0.5">{stat.label}</div>
                     </div>
                   ))}

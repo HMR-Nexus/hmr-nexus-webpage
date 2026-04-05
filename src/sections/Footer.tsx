@@ -13,87 +13,56 @@ export function Footer() {
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const navLinks = ['home', 'services', 'products', 'portfolio', 'contact'];
+  const legalLinks: { key: string; page: LegalPage }[] = [
+    { key: 'imprint', page: 'imprint' },
+    { key: 'privacy', page: 'privacy' },
+    { key: 'terms', page: 'terms' },
+  ];
+
   return (
     <>
-      <footer className="py-12 border-t border-nd-border">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="py-16 border-t border-nd-border">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
           <MotionSection>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Top row — brand + nav + legal in one line */}
+            <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 mb-12">
               {/* Brand */}
-              <div className="lg:col-span-1">
-                <div className="mb-3">
-                  <span className="font-display text-2xl font-bold text-nd-text-display tracking-tight">NEXUS</span>
-                </div>
-                <p className="text-nd-text-disabled text-sm mb-2">{t('footer.description')}</p>
-                <p className="text-nd-text-secondary text-sm">{t('footer.tagline')}</p>
-              </div>
+              <span className="font-display text-2xl font-bold text-nd-text-display tracking-tight">
+                NEXUS
+              </span>
 
-              {/* Navigation */}
-              <div>
-                <h4 className="nothing-label block mb-3">{t('footer.navigation')}</h4>
-                <ul className="space-y-2">
-                  {['home', 'services', 'products', 'portfolio', 'contact'].map((id) => (
-                    <li key={id}>
-                      <button
-                        onClick={() => scrollToSection(id)}
-                        className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200"
-                      >
-                        {t(`nav.${id}`)}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {/* Navigation — pipe separated */}
+              <nav className="flex flex-wrap items-center gap-0">
+                {navLinks.map((id, i) => (
+                  <span key={id} className="flex items-center">
+                    {i > 0 && <span className="text-nd-border-visible mx-2 select-none">|</span>}
+                    <button
+                      onClick={() => scrollToSection(id)}
+                      className="font-mono text-[11px] uppercase tracking-[0.08em] text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
+                    >
+                      {t(`nav.${id}`)}
+                    </button>
+                  </span>
+                ))}
+              </nav>
 
-              {/* Services */}
-              <div>
-                <h4 className="nothing-label block mb-3">{t('footer.services')}</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('services.fiber.items.ne3_label')}
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('services.fiber.items.ne4_label')}
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => scrollToSection('services')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('services.software.title')}
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Legal */}
-              <div>
-                <h4 className="nothing-label block mb-3">{t('footer.legal')}</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <button onClick={() => setLegalPage('imprint')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('footer.legalLinks.imprint')}
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => setLegalPage('privacy')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('footer.legalLinks.privacy')}
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={() => setLegalPage('terms')} className="text-nd-text-disabled text-sm hover:text-nd-text-display transition-colors duration-200">
-                      {t('footer.legalLinks.terms')}
-                    </button>
-                  </li>
-                </ul>
+              {/* Legal links */}
+              <div className="flex items-center gap-4 lg:ml-auto">
+                {legalLinks.map((link) => (
+                  <button
+                    key={link.key}
+                    onClick={() => setLegalPage(link.page)}
+                    className="font-mono text-[10px] uppercase tracking-[0.08em] text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
+                  >
+                    {t(`footer.legalLinks.${link.key}`)}
+                  </button>
+                ))}
               </div>
             </div>
-          </MotionSection>
 
-          {/* Bottom */}
-          <MotionSection delay={0.2}>
-            <div className="pt-6 border-t border-nd-border flex flex-col sm:flex-row justify-between items-center gap-2">
+            {/* Bottom — copyright */}
+            <div className="pt-6 border-t border-nd-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
               <p className="nothing-label">{t('footer.copyright')}</p>
               <p className="nothing-label">{t('footer.madeIn')}</p>
             </div>

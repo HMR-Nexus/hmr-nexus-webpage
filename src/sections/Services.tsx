@@ -22,45 +22,39 @@ export function Services() {
   ];
 
   return (
-    <section id="services" className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-32 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <MotionSection className="mb-12">
-          <span className="nothing-label block mb-3">{t('services.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
+        <MotionSection className="mb-20 md:mb-28">
+          <span className="nothing-label block mb-4">{t('services.label')}</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
             {t('services.title')}{' '}
             <span className="text-nd-text-secondary">{t('services.titleHighlight')}</span>
           </h2>
-          <p className="text-nd-text-secondary text-base max-w-2xl">
-            {t('services.subtitle')}
-          </p>
         </MotionSection>
 
-        {/* Services Grid */}
+        {/* Fiber Infrastructure — asymmetric layout */}
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true, margin: '-80px' }}
           variants={staggerContainer}
-          className="grid md:grid-cols-2 gap-px bg-nd-border rounded-lg overflow-hidden"
+          className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 mb-24 md:mb-36"
         >
-          {/* Fiber Infrastructure */}
-          <motion.div
-            variants={cardEntrance}
-            className="bg-nd-surface p-6 md:p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
+          <motion.div variants={cardEntrance}>
+            <div className="flex items-center gap-3 mb-4">
               <Globe className="w-5 h-5 text-nd-text-disabled" strokeWidth={1.5} />
-              <div>
-                <h3 className="text-lg font-medium text-nd-text-display">{t('services.fiber.title')}</h3>
-                <span className="nothing-label">{t('services.fiber.subtitle')}</span>
-              </div>
+              <span className="nothing-label">{t('services.fiber.subtitle')}</span>
             </div>
-
-            <p className="text-nd-text-secondary text-sm mb-6 leading-relaxed">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium text-nd-text-display mb-4 leading-tight">
+              {t('services.fiber.title')}
+            </h3>
+            <p className="text-nd-text-secondary text-base leading-relaxed max-w-md">
               {t('services.fiber.description')}
             </p>
+          </motion.div>
 
+          <motion.div variants={cardEntrance}>
             <motion.ul
               initial="hidden"
               whileInView="visible"
@@ -72,35 +66,41 @@ export function Services() {
                 <motion.li
                   key={index}
                   variants={listItemSlide}
-                  className="flex items-center gap-3 py-3"
+                  className="flex items-center gap-4 py-5"
                 >
-                  <Check className="w-3.5 h-3.5 text-nd-text-disabled" strokeWidth={1.5} />
+                  <Check className="w-4 h-4 text-nd-text-disabled flex-shrink-0" strokeWidth={1.5} />
                   <div className="flex-1 min-w-0">
-                    <span className="text-nd-text-display text-sm block">{t(service.labelKey)}</span>
-                    <span className="text-nd-text-disabled text-xs block truncate">{t(`services.fiber.items.${service.key}`)}</span>
+                    <span className="text-nd-text-display text-base block font-medium">{t(service.labelKey)}</span>
+                    <span className="text-nd-text-secondary text-sm block">{t(`services.fiber.items.${service.key}`)}</span>
                   </div>
                 </motion.li>
               ))}
             </motion.ul>
           </motion.div>
+        </motion.div>
 
-          {/* Software & Digital */}
-          <motion.div
-            variants={cardEntrance}
-            className="bg-nd-surface p-6 md:p-8"
-          >
-            <div className="flex items-center gap-3 mb-6">
+        {/* Software & Digital — reversed asymmetry */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+          variants={staggerContainer}
+          className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-20"
+        >
+          <motion.div variants={cardEntrance} className="lg:order-2">
+            <div className="flex items-center gap-3 mb-4">
               <Code2 className="w-5 h-5 text-nd-text-disabled" strokeWidth={1.5} />
-              <div>
-                <h3 className="text-lg font-medium text-nd-text-display">{t('services.software.title')}</h3>
-                <span className="nothing-label">{t('services.software.subtitle')}</span>
-              </div>
+              <span className="nothing-label">{t('services.software.subtitle')}</span>
             </div>
-
-            <p className="text-nd-text-secondary text-sm mb-6 leading-relaxed">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium text-nd-text-display mb-4 leading-tight">
+              {t('services.software.title')}
+            </h3>
+            <p className="text-nd-text-secondary text-base leading-relaxed max-w-md">
               {t('services.software.description')}
             </p>
+          </motion.div>
 
+          <motion.div variants={cardEntrance} className="lg:order-1">
             <motion.ul
               initial="hidden"
               whileInView="visible"
@@ -112,12 +112,12 @@ export function Services() {
                 <motion.li
                   key={index}
                   variants={listItemSlide}
-                  className="flex items-center gap-3 py-3"
+                  className="flex items-center gap-4 py-5"
                 >
-                  <Check className="w-3.5 h-3.5 text-nd-text-disabled" strokeWidth={1.5} />
+                  <Check className="w-4 h-4 text-nd-text-disabled flex-shrink-0" strokeWidth={1.5} />
                   <div className="flex-1 min-w-0">
-                    <span className="text-nd-text-display text-sm block">{t(service.labelKey)}</span>
-                    <span className="text-nd-text-disabled text-xs block truncate">{t(`services.software.items.${service.key}`)}</span>
+                    <span className="text-nd-text-display text-base block font-medium">{t(service.labelKey)}</span>
+                    <span className="text-nd-text-secondary text-sm block">{t(`services.software.items.${service.key}`)}</span>
                   </div>
                 </motion.li>
               ))}

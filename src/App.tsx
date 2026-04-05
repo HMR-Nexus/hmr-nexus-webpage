@@ -7,10 +7,8 @@ import { LiveGrid } from './components/LiveGrid';
 import './i18n';
 
 // Lazy-load below-the-fold sections for faster initial paint
-const Values      = lazy(() => import('./sections/Values').then(m => ({ default: m.Values })));
 const Services    = lazy(() => import('./sections/Services').then(m => ({ default: m.Services })));
 const Products    = lazy(() => import('./sections/Products').then(m => ({ default: m.Products })));
-const Stats       = lazy(() => import('./sections/Stats').then(m => ({ default: m.Stats })));
 const DualMap     = lazy(() => import('./components/DualMap').then(m => ({ default: m.DualMap })));
 const TeamSection = lazy(() => import('./components/TeamSection').then(m => ({ default: m.TeamSection })));
 const Portfolio   = lazy(() => import('./sections/Portfolio').then(m => ({ default: m.Portfolio })));
@@ -67,7 +65,7 @@ function App() {
         <LiveGrid />
       </div>
 
-      {/* Scroll Progress Bar — Nothing: thin, monochrome, Nexus blue accent */}
+      {/* Scroll Progress Bar — Nothing: thin, Nexus blue accent */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-px z-50 bg-nexus-blue origin-left"
         style={{ scaleX }}
@@ -85,19 +83,21 @@ function App() {
         />
         <TrustBanner />
 
-        {/* Below-the-fold — lazy loaded */}
+        {/* Below-the-fold — lazy loaded with generous spacing */}
         <Suspense fallback={<SectionLoader />}>
-          <Values />
           <Services />
+          <div className="section-divider" />
           <Products onRequestDemo={() => scrollToContact('saas')} />
-          <Stats />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
+          <div className="section-divider" />
+          <Portfolio />
+          <div className="section-divider" />
           <DualMap />
           <TeamSection />
-          <Portfolio />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
+          <div className="section-divider" />
           <div ref={contactRef}>
             <Contact preselectedType={preselectedProjectType} />
           </div>

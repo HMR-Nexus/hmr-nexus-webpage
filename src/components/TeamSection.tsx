@@ -18,23 +18,23 @@ export function TeamSection() {
   ];
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <MotionSection className="text-center mb-10">
-          <span className="nothing-label block mb-3">{t('teamSection.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
+    <section className="py-32 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Header — left aligned */}
+        <MotionSection className="mb-20 md:mb-28">
+          <span className="nothing-label block mb-4">{t('teamSection.label')}</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
             {t('teamSection.title')}{' '}
             <span className="text-nd-text-secondary">{t('teamSection.titleHighlight')}</span>
           </h2>
-          <p className="text-nd-text-secondary max-w-xl mx-auto">
+          <p className="text-nd-text-secondary max-w-xl mt-4">
             {t('teamSection.description')}
           </p>
         </MotionSection>
 
-        {/* Team Grid */}
+        {/* Team — horizontal cards with big initials */}
         <motion.div
-          className="grid md:grid-cols-3 gap-px bg-nd-border max-w-4xl mx-auto rounded-lg overflow-hidden"
+          className="grid md:grid-cols-3 gap-px bg-nd-border rounded-lg overflow-hidden"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -48,38 +48,37 @@ export function TeamSection() {
               <motion.div
                 key={member.key}
                 variants={cardEntrance}
-                className="bg-nd-surface p-6"
+                className="bg-nd-black p-8 md:p-10"
               >
-                {/* Avatar — Nothing: monochrome square with initials */}
-                <div className="w-14 h-14 rounded-sm bg-nd-surface-raised border border-nd-border-visible flex items-center justify-center mb-4">
-                  <span className="font-mono text-lg text-nd-text-display">{initials}</span>
+                {/* Big initials — the "one moment of surprise" */}
+                <div className="nothing-data text-6xl md:text-7xl mb-6 text-nd-text-display opacity-20">
+                  {initials}
                 </div>
 
                 {/* Info */}
-                <h3 className="text-base font-medium text-nd-text-display mb-1">{name}</h3>
-                <p className="nothing-label mb-2">
+                <h3 className="text-lg font-medium text-nd-text-display mb-1">{name}</h3>
+                <p className="nothing-label mb-3">
                   {t(`teamSection.members.${member.key}.role`)}
                 </p>
 
-                <div className="flex items-center gap-1.5 text-nd-text-disabled text-xs mb-4">
+                <div className="flex items-center gap-1.5 text-nd-text-disabled text-xs mb-6">
                   <MapPin className="w-3.5 h-3.5" strokeWidth={1.5} />
                   <span>{t(`teamSection.members.${member.key}.location`)}</span>
                 </div>
 
                 {/* Bio */}
-                <p className="text-nd-text-secondary text-sm mb-4 leading-relaxed">
+                <p className="text-nd-text-secondary text-sm mb-6 leading-relaxed">
                   {t(`teamSection.members.${member.key}.bio`)}
                 </p>
 
                 {/* Experience */}
-                <ul className="space-y-1.5 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {(Array.isArray(t(`teamSection.members.${member.key}.experience`, { returnObjects: true })) ? t(`teamSection.members.${member.key}.experience`, { returnObjects: true }) as string[] : []).map((exp, i) => (
-                    <li key={i} className="flex items-center gap-2 text-nd-text-secondary text-sm">
-                      <span className="w-1 h-1 bg-nd-text-disabled rounded-full" />
+                    <span key={i} className="font-mono text-[10px] uppercase tracking-[0.06em] text-nd-text-disabled px-2 py-0.5 border border-nd-border rounded-sm">
                       {exp}
-                    </li>
+                    </span>
                   ))}
-                </ul>
+                </div>
 
                 {/* LinkedIn */}
                 <span

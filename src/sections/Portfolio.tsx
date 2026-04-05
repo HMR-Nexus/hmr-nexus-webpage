@@ -57,36 +57,33 @@ export function Portfolio() {
   const { t } = useTranslation();
 
   return (
-    <section id="portfolio" className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-32 md:py-48">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <MotionSection className="mb-12">
-          <span className="nothing-label block mb-3">{t('portfolio.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-3">
+        <MotionSection className="mb-20 md:mb-28">
+          <span className="nothing-label block mb-4">{t('portfolio.label')}</span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
             {t('portfolio.title')}{' '}
             <span className="text-nd-text-secondary">{t('portfolio.titleHighlight')}</span>
           </h2>
-          <p className="text-nd-text-secondary text-base max-w-2xl">
-            {t('portfolio.subtitle')}
-          </p>
         </MotionSection>
 
-        {/* Project Cards */}
+        {/* Projects — data-first asymmetric grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
-          className="grid sm:grid-cols-2 gap-4"
+          className="grid lg:grid-cols-2 gap-px bg-nd-border rounded-lg overflow-hidden"
         >
           {projects.map((project) => (
             <motion.div
               key={project.key}
               variants={cardEntrance}
-              className="bg-nd-surface border border-nd-border rounded-lg p-6 hover:border-nd-border-visible transition-colors duration-200"
+              className="bg-nd-black p-8 md:p-10 hover:bg-nd-surface transition-colors duration-300"
             >
               {/* Tag + status */}
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-nd-text-display px-2 py-0.5 border border-nd-border-visible rounded-sm">
                   {t(`portfolio.projects.${project.key}.tag`)}
                 </span>
@@ -103,23 +100,29 @@ export function Portfolio() {
                 )}
               </div>
 
-              {/* Title */}
-              <h3 className="text-base font-medium text-nd-text-display mb-2">
+              {/* Big hero metric — the first metric gets star treatment */}
+              <div className="mb-6">
+                <div className="nothing-data text-5xl md:text-6xl tabular-nums mb-1">
+                  {project.metrics[0].value}
+                </div>
+                <div className="nothing-label text-nd-text-disabled">
+                  {t(`portfolio.projects.${project.key}.metrics.${project.metrics[0].key}`)}
+                </div>
+              </div>
+
+              {/* Title + description */}
+              <h3 className="text-lg font-medium text-nd-text-display mb-2">
                 {t(`portfolio.projects.${project.key}.title`)}
               </h3>
-
-              {/* Description */}
-              <p className="text-nd-text-secondary text-sm mb-5 leading-relaxed">
+              <p className="text-nd-text-secondary text-sm mb-6 leading-relaxed">
                 {t(`portfolio.projects.${project.key}.description`)}
               </p>
 
-              {/* Metrics — Nothing data row */}
-              <div className="flex gap-4 pt-4 border-t border-nd-border">
-                {project.metrics.map((m) => (
-                  <div key={m.key} className="flex-1">
-                    <div className="nothing-data text-sm tabular-nums">
-                      {m.value}
-                    </div>
+              {/* Secondary metrics */}
+              <div className="flex gap-6 pt-4 border-t border-nd-border">
+                {project.metrics.slice(1).map((m) => (
+                  <div key={m.key}>
+                    <div className="nothing-data text-base tabular-nums">{m.value}</div>
                     <div className="nothing-label mt-0.5">
                       {t(`portfolio.projects.${project.key}.metrics.${m.key}`)}
                     </div>
