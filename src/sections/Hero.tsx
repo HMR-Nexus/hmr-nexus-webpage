@@ -48,22 +48,28 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
             <span className="mono-tag text-paper/70">{t('hero.badge')}</span>
           </motion.div>
 
-          {/* D1 headline — the signature, kept bilingual */}
+          {/* D1 headline — canonical: "Glasfaser, rebuilt around software." */}
           <motion.h1
             variants={childVariants}
             className="font-display text-paper"
             style={{
-              fontSize: 'clamp(56px, 11vw, 180px)',
+              fontSize: 'clamp(52px, 10vw, 160px)',
               fontWeight: 300,
               lineHeight: 0.9,
               letterSpacing: '-0.055em',
               margin: 0,
+              maxWidth: '14ch',
             }}
           >
-            {t('hero.title1')}
+            {t('hero.title1')}{' '}
+            <em style={{ fontStyle: 'italic', fontWeight: 400 }}>
+              {t('hero.title2')}
+            </em>
             <br />
-            <span style={{ fontWeight: 500 }}>{t('hero.title2').replace(/\.$/, '')}</span>
-            <span style={{ color: 'var(--accent)' }}>.</span>
+            {t('hero.title3')}{' '}
+            <span style={{ color: 'var(--accent)', fontWeight: 500 }}>
+              {t('hero.title4')}
+            </span>
           </motion.h1>
 
           {/* Subline + technical metadata */}

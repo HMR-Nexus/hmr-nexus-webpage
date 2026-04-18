@@ -12,7 +12,7 @@
     --paper: #F5F3EE;
     --bone: #EAE6DC;
     --mist: #9A9A94;
-    --accent: #C6FF3D;
+    --accent: #FF4D2E;
     --accent-ink: #0A0B0D;
 
     /* Rules — dividers */
@@ -45,9 +45,9 @@
     --text-secondary: #9A9A94;
     --text-primary: #EAE6DC;
     --text-display: #F5F3EE;
-    --nexus-blue: #C6FF3D;
-    --nexus-blue-subtle: rgba(198, 255, 61, 0.12);
-    --nexus-blue-mid: #C6FF3D;
+    --nexus-blue: #FF4D2E;
+    --nexus-blue-subtle: rgba(255, 77, 46, 0.12);
+    --nexus-blue-mid: #FF4D2E;
     --nexus-blue-light: #EAE6DC;
 
     --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);

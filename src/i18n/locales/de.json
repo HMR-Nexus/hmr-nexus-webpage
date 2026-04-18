@@ -8,12 +8,12 @@
     "cta": "Projekt anfragen"
   },
   "hero": {
-    "badge": "Glasfaser · Software · Operations",
+    "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Glasfaser,",
-    "title2": "präzise.",
-    "title3": "Vom Plan",
-    "title4": "bis zum Spleiß.",
-    "subtitle": "Wir bauen NE3/NE4-Glasfasernetze und schreiben die Software, die wir auf der Baustelle nutzen. In Echtzeit erfasst. Pünktlich, oder wir rufen an.",
+    "title2": "neu gedacht",
+    "title3": "durch",
+    "title4": "Software.",
+    "subtitle": "Wir bauen NE3/NE4-Glasfaser und schreiben die Software, die sie betreibt. Gleicher Stack, gleiches Team, ein Portal.",
     "btnPrimary": "Leistungen ansehen",
     "btnSecondary": "Software-Stack",
     "stats": {
@@ -21,8 +21,8 @@
       "connections": "Hausanschlüsse",
       "countries": "Länder"
     },
-    "title5": "Gemessen",
-    "title6": "in Metern."
+    "title5": "Gebaut aus",
+    "title6": "dem Graben, nicht aus dem Büro."
   },
   "values": {
     "quality": "Qualität",

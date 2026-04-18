@@ -9,7 +9,7 @@ interface ProductsProps {
 
 // NEXUS status taxonomy — monochrome + accent dot for live, functional signals elsewhere.
 const STATUS_CONFIG: Record<string, { color: string; label: string }> = {
-  live:    { color: '#C6FF3D', label: 'text-[color:var(--accent)]' },
+  live:    { color: '#FF4D2E', label: 'text-[color:var(--accent)]' },
   beta:    { color: '#FFB800', label: 'text-[#FFB800]' },
   dev:     { color: '#FFB800', label: 'text-[#FFB800]' },
   roadmap: { color: '#6B6B66', label: 'text-paper/40' },

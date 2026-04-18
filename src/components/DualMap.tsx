@@ -119,8 +119,8 @@ export function DualMap() {
               {/* Germany — Nexus blue highlight */}
               <motion.path
                 d={germanyPath}
-                fill="rgba(198,255,61,0.2)"
-                stroke="#C6FF3D"
+                fill="rgba(255,77,46,0.2)"
+                stroke="#FF4D2E"
                 strokeWidth="1"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -130,7 +130,7 @@ export function DualMap() {
                 onMouseLeave={() => setActiveLocation(null)}
                 className="cursor-pointer"
               />
-              <circle cx="516" cy="100" r="3" fill="#C6FF3D" />
+              <circle cx="516" cy="100" r="3" fill="#FF4D2E" />
 
               {/* Colombia — white/gray */}
               <motion.path

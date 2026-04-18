@@ -8,12 +8,12 @@
     "cta": "Request Project"
   },
   "hero": {
-    "badge": "Fibre · Software · Operations",
+    "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Glasfaser,",
-    "title2": "präzise.",
-    "title3": "From plan",
-    "title4": "to splice.",
-    "subtitle": "We build NE3/NE4 fibre networks and write the software we use on site. Tracked in real-time. On time, or we call you.",
+    "title2": "rebuilt",
+    "title3": "around",
+    "title4": "software.",
+    "subtitle": "We build NE3/NE4 fibre and write the software that runs it. Same stack, same crew, one portal.",
     "btnPrimary": "See capabilities",
     "btnSecondary": "Software stack",
     "stats": {
@@ -21,8 +21,8 @@
       "connections": "Connections",
       "countries": "Countries"
     },
-    "title5": "Measured",
-    "title6": "in metres."
+    "title5": "Built from",
+    "title6": "the trench, not the boardroom."
   },
   "values": {
     "quality": "Quality",

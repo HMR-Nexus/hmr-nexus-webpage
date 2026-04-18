@@ -16,7 +16,7 @@ module.exports = {
         paper: '#F5F3EE',
         bone: '#EAE6DC',
         mist: '#9A9A94',
-        laser: '#C6FF3D',
+        laser: '#FF4D2E',
         // Signal colors — UI status ONLY, never brand/marketing
         signal: {
           success: '#00C26A',
@@ -34,16 +34,16 @@ module.exports = {
           'text-secondary': '#9A9A94',
           'text-primary': '#EAE6DC',
           'text-display': '#F5F3EE',
-          accent: '#C6FF3D',
-          'accent-subtle': 'rgba(198,255,61,0.12)',
+          accent: '#FF4D2E',
+          'accent-subtle': 'rgba(255,77,46,0.12)',
           success: '#00C26A',
           warning: '#FFB800',
-          interactive: '#C6FF3D',
+          interactive: '#FF4D2E',
         },
         nexus: {
-          blue: '#C6FF3D',           // remapped to laser so legacy refs don't explode
-          'blue-subtle': 'rgba(198,255,61,0.12)',
-          'blue-mid': '#C6FF3D',
+          blue: '#FF4D2E',           // remapped to laser so legacy refs don't explode
+          'blue-subtle': 'rgba(255,77,46,0.12)',
+          'blue-mid': '#FF4D2E',
           'blue-light': '#EAE6DC',
         },
         // shadcn compat

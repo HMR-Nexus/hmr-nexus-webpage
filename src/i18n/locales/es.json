@@ -8,12 +8,12 @@
     "cta": "Solicitar Proyecto"
   },
   "hero": {
-    "badge": "Fibra · Software · Operaciones",
+    "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Glasfaser,",
-    "title2": "präzise.",
-    "title3": "Del plano",
-    "title4": "al empalme.",
-    "subtitle": "Construimos redes de fibra NE3/NE4 y escribimos el software que usamos en obra. Medido en tiempo real. A tiempo, o te llamamos.",
+    "title2": "reconstruida",
+    "title3": "alrededor del",
+    "title4": "software.",
+    "subtitle": "Construimos fibra NE3/NE4 y escribimos el software que la opera. El mismo stack, el mismo equipo, un portal.",
     "btnPrimary": "Ver capacidades",
     "btnSecondary": "Stack de software",
     "stats": {
@@ -21,8 +21,8 @@
       "connections": "Conexiones",
       "countries": "Países"
     },
-    "title5": "Medido",
-    "title6": "en metros."
+    "title5": "Hecho desde",
+    "title6": "la trinchera, no desde la oficina."
   },
   "values": {
     "quality": "Calidad",

@@ -17,7 +17,7 @@ interface MouseGlowProps {
 export function MouseGlow({
   children,
   className = '',
-  color = 'rgba(198,255,61,0.06)',
+  color = 'rgba(255,77,46,0.06)',
   size = 400,
   opacity = 1,
 }: MouseGlowProps) {

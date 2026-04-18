@@ -109,7 +109,7 @@ export function LiveGrid({ className = '' }: { className?: string }) {
           const alpha = Math.min(dot.opacity + pulse, 0.5);
 
           if (pulse > 0.05) {
-            ctx.fillStyle = `rgba(198, 255, 61, ${alpha})`;
+            ctx.fillStyle = `rgba(255, 77, 46, ${alpha})`;
           } else {
             // Base — paper, very low alpha
             ctx.fillStyle = `rgba(245, 243, 238, ${alpha})`;
