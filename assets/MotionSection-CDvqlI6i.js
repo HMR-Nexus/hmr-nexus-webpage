@@ -1,1 +1,0 @@
-import{f as a,j as r,m as d}from"./animations-Bu559DK3.js";import{b as m,f as c}from"./index-CPLW__fJ.js";function u({children:i,className:n,variants:o,delay:t=0}){const e=a(),s=m(o??c,!!e);return r.jsx(d.div,{initial:"hidden",whileInView:"visible",viewport:{once:!0,margin:"-50px"},variants:s,transition:{delay:t},className:n,children:i})}export{u as M};
