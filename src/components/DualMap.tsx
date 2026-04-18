@@ -42,10 +42,7 @@ export function DualMap() {
       email: 'hello@hmr-nexus.com',
       labelPos: { x: 516, y: 78 },
       countryPath: germanyPath,
-      stats: [
-        { value: '15+', label: t('dualMap.germany.stats.fiber') },
-        { value: '100%', label: t('dualMap.germany.stats.quality') },
-      ],
+      stats: [],
     },
     {
       id: 'colombia',
@@ -54,13 +51,10 @@ export function DualMap() {
       description: t('dualMap.colombia.description'),
       timezone: 'COT · UTC-5',
       phone: '+57 · on request',
-      email: 'latam@hmr-nexus.com',
+      email: 'hello@hmr-nexus.com',
       labelPos: { x: 287, y: 258 },
       countryPath: colombiaPath,
-      stats: [
-        { value: '150+', label: t('dualMap.colombia.stats.connections') },
-        { value: '24/7', label: t('dualMap.colombia.stats.support') },
-      ],
+      stats: [],
     },
   ];
 
@@ -213,7 +207,7 @@ export function DualMap() {
                     <span
                       className={`mono-tag ${isDE ? 'text-[color:var(--accent)]' : 'text-paper/60'}`}
                     >
-                      {isDE ? 'HQ · DE' : 'DEV · CO'}
+                      {isDE ? 'HQ · DE' : 'ROADMAP · CO'}
                     </span>
                   </div>
 
@@ -235,20 +229,22 @@ export function DualMap() {
                     {location.description}
                   </p>
 
-                  {/* Stats row */}
-                  <div className="grid grid-cols-2 gap-4 py-4 rule-top rule-bottom mb-5">
-                    {location.stats.map((stat, i) => (
-                      <div key={i}>
-                        <div
-                          className="font-display text-paper tabular-nums"
-                          style={{ fontSize: 28, lineHeight: 1, letterSpacing: '-0.03em', fontWeight: 500 }}
-                        >
-                          {stat.value}
+                  {/* Stats row — only render when stats exist */}
+                  {location.stats.length > 0 && (
+                    <div className="grid grid-cols-2 gap-4 py-4 rule-top rule-bottom mb-5">
+                      {location.stats.map((stat, i) => (
+                        <div key={i}>
+                          <div
+                            className="font-display text-paper tabular-nums"
+                            style={{ fontSize: 28, lineHeight: 1, letterSpacing: '-0.03em', fontWeight: 500 }}
+                          >
+                            {stat.value}
+                          </div>
+                          <div className="mono-tag text-paper/45 mt-1.5">{stat.label}</div>
                         </div>
-                        <div className="mono-tag text-paper/45 mt-1.5">{stat.label}</div>
-                      </div>
-                    ))}
-                  </div>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Contact block — mono grid */}
                   <div className="space-y-1.5 mono-tag text-paper/65">

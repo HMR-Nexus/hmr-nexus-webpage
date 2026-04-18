@@ -198,9 +198,9 @@
   },
   "portfolio": {
     "label": "Ausgewählt",
-    "title": "Abgeschlossen.",
-    "titleHighlight": "Projektakten.",
-    "subtitle": "Eine Auswahl unserer Infrastruktur- und Softwareprojekte in Deutschland und Kolumbien.",
+    "title": "Erste Projekte.",
+    "titleHighlight": "Im Aufbau.",
+    "subtitle": "HMR Nexus Engineering GmbH ist ein neues Unternehmen — 2026. Unsere ersten Glasfaser- und Softwareprojekte laufen jetzt an. Dieser Bereich wird zu unseren Projektakten, sobald Projekte abgeschlossen sind.",
     "status": {
       "active": "Laufend",
       "completed": "Abgeschlossen"
@@ -210,44 +210,44 @@
       "description": "Wir arbeiten an unseren ersten Projekten. Bald finden Sie hier unsere Erfolgsgeschichten."
     },
     "projects": {
-      "celle": {
+      "ne3": {
         "tag": "NE3 Ausbau",
-        "title": "Region Celle Nord",
-        "description": "Kompletter Ausbau des regionalen Verteilnetzes in Zusammenarbeit mit einem führenden Telekom-Anbieter.",
+        "title": "NE3 Regionalverteilung",
+        "description": "Erste regionale Glasfaser-Verteilnetze in Niedersachsen. Details werden veröffentlicht, sobald Verträge und NDAs dies zulassen.",
         "metrics": {
-          "km": "km",
-          "hup": "HÜP",
-          "months": "Monate"
+          "stage": "Phase",
+          "region": "Region",
+          "year": "Jahr"
         }
       },
-      "saas": {
-        "tag": "Software",
-        "title": "Control System",
-        "description": "Entwicklung und Deployment einer umfassenden Plattform für Geschäftsprojektmanagement und -kontrolle.",
-        "metrics": {
-          "cloud": "Cloud",
-          "available": "Verfügbar",
-          "languages": "Sprachen"
-        }
-      },
-      "suedheide": {
+      "ne4": {
         "tag": "NE4 FTTH",
-        "title": "Wohnquartier Südheide",
-        "description": "Komplette FTTH-Erschließung eines neuen Wohngebiets mit über 500 Wohneinheiten.",
+        "title": "NE4 Hausanschlüsse",
+        "description": "Erste FTTH-Projekte — Hausanschlüsse, Spleißung und Aktivierung. Kennzahlen folgen, sobald Projekte abgeschlossen sind.",
         "metrics": {
-          "units": "WE",
-          "km": "km",
-          "ontime": "Termin"
+          "stage": "Phase",
+          "region": "Region",
+          "year": "Jahr"
         }
       },
-      "mdu": {
-        "tag": "NE4 MDU",
-        "title": "MDU-Anschlüsse — Aktives Projekt",
-        "description": "NE4-Ausbau mit Anschlüssen an Mehrfamilienhäuser (MDU). Erste Expansionsphase in neuen städtischen Wohngebieten.",
+      "workManager": {
+        "tag": "Software · PWA",
+        "title": "Work Manager",
+        "description": "Unsere PWA für Glasfaser-Projektmanagement. Im produktiven Einsatz über den Zyklus Einblasen → Gespleißt → Aktiv → Zertifiziert → Fakturiert.",
         "metrics": {
+          "stage": "Status",
           "type": "Typ",
-          "level": "Ebene",
-          "start": "Start"
+          "year": "Seit"
+        }
+      },
+      "fincontrol": {
+        "tag": "Software · SaaS",
+        "title": "FinControl",
+        "description": "Finanzmanagementsystem: Transaktionen, Debitoren/Kreditoren, Cashflow und Reports. Im Einsatz in unserem eigenen Betrieb.",
+        "metrics": {
+          "stage": "Status",
+          "type": "Typ",
+          "year": "Seit"
         }
       }
     }
@@ -309,36 +309,36 @@
     "description": "Glasfaser, Operations, Software. Wir teilen die Arbeit, nicht die Verantwortung.",
     "members": {
       "ceo": {
-        "name": "Hector M. Rodriguez",
-        "role": "Gründer & CEO",
+        "name": "Isabelle Horstmann",
+        "role": "Geschäftsführerin",
         "location": "Celle, Deutschland",
-        "bio": "Telekommunikationsingenieur mit über 10 Jahren Erfahrung in der Glasfaser-Infrastruktur. Leitet strategische Projekte in Deutschland und Europa.",
+        "bio": "Geschäftsführerin der HMR Nexus Engineering GmbH. Verantwortet Recht, Governance und vertragliche Operationen des Unternehmens.",
         "experience": [
-          "Ex-Telekom",
-          "10+ Jahre Glasfaser",
-          "Software-Ingenieur"
+          "Geschäftsführung",
+          "Recht & Governance",
+          "Operations"
         ]
       },
       "coo": {
-        "name": "Maria L. Torres",
-        "role": "Mitgründerin & COO",
-        "location": "Bogotá, Kolumbien",
-        "bio": "Operations-Spezialistin, die Effizienz in internationalen Telekommunikationsprojekten zwischen Lateinamerika und Europa vorantreibt.",
+        "name": "Kersten E. Mehls",
+        "role": "Managing Partner & Mitgründer",
+        "location": "Celle, Deutschland",
+        "bio": "Mitgründer und Managing Partner. Geschäftsentwicklung, kommerzielle Strategie und Kundenbeziehungen für Glasfaser und Software.",
         "experience": [
-          "Operations Management",
-          "Internationale Projekte",
-          "Prozessoptimierung"
+          "Geschäftsentwicklung",
+          "Kommerzielle Strategie",
+          "Kundenbeziehungen"
         ]
       },
       "cto": {
-        "name": "Carlos A. Méndez",
-        "role": "Mitgründer & CTO",
-        "location": "Bogotá, Kolumbien",
-        "bio": "Software-Architekt spezialisiert auf Cloud-Infrastruktur und skalierbare Plattformen für die Telekommunikationsbranche.",
+        "name": "Jeisson A. Romero",
+        "role": "Mitgründer & Engineering",
+        "location": "Celle, Deutschland",
+        "bio": "Bauingenieur und Systems Builder. Leitet die Glasfaser-Projektumsetzung und entwickelt den Software-Stack, den die Teams im Feld nutzen.",
         "experience": [
-          "Software-Architekt",
-          "8+ Jahre Entwicklung",
-          "Cloud & DevOps"
+          "Glasfaser-Projektmanagement",
+          "Software Engineering",
+          "Field Operations"
         ]
       }
     }

@@ -198,9 +198,9 @@
   },
   "portfolio": {
     "label": "Selected work",
-    "title": "Delivered.",
-    "titleHighlight": "Case files.",
-    "subtitle": "A selection of our infrastructure and software projects across Germany and Colombia.",
+    "title": "First deployments.",
+    "titleHighlight": "On the way.",
+    "subtitle": "HMR Nexus Engineering GmbH is a new venture — 2026. Our first fiber and software projects are kicking off now. This section will become our case files as projects complete.",
     "status": {
       "active": "Active",
       "completed": "Completed"
@@ -210,44 +210,44 @@
       "description": "We are working on our first projects. Soon you will see our success stories here."
     },
     "projects": {
-      "celle": {
+      "ne3": {
         "tag": "NE3 Deployment",
-        "title": "Celle North Region",
-        "description": "Complete deployment of the regional distribution network in collaboration with a leading telecom provider.",
+        "title": "NE3 Regional Distribution",
+        "description": "First regional fiber distribution networks in Niedersachsen. Details will be published once contracts and NDAs allow disclosure.",
         "metrics": {
-          "km": "km",
-          "hup": "HÜP",
-          "months": "Months"
+          "stage": "Stage",
+          "region": "Region",
+          "year": "Year"
         }
       },
-      "saas": {
-        "tag": "Software",
-        "title": "Control System",
-        "description": "Development and deployment of a comprehensive platform for business project management and control.",
-        "metrics": {
-          "cloud": "Cloud",
-          "available": "Available",
-          "languages": "Languages"
-        }
-      },
-      "suedheide": {
+      "ne4": {
         "tag": "NE4 FTTH",
-        "title": "Südheide Residential Area",
-        "description": "Complete FTTH development of a new residential area with over 500 housing units.",
+        "title": "NE4 House Connections",
+        "description": "First FTTH deployments — house connections, splice and activation. Numbers go here once projects are delivered.",
         "metrics": {
-          "units": "Units",
-          "km": "km",
-          "ontime": "On Time"
+          "stage": "Stage",
+          "region": "Region",
+          "year": "Year"
         }
       },
-      "mdu": {
-        "tag": "NE4 MDU",
-        "title": "MDU Connections — Active Project",
-        "description": "NE4 deployment kick-off with multi-dwelling unit (MDU) connections. First expansion phase in new urban residential areas.",
+      "workManager": {
+        "tag": "Software · PWA",
+        "title": "Work Manager",
+        "description": "Our own PWA for fiber project management. Running in production across Blown → Spliced → Active → Certified → Invoiced.",
         "metrics": {
+          "stage": "Stage",
           "type": "Type",
-          "level": "Level",
-          "start": "Start"
+          "year": "Since"
+        }
+      },
+      "fincontrol": {
+        "tag": "Software · SaaS",
+        "title": "FinControl",
+        "description": "Financial management system: transactions, accounts receivable/payable, cash flow and reporting. Live on our own operation.",
+        "metrics": {
+          "stage": "Stage",
+          "type": "Type",
+          "year": "Since"
         }
       }
     }
@@ -309,36 +309,36 @@
     "description": "Fibre, operations, software. We split the work, not the accountability.",
     "members": {
       "ceo": {
-        "name": "Hector M. Rodriguez",
-        "role": "Founder & CEO",
+        "name": "Isabelle Horstmann",
+        "role": "Geschäftsführerin",
         "location": "Celle, Germany",
-        "bio": "Telecommunications engineer with over 10 years of experience in fiber optic infrastructure. Previously at Deutsche Telekom.",
+        "bio": "Managing Director of HMR Nexus Engineering GmbH. Leads legal, governance and contractual operations of the company.",
         "experience": [
-          "Ex-Telekom",
-          "10+ years fiber optics",
-          "Software Engineer"
+          "Managing Director",
+          "Legal & Governance",
+          "Operations"
         ]
       },
       "coo": {
-        "name": "Maria L. Torres",
-        "role": "Co-Founder & COO",
-        "location": "Bogotá, Colombia",
-        "bio": "Operations specialist driving efficiency across international telecom projects and team coordination.",
+        "name": "Kersten E. Mehls",
+        "role": "Managing Partner & Co-founder",
+        "location": "Celle, Germany",
+        "bio": "Co-founder and Managing Partner. Business development, commercial strategy and client relationships for fiber and software.",
         "experience": [
-          "Operations Management",
-          "International Projects",
-          "Process Optimization"
+          "Business Development",
+          "Commercial Strategy",
+          "Client Relations"
         ]
       },
       "cto": {
-        "name": "Carlos A. Méndez",
-        "role": "Co-Founder & CTO",
-        "location": "Bogotá, Colombia",
-        "bio": "Software architect specializing in cloud infrastructure and scalable platforms for the telecom industry.",
+        "name": "Jeisson A. Romero",
+        "role": "Co-founder & Engineering",
+        "location": "Celle, Germany",
+        "bio": "Civil engineer turned systems builder. Runs fiber project delivery and owns the software stack the crews use in the field.",
         "experience": [
-          "Software Architect",
-          "8+ years development",
-          "Cloud & DevOps"
+          "Fiber Project Management",
+          "Software Engineering",
+          "Field Operations"
         ]
       }
     }

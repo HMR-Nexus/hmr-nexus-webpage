@@ -16,20 +16,20 @@ interface Project {
 
 const projects: Project[] = [
   {
-    key: 'celle', status: 'completed',
-    metrics: [{ key: 'km', value: '45' }, { key: 'hup', value: '320' }, { key: 'months', value: '8' }],
+    key: 'ne3', status: 'active',
+    metrics: [{ key: 'stage', value: 'Q1' }, { key: 'region', value: 'DE' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'suedheide', status: 'completed',
-    metrics: [{ key: 'units', value: '500+' }, { key: 'km', value: '28' }, { key: 'ontime', value: '✓' }],
+    key: 'ne4', status: 'active',
+    metrics: [{ key: 'stage', value: 'Q2' }, { key: 'region', value: 'DE' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'saas', status: 'completed',
-    metrics: [{ key: 'cloud', value: 'Cloud' }, { key: 'available', value: '99.9%' }, { key: 'languages', value: '3 LANG' }],
+    key: 'workManager', status: 'active',
+    metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'PWA' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'mdu', status: 'active',
-    metrics: [{ key: 'type', value: 'MDU' }, { key: 'level', value: 'NE4' }, { key: 'start', value: '2026' }],
+    key: 'fincontrol', status: 'active',
+    metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'SaaS' }, { key: 'year', value: '2026' }],
   },
 ];
 
