@@ -1,4 +1,4 @@
-/* Fonts loaded via <link> in index.html for preload priority */
+/* NEXUS Brand System v1 — Fonts loaded via <link> in index.html for preload priority */
 
 @tailwind base;
 @tailwind components;
@@ -6,27 +6,24 @@
 
 @layer base {
   :root {
-    /* Nothing Design Tokens — Dark Mode */
-    --black: #000000;
-    --surface: #111111;
-    --surface-raised: #1A1A1A;
-    --border: #222222;
-    --border-visible: #333333;
-    --text-disabled: #666666;
-    --text-secondary: #999999;
-    --text-primary: #E8E8E8;
-    --text-display: #FFFFFF;
+    /* NEXUS tokens — core palette */
+    --ink: #0A0B0D;
+    --graphite: #1A1C20;
+    --paper: #F5F3EE;
+    --bone: #EAE6DC;
+    --mist: #9A9A94;
+    --accent: #C6FF3D;
+    --accent-ink: #0A0B0D;
 
-    /* Nexus accent — the blue stays as identity */
-    --nexus-blue: #0066ff;
-    --nexus-blue-subtle: rgba(0,102,255,0.12);
-    --nexus-blue-mid: #3d8bff;
-    --nexus-blue-light: #88ddff;
-    --accent: #D71921;
-    --accent-subtle: rgba(215,25,33,0.15);
-    --success: #4A9E5C;
-    --warning: #D4A843;
-    --interactive: #5B9BF6;
+    /* Rules — dividers */
+    --rule: rgba(245, 243, 238, 0.12);
+    --rule-strong: rgba(245, 243, 238, 0.24);
+    --rule-light: rgba(10, 11, 13, 0.12);
+
+    /* Type tokens */
+    --f-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --f-text: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --f-mono: 'JetBrains Mono', ui-monospace, monospace;
 
     /* Spacing */
     --space-xs: 4px;
@@ -38,12 +35,26 @@
     --space-3xl: 64px;
     --space-4xl: 96px;
 
-    /* Nothing motion */
+    /* Legacy — kept for transitional components */
+    --black: #0A0B0D;
+    --surface: #0A0B0D;
+    --surface-raised: #1A1C20;
+    --border: rgba(245, 243, 238, 0.12);
+    --border-visible: rgba(245, 243, 238, 0.24);
+    --text-disabled: #6B6B66;
+    --text-secondary: #9A9A94;
+    --text-primary: #EAE6DC;
+    --text-display: #F5F3EE;
+    --nexus-blue: #C6FF3D;
+    --nexus-blue-subtle: rgba(198, 255, 61, 0.12);
+    --nexus-blue-mid: #C6FF3D;
+    --nexus-blue-light: #EAE6DC;
+
     --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
   * {
-    border-color: var(--border);
+    border-color: var(--rule);
   }
 
   html {
@@ -51,9 +62,9 @@
   }
 
   body {
-    background: var(--black);
-    color: var(--text-primary);
-    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--f-text);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     touch-action: manipulation;
@@ -61,152 +72,99 @@
   }
 
   ::selection {
-    background: var(--nexus-blue-subtle);
-    color: var(--text-display);
+    background: var(--accent);
+    color: var(--accent-ink);
   }
 }
 
 @layer components {
-  /* Nothing dot-grid background */
-  .dot-grid {
-    background-image: radial-gradient(circle, var(--border-visible) 1px, transparent 1px);
-    background-size: 16px 16px;
-  }
-
-  .dot-grid-subtle {
-    background-image: radial-gradient(circle, var(--border) 0.5px, transparent 0.5px);
-    background-size: 12px 12px;
-  }
-
-  /* Nothing label style — instrument panel */
-  .nothing-label {
-    font-family: 'Space Mono', monospace;
+  /* Mono labels — uppercase, tracked, used for section metadata */
+  .mono-tag {
+    font-family: var(--f-mono);
     font-size: 11px;
-    line-height: 1.2;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-secondary);
   }
 
-  /* Nothing display — Doto hero */
-  .nothing-display {
-    font-family: 'Doto', 'Space Mono', monospace;
-    font-weight: 700;
+  .mono-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mist);
+  }
+
+  /* Legacy nothing-label — aliased so existing references keep working */
+  .nothing-label {
+    @apply mono-label;
+  }
+
+  /* Section frame — numbered editorial sections */
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 32px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 48px;
+  }
+
+  @media (max-width: 900px) {
+    .section-head {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .section-head .meta {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .section-head h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 0.95;
     letter-spacing: -0.03em;
-    line-height: 1.0;
-    color: var(--text-display);
+    margin: 0;
+    color: var(--paper);
   }
 
-  /* Nothing data — Doto pixel numbers for all metrics */
-  .nothing-data {
-    font-family: 'Doto', 'Space Mono', monospace;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--text-display);
+  .section-head p {
+    max-width: 52ch;
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  /* Rule helpers */
+  .rule-top { border-top: 1px solid var(--rule); }
+  .rule-bottom { border-bottom: 1px solid var(--rule); }
+
+  /* Accent dot — the pulse */
+  .dot-accent {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* Sweep / highlight effect — keeps the historical .nexus-sweep name for drop-in use */
+  .nexus-sweep {
+    color: var(--accent);
   }
 }
 
-@layer utilities {
-  /* Scrollbar — dark mechanical */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: var(--black);
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-visible);
-    border-radius: 0;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-disabled);
-  }
-
-  /* Focus — Nexus blue ring */
-  *:focus-visible {
-    outline: 2px solid var(--nexus-blue);
-    outline-offset: 2px;
-  }
-
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    border-color: var(--text-primary);
-    transition: border-color 200ms var(--ease-out);
-  }
-}
-
-/* Nexus light sweep — dual-pulse fiber optic signal.
-   Two light beams: a bright primary + a dim echo trailing behind. */
-/* Section divider — thin horizontal rule */
-.section-divider {
-  width: 100%;
-  height: 1px;
-  background: var(--border);
-}
-
-.nexus-sweep {
-  background: linear-gradient(
-    90deg,
-    #ffffff 0%,
-    #ffffff 18%,
-    rgba(61,139,255,0.4) 26%,
-    var(--nexus-blue-mid) 30%,
-    var(--nexus-blue-light) 34%,
-    var(--nexus-blue-mid) 38%,
-    rgba(61,139,255,0.4) 42%,
-    #ffffff 50%,
-    #ffffff 100%
-  ) !important;
-  background-size: 300% 100% !important;
-  background-position: 110% 0;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-  animation: sweep 4s ease-in-out infinite;
-}
-
-@keyframes sweep {
-  0% {
-    background-position: 110% 0;
-  }
-  35% {
-    background-position: -60% 0;
-  }
-  38% {
-    background-position: -60% 0;
-  }
-  65% {
-    background-position: -110% 0;
-  }
-  68% {
-    background-position: -110% 0;
-  }
-  100% {
-    background-position: 110% 0;
-  }
-}
-
-/* Prevent invisible content flash — Framer sets opacity:0 via JS.
-   Before hydration, everything stays visible. After hydration Framer
-   takes over. This also covers noscript. */
-[style*="opacity: 0"] {
-  /* intentionally empty — Framer inline styles win. This comment
-     documents that the initial invisible state is by design. */
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+/* Scrollbar — minimal, brand-consistent */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--graphite); }
+::-webkit-scrollbar-thumb:hover { background: #2a2c32; }

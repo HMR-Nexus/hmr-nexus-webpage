@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -7,106 +5,135 @@ interface HeroProps {
   onScrollToProducts: () => void;
 }
 
-const NOTHING_EASE = [0.25, 0.1, 0.25, 1] as const;
+const NEXUS_EASE = [0.25, 0.1, 0.25, 1] as const;
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 const childVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.6, ease: NOTHING_EASE },
-  },
+  hidden: { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: NEXUS_EASE } },
 };
 
-export function Hero({ onScrollToServices }: HeroProps) {
-  const { t } = useTranslation();
-
+/**
+ * NEXUS Hero — D1 editorial headline, 70/25/5 composition, no gradients, no glow.
+ * Voice: Direct. Technical. Calm. Understated.
+ */
+export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
   return (
-    <section id="home" className="relative min-h-[100svh] flex flex-col justify-end overflow-hidden">
-      {/* Atmospheric blue glow — bigger, more dramatic */}
-      <div
-        className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full opacity-[0.07]"
-        style={{ background: 'radial-gradient(circle, var(--nexus-blue) 0%, transparent 70%)' }}
-      />
-      <div
-        className="absolute bottom-0 -left-32 w-[400px] h-[400px] rounded-full opacity-[0.04]"
-        style={{ background: 'radial-gradient(circle, var(--nexus-blue) 0%, transparent 70%)' }}
-      />
+    <section
+      id="home"
+      className="relative min-h-[100svh] flex flex-col bg-ink text-paper overflow-hidden pt-20"
+    >
+      {/* Top meta rail — editorial metadata */}
+      <div className="border-b border-[color:var(--rule)]">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-7 py-3 flex items-center justify-between mono-tag text-paper/60">
+          <span>00 · Intro</span>
+          <span className="hidden md:inline">Celle · DE · 2026</span>
+          <span>HMR Nexus Engineering GmbH</span>
+        </div>
+      </div>
 
-      <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10 pb-24 md:pb-32">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 mb-8 md:mb-12"
-            variants={childVariants}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-nexus-blue" />
-            <span className="nothing-label">{t('hero.badge')}</span>
+      {/* Main composition */}
+      <div className="flex-1 flex flex-col justify-between max-w-[1440px] w-full mx-auto px-6 md:px-7 py-14 md:py-20">
+        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+          {/* Section label */}
+          <motion.div variants={childVariants} className="flex items-center gap-2.5 mb-10 md:mb-16">
+            <span className="dot-accent animate-pulse-laser" />
+            <span className="mono-tag text-paper/70">
+              Fibre · Software · Operations
+            </span>
           </motion.div>
 
-          {/* Main Title — Massive, left-aligned, asymmetric */}
+          {/* D1 headline — the core of the brand voice */}
           <motion.h1
-            className="text-[3.5rem] sm:text-[5rem] md:text-[7rem] lg:text-[9rem] xl:text-[10rem] font-bold leading-[0.95] tracking-tight text-nd-text-display mb-8 md:mb-12"
             variants={childVariants}
+            className="font-display text-paper"
+            style={{
+              fontSize: 'clamp(56px, 11vw, 180px)',
+              fontWeight: 300,
+              lineHeight: 0.9,
+              letterSpacing: '-0.055em',
+              margin: 0,
+            }}
           >
-            <span className="block">{t('hero.title1')}</span>
-            <span className="block nexus-sweep">{t('hero.title2')}</span>
-            <span className="block text-nd-text-secondary font-light text-[0.45em] mt-2">
-              {t('hero.title3')} <span className="text-nd-text-display font-bold">{t('hero.title4')}</span>
-            </span>
+            Glasfaser,
+            <br />
+            <span style={{ fontWeight: 500 }}>präzise</span>
+            <span style={{ color: 'var(--accent)' }}>.</span>
           </motion.h1>
 
-          {/* Subtitle */}
-          <motion.p
-            className="text-nd-text-secondary text-base md:text-lg max-w-xl mb-10 leading-relaxed"
-            variants={childVariants}
-          >
-            {t('hero.subtitle')}
-          </motion.p>
-
-          {/* Single CTA — confident, no second-guessing */}
-          <motion.div variants={childVariants} className="mb-20 md:mb-28">
-            <button
-              onClick={onScrollToServices}
-              className="inline-flex items-center justify-center gap-2 bg-nd-text-display text-nd-black px-8 py-4 rounded-full font-mono text-[13px] uppercase tracking-[0.06em] hover:bg-nd-text-primary transition-colors duration-200"
-            >
-              {t('hero.btnPrimary')}
-              <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </button>
-          </motion.div>
-
-          {/* Stats Strip — big Doto numbers */}
+          {/* Subline in EN/ES — bilingual editorial style */}
           <motion.div
-            className="flex gap-12 md:gap-20 border-t border-nd-border pt-8"
             variants={childVariants}
+            className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start"
           >
-            {[
-              { value: '15+', unit: 'KM', label: t('hero.stats.km') },
-              { value: '150+', unit: 'HÜP', label: t('hero.stats.connections') },
-              { value: '2', unit: '', label: t('hero.stats.countries') },
-            ].map((stat, index) => (
-              <div key={index}>
-                <div className="nothing-data text-4xl md:text-5xl tabular-nums">
-                  {stat.value}
-                  {stat.unit && (
-                    <span className="nothing-label text-nd-text-disabled ml-1 text-xs align-top">{stat.unit}</span>
-                  )}
-                </div>
-                <div className="nothing-label mt-2 text-nd-text-disabled">{stat.label}</div>
+            <div className="md:col-span-1 mono-tag text-paper/50 pt-2">00.1</div>
+
+            <p
+              className="md:col-span-6 text-paper/85"
+              style={{
+                fontFamily: 'var(--f-text)',
+                fontSize: 'clamp(16px, 1.4vw, 20px)',
+                lineHeight: 1.5,
+                fontWeight: 400,
+                maxWidth: '52ch',
+              }}
+            >
+              Fibre, from plan to splice. Measured in metres, tracked in real-time.
+              We write the software we use on site. We sell what works.
+            </p>
+
+            <div className="md:col-span-5 mono-tag text-paper/50 leading-relaxed">
+              <div className="rule-top pt-4 space-y-1.5">
+                <div>SEGMENT&nbsp;&nbsp;&nbsp;// NE3 · NE4</div>
+                <div>REGION&nbsp;&nbsp;&nbsp;&nbsp;// DE · Niedersachsen</div>
+                <div>METHOD&nbsp;&nbsp;&nbsp;&nbsp;// Blown fibre · Splice · QA</div>
+                <div>STATUS&nbsp;&nbsp;&nbsp;&nbsp;// <span className="text-[color:var(--accent)]">OPERATIONAL</span></div>
               </div>
-            ))}
+            </div>
           </motion.div>
         </motion.div>
+
+        {/* CTAs + footer anchor */}
+        <motion.div
+          variants={childVariants}
+          initial="hidden"
+          animate="visible"
+          className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+        >
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={onScrollToServices}
+              className="inline-flex items-center gap-3 px-6 py-4 bg-laser text-ink mono-tag hover:opacity-90 transition-opacity"
+            >
+              <span className="dot-accent" style={{ background: 'var(--ink)' }} />
+              See capabilities →
+            </button>
+
+            <button
+              onClick={onScrollToProducts}
+              className="inline-flex items-center gap-3 px-6 py-4 mono-tag text-paper hover:bg-paper/5 transition-colors"
+              style={{ border: '1px solid var(--rule-strong)' }}
+            >
+              Software stack →
+            </button>
+          </div>
+
+          <div className="mono-tag text-paper/45 max-w-xs md:text-right">
+            Two disciplines, one system.<br/>
+            NE3 · NE4 specialist. On time, or we call you.
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom rule + accent bar — 70 / 25 / 5 composition echo */}
+      <div className="flex h-2" aria-hidden>
+        <div className="flex-[70] bg-ink" style={{ borderTop: '1px solid var(--rule)' }} />
+        <div className="flex-[25] bg-paper/5" style={{ borderTop: '1px solid var(--rule)' }} />
+        <div className="flex-[5] bg-laser" />
       </div>
     </section>
   );
