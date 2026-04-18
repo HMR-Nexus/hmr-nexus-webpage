@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useInView } from 'framer-motion';
-import { motion } from 'framer-motion';
+import { useInView, motion } from 'framer-motion';
 import { staggerContainer, cardEntrance, useCountUp } from '@/lib/motion';
 import { MotionSection } from '@/components/MotionSection';
 
@@ -12,20 +11,21 @@ interface StatItem {
   unit: string;
 }
 
-function AnimatedStat({ stat, inView }: { stat: StatItem; inView: boolean }) {
+function AnimatedStat({ stat, inView, index }: { stat: StatItem; inView: boolean; index: number }) {
   const count = useCountUp(stat.numericValue, 2, inView);
-
   return (
-    <div className="text-center">
-      {/* Nothing: large Doto number as primary layer */}
-      {/* Doto for numbers only — pixel look works great for digits */}
-      <div className="nothing-data text-5xl md:text-6xl mb-1 tabular-nums">
-        {count}{stat.suffix}
+    <div className="p-6 md:p-8 rule-top md:rule-top-none md:border-l md:border-[color:var(--rule)] first:border-l-0">
+      <div className="mono-tag text-paper/45 mb-4">
+        {String(index + 1).padStart(2, '0')} · {stat.unit || '—'}
       </div>
-      {stat.unit && (
-        <div className="nothing-label mb-2">{stat.unit}</div>
-      )}
-      <div className="text-nd-text-secondary text-sm">{stat.label}</div>
+      <div
+        className="font-display text-paper tabular-nums"
+        style={{ fontSize: 'clamp(56px, 7vw, 96px)', lineHeight: 0.9, letterSpacing: '-0.04em', fontWeight: 300 }}
+      >
+        {count}
+        <span style={{ color: 'var(--accent)' }}>{stat.suffix}</span>
+      </div>
+      <div className="text-paper/70 text-[14px] mt-3 leading-snug">{stat.label}</div>
     </div>
   );
 }
@@ -38,17 +38,25 @@ export function Stats() {
   const stats: StatItem[] = [
     { numericValue: 15, suffix: '+', unit: 'KM', label: t('stats.experience') },
     { numericValue: 150, suffix: '+', unit: 'HÜP', label: t('stats.connections') },
-    { numericValue: 2, suffix: '', unit: '', label: t('stats.countries') },
-    { numericValue: 3, suffix: '', unit: '', label: t('stats.founders') },
+    { numericValue: 2, suffix: '', unit: 'DE · CO', label: t('stats.countries') },
+    { numericValue: 3, suffix: '', unit: 'FOUNDERS', label: t('stats.founders') },
   ];
 
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <MotionSection className="text-center mb-10">
-          <span className="nothing-label block mb-3">{t('stats.label')}</span>
-          <h2 className="text-3xl md:text-4xl font-light text-nd-text-display mb-2">{t('stats.title')}</h2>
-          <p className="text-nd-text-secondary max-w-lg mx-auto text-sm">{t('stats.subtitle')}</p>
+    <section className="bg-ink text-paper py-20 md:py-28">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-7">
+        <MotionSection>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-10 md:mb-14 pb-8 rule-bottom">
+            <div>
+              <div className="mono-tag text-paper/50 mb-3">{t('stats.label')}</div>
+              <h2 className="font-display text-paper" style={{ fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 0.95, letterSpacing: '-0.03em', fontWeight: 400, margin: 0 }}>
+                {t('stats.title')}
+              </h2>
+            </div>
+            <p className="text-paper/70 text-[15px] leading-[1.55] max-w-[48ch]">
+              {t('stats.subtitle')}
+            </p>
+          </div>
         </MotionSection>
 
         <motion.div
@@ -57,15 +65,14 @@ export function Stats() {
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
-          className="border border-nd-border rounded-lg p-8 md:p-12 dot-grid-subtle"
+          className="grid grid-cols-2 lg:grid-cols-4"
+          style={{ border: '1px solid var(--rule)' }}
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {stats.map((stat, index) => (
-              <motion.div key={index} variants={cardEntrance}>
-                <AnimatedStat stat={stat} inView={inView} />
-              </motion.div>
-            ))}
-          </div>
+          {stats.map((stat, index) => (
+            <motion.div key={index} variants={cardEntrance}>
+              <AnimatedStat stat={stat} inView={inView} index={index} />
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

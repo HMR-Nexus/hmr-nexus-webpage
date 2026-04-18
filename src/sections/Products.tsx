@@ -1,5 +1,4 @@
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, Check, Bot, BarChart3, Hammer, Database, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
 import { staggerContainer, cardEntrance } from '@/lib/motion';
@@ -8,85 +7,96 @@ interface ProductsProps {
   onRequestDemo: () => void;
 }
 
-/* Nothing status: monochrome labels with color only on the value dot */
-const STATUS_CONFIG: Record<string, { color: string; label_color: string }> = {
-  live:    { color: '#4A9E5C', label_color: 'text-nd-success' },
-  beta:    { color: '#5B9BF6', label_color: 'text-nd-interactive' },
-  dev:     { color: '#D4A843', label_color: 'text-nd-warning' },
-  roadmap: { color: '#666666', label_color: 'text-nd-text-disabled' },
+// NEXUS status taxonomy — monochrome + accent dot for live, functional signals elsewhere.
+const STATUS_CONFIG: Record<string, { color: string; label: string }> = {
+  live:    { color: '#C6FF3D', label: 'text-[color:var(--accent)]' },
+  beta:    { color: '#FFB800', label: 'text-[#FFB800]' },
+  dev:     { color: '#FFB800', label: 'text-[#FFB800]' },
+  roadmap: { color: '#6B6B66', label: 'text-paper/40' },
 };
 
 interface Product {
   key: string;
-  icon: React.ElementType;
   status: 'live' | 'beta' | 'dev' | 'roadmap';
   link?: string;
 }
 
 const heroProduct: Product = {
-  key: 'workmanager', icon: Hammer, status: 'live', link: 'https://jarl9801.github.io/work-manager/',
+  key: 'workmanager', status: 'live', link: 'https://jarl9801.github.io/work-manager/',
 };
 
 const otherProducts: Product[] = [
-  { key: 'fincontrol', icon: BarChart3, status: 'live' },
-  { key: 'bot', icon: Bot, status: 'beta' },
-  { key: 'aianalytics', icon: Database, status: 'roadmap' },
+  { key: 'fincontrol',  status: 'live' },
+  { key: 'bot',         status: 'beta' },
+  { key: 'aianalytics', status: 'roadmap' },
 ];
 
+/**
+ * NEXUS Products — 02 · Software stack.
+ * Editorial cards, mono-label metadata, laser accent only for live status.
+ */
 export function Products({ onRequestDemo }: ProductsProps) {
   const { t } = useTranslation();
 
-  const renderStatusChip = (statusKey: string) => {
-    const status = STATUS_CONFIG[statusKey];
+  const renderStatus = (statusKey: string) => {
+    const s = STATUS_CONFIG[statusKey];
     return (
-      <span className={`inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] px-2 py-0.5 border border-nd-border-visible rounded-sm ${status.label_color}`}>
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: status.color }} />
+      <span className={`inline-flex items-center gap-1.5 mono-tag ${s.label}`}>
+        <span
+          className="w-1.5 h-1.5 rounded-full"
+          style={{ background: s.color }}
+        />
         {t(`products.status.${statusKey}`)}
       </span>
     );
   };
 
   return (
-    <section id="products" className="py-32 md:py-48">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Section Header */}
-        <MotionSection className="mb-20 md:mb-28">
-          <span className="nothing-label block mb-4">{t('products.label')}</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
-            {t('products.title')}{' '}
-            <span className="text-nd-text-secondary">{t('products.titleHighlight')}</span>
-          </h2>
-          <p className="text-nd-text-secondary text-base md:text-lg max-w-2xl mt-4">
-            {t('products.subtitle')}
-          </p>
+    <section id="products" className="bg-ink text-paper py-24 md:py-32">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-7">
+        <MotionSection>
+          <div className="section-head">
+            <div>
+              <div className="meta">02 · {t('products.label')}</div>
+            </div>
+            <div>
+              <h2>
+                {t('products.title')}<br/>
+                <span className="text-paper/50">{t('products.titleHighlight')}</span>
+              </h2>
+              <p style={{ marginTop: 24 }}>{t('products.subtitle')}</p>
+            </div>
+          </div>
         </MotionSection>
 
-        {/* Hero Product — Full width featured */}
-        <MotionSection className="mb-8">
-          <div className="border border-nd-border rounded-lg p-8 md:p-12 hover:border-nd-border-visible transition-colors duration-200">
-            <div className="grid lg:grid-cols-[1fr_auto] gap-8 items-start">
+        {/* Hero Product — featured row */}
+        <MotionSection className="mb-0">
+          <div
+            className="p-8 md:p-12 hover:bg-paper/[0.02] transition-colors duration-200"
+            style={{ border: '1px solid var(--rule)' }}
+          >
+            <div className="grid lg:grid-cols-[1.5fr_1fr] gap-10 lg:gap-16 items-start">
               <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <heroProduct.icon className="w-6 h-6 text-nd-text-disabled" strokeWidth={1.5} />
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-medium text-nd-text-display">
-                      {t(`products.${heroProduct.key}.title`)}
-                    </h3>
-                    <p className="nothing-label mt-0.5">{t(`products.${heroProduct.key}.type`)}</p>
-                  </div>
-                  <div className="ml-auto">{renderStatusChip(heroProduct.status)}</div>
+                <div className="mono-tag text-paper/50 mb-4">02.1 · FEATURED · {t(`products.${heroProduct.key}.type`)}</div>
+                <div className="flex items-start justify-between gap-4 mb-5">
+                  <h3
+                    className="font-display text-paper"
+                    style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '-0.03em', fontWeight: 400, margin: 0 }}
+                  >
+                    {t(`products.${heroProduct.key}.title`)}
+                  </h3>
+                  {renderStatus(heroProduct.status)}
                 </div>
 
-                <p className="text-nd-text-secondary text-base leading-relaxed mb-8 max-w-2xl">
+                <p className="text-paper/70 text-[16px] leading-[1.55] mb-8 max-w-[58ch]">
                   {t(`products.${heroProduct.key}.description`)}
                 </p>
 
-                {/* Features */}
-                <ul className="space-y-2 mb-8">
+                <ul className="space-y-2.5 mb-8 divide-y divide-[color:var(--rule)]">
                   {[0, 1, 2].map((i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-nd-text-secondary">
-                      <Check className="w-3.5 h-3.5 mt-0.5 text-nd-text-disabled" strokeWidth={1.5} />
-                      {t(`products.${heroProduct.key}.features.${i}`)}
+                    <li key={i} className="flex items-baseline gap-3 pt-2.5 first:pt-0 text-[15px] text-paper/85">
+                      <span className="mono-tag text-paper/35 w-6 flex-shrink-0">{`0${i + 1}`}</span>
+                      <span>{t(`products.${heroProduct.key}.features.${i}`)}</span>
                     </li>
                   ))}
                 </ul>
@@ -96,23 +106,27 @@ export function Products({ onRequestDemo }: ProductsProps) {
                     href={heroProduct.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={`${t(`products.${heroProduct.key}.title`)} — external link`}
-                    className="inline-flex items-center gap-2 bg-nd-text-display text-nd-black px-6 py-3 rounded-full font-mono text-[11px] uppercase tracking-[0.06em] hover:bg-nd-text-primary transition-colors duration-200"
+                    className="inline-flex items-center gap-3 px-5 py-3 mono-tag bg-laser text-ink hover:opacity-90 transition-opacity"
                   >
-                    {t(`products.${heroProduct.key}.cta`)}
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span className="dot-accent" style={{ background: 'var(--ink)' }} />
+                    {t(`products.${heroProduct.key}.cta`)}  ↗
                   </a>
                 )}
               </div>
 
-              {/* Big metrics — right side */}
-              <div className="flex lg:flex-col gap-8 lg:gap-6 lg:pl-8 lg:border-l border-nd-border">
+              {/* Right: metrics stack */}
+              <div
+                className="grid grid-cols-3 lg:grid-cols-1 lg:divide-y divide-[color:var(--rule)] lg:border-l lg:border-[color:var(--rule)] lg:pl-10"
+              >
                 {[0, 1, 2].map((i) => (
-                  <div key={i}>
-                    <div className="nothing-data text-3xl md:text-4xl tabular-nums">
+                  <div key={i} className="py-4 first:pt-0 lg:first:pt-0 px-3 lg:px-0">
+                    <div
+                      className="font-display text-paper tabular-nums"
+                      style={{ fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 0.95, letterSpacing: '-0.03em', fontWeight: 400 }}
+                    >
                       {t(`products.${heroProduct.key}.metrics.${i}.value`)}
                     </div>
-                    <div className="nothing-label mt-1">
+                    <div className="mono-tag text-paper/50 mt-2">
                       {t(`products.${heroProduct.key}.metrics.${i}.label`)}
                     </div>
                   </div>
@@ -122,77 +136,78 @@ export function Products({ onRequestDemo }: ProductsProps) {
           </div>
         </MotionSection>
 
-        {/* Other Products — compact grid */}
+        {/* Secondary products grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
-          className="grid md:grid-cols-3 gap-4"
+          className="grid md:grid-cols-3 mt-[-1px]"
+          style={{ border: '1px solid var(--rule)' }}
         >
-          {otherProducts.map((p) => {
-            const Icon = p.icon;
+          {otherProducts.map((p, idx) => {
             const featureCount = p.status === 'roadmap' ? 2 : 3;
-
             return (
               <motion.div
                 key={p.key}
                 variants={cardEntrance}
-                className="border border-nd-border rounded-lg p-6 hover:border-nd-border-visible transition-colors duration-200"
+                className="p-8 hover:bg-paper/[0.02] transition-colors duration-200"
+                style={{ borderLeft: idx === 0 ? 'none' : '1px solid var(--rule)' }}
               >
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-5 h-5 text-nd-text-disabled" strokeWidth={1.5} />
-                    <h3 className="text-base font-medium text-nd-text-display">
+                <div className="flex items-start justify-between mb-5">
+                  <div>
+                    <div className="mono-tag text-paper/45 mb-1.5">
+                      02.{idx + 2} · {t(`products.${p.key}.type`)}
+                    </div>
+                    <h3
+                      className="font-display text-paper"
+                      style={{ fontSize: 26, lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 500, margin: 0 }}
+                    >
                       {t(`products.${p.key}.title`)}
                     </h3>
                   </div>
-                  {renderStatusChip(p.status)}
+                  {renderStatus(p.status)}
                 </div>
 
-                <p className="nothing-label mb-3">{t(`products.${p.key}.type`)}</p>
-
-                <p className="text-nd-text-secondary text-sm leading-relaxed mb-4">
+                <p className="text-paper/70 text-[14px] leading-[1.55] mb-5">
                   {t(`products.${p.key}.description`)}
                 </p>
 
-                {/* Metrics */}
-                <div className="flex gap-4 mb-4 py-3 border-y border-nd-border">
+                <div className="grid grid-cols-3 gap-3 py-4 rule-top rule-bottom mb-5">
                   {[0, 1, 2].map((i) => (
-                    <div key={i} className="flex-1">
-                      <div className="nothing-data text-sm tabular-nums">
+                    <div key={i}>
+                      <div
+                        className="font-display text-paper tabular-nums"
+                        style={{ fontSize: 18, lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 500 }}
+                      >
                         {t(`products.${p.key}.metrics.${i}.value`)}
                       </div>
-                      <div className="nothing-label mt-0.5">
+                      <div className="mono-tag text-paper/45 mt-1" style={{ fontSize: 9 }}>
                         {t(`products.${p.key}.metrics.${i}.label`)}
                       </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Features */}
-                <ul className="space-y-1.5 mb-4">
+                <ul className="space-y-1.5 mb-6">
                   {Array.from({ length: featureCount }).map((_, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-nd-text-secondary">
-                      <Check className="w-3.5 h-3.5 mt-0.5 text-nd-text-disabled" strokeWidth={1.5} />
-                      {t(`products.${p.key}.features.${i}`)}
+                    <li key={i} className="flex items-baseline gap-2 text-[13px] text-paper/75">
+                      <span className="mono-tag text-paper/30">0{i + 1}</span>
+                      <span>{t(`products.${p.key}.features.${i}`)}</span>
                     </li>
                   ))}
                 </ul>
 
-                {/* CTA */}
                 {p.status === 'roadmap' ? (
-                  <span className="nothing-label text-nd-text-disabled">
+                  <span className="mono-tag text-paper/40">
                     {t(`products.${p.key}.cta`)}
                   </span>
                 ) : (
                   <button
                     onClick={onRequestDemo}
-                    className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.06em] text-nd-interactive hover:text-nd-text-display transition-colors duration-200"
+                    className="mono-tag text-[color:var(--accent)] hover:opacity-80 transition-opacity"
                   >
-                    {t(`products.${p.key}.cta`)}
-                    <ArrowRight className="w-3 h-3" />
+                    {t(`products.${p.key}.cta`)}  →
                   </button>
                 )}
               </motion.div>
