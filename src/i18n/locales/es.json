@@ -379,26 +379,26 @@
     }
   },
   "dualMap": {
-    "label": "Presencia Global",
-    "title": "Dos Países,",
-    "titleHighlight": "Una Visión",
-    "subtitle": "Combinamos la precisión técnica alemana con la innovación colombiana.",
+    "label": "Geografía",
+    "title": "Dos países.",
+    "titleHighlight": "Un sistema.",
+    "subtitle": "Ingeniería en Celle. Software en Bogotá. Mismo stack, mismo Slack, mismo reloj.",
     "germany": {
-      "city": "Alemania",
+      "city": "Celle",
       "role": "Sede Central",
-      "description": "Centro de operaciones para proyectos de fibra óptica en Alemania y Europa.",
+      "description": "Operaciones de campo para despliegue NE3/NE4 en Niedersachsen y la región DACH. Cuadrillas, fusión, QA.",
       "stats": {
-        "fiber": "km Fibra",
-        "quality": "Calidad"
+        "fiber": "km / mes",
+        "quality": "Fusión en spec"
       }
     },
     "colombia": {
-      "city": "Colombia",
+      "city": "Bogotá",
       "role": "Centro de Desarrollo",
-      "description": "Equipo de desarrollo de software y operaciones LATAM.",
+      "description": "Ingeniería de software para operaciones de campo, dashboards y agentes IA. Mismo equipo, otra zona horaria.",
       "stats": {
         "connections": "Conexiones",
-        "support": "Soporte"
+        "support": "On-call"
       }
     }
   },

@@ -1,47 +1,14 @@
 import { useTranslation } from 'react-i18next';
-import { Clock, Mail, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
 import { WorldMapSVG, germanyPath, colombiaPath } from '@/components/WorldMapSVG';
 import { staggerContainer, cardEntrance } from '@/lib/motion';
 
-/* ─── SVG Flag components ────────────────────────────────────── */
-
-function FlagDE({ size = 56 }: { size?: number }) {
-  const r = size / 2;
-  const id = 'clip-de';
-  return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <defs><clipPath id={id}><circle cx={r} cy={r} r={r} /></clipPath></defs>
-      <g clipPath={`url(#${id})`}>
-        <rect y={0} width={size} height={size / 3} fill="#000000" />
-        <rect y={size / 3} width={size} height={size / 3} fill="#DD0000" />
-        <rect y={(size / 3) * 2} width={size} height={size / 3} fill="#FFCE00" />
-      </g>
-    </svg>
-  );
-}
-
-function FlagCO({ size = 56 }: { size?: number }) {
-  const r = size / 2;
-  const id = 'clip-co';
-  return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-      <defs><clipPath id={id}><circle cx={r} cy={r} r={r} /></clipPath></defs>
-      <g clipPath={`url(#${id})`}>
-        <rect y={0} width={size} height={size / 2} fill="#FCD116" />
-        <rect y={size / 2} width={size} height={size / 4} fill="#003893" />
-        <rect y={(size / 4) * 3} width={size} height={size / 4} fill="#CE1126" />
-      </g>
-    </svg>
-  );
-}
-
 /* ─── Types ─────────────────────────────────────────────────── */
 
 interface Location {
-  id: string;
+  id: 'germany' | 'colombia';
   city: string;
   role: string;
   description: string;
@@ -55,6 +22,11 @@ interface Location {
 
 /* ─── Component ────────────────────────────────────────────── */
 
+/**
+ * NEXUS DualMap — 06 · Two countries, one vision.
+ * Editorial world map with accent highlight on Germany (HQ),
+ * paper tint on Colombia (dev hub).
+ */
 export function DualMap() {
   const { t } = useTranslation();
   const [activeLocation, setActiveLocation] = useState<string | null>(null);
@@ -65,9 +37,9 @@ export function DualMap() {
       city: t('dualMap.germany.city'),
       role: t('dualMap.germany.role'),
       description: t('dualMap.germany.description'),
-      timezone: 'CET (UTC+1)',
+      timezone: 'CET · UTC+1',
       phone: '+49 176 31524448',
-      email: 'info@hmr-nexus.com',
+      email: 'hello@hmr-nexus.com',
       labelPos: { x: 516, y: 78 },
       countryPath: germanyPath,
       stats: [
@@ -80,8 +52,8 @@ export function DualMap() {
       city: t('dualMap.colombia.city'),
       role: t('dualMap.colombia.role'),
       description: t('dualMap.colombia.description'),
-      timezone: 'COT (UTC-5)',
-      phone: '+57 ...',
+      timezone: 'COT · UTC-5',
+      phone: '+57 · on request',
       email: 'latam@hmr-nexus.com',
       labelPos: { x: 287, y: 258 },
       countryPath: colombiaPath,
@@ -95,20 +67,30 @@ export function DualMap() {
   const connectionPath = 'M 287,236 Q 420,140 516,100';
 
   return (
-    <section className="py-32 md:py-48">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
-        {/* Header */}
-        <MotionSection className="mb-20 md:mb-28">
-          <span className="nothing-label block mb-4">{t('dualMap.label')}</span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-nd-text-display leading-[1.05]">
-            {t('dualMap.title')}{' '}
-            <span className="text-nd-text-secondary">{t('dualMap.titleHighlight')}</span>
-          </h2>
+    <section className="bg-ink text-paper py-24 md:py-32">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-7">
+        {/* Section head — brand pattern */}
+        <MotionSection>
+          <div className="section-head">
+            <div>
+              <div className="meta">06 · {t('dualMap.label')}</div>
+            </div>
+            <div>
+              <h2>
+                {t('dualMap.title')}<br/>
+                <span className="text-paper/50">{t('dualMap.titleHighlight')}</span>
+              </h2>
+              <p style={{ marginTop: 24 }}>{t('dualMap.subtitle')}</p>
+            </div>
+          </div>
         </MotionSection>
 
         {/* Map Container */}
-        <MotionSection className="relative max-w-5xl">
-          <div className="relative aspect-[16/9] rounded-lg overflow-hidden border border-nd-border bg-nd-surface">
+        <MotionSection className="relative">
+          <div
+            className="relative aspect-[16/9] overflow-hidden bg-ink"
+            style={{ border: '1px solid var(--rule)' }}
+          >
             <WorldMapSVG className="absolute inset-0 w-full h-full" />
 
             <svg
@@ -116,10 +98,10 @@ export function DualMap() {
               viewBox="0 0 1000 500"
               preserveAspectRatio="xMidYMid slice"
             >
-              {/* Germany — Nexus blue highlight */}
+              {/* Germany — accent highlight */}
               <motion.path
                 d={germanyPath}
-                fill="rgba(255,77,46,0.2)"
+                fill="rgba(255,77,46,0.22)"
                 stroke="#FF4D2E"
                 strokeWidth="1"
                 initial={{ opacity: 0 }}
@@ -130,13 +112,13 @@ export function DualMap() {
                 onMouseLeave={() => setActiveLocation(null)}
                 className="cursor-pointer"
               />
-              <circle cx="516" cy="100" r="3" fill="#FF4D2E" />
+              <circle cx="516" cy="100" r="3.5" fill="#FF4D2E" />
 
-              {/* Colombia — white/gray */}
+              {/* Colombia — paper/bone tint */}
               <motion.path
                 d={colombiaPath}
-                fill="rgba(232,232,232,0.1)"
-                stroke="#E8E8E8"
+                fill="rgba(245,243,238,0.10)"
+                stroke="#EAE6DC"
                 strokeWidth="1"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -146,12 +128,12 @@ export function DualMap() {
                 onMouseLeave={() => setActiveLocation(null)}
                 className="cursor-pointer"
               />
-              <circle cx="287" cy="236" r="3" fill="#E8E8E8" />
+              <circle cx="287" cy="236" r="3.5" fill="#EAE6DC" />
 
               {/* Connection line */}
               <motion.path
                 d={connectionPath}
-                stroke="#333333"
+                stroke="rgba(245,243,238,0.22)"
                 strokeWidth="1"
                 fill="none"
                 strokeDasharray="6,4"
@@ -161,28 +143,27 @@ export function DualMap() {
                 transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
               />
 
-              {/* Labels */}
+              {/* Labels — mono-tag style */}
               {locations.map((loc) => (
                 <g key={`label-${loc.id}`}>
                   <rect
-                    x={loc.labelPos.x - 48}
-                    y={loc.labelPos.y - 12}
-                    width="96"
-                    height="28"
-                    rx="2"
-                    fill="rgba(17,17,17,0.9)"
-                    stroke="#333333"
-                    strokeWidth="0.5"
+                    x={loc.labelPos.x - 52}
+                    y={loc.labelPos.y - 14}
+                    width="104"
+                    height="30"
+                    fill="#0A0B0D"
+                    stroke="rgba(245,243,238,0.24)"
+                    strokeWidth="0.6"
                   />
                   <text
                     x={loc.labelPos.x}
                     y={loc.labelPos.y + 1}
                     textAnchor="middle"
-                    fill="#FFFFFF"
+                    fill="#F5F3EE"
                     fontSize="8"
-                    fontWeight="400"
-                    fontFamily="Space Mono, monospace"
-                    letterSpacing="0.08em"
+                    fontWeight="500"
+                    fontFamily="'JetBrains Mono', monospace"
+                    letterSpacing="0.14em"
                   >
                     {loc.city.toUpperCase()}
                   </text>
@@ -190,11 +171,11 @@ export function DualMap() {
                     x={loc.labelPos.x}
                     y={loc.labelPos.y + 12}
                     textAnchor="middle"
-                    fill="#999999"
+                    fill="#9A9A94"
                     fontSize="6"
                     fontWeight="400"
-                    fontFamily="Space Mono, monospace"
-                    letterSpacing="0.06em"
+                    fontFamily="'JetBrains Mono', monospace"
+                    letterSpacing="0.1em"
                   >
                     {loc.role.toUpperCase()}
                   </text>
@@ -203,57 +184,95 @@ export function DualMap() {
             </svg>
           </div>
 
-          {/* Info Cards — simplified */}
+          {/* Info cards — editorial, mono, no rounded */}
           <motion.div
-            className="grid md:grid-cols-2 gap-px bg-nd-border mt-px rounded-b-lg overflow-hidden"
+            className="grid md:grid-cols-2 -mt-px"
+            style={{ border: '1px solid var(--rule)' }}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            {locations.map((location) => (
-              <motion.div
-                key={location.id}
-                variants={cardEntrance}
-                className={`bg-nd-black p-6 md:p-8 transition-colors duration-200 ${
-                  activeLocation === location.id ? 'bg-nd-surface' : ''
-                }`}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0">
-                    {location.id === 'germany' ? <FlagDE size={28} /> : <FlagCO size={28} />}
+            {locations.map((location, idx) => {
+              const isDE = location.id === 'germany';
+              return (
+                <motion.div
+                  key={location.id}
+                  variants={cardEntrance}
+                  className="p-8 md:p-10 transition-colors duration-200"
+                  style={{
+                    borderLeft: idx === 0 ? 'none' : '1px solid var(--rule)',
+                    background: activeLocation === location.id ? 'rgba(245,243,238,0.02)' : 'transparent',
+                  }}
+                >
+                  {/* Top: 06.N + role */}
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="mono-tag text-paper/45">
+                      06.{idx + 1} · {location.role.toUpperCase()}
+                    </span>
+                    <span
+                      className={`mono-tag ${isDE ? 'text-[color:var(--accent)]' : 'text-paper/60'}`}
+                    >
+                      {isDE ? 'HQ · DE' : 'DEV · CO'}
+                    </span>
                   </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-nd-text-display">{location.city}</h4>
-                    <p className="nothing-label">{location.role}</p>
-                  </div>
-                </div>
 
-                <div className="flex gap-6 mb-4">
-                  {location.stats.map((stat, idx) => (
-                    <div key={idx}>
-                      <div className="nothing-data text-lg tabular-nums">{stat.value}</div>
-                      <div className="nothing-label mt-0.5">{stat.label}</div>
+                  {/* City as display */}
+                  <h3
+                    className="font-display text-paper"
+                    style={{
+                      fontSize: 'clamp(40px, 5vw, 72px)',
+                      lineHeight: 0.9,
+                      letterSpacing: '-0.035em',
+                      fontWeight: 400,
+                      margin: 0,
+                    }}
+                  >
+                    {location.city}
+                  </h3>
+
+                  <p className="text-paper/70 text-[14px] leading-[1.55] mt-4 mb-6 max-w-[52ch]">
+                    {location.description}
+                  </p>
+
+                  {/* Stats row */}
+                  <div className="grid grid-cols-2 gap-4 py-4 rule-top rule-bottom mb-5">
+                    {location.stats.map((stat, i) => (
+                      <div key={i}>
+                        <div
+                          className="font-display text-paper tabular-nums"
+                          style={{ fontSize: 28, lineHeight: 1, letterSpacing: '-0.03em', fontWeight: 500 }}
+                        >
+                          {stat.value}
+                        </div>
+                        <div className="mono-tag text-paper/45 mt-1.5">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Contact block — mono grid */}
+                  <div className="space-y-1.5 mono-tag text-paper/65">
+                    <div className="flex gap-4">
+                      <span className="text-paper/40 w-14">TZ</span>
+                      <span>{location.timezone}</span>
                     </div>
-                  ))}
-                </div>
-
-                <div className="space-y-1.5 pt-3 border-t border-nd-border">
-                  <div className="flex items-center gap-2 text-nd-text-disabled text-xs">
-                    <Clock className="w-3.5 h-3.5" strokeWidth={1.5} />
-                    <span className="font-mono">{location.timezone}</span>
+                    <div className="flex gap-4">
+                      <span className="text-paper/40 w-14">TEL</span>
+                      <span>{location.phone}</span>
+                    </div>
+                    <div className="flex gap-4">
+                      <span className="text-paper/40 w-14">MAIL</span>
+                      <a
+                        href={`mailto:${location.email}`}
+                        className="text-paper/90 hover:text-[color:var(--accent)] transition-colors"
+                      >
+                        {location.email}
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-nd-text-disabled text-xs">
-                    <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
-                    <span className="font-mono">{location.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-nd-text-disabled text-xs">
-                    <Mail className="w-3.5 h-3.5" strokeWidth={1.5} />
-                    <span className="font-mono">{location.email}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </motion.div>
         </MotionSection>
       </div>

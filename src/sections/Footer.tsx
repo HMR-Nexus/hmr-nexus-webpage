@@ -76,7 +76,7 @@ export function Footer() {
                       onClick={() => setLegalPage(page)}
                       className="text-paper/80 hover:text-paper text-[15px] transition-colors"
                     >
-                      {t(`footer.${key}`)}
+                      {t(`footer.legalLinks.${key}`)}
                     </button>
                   </li>
                 ))}

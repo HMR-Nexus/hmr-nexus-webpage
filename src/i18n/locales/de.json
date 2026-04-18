@@ -359,26 +359,26 @@
     }
   },
   "dualMap": {
-    "label": "Globale Präsenz",
-    "title": "Zwei Länder,",
-    "titleHighlight": "eine Vision",
-    "subtitle": "Wir kombinieren deutsche technische Präzision mit kolumbianischer Innovation.",
+    "label": "Geografie",
+    "title": "Zwei Länder.",
+    "titleHighlight": "Ein System.",
+    "subtitle": "Engineering in Celle. Software in Bogotá. Derselbe Stack, derselbe Slack, dieselbe Uhr.",
     "germany": {
-      "city": "Deutschland",
+      "city": "Celle",
       "role": "Hauptsitz",
-      "description": "Operationszentrum für Glasfaserprojekte in Deutschland und Europa.",
+      "description": "Field Operations für NE3/NE4-Ausbau in Niedersachsen und der DACH-Region. Teams, Spleißarbeiten, QA.",
       "stats": {
-        "fiber": "km Glasfaser",
-        "quality": "Qualität"
+        "fiber": "km / Monat",
+        "quality": "Spleiß in Spec"
       }
     },
     "colombia": {
-      "city": "Kolumbien",
-      "role": "Entwicklungszentrum",
-      "description": "Software-Entwicklungsteam und LATAM-Operationen.",
+      "city": "Bogotá",
+      "role": "Entwicklungs-Hub",
+      "description": "Software-Engineering für Field Operations, Dashboards und KI-Agents. Gleiches Team, andere Zeitzone.",
       "stats": {
         "connections": "Anschlüsse",
-        "support": "Support"
+        "support": "Rufbereitschaft"
       }
     }
   },

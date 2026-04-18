@@ -359,26 +359,26 @@
     }
   },
   "dualMap": {
-    "label": "Global Presence",
-    "title": "Two Countries,",
-    "titleHighlight": "One Vision",
-    "subtitle": "We combine German technical precision with Colombian innovation.",
+    "label": "Geography",
+    "title": "Two countries.",
+    "titleHighlight": "One system.",
+    "subtitle": "Engineering in Celle. Software in Bogotá. Same stack, same Slack, same clock.",
     "germany": {
-      "city": "Germany",
+      "city": "Celle",
       "role": "Headquarters",
-      "description": "Operations center for fiber optic projects in Germany and Europe.",
+      "description": "Field operations for NE3/NE4 deployment across Niedersachsen and the DACH region. Crews, splice, QA.",
       "stats": {
-        "fiber": "km Fiber",
-        "quality": "Quality"
+        "fiber": "km / month",
+        "quality": "On-spec splice"
       }
     },
     "colombia": {
-      "city": "Colombia",
+      "city": "Bogotá",
       "role": "Development Hub",
-      "description": "Software development team and LATAM operations.",
+      "description": "Software engineering for field operations, dashboards, and AI ops agents. Same team, different timezone.",
       "stats": {
         "connections": "Connections",
-        "support": "Support"
+        "support": "On-call"
       }
     }
   },
