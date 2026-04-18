@@ -8,21 +8,21 @@
     "cta": "Request Project"
   },
   "hero": {
-    "badge": "FTTH Infrastructure · Field Ops Software · AI Automation",
-    "title1": "We build",
-    "title2": "Networks.",
-    "title3": "We develop",
-    "title4": "Technology.",
-    "subtitle": "We deploy NE3/NE4 fiber networks and build the software that runs them — from field technician apps and project trackers to AI bots that automate scheduling and reporting.",
-    "btnPrimary": "Discover Services",
-    "btnSecondary": "Our Software",
+    "badge": "● HMR · ENGINEERING GMBH",
+    "title1": "Glasfaser,",
+    "title2": "rebuilt",
+    "title3": "around",
+    "title4": "software.",
+    "subtitle": "We build NE3/NE4 fibre and write the software that runs it. Same stack, same crew, one portal.",
+    "btnPrimary": "See capabilities",
+    "btnSecondary": "Software stack",
     "stats": {
       "km": "km Fiber",
       "connections": "Connections",
       "countries": "Countries"
     },
-    "title5": "We integrate",
-    "title6": "Ecosystems."
+    "title5": "Built from",
+    "title6": "the trench, not the boardroom."
   },
   "values": {
     "quality": "Quality",
@@ -30,14 +30,14 @@
     "service": "Service"
   },
   "services": {
-    "label": "Our Expertise",
-    "title": "Infrastructure &",
-    "titleHighlight": "Digital Solutions",
+    "label": "Capabilities",
+    "title": "Two disciplines.",
+    "titleHighlight": "One system.",
     "subtitle": "From physical infrastructure to digital transformation – we offer comprehensive solutions for the telecommunications industry.",
     "fiber": {
-      "title": "Fiber Infrastructure",
-      "subtitle": "Fiber Optic Solutions",
-      "description": "Professional deployment of fiber networks to the highest quality standards for network operators and municipalities.",
+      "title": "Fibre, end to end.",
+      "subtitle": "Fibre · Field",
+      "description": "NE3 and NE4 specialist. Blown fibre, splice, quality assurance — measured in metres, closed in days, not months.",
       "items": {
         "ne3_label": "NE3 Deployment",
         "ne3": "Regional distribution networks from KEV to HÜP",
@@ -50,9 +50,9 @@
       }
     },
     "software": {
-      "title": "Software & Digital",
-      "subtitle": "Digital Solutions",
-      "description": "Custom software solutions and digital products for efficiency and scalability in the telecom industry.",
+      "title": "Software, ours.",
+      "subtitle": "Software · Native",
+      "description": "We write the tools we use on site. Field apps, project trackers, dashboards, bots — the same stack powers our own crews and our clients.",
       "items": {
         "control_label": "Control System",
         "control": "Control System for project management",
@@ -66,10 +66,10 @@
     }
   },
   "products": {
-    "label": "Our Products",
-    "title": "Software that",
-    "titleHighlight": "Transforms",
-    "subtitle": "Real tools in active use — from field technician apps to financial control systems and AI-powered analytics.",
+    "label": "Software stack",
+    "title": "Built on site.",
+    "titleHighlight": "Proven in field.",
+    "subtitle": "Every product ships first to our own crews. If it breaks on a Tuesday in Celle, it ships out Wednesday.",
     "status": {
       "live": "Live",
       "beta": "Beta",
@@ -186,9 +186,9 @@
     }
   },
   "stats": {
-    "label": "Metrics",
-    "title": "Our Numbers",
-    "subtitle": "Figures that back our expertise in fiber optics and software development.",
+    "label": "Operations",
+    "title": "Numbers, tracked.",
+    "subtitle": "Live metrics from NE3/NE4 projects. No marketing rounding.",
     "experience": "Years of Experience",
     "km": "Kilometers of Fiber",
     "connections": "Connections Realized",
@@ -197,9 +197,9 @@
     "saas": "SaaS Product"
   },
   "portfolio": {
-    "label": "References",
-    "title": "Successful",
-    "titleHighlight": "Projects",
+    "label": "Selected work",
+    "title": "Delivered.",
+    "titleHighlight": "Case files.",
     "subtitle": "A selection of our infrastructure and software projects across Germany and Colombia.",
     "status": {
       "active": "Active",
@@ -253,9 +253,9 @@
     }
   },
   "contact": {
-    "label": "Contact",
-    "title": "Start Your",
-    "titleHighlight": "Project",
+    "label": "Briefing",
+    "title": "Tell us what you need.",
+    "titleHighlight": "We reply by tomorrow.",
     "subtitle": "Whether fiber deployment or software development – we're happy to advise you and find the optimal solution.",
     "info": {
       "title": "Let's Talk",
@@ -297,16 +297,16 @@
     }
   },
   "trustBanner": {
-    "germanTech": "German technology · Colombian presence",
-    "iso": "ISO 9001",
-    "ftth": "FTTH Certified",
-    "availability": "Available 24/7"
+    "germanTech": "German Engineering",
+    "iso": "DIN · EN · ISO",
+    "ftth": "NE3 · NE4 certified",
+    "availability": "24 / 7 Field Ops"
   },
   "teamSection": {
-    "label": "Our Team",
-    "title": "Experts in",
-    "titleHighlight": "Fiber & Software",
-    "description": "We combine German technical expertise with Latin American innovation to deliver world-class solutions.",
+    "label": "People",
+    "title": "Three partners.",
+    "titleHighlight": "One table.",
+    "description": "Fibre, operations, software. We split the work, not the accountability.",
     "members": {
       "ceo": {
         "name": "Hector M. Rodriguez",
@@ -367,13 +367,19 @@
       "city": "Germany",
       "role": "Headquarters",
       "description": "Operations center for fiber optic projects in Germany and Europe.",
-      "stats": { "fiber": "km Fiber", "quality": "Quality" }
+      "stats": {
+        "fiber": "km Fiber",
+        "quality": "Quality"
+      }
     },
     "colombia": {
       "city": "Colombia",
       "role": "Development Hub",
       "description": "Software development team and LATAM operations.",
-      "stats": { "connections": "Connections", "support": "Support" }
+      "stats": {
+        "connections": "Connections",
+        "support": "Support"
+      }
     }
   },
   "footer": {

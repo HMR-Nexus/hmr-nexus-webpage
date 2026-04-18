@@ -8,21 +8,21 @@
     "cta": "Projekt anfragen"
   },
   "hero": {
-    "badge": "FTTH-Infrastruktur · Field-Ops-Software · KI-Automatisierung",
-    "title1": "Wir bauen",
-    "title2": "Netzwerke.",
-    "title3": "Wir entwickeln",
-    "title4": "Technologie.",
-    "subtitle": "Wir bauen NE3/NE4-Glasfasernetze und die Software, die sie betreibt — von Techniker-Apps und Projekttrackern bis hin zu KI-Bots für automatisierte Terminplanung und Berichterstellung.",
-    "btnPrimary": "Leistungen entdecken",
-    "btnSecondary": "Unsere Software",
+    "badge": "● HMR · ENGINEERING GMBH",
+    "title1": "Glasfaser,",
+    "title2": "neu gedacht",
+    "title3": "durch",
+    "title4": "Software.",
+    "subtitle": "Wir bauen NE3/NE4-Glasfaser und schreiben die Software, die sie betreibt. Gleicher Stack, gleiches Team, ein Portal.",
+    "btnPrimary": "Leistungen ansehen",
+    "btnSecondary": "Software-Stack",
     "stats": {
       "km": "km Glasfaser",
       "connections": "Hausanschlüsse",
       "countries": "Länder"
     },
-    "title5": "Wir integrieren",
-    "title6": "Ökosysteme."
+    "title5": "Gebaut aus",
+    "title6": "dem Graben, nicht aus dem Büro."
   },
   "values": {
     "quality": "Qualität",
@@ -30,14 +30,14 @@
     "service": "Service"
   },
   "services": {
-    "label": "Unsere Expertise",
-    "title": "Infrastruktur &",
-    "titleHighlight": "digitale Lösungen",
+    "label": "Leistungen",
+    "title": "Zwei Disziplinen.",
+    "titleHighlight": "Ein System.",
     "subtitle": "Von der physischen Infrastruktur bis zur digitalen Transformation – wir bieten ganzheitliche Lösungen für die Telekommunikationsbranche.",
     "fiber": {
-      "title": "Glasfaser-Infrastruktur",
-      "subtitle": "Glasfaser-Lösungen",
-      "description": "Professioneller Ausbau von Glasfasernetzen nach höchsten Qualitätsstandards für Netzbetreiber und Kommunen.",
+      "title": "Glasfaser, durchgängig.",
+      "subtitle": "Glasfaser · Feld",
+      "description": "Spezialist für NE3 und NE4. Einblasen, Spleißen, Qualitätssicherung — gemessen in Metern, abgeschlossen in Tagen, nicht in Monaten.",
       "items": {
         "ne3_label": "NE3 Ausbau",
         "ne3": "Regionale Verteilnetze vom KEV bis zum HÜP",
@@ -50,9 +50,9 @@
       }
     },
     "software": {
-      "title": "Software & Digital",
-      "subtitle": "Digitale Lösungen",
-      "description": "Maßgeschneiderte Softwarelösungen und digitale Produkte für Effizienz und Skalierbarkeit in der Telekom-Branche.",
+      "title": "Software, selbst gebaut.",
+      "subtitle": "Software · nativ",
+      "description": "Wir schreiben die Werkzeuge, die wir auf der Baustelle brauchen. Field-Apps, Projekt-Tracker, Dashboards, Bots — dieselbe Plattform für unsere Teams und unsere Kunden.",
       "items": {
         "control_label": "Control System",
         "control": "Control System für Projektmanagement",
@@ -66,10 +66,10 @@
     }
   },
   "products": {
-    "label": "Unsere Produkte",
-    "title": "Software die",
-    "titleHighlight": "Transformiert",
-    "subtitle": "Reale Tools im aktiven Einsatz — von Field-Ops-Apps für Techniker bis hin zu Finanzkontrollsystemen und KI-Analytik.",
+    "label": "Software-Stack",
+    "title": "Auf der Baustelle gebaut.",
+    "titleHighlight": "Im Feld bewährt.",
+    "subtitle": "Jedes Produkt geht zuerst an unsere eigenen Teams. Bricht es am Dienstag in Celle, liefern wir am Mittwoch aus.",
     "status": {
       "live": "Live",
       "beta": "Beta",
@@ -186,9 +186,9 @@
     }
   },
   "stats": {
-    "label": "Kennzahlen",
-    "title": "Unsere Zahlen",
-    "subtitle": "Zahlen, die unsere Erfahrung in Glasfaser und Softwareentwicklung belegen.",
+    "label": "Operations",
+    "title": "Zahlen, gemessen.",
+    "subtitle": "Live-Metriken aus NE3/NE4-Projekten. Keine Marketing-Rundungen.",
     "experience": "Jahre Erfahrung",
     "km": "Kilometer Glasfaser",
     "connections": "Hausanschlüsse realisiert",
@@ -197,9 +197,9 @@
     "saas": "SaaS Produkt"
   },
   "portfolio": {
-    "label": "Referenzen",
-    "title": "Erfolgreiche",
-    "titleHighlight": "Projekte",
+    "label": "Ausgewählt",
+    "title": "Abgeschlossen.",
+    "titleHighlight": "Projektakten.",
     "subtitle": "Eine Auswahl unserer Infrastruktur- und Softwareprojekte in Deutschland und Kolumbien.",
     "status": {
       "active": "Laufend",
@@ -253,9 +253,9 @@
     }
   },
   "contact": {
-    "label": "Kontakt",
-    "title": "Starten Sie Ihr",
-    "titleHighlight": "Projekt",
+    "label": "Briefing",
+    "title": "Sagen Sie uns, was Sie brauchen.",
+    "titleHighlight": "Antwort bis morgen.",
     "subtitle": "Ob Glasfaser-Ausbau oder Software-Entwicklung – wir beraten Sie gerne und finden die optimale Lösung.",
     "info": {
       "title": "Lassen Sie uns sprechen",
@@ -297,16 +297,16 @@
     }
   },
   "trustBanner": {
-    "germanTech": "Deutsche Technologie · Kolumbianische Präsenz",
-    "iso": "ISO 9001",
-    "ftth": "FTTH Certified",
-    "availability": "24/7 Verfügbar"
+    "germanTech": "Deutsche Ingenieurskunst",
+    "iso": "DIN · EN · ISO",
+    "ftth": "NE3 · NE4 zertifiziert",
+    "availability": "24 / 7 Field Ops"
   },
   "teamSection": {
-    "label": "Unser Team",
-    "title": "Experten in",
-    "titleHighlight": "Glasfaser & Software",
-    "description": "Wir kombinieren deutsche technische Expertise mit lateinamerikanischer Innovation, um erstklassige Lösungen zu liefern.",
+    "label": "Menschen",
+    "title": "Drei Partner.",
+    "titleHighlight": "Ein Tisch.",
+    "description": "Glasfaser, Operations, Software. Wir teilen die Arbeit, nicht die Verantwortung.",
     "members": {
       "ceo": {
         "name": "Hector M. Rodriguez",
@@ -367,13 +367,19 @@
       "city": "Deutschland",
       "role": "Hauptsitz",
       "description": "Operationszentrum für Glasfaserprojekte in Deutschland und Europa.",
-      "stats": { "fiber": "km Glasfaser", "quality": "Qualität" }
+      "stats": {
+        "fiber": "km Glasfaser",
+        "quality": "Qualität"
+      }
     },
     "colombia": {
       "city": "Kolumbien",
       "role": "Entwicklungszentrum",
       "description": "Software-Entwicklungsteam und LATAM-Operationen.",
-      "stats": { "connections": "Anschlüsse", "support": "Support" }
+      "stats": {
+        "connections": "Anschlüsse",
+        "support": "Support"
+      }
     }
   },
   "footer": {
