@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LegalOverlay } from '@/components/LegalOverlay';
 import type { LegalPage } from '@/components/LegalOverlay';
+import { NexusLockup } from '@/components/NexusLockup';
 
 /**
  * NEXUS Footer — editorial, mono-labels, system-metadata.
@@ -29,20 +30,10 @@ export function Footer() {
     <>
       <footer className="bg-ink text-paper rule-top">
         <div className="max-w-[1440px] mx-auto px-6 md:px-7 py-16 md:py-20">
-          {/* Big wordmark */}
+          {/* Big wordmark + lockup */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
             <div className="md:col-span-7">
-              <div
-                className="font-display text-paper"
-                style={{
-                  fontSize: 'clamp(56px, 10vw, 144px)',
-                  fontWeight: 300,
-                  lineHeight: 0.9,
-                  letterSpacing: '-0.055em',
-                }}
-              >
-                HMR<br/>Nexus<span style={{ color: 'var(--accent)' }}>.</span>
-              </div>
+              <NexusLockup variant="vertical" size={120} color="var(--paper)" showSuper={true} className="scale-[0.65] md:scale-100 origin-top-left" />
             </div>
 
             <div className="md:col-span-5 md:pl-8 md:border-l md:border-[color:var(--rule)] mono-tag text-paper/55 space-y-2">

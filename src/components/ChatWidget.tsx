@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, Minimize2, ExternalLink } from 'lucide-react';
+import { Minimize2 } from 'lucide-react';
 
 const API_URL = import.meta.env.VITE_CHAT_API_URL || 'https://hmr-nexus-bot-production.up.railway.app';
 const TG_BOT  = 'https://t.me/NexusEngineeringBot';
@@ -122,7 +122,7 @@ export function ChatWidget() {
 
   return (
     <>
-      {/* Floating button — Nothing: text label, no ambiguous icon */}
+      {/* Floating button — NEXUS brand, square, mono */}
       <AnimatePresence>
         {!open && (
           <motion.button
@@ -133,10 +133,11 @@ export function ChatWidget() {
             transition={{ duration: 0.2 }}
             onClick={() => setOpen(true)}
             aria-label="Abrir chat con asistente Nexus"
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-nd-surface border border-nd-border-visible rounded-full px-4 py-2.5 hover:border-nd-text-secondary transition-colors duration-200"
+            className="fixed bottom-6 right-[4.75rem] z-50 flex items-center gap-2 bg-ink px-4 py-2.5 hover:bg-graphite transition-colors"
+            style={{ border: '1px solid var(--rule-strong)' }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-nd-success flex-shrink-0" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-nd-text-secondary">Chat</span>
+            <span className="dot-accent animate-pulse-laser" />
+            <span className="mono-tag text-paper">ASK NEXUS</span>
           </motion.button>
         )}
       </AnimatePresence>
@@ -150,43 +151,42 @@ export function ChatWidget() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-2rem)] flex flex-col rounded-lg overflow-hidden border border-nd-border-visible bg-nd-surface"
-            style={{ height: '520px' }}
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] flex flex-col overflow-hidden bg-ink"
+            style={{ height: '540px', border: '1px solid var(--rule-strong)' }}
           >
             {/* Header */}
-            <div className="flex items-center gap-3 px-4 py-3 flex-shrink-0 border-b border-nd-border">
-              <Bot className="w-4 h-4 text-nd-text-disabled" strokeWidth={1.5} />
+            <div className="flex items-center gap-3 px-4 py-3 flex-shrink-0 rule-bottom">
+              <span className="dot-accent animate-pulse-laser" />
               <div className="flex-1 min-w-0">
-                <div className="font-mono text-[11px] uppercase tracking-[0.06em] text-nd-text-display">Nexus Assistant</div>
-                <div className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-nd-success" />
-                  <span className="font-mono text-[10px] text-nd-text-disabled">ONLINE</span>
+                <div className="mono-tag text-paper">NEXUS · ASSISTANT</div>
+                <div className="mono-tag text-paper/50" style={{ fontSize: 9, marginTop: 2 }}>
+                  ONLINE · FIBRA · SOFTWARE · OPS
                 </div>
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-3">
                 <a
                   href={TG_BOT}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Continuar en Telegram"
-                  className="p-1.5 text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
+                  className="mono-tag text-paper/50 hover:text-[color:var(--accent)] transition-colors"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
+                  TG ↗
                 </a>
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Cerrar chat"
-                  className="p-1.5 text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
+                  className="text-paper/50 hover:text-paper transition-colors"
                 >
                   <Minimize2 className="w-3.5 h-3.5" strokeWidth={1.5} />
                 </button>
               </div>
             </div>
 
-            {/* Messages — Fix #3: clearer visual distinction */}
-            <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3 overscroll-contain">
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 overscroll-contain">
               {messages.length === 0 && !loading && (
-                <div className="text-center font-mono text-[10px] text-nd-text-disabled mt-8 uppercase tracking-[0.08em]">
+                <div className="text-center mono-tag text-paper/40 mt-8">
                   [CONNECTING...]
                 </div>
               )}
@@ -194,39 +194,31 @@ export function ChatWidget() {
               {messages.map((msg) => (
                 <div
                   key={msg.ts}
-                  className={`flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  className={`flex items-start gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  {/* Bot avatar */}
                   {msg.role === 'bot' && (
-                    <div className="w-6 h-6 rounded-full bg-nd-surface-raised border border-nd-border flex items-center justify-center flex-shrink-0">
-                      <Bot className="w-3 h-3 text-nd-text-disabled" strokeWidth={1.5} />
-                    </div>
+                    <span className="mono-tag text-[color:var(--accent)] pt-1 flex-shrink-0" style={{ width: 28 }}>NX</span>
                   )}
                   <div
-                    className={`max-w-[80%] px-3 py-2.5 text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3 py-2 text-[14px] leading-relaxed ${
                       msg.role === 'user'
-                        ? 'bg-nd-text-display text-nd-black rounded-lg rounded-br-sm font-medium'
-                        : 'bg-nd-surface-raised text-nd-text-primary border border-nd-border rounded-lg rounded-bl-sm'
+                        ? 'bg-paper text-ink'
+                        : 'bg-graphite text-paper border border-[color:var(--rule)]'
                     }`}
                   >
                     {renderText(msg.text)}
                   </div>
-                  {/* User marker */}
                   {msg.role === 'user' && (
-                    <div className="w-6 h-6 rounded-full bg-nd-text-display flex items-center justify-center flex-shrink-0">
-                      <span className="text-nd-black text-[9px] font-mono font-bold">YOU</span>
-                    </div>
+                    <span className="mono-tag text-paper/60 pt-1 flex-shrink-0" style={{ width: 28, textAlign: 'right' }}>YOU</span>
                   )}
                 </div>
               ))}
 
               {/* Typing indicator */}
               {loading && (
-                <div className="flex items-end gap-2 justify-start">
-                  <div className="w-6 h-6 rounded-full bg-nd-surface-raised border border-nd-border flex items-center justify-center flex-shrink-0">
-                    <Bot className="w-3 h-3 text-nd-text-disabled" strokeWidth={1.5} />
-                  </div>
-                  <div className="font-mono text-[11px] text-nd-text-disabled px-3 py-2">
+                <div className="flex items-start gap-2 justify-start">
+                  <span className="mono-tag text-[color:var(--accent)] pt-1 flex-shrink-0" style={{ width: 28 }}>NX</span>
+                  <div className="mono-tag text-paper/60 px-3 py-2">
                     [TYPING...]
                   </div>
                 </div>
@@ -234,12 +226,13 @@ export function ChatWidget() {
 
               {/* Quick actions */}
               {messages.length === 1 && !loading && (
-                <div className="grid grid-cols-2 gap-1.5 pt-1">
+                <div className="grid grid-cols-2 gap-1.5 pt-2">
                   {QUICK_ACTIONS.map(a => (
                     <button
                       key={a.label}
                       onClick={() => sendMessage(a.text)}
-                      className="text-left px-3 py-2 font-mono text-[10px] uppercase tracking-[0.06em] text-nd-text-secondary border border-nd-border hover:border-nd-border-visible hover:text-nd-text-display transition-colors duration-200 rounded-sm leading-tight"
+                      className="text-left px-3 py-2.5 mono-tag text-paper/75 hover:text-paper hover:bg-paper/5 transition-colors"
+                      style={{ border: '1px solid var(--rule)' }}
                     >
                       {a.label}
                     </button>
@@ -253,7 +246,7 @@ export function ChatWidget() {
             {/* Input */}
             <form
               onSubmit={handleSubmit}
-              className="flex items-center gap-2 px-3 py-3 border-t border-nd-border flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-3 rule-top flex-shrink-0"
             >
               <input
                 ref={inputRef}
@@ -264,21 +257,22 @@ export function ChatWidget() {
                 disabled={loading}
                 autoComplete="off"
                 maxLength={500}
-                className="flex-1 bg-transparent border-b border-nd-border-visible px-0 py-2 text-sm text-nd-text-display font-sans placeholder:text-nd-text-disabled outline-none focus:border-nd-text-primary transition-colors duration-200 disabled:opacity-40"
+                className="flex-1 bg-transparent border-b px-0 py-2 text-[14px] text-paper placeholder:text-paper/35 outline-none transition-colors disabled:opacity-40"
+                style={{ borderColor: 'var(--rule-strong)' }}
               />
               <button
                 type="submit"
                 disabled={!input.trim() || loading}
                 aria-label="Enviar mensaje"
-                className="w-8 h-8 rounded-full bg-nd-text-display flex items-center justify-center flex-shrink-0 disabled:opacity-30 transition-opacity duration-200 hover:bg-nd-text-primary"
+                className="px-3 py-2 bg-laser text-ink mono-tag disabled:opacity-30 transition-opacity hover:opacity-90"
               >
-                <Send className="w-3.5 h-3.5 text-nd-black" />
+                →
               </button>
             </form>
 
             {/* Footer */}
-            <div className="text-center font-mono text-[9px] uppercase tracking-[0.1em] text-nd-text-disabled py-1.5 flex-shrink-0">
-              Nexus Engineering AI
+            <div className="text-center mono-tag text-paper/35 py-2 flex-shrink-0" style={{ fontSize: 9 }}>
+              NEXUS ENGINEERING · AI ASSISTANT
             </div>
           </motion.div>
         )}

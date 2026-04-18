@@ -8,21 +8,21 @@
     "cta": "Solicitar Proyecto"
   },
   "hero": {
-    "badge": "Infraestructura FTTH · Software de Campo · Automatización IA",
-    "title1": "Construimos",
-    "title2": "Redes.",
-    "title3": "Desarrollamos",
-    "title4": "Tecnología.",
-    "subtitle": "Desplegamos redes de fibra NE3/NE4 y construimos el software que las opera — desde apps para técnicos y gestión de proyectos hasta bots de IA que automatizan agendamiento y reportes.",
-    "btnPrimary": "Descubrir Servicios",
-    "btnSecondary": "Nuestro Software",
+    "badge": "Fibra · Software · Operaciones",
+    "title1": "Glasfaser,",
+    "title2": "präzise.",
+    "title3": "Del plano",
+    "title4": "al empalme.",
+    "subtitle": "Construimos redes de fibra NE3/NE4 y escribimos el software que usamos en obra. Medido en tiempo real. A tiempo, o te llamamos.",
+    "btnPrimary": "Ver capacidades",
+    "btnSecondary": "Stack de software",
     "stats": {
       "km": "km Fibra",
       "connections": "Conexiones",
       "countries": "Países"
     },
-    "title5": "Integramos",
-    "title6": "Ecosistemas."
+    "title5": "Medido",
+    "title6": "en metros."
   },
   "values": {
     "quality": "Calidad",
@@ -30,14 +30,14 @@
     "service": "Servicio"
   },
   "services": {
-    "label": "Nuestra Experiencia",
-    "title": "Infraestructura &",
-    "titleHighlight": "Soluciones Digitales",
+    "label": "Capacidades",
+    "title": "Dos disciplinas.",
+    "titleHighlight": "Un sistema.",
     "subtitle": "Desde la infraestructura física hasta la transformación digital – ofrecemos soluciones integrales para la industria de telecomunicaciones.",
     "fiber": {
-      "title": "Infraestructura de Fibra",
-      "subtitle": "Soluciones de Fibra Óptica",
-      "description": "Despliegue profesional de redes de fibra óptica con los más altos estándares de calidad para operadores de red y municipios.",
+      "title": "Fibra, de extremo a extremo.",
+      "subtitle": "Fibra · Campo",
+      "description": "Especialistas NE3 y NE4. Soplado, fusión, control de calidad — medido en metros, cerrado en días, no en meses.",
       "items": {
         "ne3_label": "NE3 Ausbau",
         "ne3": "Redes de distribución regional desde KEV hasta HÜP",
@@ -50,9 +50,9 @@
       }
     },
     "software": {
-      "title": "Software & Digital",
-      "subtitle": "Soluciones Digitales",
-      "description": "Soluciones de software a medida y productos digitales para eficiencia y escalabilidad en la industria de telecomunicaciones.",
+      "title": "Software, nuestro.",
+      "subtitle": "Software · Propio",
+      "description": "Escribimos las herramientas que usamos en obra. Apps de campo, trackers, dashboards, bots — el mismo stack para nuestros equipos y nuestros clientes.",
       "items": {
         "control_label": "Sistema de Control",
         "control": "Sistema de Control para gestión de proyectos",
@@ -66,10 +66,10 @@
     }
   },
   "products": {
-    "label": "Nuestros Productos",
-    "title": "Software que",
-    "titleHighlight": "Transforma",
-    "subtitle": "Desarrollamos herramientas reales en uso activo — desde apps para técnicos de campo hasta sistemas de control financiero y analítica con IA.",
+    "label": "Stack de software",
+    "title": "Construido en obra.",
+    "titleHighlight": "Probado en campo.",
+    "subtitle": "Cada producto va primero a nuestros equipos. Si falla un martes en Celle, sale el miércoles.",
     "status": {
       "live": "Live",
       "beta": "Beta",
@@ -186,9 +186,9 @@
     }
   },
   "stats": {
-    "label": "Métricas",
-    "title": "Nuestros Números",
-    "subtitle": "Cifras que respaldan nuestra experiencia en fibra óptica y desarrollo de software.",
+    "label": "Operaciones",
+    "title": "Números, medidos.",
+    "subtitle": "Métricas en vivo de proyectos NE3/NE4. Sin redondeos de marketing.",
     "experience": "Años de Experiencia",
     "km": "Kilómetros de Fibra",
     "connections": "Conexiones Realizadas",
@@ -217,9 +217,9 @@
     }
   },
   "portfolio": {
-    "label": "Referencias",
-    "title": "Proyectos",
-    "titleHighlight": "Exitosos",
+    "label": "Trabajo seleccionado",
+    "title": "Entregado.",
+    "titleHighlight": "Archivos de caso.",
     "subtitle": "Una selección de nuestros proyectos de infraestructura y software en Alemania y Colombia.",
     "status": {
       "active": "En Curso",
@@ -273,9 +273,9 @@
     }
   },
   "contact": {
-    "label": "Contacto",
-    "title": "Inicie Su",
-    "titleHighlight": "Proyecto",
+    "label": "Briefing",
+    "title": "Dinos qué necesitas.",
+    "titleHighlight": "Respondemos mañana.",
     "subtitle": "Ya sea despliegue de fibra o desarrollo de software – estamos encantados de asesorarle y encontrar la solución óptima.",
     "info": {
       "title": "Hablemos",
@@ -317,16 +317,16 @@
     }
   },
   "trustBanner": {
-    "germanTech": "Tecnología alemana · Presencia colombiana",
-    "iso": "ISO 9001",
-    "ftth": "FTTH Certified",
-    "availability": "Disponible 24/7"
+    "germanTech": "Ingeniería alemana",
+    "iso": "DIN · EN · ISO",
+    "ftth": "NE3 · NE4 certificado",
+    "availability": "24 / 7 Field Ops"
   },
   "teamSection": {
-    "label": "Nuestro Equipo",
-    "title": "Expertos en",
-    "titleHighlight": "Fibra & Software",
-    "description": "Combinamos experiencia técnica alemana con innovación latinoamericana para ofrecer soluciones de clase mundial.",
+    "label": "Personas",
+    "title": "Tres socios.",
+    "titleHighlight": "Una mesa.",
+    "description": "Fibra, operaciones, software. Dividimos el trabajo, no la responsabilidad.",
     "members": {
       "ceo": {
         "name": "Hector M. Rodriguez",
@@ -387,13 +387,19 @@
       "city": "Alemania",
       "role": "Sede Central",
       "description": "Centro de operaciones para proyectos de fibra óptica en Alemania y Europa.",
-      "stats": { "fiber": "km Fibra", "quality": "Calidad" }
+      "stats": {
+        "fiber": "km Fibra",
+        "quality": "Calidad"
+      }
     },
     "colombia": {
       "city": "Colombia",
       "role": "Centro de Desarrollo",
       "description": "Equipo de desarrollo de software y operaciones LATAM.",
-      "stats": { "connections": "Conexiones", "support": "Soporte" }
+      "stats": {
+        "connections": "Conexiones",
+        "support": "Soporte"
+      }
     }
   },
   "footer": {

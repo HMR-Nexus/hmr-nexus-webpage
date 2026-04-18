@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { NexusLockup } from '@/components/NexusLockup';
 
 interface NavbarProps {
   onScrollToContact: () => void;
@@ -61,16 +62,13 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
         style={{ borderBottom: '1px solid var(--rule)' }}
       >
         <div className="max-w-[1440px] mx-auto px-6 md:px-7 py-3.5 flex items-center justify-between">
-          {/* Left: dot + wordmark */}
+          {/* Left: lockup (symbol + small wordmark) */}
           <button
             onClick={() => scrollToSection('home')}
-            className="flex items-center gap-2.5 text-paper"
+            className="flex items-center text-paper"
             aria-label="NEXUS — home"
           >
-            <span className="dot-accent animate-pulse-laser" />
-            <span className="mono-tag" style={{ letterSpacing: '0.1em' }}>
-              HMR NEXUS
-            </span>
+            <NexusLockup variant="horizontal" size={14} color="var(--paper)" showSuper={false} />
           </button>
 
           {/* Center: desktop nav */}

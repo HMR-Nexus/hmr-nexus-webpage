@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -18,10 +19,12 @@ const childVariants = {
 };
 
 /**
- * NEXUS Hero — D1 editorial headline, 70/25/5 composition, no gradients, no glow.
- * Voice: Direct. Technical. Calm. Understated.
+ * NEXUS Hero — D1 editorial headline, 70/25/5 composition, brand voice copy.
+ * Headline stays bilingual: "Glasfaser, präzise." is the signature.
  */
 export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -42,12 +45,10 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
           {/* Section label */}
           <motion.div variants={childVariants} className="flex items-center gap-2.5 mb-10 md:mb-16">
             <span className="dot-accent animate-pulse-laser" />
-            <span className="mono-tag text-paper/70">
-              Fibre · Software · Operations
-            </span>
+            <span className="mono-tag text-paper/70">{t('hero.badge')}</span>
           </motion.div>
 
-          {/* D1 headline — the core of the brand voice */}
+          {/* D1 headline — the signature, kept bilingual */}
           <motion.h1
             variants={childVariants}
             className="font-display text-paper"
@@ -59,13 +60,13 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               margin: 0,
             }}
           >
-            Glasfaser,
+            {t('hero.title1')}
             <br />
-            <span style={{ fontWeight: 500 }}>präzise</span>
+            <span style={{ fontWeight: 500 }}>{t('hero.title2').replace(/\.$/, '')}</span>
             <span style={{ color: 'var(--accent)' }}>.</span>
           </motion.h1>
 
-          {/* Subline in EN/ES — bilingual editorial style */}
+          {/* Subline + technical metadata */}
           <motion.div
             variants={childVariants}
             className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start"
@@ -82,8 +83,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
                 maxWidth: '52ch',
               }}
             >
-              Fibre, from plan to splice. Measured in metres, tracked in real-time.
-              We write the software we use on site. We sell what works.
+              {t('hero.subtitle')}
             </p>
 
             <div className="md:col-span-5 mono-tag text-paper/50 leading-relaxed">
@@ -110,7 +110,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               className="inline-flex items-center gap-3 px-6 py-4 bg-laser text-ink mono-tag hover:opacity-90 transition-opacity"
             >
               <span className="dot-accent" style={{ background: 'var(--ink)' }} />
-              See capabilities →
+              {t('hero.btnPrimary')}  →
             </button>
 
             <button
@@ -118,13 +118,13 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
               className="inline-flex items-center gap-3 px-6 py-4 mono-tag text-paper hover:bg-paper/5 transition-colors"
               style={{ border: '1px solid var(--rule-strong)' }}
             >
-              Software stack →
+              {t('hero.btnSecondary')}  →
             </button>
           </div>
 
           <div className="mono-tag text-paper/45 max-w-xs md:text-right">
-            Two disciplines, one system.<br/>
-            NE3 · NE4 specialist. On time, or we call you.
+            {t('hero.title3')} {t('hero.title4')}<br/>
+            {t('hero.title5')} {t('hero.title6')}
           </div>
         </motion.div>
       </div>
