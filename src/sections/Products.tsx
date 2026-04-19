@@ -22,7 +22,7 @@ interface Product {
 }
 
 const heroProduct: Product = {
-  key: 'workmanager', status: 'live', link: 'https://jarl9801.github.io/work-manager/',
+  key: 'workmanager', status: 'live',
 };
 
 const otherProducts: Product[] = [
