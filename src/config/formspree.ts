@@ -4,10 +4,10 @@
 
 export const FORMSPREE_CONFIG = {
   // Form ID de Formspree (reemplazar con el tuyo)
-  formId: 'xoqzgqve',
+  formId: 'mkokzwjb',
   
   // URL del formulario
-  formUrl: 'https://formspree.io/f/xoqzgqve',
+  formUrl: 'https://formspree.io/f/mkokzwjb',
   
   // Configuración de seguridad
   security: {
