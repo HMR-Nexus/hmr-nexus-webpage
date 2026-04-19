@@ -42,8 +42,8 @@ export function Footer() {
               <div>Am Riethkamp 1E</div>
               <div>29229 Celle · Deutschland</div>
               <div className="pt-3">
-                <a href="mailto:hello@hmr-nexus.com" className="text-paper hover:text-[color:var(--accent)] transition-colors">
-                  hello@hmr-nexus.com
+                <a href="mailto:info@hmr-nexus.com" className="text-paper hover:text-[color:var(--accent)] transition-colors">
+                  info@hmr-nexus.com
                 </a>
               </div>
             </div>
