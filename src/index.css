@@ -50,6 +50,12 @@
     --nexus-blue-mid: #FF4D2E;
     --nexus-blue-light: #EAE6DC;
 
+    /* Semantic palette — used by the canonical kit (Badge/Alert/KPI tones) */
+    --success: #4ADE80;
+    --warning: #FFB020;
+    --error: #FF4D2E;
+    --info: #6BA6FF;
+
     --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 
@@ -168,3 +174,204 @@
 ::-webkit-scrollbar-track { background: var(--ink); }
 ::-webkit-scrollbar-thumb { background: var(--graphite); }
 ::-webkit-scrollbar-thumb:hover { background: #2a2c32; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   NEXUS.OS Component Library (.nx-*) — wrappers in src/components/ui/nexus/
+   Mirror of fincontrol kit, using local tokens (var(--ink|paper|graphite|accent))
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.nx-btn {
+  font-family: var(--f-text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  transition: all 120ms cubic-bezier(0.3, 0, 0.2, 1);
+}
+.nx-btn-primary { background: var(--accent); color: var(--accent-ink); }
+.nx-btn-primary:hover { background: #FF6B50; }
+.nx-btn-secondary { background: var(--graphite); color: var(--paper); border-color: var(--rule-strong); }
+.nx-btn-secondary:hover { background: #262A34; }
+.nx-btn-ghost { background: transparent; color: var(--paper); border-color: var(--rule-strong); }
+.nx-btn-ghost:hover { background: var(--graphite); }
+.nx-btn-danger { background: transparent; color: var(--accent); border-color: rgba(255, 77, 46, 0.4); }
+.nx-btn-danger:hover { background: rgba(255, 77, 46, 0.1); }
+.nx-btn-sm { padding: 6px 10px; font-size: 12px; }
+
+/* ── Badges ────────────────────────────────────────────────── */
+.nx-badge {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nx-badge-dot::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.nx-badge-ok { background: rgba(74, 222, 128, 0.12); color: var(--success); }
+.nx-badge-warn { background: rgba(255, 176, 32, 0.12); color: var(--warning); }
+.nx-badge-err { background: rgba(255, 77, 46, 0.12); color: var(--error); }
+.nx-badge-info { background: rgba(107, 166, 255, 0.12); color: var(--info); }
+.nx-badge-neutral { background: var(--graphite); color: var(--bone); }
+
+/* ── Alerts ────────────────────────────────────────────────── */
+.nx-alert {
+  display: flex;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--paper);
+}
+.nx-alert-ok { border-color: rgba(74, 222, 128, 0.3); background: rgba(74, 222, 128, 0.05); }
+.nx-alert-warn { border-color: rgba(255, 176, 32, 0.3); background: rgba(255, 176, 32, 0.05); }
+.nx-alert-err { border-color: rgba(255, 77, 46, 0.35); background: rgba(255, 77, 46, 0.05); }
+.nx-alert-info { border-color: rgba(107, 166, 255, 0.3); background: rgba(107, 166, 255, 0.05); }
+
+/* ── Tabs ──────────────────────────────────────────────────── */
+.nx-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--rule);
+  gap: 4px;
+}
+.nx-tab {
+  padding: 10px 14px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.nx-tab:hover { color: var(--bone); }
+.nx-tab.active {
+  color: var(--paper);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Toggle ────────────────────────────────────────────────── */
+.nx-toggle {
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--graphite);
+  border: 1px solid var(--rule-strong);
+  position: relative;
+  cursor: pointer;
+}
+.nx-toggle::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--bone);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: all 120ms cubic-bezier(0.3, 0, 0.2, 1);
+}
+.nx-toggle.on { background: var(--accent); border-color: var(--accent); }
+.nx-toggle.on::after { left: 20px; background: var(--accent-ink); }
+
+/* ── Data table ────────────────────────────────────────────── */
+.nx-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.nx-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  border-bottom: 1px solid var(--rule);
+  font-weight: 500;
+}
+.nx-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--paper);
+}
+.nx-table tr:hover td { background: var(--graphite); }
+.nx-table .mono { font-family: var(--f-mono); font-size: 12px; color: var(--bone); }
+.nx-table .num { font-variant-numeric: tabular-nums; }
+
+/* ── Panel ─────────────────────────────────────────────────── */
+.panel {
+  background: var(--graphite);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.phead {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.phead .title {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--paper);
+  letter-spacing: -0.01em;
+}
+.phead .m {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.pbody { padding: 18px; }
+
+/* ── Display utilities (nd-* shared with fincontrol) ──────── */
+.nd-display {
+  font-family: var(--f-display);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+.nd-mono {
+  font-family: var(--f-mono);
+  letter-spacing: 0.02em;
+}
+.nd-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+
+/* ── Fade-in animation (used by Toast) ────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn { animation: fadeIn 180ms cubic-bezier(0.3, 0, 0.2, 1); }
