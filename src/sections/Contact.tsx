@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useForm } from '@formspree/react';
 import { motion } from 'framer-motion';
@@ -28,6 +28,13 @@ export function Contact({ preselectedType }: ContactProps) {
   const [localErrors, setLocalErrors] = useState<Record<string, boolean>>({});
 
   const [formspreeState, handleFormspreeSubmit] = useForm(FORMSPREE_CONFIG.formId);
+
+  useEffect(() => {
+    const projectTypeSelect = formRef.current?.elements.namedItem('projectType') as HTMLSelectElement | null;
+    if (projectTypeSelect && preselectedType) {
+      projectTypeSelect.value = preselectedType;
+    }
+  }, [preselectedType]);
 
   const projectTypes = [
     { value: 'ne3',      label: t('contact.form.types.ne3') },

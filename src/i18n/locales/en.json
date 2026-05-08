@@ -49,6 +49,50 @@
         "pm": "Planning, documentation and QA"
       }
     },
+    "ne4": {
+      "label": "NE4 · FTTH operations",
+      "title": "NE4 ready to connect homes.",
+      "intro": "We support the last mile from handover preparation to final documentation: house connection, splice, activation support, and ordered evidence for technical closeout.",
+      "scope": {
+        "title": "Scope",
+        "items": {
+          "handover": {
+            "label": "Handover point",
+            "text": "Review of HÜP, internal route, and installation conditions before field work starts."
+          },
+          "connection": {
+            "label": "FTTH connection",
+            "text": "House connection routing and preparation with coordinated field execution."
+          },
+          "splice": {
+            "label": "Splice and ONT",
+            "text": "Splicing, termination, and support to prepare the service for activation."
+          },
+          "activation": {
+            "label": "Technical closeout",
+            "text": "Documentation, checklist, and quality signals for a traceable handover."
+          }
+        }
+      },
+      "lifecycle": {
+        "title": "Process",
+        "steps": {
+          "survey": "We check site conditions and constraints before scheduling the installation.",
+          "install": "We execute the connection and interior preparation against the project documentation.",
+          "splice": "We splice, terminate, and verify technical signals without promising out-of-scope metrics.",
+          "document": "We close with evidence, field notes, and handover material for operations or billing."
+        }
+      },
+      "quality": {
+        "title": "QA signals",
+        "signals": {
+          "photos": "Visual evidence of the worked location and final state.",
+          "checks": "Installation and review checklists before closeout.",
+          "handover": "Clear documentation so project, operations, and client teams share the same status."
+        }
+      },
+      "cta": "Request NE4 briefing"
+    },
     "software": {
       "title": "Software, ours.",
       "subtitle": "Software · Native",

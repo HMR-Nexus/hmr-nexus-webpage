@@ -49,6 +49,50 @@
         "pm": "Planificación, documentación y control de calidad"
       }
     },
+    "ne4": {
+      "label": "NE4 · Operación FTTH",
+      "title": "NE4 listo para conectar hogares.",
+      "intro": "Acompañamos la última milla desde la preparación del punto de entrega hasta la documentación final: acometida, fusión, activación y evidencias ordenadas para cierre técnico.",
+      "scope": {
+        "title": "Alcance",
+        "items": {
+          "handover": {
+            "label": "Punto de entrega",
+            "text": "Revisión de HÜP, ruta interna y condiciones de instalación antes de intervenir."
+          },
+          "connection": {
+            "label": "Acometida FTTH",
+            "text": "Tendido y preparación de la conexión domiciliaria con coordinación de campo."
+          },
+          "splice": {
+            "label": "Fusión y ONT",
+            "text": "Empalme, terminación y soporte para dejar el servicio preparado para activación."
+          },
+          "activation": {
+            "label": "Cierre técnico",
+            "text": "Documentación, checklist y señales de calidad para entregar el trabajo trazable."
+          }
+        }
+      },
+      "lifecycle": {
+        "title": "Proceso",
+        "steps": {
+          "survey": "Levantamos condiciones del sitio y restricciones antes de programar la instalación.",
+          "install": "Ejecutamos acometida y preparación interior siguiendo la documentación del proyecto.",
+          "splice": "Fusionamos, terminamos y verificamos señales técnicas sin prometer métricas fuera de alcance.",
+          "document": "Cerramos con evidencias, notas de campo y handover para operación o facturación."
+        }
+      },
+      "quality": {
+        "title": "Señales de QA",
+        "signals": {
+          "photos": "Evidencia visual del punto intervenido y del estado final.",
+          "checks": "Checklists de instalación y revisión antes de cierre.",
+          "handover": "Documentación clara para que proyecto, operación y cliente hablen del mismo estado."
+        }
+      },
+      "cta": "Solicitar briefing NE4"
+    },
     "software": {
       "title": "Software, nuestro.",
       "subtitle": "Software · Propio",

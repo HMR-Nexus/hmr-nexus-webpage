@@ -85,7 +85,7 @@ function App() {
 
         {/* Below-the-fold — lazy loaded with generous spacing */}
         <Suspense fallback={<SectionLoader />}>
-          <Services />
+          <Services onRequestNE4Briefing={() => scrollToContact('ne4')} />
           <div className="section-divider" />
           <Products onRequestDemo={() => scrollToContact('saas')} />
         </Suspense>

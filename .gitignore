@@ -7,6 +7,7 @@ dist/
 .vercel
 
 # AI agent configs
+.atl/
 .agents/
 .claude/
 skills-lock.json

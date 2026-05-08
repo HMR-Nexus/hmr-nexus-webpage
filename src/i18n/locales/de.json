@@ -49,6 +49,50 @@
         "pm": "Planung, Dokumentation und QS"
       }
     },
+    "ne4": {
+      "label": "NE4 · FTTH-Betrieb",
+      "title": "NE4 bereit für Hausanschlüsse.",
+      "intro": "Wir begleiten die letzte Meile von der Vorbereitung des Übergabepunkts bis zur Abschlussdokumentation: Hausanschluss, Spleißung, Aktivierungsunterstützung und geordnete Nachweise für den technischen Abschluss.",
+      "scope": {
+        "title": "Umfang",
+        "items": {
+          "handover": {
+            "label": "Übergabepunkt",
+            "text": "Prüfung von HÜP, Innenweg und Installationsbedingungen vor dem Feldeinsatz."
+          },
+          "connection": {
+            "label": "FTTH-Anschluss",
+            "text": "Führung und Vorbereitung des Hausanschlusses mit koordinierter Ausführung im Feld."
+          },
+          "splice": {
+            "label": "Spleißung und ONT",
+            "text": "Spleißen, Terminierung und Unterstützung, damit der Dienst für die Aktivierung vorbereitet ist."
+          },
+          "activation": {
+            "label": "Technischer Abschluss",
+            "text": "Dokumentation, Checkliste und Qualitätssignale für eine nachvollziehbare Übergabe."
+          }
+        }
+      },
+      "lifecycle": {
+        "title": "Prozess",
+        "steps": {
+          "survey": "Wir prüfen Standortbedingungen und Einschränkungen, bevor die Installation terminiert wird.",
+          "install": "Wir setzen Anschluss und Innenvorbereitung gemäß Projektdokumentation um.",
+          "splice": "Wir spleißen, terminieren und prüfen technische Signale ohne Kennzahlen außerhalb des Auftrags zu versprechen.",
+          "document": "Wir schließen mit Nachweisen, Feldnotizen und Übergabematerial für Betrieb oder Abrechnung ab."
+        }
+      },
+      "quality": {
+        "title": "QS-Signale",
+        "signals": {
+          "photos": "Visuelle Nachweise des bearbeiteten Punkts und des Endzustands.",
+          "checks": "Installations- und Prüfchecklisten vor dem Abschluss.",
+          "handover": "Klare Dokumentation, damit Projekt, Betrieb und Kunde denselben Status teilen."
+        }
+      },
+      "cta": "NE4-Briefing anfragen"
+    },
     "software": {
       "title": "Software, selbst gebaut.",
       "subtitle": "Software · nativ",
