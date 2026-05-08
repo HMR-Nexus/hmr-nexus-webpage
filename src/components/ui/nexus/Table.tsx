@@ -77,9 +77,9 @@ function Table<T extends Record<string, unknown>>({
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => (
+          {rows.map((row, index) => (
             <tr
-              key={String(row[rowKey as keyof T] ?? Math.random())}
+              key={String(row[rowKey as keyof T] ?? `row-${index}`)}
               onClick={onRowClick ? () => onRowClick(row) : undefined}
               className={onRowClick ? 'cursor-pointer' : ''}
             >
