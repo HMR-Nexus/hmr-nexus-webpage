@@ -48,9 +48,9 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
   ];
 
   const languages = [
-    { code: 'de', label: 'DE' },
-    { code: 'en', label: 'EN' },
-    { code: 'es', label: 'ES' },
+    { code: 'de', label: 'DE', name: 'Deutsch' },
+    { code: 'en', label: 'EN', name: 'English' },
+    { code: 'es', label: 'ES', name: 'Español' },
   ];
 
   return (
@@ -87,20 +87,26 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
           {/* Right: locale + CTA + mobile toggle */}
           <div className="flex items-center gap-4">
             {/* Locale switcher */}
-            <div className="hidden md:flex items-center gap-1.5 mono-tag text-paper">
-              {languages.map((lng, i) => (
-                <span key={lng.code} className="flex items-center">
-                  {i > 0 && <span className="opacity-30 mx-1.5">/</span>}
-                  <button
-                    onClick={() => changeLanguage(lng.code)}
-                    className={`transition-opacity ${
-                      currentLang.startsWith(lng.code) ? 'opacity-100' : 'opacity-40 hover:opacity-80'
-                    }`}
-                  >
-                    {lng.label}
-                  </button>
-                </span>
-              ))}
+            <div className="hidden md:flex items-center gap-1.5 mono-tag text-paper" role="group" aria-label="Select language">
+              {languages.map((lng, i) => {
+                const isCurrent = currentLang.startsWith(lng.code);
+                return (
+                  <span key={lng.code} className="flex items-center">
+                    {i > 0 && <span className="opacity-30 mx-1.5">/</span>}
+                    <button
+                      onClick={() => changeLanguage(lng.code)}
+                      aria-label={`Change language to ${lng.name}`}
+                      aria-pressed={isCurrent}
+                      aria-current={isCurrent ? 'true' : undefined}
+                      className={`transition-opacity ${
+                        isCurrent ? 'opacity-100' : 'opacity-40 hover:opacity-80'
+                      }`}
+                    >
+                      {lng.label}
+                    </button>
+                  </span>
+                );
+              })}
             </div>
 
             {/* CTA */}
@@ -116,7 +122,9 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
             <button
               className="lg:hidden text-paper"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-controls="mobile-navigation-menu"
+              aria-expanded={isMobileMenuOpen}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -128,11 +136,15 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-navigation-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 bg-ink pt-20 lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -145,18 +157,24 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
                 </button>
               ))}
 
-              <div className="rule-top pt-6 mt-2 flex items-center gap-3 mono-tag text-paper">
-                {languages.map((lng, i) => (
-                  <span key={lng.code} className="flex items-center">
-                    {i > 0 && <span className="opacity-30 mx-2">/</span>}
-                    <button
-                      onClick={() => changeLanguage(lng.code)}
-                      className={currentLang.startsWith(lng.code) ? 'opacity-100' : 'opacity-40'}
-                    >
-                      {lng.label}
-                    </button>
-                  </span>
-                ))}
+              <div className="rule-top pt-6 mt-2 flex items-center gap-3 mono-tag text-paper" role="group" aria-label="Select language">
+                {languages.map((lng, i) => {
+                  const isCurrent = currentLang.startsWith(lng.code);
+                  return (
+                    <span key={lng.code} className="flex items-center">
+                      {i > 0 && <span className="opacity-30 mx-2">/</span>}
+                      <button
+                        onClick={() => changeLanguage(lng.code)}
+                        aria-label={`Change language to ${lng.name}`}
+                        aria-pressed={isCurrent}
+                        aria-current={isCurrent ? 'true' : undefined}
+                        className={isCurrent ? 'opacity-100' : 'opacity-40'}
+                      >
+                        {lng.label}
+                      </button>
+                    </span>
+                  );
+                })}
               </div>
 
               <button

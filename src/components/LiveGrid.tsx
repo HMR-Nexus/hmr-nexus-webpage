@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 
 /**
  * LiveGrid — animated dot-matrix background.
@@ -20,6 +20,18 @@ export function LiveGrid({ className = '' }: { className?: string }) {
   const dotsRef = useRef<Dot[][]>([]);
   const frameRef = useRef(0);
   const sizeRef = useRef({ cols: 0, rows: 0, w: 0, h: 0 });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ));
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+
+    handleChange();
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   const initDots = useCallback((cols: number, rows: number) => {
     const dots: Dot[][] = [];
@@ -37,6 +49,8 @@ export function LiveGrid({ className = '' }: { className?: string }) {
   }, []);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -142,7 +156,9 @@ export function LiveGrid({ className = '' }: { className?: string }) {
       window.removeEventListener('resize', resize);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [initDots]);
+  }, [initDots, prefersReducedMotion]);
+
+  if (prefersReducedMotion) return null;
 
   return (
     <canvas

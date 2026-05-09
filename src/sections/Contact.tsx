@@ -83,6 +83,8 @@ export function Contact({ preselectedType }: ContactProps) {
   const inputBase =
     'w-full bg-transparent border-b border-[color:var(--rule-strong)] text-paper font-sans text-[15px] py-3 px-0 outline-none placeholder:text-paper/35 transition-colors duration-200 focus:border-[color:var(--accent)]';
   const inputError = '!border-[color:var(--signal-error,#FF4D2E)]';
+  const fieldError = (field: string) => `${field}-error`;
+  const errorMessage = (label: string) => `${label}: ${t('contact.form.error')}`;
 
   return (
     <section id="contact" className="bg-ink text-paper py-24 md:py-32">
@@ -172,8 +174,15 @@ export function Contact({ preselectedType }: ContactProps) {
                   <input
                     id="firstName" type="text" name="firstName" autoComplete="given-name"
                     placeholder="Max" required minLength={2} maxLength={50}
+                    aria-invalid={localErrors.firstName || undefined}
+                    aria-describedby={localErrors.firstName ? fieldError('firstName') : undefined}
                     className={`${inputBase} ${localErrors.firstName ? inputError : ''}`}
                   />
+                  {localErrors.firstName && (
+                    <p id={fieldError('firstName')} className="sr-only">
+                      {errorMessage(t('contact.form.firstName'))}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="lastName" className="mono-tag text-paper/50 block mb-2">
@@ -182,8 +191,15 @@ export function Contact({ preselectedType }: ContactProps) {
                   <input
                     id="lastName" type="text" name="lastName" autoComplete="family-name"
                     placeholder="Mustermann" required minLength={2} maxLength={50}
+                    aria-invalid={localErrors.lastName || undefined}
+                    aria-describedby={localErrors.lastName ? fieldError('lastName') : undefined}
                     className={`${inputBase} ${localErrors.lastName ? inputError : ''}`}
                   />
+                  {localErrors.lastName && (
+                    <p id={fieldError('lastName')} className="sr-only">
+                      {errorMessage(t('contact.form.lastName'))}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -196,8 +212,15 @@ export function Contact({ preselectedType }: ContactProps) {
                   <input
                     id="email" type="email" name="email" autoComplete="email" spellCheck={false}
                     placeholder="max@firma.de" required maxLength={100}
+                    aria-invalid={localErrors.email || undefined}
+                    aria-describedby={localErrors.email ? fieldError('email') : undefined}
                     className={`${inputBase} ${localErrors.email ? inputError : ''}`}
                   />
+                  {localErrors.email && (
+                    <p id={fieldError('email')} className="sr-only">
+                      {errorMessage(t('contact.form.email'))}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="phone" className="mono-tag text-paper/50 block mb-2">
@@ -217,6 +240,8 @@ export function Contact({ preselectedType }: ContactProps) {
                 </label>
                 <select
                   id="projectType" name="projectType" defaultValue={preselectedType || ''} required
+                  aria-invalid={localErrors.projectType || undefined}
+                  aria-describedby={localErrors.projectType ? fieldError('projectType') : undefined}
                   className={`${inputBase} bg-transparent cursor-pointer appearance-none ${localErrors.projectType ? inputError : ''}`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239A9A94'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
@@ -232,6 +257,11 @@ export function Contact({ preselectedType }: ContactProps) {
                     </option>
                   ))}
                 </select>
+                {localErrors.projectType && (
+                  <p id={fieldError('projectType')} className="sr-only">
+                    {errorMessage(t('contact.form.projectType'))}
+                  </p>
+                )}
               </div>
 
               {/* Message */}
@@ -243,6 +273,8 @@ export function Contact({ preselectedType }: ContactProps) {
                   id="message" name="message" rows={5}
                   placeholder={`${t('contact.form.message')}…`}
                   required minLength={10} maxLength={1000}
+                  aria-invalid={localErrors.message || undefined}
+                  aria-describedby={localErrors.message ? fieldError('message') : undefined}
                   onChange={(e) => {
                     if (checkSpamPatterns(e.target.value)) {
                       e.target.style.borderColor = '#FF4D2E';
@@ -251,6 +283,11 @@ export function Contact({ preselectedType }: ContactProps) {
                   className={`w-full bg-transparent text-paper font-sans text-[15px] py-3 px-3 outline-none placeholder:text-paper/35 transition-colors duration-200 focus:border-[color:var(--accent)] resize-y min-h-[120px] ${localErrors.message ? inputError : ''}`}
                   style={{ border: '1px solid var(--rule-strong)' }}
                 />
+                {localErrors.message && (
+                  <p id={fieldError('message')} className="sr-only">
+                    {errorMessage(t('contact.form.message'))}
+                  </p>
+                )}
               </div>
 
               {/* Status Messages — inline, mono */}

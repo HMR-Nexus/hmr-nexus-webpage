@@ -15,7 +15,6 @@ export function TeamSection() {
 
   const team: TeamMember[] = [
     { key: 'ceo' },
-    { key: 'coo' },
     { key: 'cto' },
   ];
 
@@ -38,7 +37,7 @@ export function TeamSection() {
         </MotionSection>
 
         <motion.div
-          className="grid md:grid-cols-3"
+          className="grid md:grid-cols-2"
           style={{ border: '1px solid var(--rule)' }}
           initial="hidden"
           whileInView="visible"

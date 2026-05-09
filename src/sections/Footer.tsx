@@ -14,7 +14,10 @@ export function Footer() {
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
   };
 
   const navLinks = ['services', 'products', 'portfolio', 'contact'];
@@ -56,12 +59,16 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {navLinks.map((id) => (
                   <li key={id}>
-                    <button
-                      onClick={() => scrollToSection(id)}
+                    <a
+                      href={`#${id}`}
+                      onClick={(event) => {
+                        event.preventDefault();
+                        scrollToSection(id);
+                      }}
                       className="text-paper/80 hover:text-paper text-[15px] transition-colors"
                     >
                       {t(`nav.${id}`)}
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>
