@@ -36,7 +36,7 @@ export function WorldMapSVG({ className = '' }: WorldMapSVGProps) {
       <defs>
         <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="blur" />
-          <feFlood floodColor="#00d4ff" floodOpacity="0.6" result="color" />
+          <feFlood floodColor="#FF4D2E" floodOpacity="0.55" result="color" />
           <feComposite in="color" in2="blur" operator="in" result="glow" />
           <feMerge>
             <feMergeNode in="glow" />
@@ -45,7 +45,7 @@ export function WorldMapSVG({ className = '' }: WorldMapSVGProps) {
         </filter>
         <filter id="glow-purple" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="blur" />
-          <feFlood floodColor="#c084fc" floodOpacity="0.6" result="color" />
+          <feFlood floodColor="#F5F3EE" floodOpacity="0.35" result="color" />
           <feComposite in="color" in2="blur" operator="in" result="glow" />
           <feMerge>
             <feMergeNode in="glow" />
@@ -55,26 +55,26 @@ export function WorldMapSVG({ className = '' }: WorldMapSVGProps) {
       </defs>
 
       {/* Dark background */}
-      <rect width="1000" height="500" fill="#060e1a" />
+      <rect width="1000" height="500" fill="#0A0B0D" />
 
       {/* Land dots */}
       <g>
         {landDots.map(([x, y], i) => (
-          <circle key={i} cx={x} cy={y} r={1.2} fill="rgba(255,255,255,0.1)" />
+          <circle key={i} cx={x} cy={y} r={1.1} fill="rgba(245,243,238,0.105)" />
         ))}
       </g>
 
-      {/* Germany region dots — cyan glow */}
+      {/* Germany region dots — laser glow */}
       <g filter="url(#glow-cyan)">
         {germanyDots.map(([x, y], i) => (
-          <circle key={`de-${i}`} cx={x} cy={y} r={1.8} fill="rgba(0,212,255,0.6)" />
+          <circle key={`de-${i}`} cx={x} cy={y} r={1.75} fill="rgba(255,77,46,0.74)" />
         ))}
       </g>
 
-      {/* Colombia region dots — purple glow */}
+      {/* Colombia region dots — paper glow */}
       <g filter="url(#glow-purple)">
         {colombiaDots.map(([x, y], i) => (
-          <circle key={`co-${i}`} cx={x} cy={y} r={1.8} fill="rgba(192,132,252,0.6)" />
+          <circle key={`co-${i}`} cx={x} cy={y} r={1.75} fill="rgba(245,243,238,0.62)" />
         ))}
       </g>
     </svg>

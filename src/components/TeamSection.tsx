@@ -4,12 +4,9 @@ import { MotionSection } from '@/components/MotionSection';
 import { staggerContainer, cardEntrance } from '@/lib/motion';
 
 interface TeamMember {
-  key: string;
+  key: 'ceo' | 'cto';
 }
 
-/**
- * NEXUS Team — Field-tested. Editorial portraits with mono metadata.
- */
 export function TeamSection() {
   const { t } = useTranslation();
 
@@ -37,7 +34,7 @@ export function TeamSection() {
         </MotionSection>
 
         <motion.div
-          className="grid md:grid-cols-2"
+          className="grid lg:grid-cols-2"
           style={{ border: '1px solid var(--rule)' }}
           initial="hidden"
           whileInView="visible"
@@ -45,57 +42,45 @@ export function TeamSection() {
           variants={staggerContainer}
         >
           {team.map((member, idx) => {
-            const name = t(`teamSection.members.${member.key}.name`);
-            const initials = name.split(' ').map((n: string) => n[0]).join('').substring(0, 2);
-            const experience = Array.isArray(t(`teamSection.members.${member.key}.experience`, { returnObjects: true }))
-              ? t(`teamSection.members.${member.key}.experience`, { returnObjects: true }) as string[]
-              : [];
+            const focus = t(`teamSection.members.${member.key}.focus`, { returnObjects: true }) as string[];
 
             return (
               <motion.div
                 key={member.key}
                 variants={cardEntrance}
-                className="p-8 md:p-10 flex flex-col"
+                className="p-8 md:p-10 flex flex-col min-h-[430px]"
                 style={{ borderLeft: idx === 0 ? 'none' : '1px solid var(--rule)' }}
               >
-                <div className="mono-tag text-paper/45 mb-6">
-                  05.{idx + 1} · {t(`teamSection.members.${member.key}.role`)}
-                </div>
-
-                {/* Initials as display type — huge, quiet */}
-                <div
-                  className="font-display text-[color:var(--accent)]"
-                  style={{ fontSize: 'clamp(72px, 8vw, 120px)', lineHeight: 0.85, letterSpacing: '-0.055em', fontWeight: 300 }}
-                >
-                  {initials}
-                </div>
-
-                <div className="mt-6 rule-top pt-5">
-                  <h3
-                    className="font-display text-paper mb-1"
-                    style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500 }}
-                  >
-                    {name}
-                  </h3>
-                  <div className="mono-tag text-paper/55">
+                <div className="flex items-start justify-between gap-6 mb-8">
+                  <div>
+                    <div className="mono-tag text-paper/45 mb-3">05.{idx + 1} · {t(`teamSection.members.${member.key}.label`)}</div>
+                    <h3 className="font-display text-paper" style={{ fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 0.92, letterSpacing: '-0.035em', fontWeight: 400 }}>
+                      {t(`teamSection.members.${member.key}.name`)}
+                    </h3>
+                  </div>
+                  <div className="mono-tag text-paper/50 text-right whitespace-nowrap">
                     {t(`teamSection.members.${member.key}.location`)}
                   </div>
                 </div>
 
-                <p className="text-paper/70 text-[14px] leading-[1.55] mt-5 mb-6">
-                  {t(`teamSection.members.${member.key}.bio`)}
-                </p>
+                <div className="rule-top pt-6">
+                  <div className="mono-tag text-[color:var(--accent)] mb-3">{t(`teamSection.members.${member.key}.role`)}</div>
+                  <p className="text-paper/75 text-[15px] leading-[1.65] max-w-[62ch]">
+                    {t(`teamSection.members.${member.key}.bio`)}
+                  </p>
+                </div>
 
-                {experience.length > 0 && (
-                  <div className="rule-top pt-5 mt-auto">
-                    <div className="mono-tag text-paper/40 mb-3">EXPERIENCE</div>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1.5">
-                      {experience.map((exp, i) => (
-                        <span key={i} className="mono-tag text-paper/75">{exp}</span>
-                      ))}
-                    </div>
+                <div className="mt-auto pt-8">
+                  <div className="mono-tag text-paper/40 mb-3">{t('teamSection.focusLabel')}</div>
+                  <div className="grid gap-2">
+                    {Array.isArray(focus) && focus.map((item) => (
+                      <div key={item} className="flex items-start gap-3 border border-paper/10 px-3 py-2.5">
+                        <span className="mt-1.5 h-1.5 w-1.5 bg-[color:var(--accent)]" />
+                        <span className="text-paper/75 text-[13px] leading-[1.45]">{item}</span>
+                      </div>
+                    ))}
                   </div>
-                )}
+                </div>
               </motion.div>
             );
           })}

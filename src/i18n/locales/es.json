@@ -9,20 +9,20 @@
   },
   "hero": {
     "badge": "● HMR · ENGINEERING GMBH",
-    "title1": "Glasfaser,",
-    "title2": "reconstruida",
-    "title3": "alrededor del",
-    "title4": "software.",
-    "subtitle": "Construimos fibra NE3/NE4 y escribimos el software que la opera. El mismo stack, el mismo equipo, un portal.",
-    "btnPrimary": "Ver capacidades",
-    "btnSecondary": "Stack de software",
+    "title1": "Infraestructura de fibra",
+    "title2": "y software",
+    "title3": "para operaciones",
+    "title4": "en campo.",
+    "subtitle": "HMR Nexus Engineering GmbH ejecuta proyectos de fibra óptica en Alemania y desarrolla software operativo para coordinar equipos, documentación, control financiero y seguimiento técnico.",
+    "btnPrimary": "Ver servicios",
+    "btnSecondary": "Ver software",
     "stats": {
       "km": "km Fibra",
       "connections": "Conexiones",
       "countries": "Países"
     },
-    "title5": "Hecho desde",
-    "title6": "la trinchera, no desde la oficina."
+    "title5": "Fibra, software y control operativo",
+    "title6": "desde un solo equipo."
   },
   "values": {
     "quality": "Calidad",
@@ -31,13 +31,13 @@
   },
   "services": {
     "label": "Capacidades",
-    "title": "Dos disciplinas.",
-    "titleHighlight": "Un sistema.",
-    "subtitle": "Desde la infraestructura física hasta la transformación digital – ofrecemos soluciones integrales para la industria de telecomunicaciones.",
+    "title": "Fibra óptica y software operativo.",
+    "titleHighlight": "Un equipo para ejecutar y controlar.",
+    "subtitle": "Nos enfocamos en despliegues FTTH/NE3/NE4, coordinación de campo, documentación técnica y herramientas digitales para que la operación sea trazable de principio a fin.",
     "fiber": {
-      "title": "Fibra, de extremo a extremo.",
+      "title": "Ejecución de fibra óptica.",
       "subtitle": "Fibra · Campo",
-      "description": "Especialistas NE3 y NE4. Soplado, fusión, control de calidad — medido en metros, cerrado en días, no en meses.",
+      "description": "Trabajos NE3/NE4, acometidas, fusión, preparación de activación y documentación técnica para proyectos FTTH en Alemania.",
       "items": {
         "ne3_label": "NE3 Ausbau",
         "ne3": "Redes de distribución regional desde KEV hasta HÜP",
@@ -51,8 +51,8 @@
     },
     "ne4": {
       "label": "NE4 · Operación FTTH",
-      "title": "NE4 listo para conectar hogares.",
-      "intro": "Acompañamos la última milla desde la preparación del punto de entrega hasta la documentación final: acometida, fusión, activación y evidencias ordenadas para cierre técnico.",
+      "title": "Conexiones FTTH hasta el cliente final.",
+      "intro": "Apoyamos la última milla con revisión del sitio, instalación, fusión, preparación de ONT y documentación de cierre para que el estado técnico quede claro.",
       "scope": {
         "title": "Alcance",
         "items": {
@@ -94,9 +94,9 @@
       "cta": "Solicitar briefing NE4"
     },
     "software": {
-      "title": "Software, nuestro.",
+      "title": "Software para la operación.",
       "subtitle": "Software · Propio",
-      "description": "Escribimos las herramientas que usamos en obra. Apps de campo, trackers, dashboards, bots — el mismo stack para nuestros equipos y nuestros clientes.",
+      "description": "Desarrollamos herramientas internas y a medida para citas, reportes de campo, finanzas, clientes y control de proyectos de fibra.",
       "items": {
         "control_label": "Sistema de Control",
         "control": "Sistema de Control para gestión de proyectos",
@@ -111,122 +111,127 @@
   },
   "products": {
     "label": "Stack de software",
-    "title": "Construido en obra.",
-    "titleHighlight": "Probado en campo.",
-    "subtitle": "Cada producto va primero a nuestros equipos. Si falla un martes en Celle, sale el miércoles.",
+    "title": "Software operativo para fibra y gestión.",
+    "titleHighlight": "Herramientas reales, en uso o desarrollo.",
+    "subtitle": "Estos productos nacen de necesidades concretas de operación: coordinar campo, registrar evidencias, controlar costos y atender solicitudes de clientes. No se presentan como plataformas públicas hasta que estén listas.",
     "status": {
-      "live": "Live",
+      "live": "Live interno",
       "beta": "Beta",
-      "dev": "En Desarrollo",
+      "dev": "En desarrollo",
       "roadmap": "Roadmap"
     },
     "cta": {
       "title": "¿Tienes un proyecto en mente?",
-      "subtitle": "Desarrollamos soluciones a medida para telecomunicaciones, automatización y gestión empresarial.",
-      "btn": "Hablemos de Tu Proyecto"
+      "subtitle": "Construimos soluciones a medida para telecom, automatización y gestión empresarial.",
+      "btn": "Hablemos"
+    },
+    "lumen": {
+      "title": "Lumen",
+      "type": "Fiber Ops · Supabase · Vercel",
+      "badge": "En desarrollo",
+      "imageAlt": "Visual técnico oscuro de la plataforma de operaciones Lumen",
+      "description": "Plataforma operativa para órdenes de trabajo de fibra, Rückmeldungen, doble certificación, preparación de facturación y reportes técnicos. Diseñada alrededor de flujos reales de proyectos de fibra en Alemania.",
+      "metrics": [
+        {
+          "value": "OT",
+          "label": "Órdenes"
+        },
+        {
+          "value": "2x",
+          "label": "Certificación"
+        },
+        {
+          "value": "RLS",
+          "label": "Supabase"
+        }
+      ],
+      "features": {
+        "0": "Órdenes, reportes de campo e historial de estados en un solo modelo operativo",
+        "1": "Certificación interna antes de certificación del cliente, con puntos de facturación",
+        "2": "Personal, documentos de contratistas, materiales y alertas alrededor del mismo flujo"
+      },
+      "cta": "Pedir briefing de Lumen"
     },
     "workmanager": {
       "title": "Work Manager",
-      "type": "PWA · Field Ops",
-      "badge": "Live",
-      "description": "Aplicación web progresiva para gestión de obras de fibra óptica. Rastrea el ciclo completo desde soplado hasta certificación y facturación.",
+      "type": "NE4 PWA · Campo offline",
+      "badge": "Live interno",
+      "imageAlt": "Visual oscuro de Work Manager PWA para equipos NE4",
+      "description": "PWA para equipos de instalación NE4: login de coordinación, acceso por PIN para técnicos, citas, reportes, cola offline, exportación PDF/Excel y sincronización con Google Calendar.",
       "metrics": [
         {
-          "value": "5",
-          "label": "Etapas"
+          "value": "ES/DE",
+          "label": "Bilingüe"
+        },
+        {
+          "value": "PIN",
+          "label": "Técnicos"
         },
         {
           "value": "PWA",
-          "label": "Plataforma"
-        },
-        {
-          "value": "100%",
-          "label": "Web"
+          "label": "Offline"
         }
       ],
       "features": {
-        "0": "Ciclo completo: Soplado → Fusionado → Alta → Certificado → Facturado",
-        "1": "Acceso desde cualquier dispositivo sin instalación",
-        "2": "Control de avance y estado de proyectos en tiempo real"
+        "0": "Login admin/coordinador por email y PIN de equipo para técnicos",
+        "1": "Cola offline en IndexedDB con sync manager para condiciones de campo",
+        "2": "Reportes con PDF, Excel e integración de calendario"
       },
-      "cta": "Ver App"
+      "cta": "Hablar de field ops"
     },
     "fincontrol": {
       "title": "FinControl",
-      "type": "React · Firebase · Cloud",
-      "badge": "Live",
-      "description": "Sistema de gestión financiera empresarial con control de transacciones, cuentas por cobrar y pagar, flujo de caja y reportes visuales.",
+      "type": "Finanzas · Firebase · Recharts",
+      "badge": "Live interno",
+      "imageAlt": "Visual oscuro del dashboard financiero FinControl",
+      "description": "App financiera para operación UMTELKOMD: transacciones, proyectos, centros de costo, categorías, cuentas por cobrar/pagar, métricas de caja y reportes PDF.",
       "metrics": [
         {
           "value": "CXP",
-          "label": "Cobros"
+          "label": "Por pagar"
         },
         {
           "value": "CXC",
-          "label": "Pagos"
+          "label": "Por cobrar"
         },
         {
-          "value": "Cloud",
-          "label": "Hosting"
+          "value": "RBAC",
+          "label": "Roles"
         }
       ],
       "features": {
-        "0": "Dashboard financiero con métricas en tiempo real",
-        "1": "Control de transacciones, CXP y CXC",
-        "2": "Reportes de flujo de caja y análisis por período"
+        "0": "Control de transacciones y centros de costo por proyecto en Firebase",
+        "1": "Flujo de cuentas por cobrar y por pagar para gestión financiera",
+        "2": "Dashboard, gráficas y PDF para reportes internos"
       },
-      "cta": "Solicitar Demo"
+      "cta": "Pedir demo financiera"
     },
-    "bot": {
-      "title": "Nexus AI Bot",
-      "type": "Telegram · AI · Automación",
+    "kundenbot": {
+      "title": "Kundenbot",
+      "type": "Telegram · Web chat · Groq",
       "badge": "Beta",
-      "description": "Asistente de operaciones basado en IA para automatizar gestión de agenda, recordatorios, informes y comunicación con el equipo técnico.",
+      "imageAlt": "Visual oscuro del asistente Kundenbot para intake de leads",
+      "description": "Asistente de clientes Nexus para chat web y Telegram. Responde con conocimiento controlado de la empresa, califica leads y envía el intake estructurado a info@hmr-nexus.com.",
       "metrics": [
         {
-          "value": "24/7",
-          "label": "Disponible"
+          "value": "TG",
+          "label": "Telegram"
         },
         {
-          "value": "AI",
-          "label": "Motor"
+          "value": "API",
+          "label": "Web chat"
         },
         {
-          "value": "3+",
-          "label": "Canales"
+          "value": "SMTP",
+          "label": "Email lead"
         }
       ],
       "features": {
-        "0": "Gestión automática de agenda y recordatorios",
-        "1": "Integración con Telegram, WhatsApp y email",
-        "2": "Reportes automáticos y análisis de operaciones"
+        "0": "API Node/Express con bot Telegraf y modelo Groq",
+        "1": "Flujo de lead: nombre, proyecto, ubicación, plazo y presupuesto",
+        "2": "Handoff por Nodemailer al inbox de Nexus para seguimiento"
       },
-      "cta": "Conocer Más"
-    },
-    "aianalytics": {
-      "title": "IA & Datos",
-      "type": "RAG · Bots · Data Pipelines",
-      "badge": "Roadmap",
-      "description": "Soluciones de IA para operaciones telecom: sistemas RAG sobre documentación interna, bots de reportes automatizados y pipelines de datos que conectan campo con dashboards.",
-      "metrics": [
-        {
-          "value": "RAG",
-          "label": "Sistemas"
-        },
-        {
-          "value": "ETL",
-          "label": "Pipelines"
-        },
-        {
-          "value": "LLM",
-          "label": "Bots"
-        }
-      ],
-      "features": {
-        "0": "RAG sobre docs de proyecto, SOPs y bases de compliance",
-        "1": "Pipelines automatizados de campo a dashboard de reporting"
-      },
-      "cta": "Próximamente"
+      "cta": "Hablar automatización"
     }
   },
   "stats": {
@@ -244,7 +249,7 @@
     "label": "Presencia Global",
     "title": "Dos Países",
     "titleHighlight": "Una Visión",
-    "subtitle": "Combinamos la precisión técnica alemana con la innovación colombiana para ofrecer soluciones globales de clase mundial.",
+    "subtitle": "Operación en Alemania, apoyo de software desde Colombia y un flujo compartido de proyecto.",
     "germany": {
       "role": "Sede Central",
       "description": "Centro de operaciones para proyectos de fibra óptica en Alemania y Europa. Desde aquí coordinamos todas las operaciones de infraestructura."
@@ -262,9 +267,9 @@
   },
   "portfolio": {
     "label": "Trabajo seleccionado",
-    "title": "Primeros despliegues.",
-    "titleHighlight": "En camino.",
-    "subtitle": "HMR Nexus Engineering GmbH es una empresa nueva — 2026. Nuestros primeros proyectos de fibra y software están arrancando ahora. Esta sección se convertirá en nuestros archivos de caso a medida que se completen.",
+    "title": "Áreas de trabajo actuales.",
+    "titleHighlight": "Fibra, densificación y software.",
+    "subtitle": "HMR Nexus se enfoca en proyectos FTTH en Alemania y en el software que permite controlar esa operación: NE3/NE4, NAS, conexiones finales al cliente, coordinación de equipos y gestión interna.",
     "status": {
       "active": "En Curso",
       "completed": "Completado"
@@ -275,52 +280,157 @@
     },
     "projects": {
       "ne3": {
-        "tag": "Despliegue NE3",
+        "tag": "Distribución NE3",
         "title": "Distribución Regional NE3",
-        "description": "Primeras redes de distribución de fibra en Niedersachsen. Los detalles se publicarán cuando los contratos y NDAs lo permitan.",
+        "description": "Red de distribución FTTH: soplado de fibra, fusiones en POP y DP, mediciones, documentación y handover técnico.",
         "metrics": {
-          "stage": "Etapa",
+          "stage": "Alcance",
           "region": "Región",
           "year": "Año"
+        },
+        "detail": {
+          "intro": "NE3 cubre la distribución antes del cliente final. El núcleo del trabajo es soplar fibra, fusionar en POP y DP, medir cuando aplica y dejar la red documentada para continuidad NE4 o certificación.",
+          "step1": "Preparación del tramo: revisión de planos, POP/DP involucrados, ductos, cámaras, armarios, permisos/accesos y condiciones reales antes de intervenir.",
+          "step2": "Soplado/tendido: preparación de ductos, lubricación/guía si aplica, soplado de fibra/cable y control del recorrido según diseño.",
+          "step3": "Fusión y orden de red: empalmes en POP, DP, cierres o armarios, identificación de fibras y organización del punto para operación.",
+          "step4": "Medición y cierre: pruebas cuando el alcance lo exige, fotos, incidencias, as-built/redlines, pendientes y handover técnico.",
+          "output1": "Registro por tramo con ubicación, estado, fotos y observaciones técnicas.",
+          "output2": "Pendientes separados por causa: acceso, material, daño, obra civil, documentación o coordinación del cliente.",
+          "output3": "Paquete de cierre para QA, certificación interna, continuidad NE4 o preparación de facturación.",
+          "signal1": "Cada tramo queda con estado claro: listo, parcial, bloqueado o pendiente de terceros.",
+          "signal2": "Fusiones, mediciones y fotos se conectan al punto físico correcto.",
+          "signal3": "El handover evita que el siguiente equipo tenga que reconstruir la historia en WhatsApp."
         }
       },
       "ne4": {
         "tag": "NE4 FTTH",
-        "title": "Conexiones de Hogar NE4",
-        "description": "Primeros despliegues FTTH — acometidas, fusión y activación. Los números irán aquí cuando los proyectos se entreguen.",
+        "title": "NE4: conexión final FTTH",
+        "description": "Conexión FTTH final desde DP/HÜP hasta GF-TA/ONT: ruta interior, fusión o terminación, fotos QA y cierre técnico verificable.",
         "metrics": {
-          "stage": "Etapa",
+          "stage": "Alcance",
           "region": "Región",
           "year": "Año"
+        },
+        "detail": {
+          "intro": "NE4 es la conexión final dentro del entorno del cliente. Lo importante es validar acceso y ruta, trabajar desde DP/HÜP hasta GF-TA/ONT cuando aplica, terminar correctamente y dejar evidencia clara para QA, segunda visita o facturación.",
+          "step1": "Validar cita, dirección, acceso, tipo de vivienda, DP/HÜP y ruta interior posible.",
+          "step2": "Preparar la acometida interior o tramo correspondiente: entrada, canalización/perforación si aplica y protección del recorrido.",
+          "step3": "Montar o preparar GF-TA/ONT, con fusión/conectorización y revisión técnica antes de cerrar.",
+          "step4": "Cerrar con fotos, notas de bloqueo, evidencia de visita y estado final para QA, cobro o segunda visita.",
+          "output1": "Reporte por dirección con DP/HÜP, ruta interior, GF-TA/ONT, fotos antes/después y resultado de la visita.",
+          "output2": "Pendientes clasificados: sin acceso, cliente ausente, ruta bloqueada, material faltante, obra civil, daño o activación fuera de alcance.",
+          "output3": "Cierre técnico listo para coordinación: finalizado, parcial, bloqueado o segunda visita requerida.",
+          "signal1": "La cadena DP → HÜP → GF-TA → ONT queda visible y no escondida en notas sueltas.",
+          "signal2": "Las fotos QA conectan cada componente físico con la dirección y el técnico correcto.",
+          "signal3": "Los estados permiten planear segundas visitas sin jugar arqueología en WhatsApp."
         }
       },
       "workManager": {
         "tag": "Software · PWA",
         "title": "Work Manager",
-        "description": "Nuestra PWA para gestión de proyectos de fibra. En producción sobre el ciclo Soplado → Fusionado → Activo → Certificado → Facturado.",
+        "description": "PWA interna para operación de fibra: citas, PIN de equipos, cola offline, reportes de campo, exportación PDF/Excel y flujo de estados del proyecto.",
         "metrics": {
           "stage": "Estado",
           "type": "Tipo",
           "year": "Desde"
+        },
+        "detail": {
+          "intro": "Work Manager es la PWA interna para operar equipos NE4 en campo. Centraliza citas, acceso por PIN para técnicos, reportes, cola offline, evidencias y exportaciones para que la información no se pierda entre WhatsApp, Excel y notas sueltas.",
+          "step1": "Coordinación carga o sincroniza citas y asignaciones para los equipos.",
+          "step2": "El técnico entra con PIN, ve su trabajo y completa el reporte desde móvil.",
+          "step3": "La app guarda evidencias y datos offline cuando la conexión de campo falla.",
+          "step4": "Coordinación exporta PDF/Excel y actualiza estados para control del proyecto.",
+          "output1": "Reportes técnicos estructurados desde el móvil.",
+          "output2": "Cola offline para reducir pérdida de información en campo.",
+          "output3": "Exportaciones y estados útiles para coordinación y administración.",
+          "signal1": "Menos dependencia de chats para información crítica.",
+          "signal2": "Acceso simple para técnicos sin fricción de cuenta completa.",
+          "signal3": "Datos preparados para QA, seguimiento y reportes."
         }
       },
       "fincontrol": {
-        "tag": "Software · SaaS",
+        "tag": "Software · Finanzas",
         "title": "FinControl",
-        "description": "Sistema de gestión financiera: transacciones, cuentas por cobrar y pagar, flujo de caja y reportes. En uso en nuestra propia operación.",
+        "description": "App de control financiero para nuestra operación: transacciones, centros de costo, cuentas por cobrar/pagar, señales de caja y reportes internos.",
         "metrics": {
           "stage": "Estado",
           "type": "Tipo",
           "year": "Desde"
+        },
+        "detail": {
+          "intro": "FinControl organiza la operación financiera: transacciones, proyectos, centros de costo, cuentas por cobrar, cuentas por pagar y reportes internos. No reemplaza contabilidad oficial; da visibilidad operativa diaria para decidir con datos más claros.",
+          "step1": "Registro de ingresos, egresos, cuentas y clasificación por proyecto o centro de costo.",
+          "step2": "Seguimiento de CXP/CXC y fechas relevantes para flujo de caja.",
+          "step3": "Dashboard con gráficos y señales de liquidez, costos y obligaciones.",
+          "step4": "Reportes PDF internos para revisión administrativa y toma de decisiones.",
+          "output1": "Vista operativa de caja, pagos, cobros y proyectos.",
+          "output2": "Reportes internos para conversaciones administrativas y financieras.",
+          "output3": "Estructura de datos lista para crecer hacia automatización contable.",
+          "signal1": "Los gastos quedan asociados a proyecto/categoría.",
+          "signal2": "Las cuentas por cobrar y pagar se ven antes de que duelan.",
+          "signal3": "Los reportes son internos y trazables, no decorativos."
+        }
+      },
+      "nas": {
+        "tag": "NAS · Conexión cliente",
+        "title": "NAS: acometida hasta vivienda",
+        "description": "Conexión al cliente desde la acometida por jardín/exterior hasta la vivienda, con entrada, montaje de equipos, fotos QA y cierre técnico.",
+        "metrics": {
+          "stage": "Alcance",
+          "region": "Región",
+          "year": "Año"
+        },
+        "detail": {
+          "intro": "NAS es el trabajo de llevar la conexión desde la acometida existente hasta la casa del cliente. La esencia: ruta por jardín o exterior, entrada a vivienda, montaje de HÜP/GF-TA/ONT cuando aplica y documentación limpia del cierre.",
+          "step1": "Revisar cita, acometida disponible, ruta por jardín/exterior, acceso a vivienda y punto de entrada.",
+          "step2": "Ejecutar la ruta exterior: zanja o canalización ligera si aplica, protección del microducto/cable y entrada por fachada o sótano.",
+          "step3": "Montar HÜP, GF-TA y ONT/router cuando aplica, con terminación, fusión/conectorización y orden del cableado.",
+          "step4": "Cerrar con fotos antes/después, evidencia de equipos, bloqueo real si existe y estado para QA o facturación.",
+          "output1": "Reporte por cliente con ruta exterior, entrada, equipos montados y fotos QA.",
+          "output2": "Pendientes reales: jardín/ruta bloqueada, cliente ausente, falta de material, acceso interior, daño o activación fuera de alcance.",
+          "output3": "Cierre técnico listo para coordinación: instalado, parcial, bloqueado o segunda visita requerida.",
+          "signal1": "La ruta acometida → jardín → vivienda → equipo queda clara y verificable.",
+          "signal2": "Las fotos muestran tanto la obra exterior como el montaje interior.",
+          "signal3": "El estado final sirve para QA, planificación de segunda visita y cobro sin inventar nada."
+        }
+      },
+      "densification": {
+        "tag": "Densificación",
+        "title": "Conexiones finales al cliente",
+        "description": "Conexiones FTTH finales en zonas ya construidas: citas, acometidas pendientes, instalación en cliente, evidencias y segundas visitas.",
+        "metrics": {
+          "stage": "Alcance",
+          "type": "Foco",
+          "year": "Año"
+        },
+        "detail": {
+          "intro": "La densificación cierra clientes en zonas ya construidas. El foco está en ordenar citas, resolver accesos, ejecutar conexiones finales, documentar evidencias y dejar claro qué queda terminado o requiere segunda visita.",
+          "step1": "Revisión de dirección, disponibilidad de red, estado previo y ventana de cita.",
+          "step2": "Coordinación con cliente/equipo y preparación del trabajo final FTTH.",
+          "step3": "Ejecución de conexión final, instalación o revisión según alcance y condiciones del sitio.",
+          "step4": "Cierre con resultado, evidencias, pendientes y estado para seguimiento o facturación.",
+          "output1": "Registro por cliente/dirección con estado final o motivo de bloqueo.",
+          "output2": "Evidencias de cierre y notas para coordinación de próximas acciones.",
+          "output3": "Base limpia para medir avance interno sin publicar KPIs sensibles.",
+          "signal1": "Las citas fallidas quedan documentadas, no escondidas.",
+          "signal2": "Las segundas visitas salen de un estado real, no de memoria.",
+          "signal3": "Cada cierre tiene evidencia suficiente para control administrativo."
         }
       }
+    },
+    "detail": {
+      "open": "Abrir ficha técnica",
+      "window": "ficha técnica",
+      "close": "Cerrar ficha de proyecto",
+      "outputs": "Entregables",
+      "signal": "Control"
     }
   },
   "contact": {
     "label": "Briefing",
-    "title": "Dinos qué necesitas.",
-    "titleHighlight": "Respondemos mañana.",
-    "subtitle": "Ya sea despliegue de fibra o desarrollo de software – estamos encantados de asesorarle y encontrar la solución óptima.",
+    "title": "Cuéntanos el proyecto.",
+    "titleHighlight": "Respondemos con claridad.",
+    "subtitle": "Para fibra, software operativo o automatización, lo primero es entender alcance, ubicación, urgencia y estado actual. Con eso podemos responder de forma concreta.",
     "info": {
       "title": "Hablemos",
       "description": "¿Tiene un proyecto en mente o preguntas sobre nuestros servicios? Nuestro equipo está disponible para una conversación sin compromiso.",
@@ -364,23 +474,29 @@
     "germanTech": "Ingeniería alemana",
     "iso": "DIN · EN · ISO",
     "ftth": "NE3 · NE4 certificado",
-    "availability": "24 / 7 Field Ops"
+    "availability": "Coordinación de campo"
   },
   "teamSection": {
-    "label": "Personas",
-    "title": "Dos socios.",
-    "titleHighlight": "Una mesa.",
-    "description": "Fibra, operaciones, software. Dividimos el trabajo, no la responsabilidad.",
+    "label": "Dirección",
+    "title": "Responsabilidades claras.",
+    "titleHighlight": "Un equipo operativo.",
+    "description": "La empresa combina dirección administrativa en Alemania con ejecución técnica y desarrollo de sistemas para proyectos de fibra. La estructura es pequeña, directa y orientada a entregar trabajo medible.",
     "members": {
       "ceo": {
         "name": "Isabelle Horstmann",
-        "role": "Geschäftsführerin",
+        "role": "Geschäftsführerin · Administración y representación",
         "location": "Celle, Alemania",
-        "bio": "Directora General de HMR Nexus Engineering GmbH. Lidera la gobernanza legal y la operación contractual de la compañía.",
+        "bio": "Isabelle Horstmann es la Geschäftsführerin de HMR Nexus Engineering GmbH. Su rol se concentra en la representación legal, la administración de la empresa, la coordinación contractual y el orden operativo necesario para trabajar con clientes y proveedores en Alemania.",
         "experience": [
           "Dirección General",
           "Legal & Gobernanza",
           "Operaciones"
+        ],
+        "label": "Dirección general",
+        "focus": [
+          "Representación legal y administración de HMR Nexus Engineering GmbH",
+          "Coordinación contractual, comunicación formal y documentación empresarial",
+          "Estructura operativa para que los proyectos puedan ejecutarse con claridad"
         ]
       },
       "coo": {
@@ -396,16 +512,23 @@
       },
       "cto": {
         "name": "Jeisson A. Romero",
-        "role": "Co-fundador & Ingeniería",
+        "role": "Project lead · Fibra y software operativo",
         "location": "Celle, Alemania",
-        "bio": "Ingeniero civil convertido en builder de sistemas. Lidera la ejecución de proyectos de fibra y construye el stack de software que usa el equipo en campo.",
+        "bio": "Jeisson A. Romero Lesmes lidera la parte técnica y operativa: coordinación de proyectos de fibra, definición de procesos de campo y desarrollo del software interno que conecta citas, reportes, finanzas y control de calidad.",
         "experience": [
           "Dirección de Proyectos de Fibra",
           "Ingeniería de Software",
           "Operaciones de Campo"
+        ],
+        "label": "Operación e ingeniería",
+        "focus": [
+          "Gestión de proyectos FTTH/NE3/NE4 y coordinación de equipos de campo",
+          "Diseño de procesos para documentación, QA, certificación y facturación",
+          "Desarrollo de Lumen, Work Manager, FinControl y automatizaciones internas"
         ]
       }
-    }
+    },
+    "focusLabel": "Responsabilidades"
   },
   "whatsapp": {
     "tooltip": "¿Necesitas ayuda? ¡Escríbenos! 💬",
@@ -424,26 +547,43 @@
   },
   "dualMap": {
     "label": "Geografía",
-    "title": "Dos países.",
-    "titleHighlight": "Un sistema.",
-    "subtitle": "Ingeniería en Celle. Software en Bogotá. Mismo stack, mismo Slack, mismo reloj.",
+    "title": "Operación en Alemania.",
+    "titleHighlight": "Desarrollo conectado desde Colombia.",
+    "subtitle": "La empresa opera desde Celle y se apoya en desarrollo de software desde Bogotá. La idea es simple: el trabajo de campo genera información; el software la organiza para proyecto, calidad y administración.",
     "germany": {
       "city": "Celle",
       "role": "Sede Central",
-      "description": "Operaciones de campo para despliegue NE3/NE4 en Niedersachsen y la región DACH. Cuadrillas, fusión, QA.",
+      "description": "Celle concentra la coordinación operativa: proyectos FTTH, equipos de campo, NAS/acceso, conexiones finales, fusión, control de calidad y documentación.",
       "stats": {
         "fiber": "km / mes",
         "quality": "Fusión en spec"
-      }
+      },
+      "lanes": {
+        "fiber": "Ejecución NE3 · NE4",
+        "quality": "Fusión · QA · documentación",
+        "client": "Handover al cliente final"
+      },
+      "country": "Alemania"
     },
     "colombia": {
       "city": "Bogotá",
       "role": "Centro de Desarrollo",
-      "description": "Ingeniería de software para operaciones de campo, dashboards y agentes IA. Mismo equipo, otra zona horaria.",
+      "description": "Bogotá apoya el desarrollo de las herramientas internas: Lumen, Work Manager, FinControl y automatizaciones para atención y seguimiento.",
       "stats": {
         "connections": "Conexiones",
         "support": "On-call"
-      }
+      },
+      "lanes": {
+        "software": "Lumen · Work Manager",
+        "ops": "FinControl · dashboards",
+        "ai": "Kundenbot · automatización"
+      },
+      "country": "Colombia"
+    },
+    "flow": {
+      "field": "Campo",
+      "software": "Software",
+      "control": "Control"
     }
   },
   "footer": {

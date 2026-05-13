@@ -10,7 +10,6 @@ import './i18n';
 const Services    = lazy(() => import('./sections/Services').then(m => ({ default: m.Services })));
 const Products    = lazy(() => import('./sections/Products').then(m => ({ default: m.Products })));
 const DualMap     = lazy(() => import('./components/DualMap').then(m => ({ default: m.DualMap })));
-const TeamSection = lazy(() => import('./components/TeamSection').then(m => ({ default: m.TeamSection })));
 const Portfolio   = lazy(() => import('./sections/Portfolio').then(m => ({ default: m.Portfolio })));
 const Contact     = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
 const Footer      = lazy(() => import('./sections/Footer').then(m => ({ default: m.Footer })));
@@ -94,7 +93,6 @@ function App() {
           <Portfolio />
           <div className="section-divider" />
           <DualMap />
-          <TeamSection />
         </Suspense>
         <Suspense fallback={<SectionLoader />}>
           <div className="section-divider" />

@@ -9,20 +9,20 @@
   },
   "hero": {
     "badge": "● HMR · ENGINEERING GMBH",
-    "title1": "Glasfaser,",
-    "title2": "neu gedacht",
-    "title3": "durch",
-    "title4": "Software.",
-    "subtitle": "Wir bauen NE3/NE4-Glasfaser und schreiben die Software, die sie betreibt. Gleicher Stack, gleiches Team, ein Portal.",
+    "title1": "Glasfaser-Infrastruktur",
+    "title2": "und Software",
+    "title3": "für Field",
+    "title4": "Operations.",
+    "subtitle": "HMR Nexus Engineering GmbH realisiert Glasfaserprojekte in Deutschland und entwickelt operative Software für Teams, Dokumentation, Finanzkontrolle und technische Nachverfolgung.",
     "btnPrimary": "Leistungen ansehen",
-    "btnSecondary": "Software-Stack",
+    "btnSecondary": "Software ansehen",
     "stats": {
       "km": "km Glasfaser",
       "connections": "Hausanschlüsse",
       "countries": "Länder"
     },
-    "title5": "Gebaut aus",
-    "title6": "dem Graben, nicht aus dem Büro."
+    "title5": "Glasfaser, Software und operative Kontrolle",
+    "title6": "aus einem Team."
   },
   "values": {
     "quality": "Qualität",
@@ -31,13 +31,13 @@
   },
   "services": {
     "label": "Leistungen",
-    "title": "Zwei Disziplinen.",
-    "titleHighlight": "Ein System.",
-    "subtitle": "Von der physischen Infrastruktur bis zur digitalen Transformation – wir bieten ganzheitliche Lösungen für die Telekommunikationsbranche.",
+    "title": "Glasfaser-Infrastruktur und operative Software.",
+    "titleHighlight": "Ein Team für Ausführung und Steuerung.",
+    "subtitle": "Wir konzentrieren uns auf FTTH/NE3/NE4-Ausbau, Feldkoordination, technische Dokumentation und digitale Werkzeuge, die den Betrieb von Anfang bis Ende nachvollziehbar machen.",
     "fiber": {
-      "title": "Glasfaser, durchgängig.",
+      "title": "Ausführung von Glasfaserarbeiten.",
       "subtitle": "Glasfaser · Feld",
-      "description": "Spezialist für NE3 und NE4. Einblasen, Spleißen, Qualitätssicherung — gemessen in Metern, abgeschlossen in Tagen, nicht in Monaten.",
+      "description": "NE3/NE4-Arbeiten, Hausanschlüsse, Spleißung, Aktivierungsvorbereitung und technische Dokumentation für FTTH-Projekte in Deutschland.",
       "items": {
         "ne3_label": "NE3 Ausbau",
         "ne3": "Regionale Verteilnetze vom KEV bis zum HÜP",
@@ -51,8 +51,8 @@
     },
     "ne4": {
       "label": "NE4 · FTTH-Betrieb",
-      "title": "NE4 bereit für Hausanschlüsse.",
-      "intro": "Wir begleiten die letzte Meile von der Vorbereitung des Übergabepunkts bis zur Abschlussdokumentation: Hausanschluss, Spleißung, Aktivierungsunterstützung und geordnete Nachweise für den technischen Abschluss.",
+      "title": "FTTH-Anschlüsse bis zum Endkunden.",
+      "intro": "Wir unterstützen die letzte Meile mit Standortprüfung, Installation, Spleißung, ONT-Vorbereitung und Abschlussdokumentation, damit der technische Status klar ist.",
       "scope": {
         "title": "Umfang",
         "items": {
@@ -94,9 +94,9 @@
       "cta": "NE4-Briefing anfragen"
     },
     "software": {
-      "title": "Software, selbst gebaut.",
+      "title": "Software für den Betrieb.",
       "subtitle": "Software · nativ",
-      "description": "Wir schreiben die Werkzeuge, die wir auf der Baustelle brauchen. Field-Apps, Projekt-Tracker, Dashboards, Bots — dieselbe Plattform für unsere Teams und unsere Kunden.",
+      "description": "Wir entwickeln interne und individuelle Tools für Termine, Feldberichte, Finanzen, Kundenanfragen und Projektsteuerung im Glasfaserausbau.",
       "items": {
         "control_label": "Control System",
         "control": "Control System für Projektmanagement",
@@ -111,122 +111,127 @@
   },
   "products": {
     "label": "Software-Stack",
-    "title": "Auf der Baustelle gebaut.",
-    "titleHighlight": "Im Feld bewährt.",
-    "subtitle": "Jedes Produkt geht zuerst an unsere eigenen Teams. Bricht es am Dienstag in Celle, liefern wir am Mittwoch aus.",
+    "title": "Operative Software für Glasfaser und Management.",
+    "titleHighlight": "Reale Tools, im Einsatz oder in Entwicklung.",
+    "subtitle": "Diese Produkte entstehen aus konkreten betrieblichen Anforderungen: Feldarbeit koordinieren, Nachweise erfassen, Kosten kontrollieren und Kundenanfragen strukturiert bearbeiten. Sie werden erst als öffentliche Plattformen dargestellt, wenn sie bereit sind.",
     "status": {
-      "live": "Live",
+      "live": "Intern live",
       "beta": "Beta",
       "dev": "In Entwicklung",
       "roadmap": "Roadmap"
     },
     "cta": {
-      "title": "Haben Sie ein Projekt im Sinn?",
-      "subtitle": "Wir entwickeln maßgeschneiderte Lösungen für Telekommunikation, Automatisierung und Unternehmensmanagement.",
-      "btn": "Projekt besprechen"
+      "title": "Ein Projekt im Kopf?",
+      "subtitle": "Wir bauen maßgeschneiderte Lösungen für Telekommunikation, Automatisierung und Unternehmenssteuerung.",
+      "btn": "Kontakt aufnehmen"
+    },
+    "lumen": {
+      "title": "Lumen",
+      "type": "Fiber Ops · Supabase · Vercel",
+      "badge": "In Entwicklung",
+      "imageAlt": "Dunkles technisches Produktvisual für die Lumen Glasfaserplattform",
+      "description": "Operative Plattform für Glasfaser-Aufträge, Rückmeldungen, doppelte Zertifizierung, Abrechnungsvorbereitung und Technikerberichte. Entwickelt entlang der Abläufe deutscher Glasfaserprojekte.",
+      "metrics": [
+        {
+          "value": "WO",
+          "label": "Aufträge"
+        },
+        {
+          "value": "2x",
+          "label": "Zertifizierung"
+        },
+        {
+          "value": "RLS",
+          "label": "Supabase"
+        }
+      ],
+      "features": {
+        "0": "Service-Aufträge, Rückmeldungen und Statushistorie in einem operativen Modell",
+        "1": "Interne Zertifizierung vor Kundenzertifizierung, inklusive Abrechnungsprüfpunkte",
+        "2": "Personal, Subunternehmer-Dokumente, Material und Alerts im selben Workflow"
+      },
+      "cta": "Lumen-Briefing anfragen"
     },
     "workmanager": {
       "title": "Work Manager",
-      "type": "PWA · Feldeinsatz",
-      "badge": "Live",
-      "description": "Progressive Web App für die Glasfaserprojektverwaltung. Verfolgt den gesamten Lebenszyklus von der Einblasung bis zur Zertifizierung.",
+      "type": "NE4 PWA · Offline-Feldeinsatz",
+      "badge": "Intern live",
+      "imageAlt": "Dunkles Produktvisual für die NE4 Work Manager PWA",
+      "description": "PWA für NE4-Installationsteams: Koordinator-Login, Techniker-PIN, Termine, Berichte, Offline-Queue, PDF/Excel-Export und Google-Calendar-Sync.",
       "metrics": [
         {
-          "value": "5",
-          "label": "Phasen"
+          "value": "ES/DE",
+          "label": "Zweisprachig"
+        },
+        {
+          "value": "PIN",
+          "label": "Techniker"
         },
         {
           "value": "PWA",
-          "label": "Plattform"
-        },
-        {
-          "value": "100%",
-          "label": "Web"
+          "label": "Offline"
         }
       ],
       "features": {
-        "0": "Vollständiger Zyklus: Einblasung → Spleißung → Aktiv → Zertifiziert → Abgerechnet",
-        "1": "Zugriff von jedem Gerät, keine Installation erforderlich",
-        "2": "Echtzeit-Projektstatus und Fortschrittsverfolgung"
+        "0": "Admin-/Koordinator-Login per E-Mail plus Team-PIN für Techniker",
+        "1": "IndexedDB-Offline-Queue mit Sync Manager für Baustellenbedingungen",
+        "2": "Berichtsworkflow mit PDF, Excel und Kalenderintegration"
       },
-      "cta": "App ansehen"
+      "cta": "Feldeinsatz besprechen"
     },
     "fincontrol": {
       "title": "FinControl",
-      "type": "React · Firebase · Cloud",
-      "badge": "Live",
-      "description": "Unternehmensfinanzsystem mit Transaktionskontrolle, Debitoren/Kreditoren, Cashflow-Verfolgung und visuellen Berichten.",
+      "type": "Finanzen · Firebase · Recharts",
+      "badge": "Intern live",
+      "imageAlt": "Dunkles Produktvisual für das FinControl Finanzdashboard",
+      "description": "Finanz-App für UMTELKOMD: Transaktionen, Projekte, Kostenstellen, Kategorien, Forderungen/Verbindlichkeiten, Cashflow-Kennzahlen und PDF-Reporting.",
       "metrics": [
         {
-          "value": "Deb.",
+          "value": "AP",
+          "label": "Verbindl."
+        },
+        {
+          "value": "AR",
           "label": "Forderungen"
         },
         {
-          "value": "Kred.",
-          "label": "Verbindlichk."
-        },
-        {
-          "value": "Cloud",
-          "label": "Hosting"
+          "value": "RBAC",
+          "label": "Rollen"
         }
       ],
       "features": {
-        "0": "Finanzdashboard mit Echtzeitkennzahlen",
-        "1": "Transaktions-, Debitoren- und Kreditorenverwaltung",
-        "2": "Cashflow-Berichte und Periodenanalyse"
+        "0": "Transaktions- und Kostenstellenkontrolle pro Projekt in Firebase",
+        "1": "Workflow für Forderungen und Verbindlichkeiten im Finanzmanagement",
+        "2": "Dashboard-Kennzahlen, Diagramme und PDF-Exporte für interne Reports"
       },
-      "cta": "Demo anfragen"
+      "cta": "Finanzdemo anfragen"
     },
-    "bot": {
-      "title": "Nexus AI Bot",
-      "type": "Telegram · KI · Automatisierung",
+    "kundenbot": {
+      "title": "Kundenbot",
+      "type": "Telegram · Webchat · Groq",
       "badge": "Beta",
-      "description": "KI-gestützter Betriebsassistent für automatisierte Terminplanung, Erinnerungen, Berichte und Teamkommunikation.",
+      "imageAlt": "Dunkles Produktvisual für den Kundenbot Lead-Assistenten",
+      "description": "Nexus Kundenassistent für Website-Chat und Telegram. Antwortet aus kontrolliertem Firmenwissen, qualifiziert Leads und sendet strukturierte Anfragen an info@hmr-nexus.com.",
       "metrics": [
         {
-          "value": "24/7",
-          "label": "Verfügbar"
+          "value": "TG",
+          "label": "Telegram"
         },
         {
-          "value": "KI",
-          "label": "Engine"
+          "value": "API",
+          "label": "Webchat"
         },
         {
-          "value": "3+",
-          "label": "Kanäle"
+          "value": "SMTP",
+          "label": "Lead-E-Mail"
         }
       ],
       "features": {
-        "0": "Automatische Terminverwaltung und Erinnerungen",
-        "1": "Integration mit Telegram, WhatsApp und E-Mail",
-        "2": "Automatisierte Berichte und Betriebsanalysen"
+        "0": "Node/Express API mit Telegraf-Bot und Groq-Sprachmodell",
+        "1": "Lead-Flow erfasst Name, Projekt, Standort, Zeitraum und Budget",
+        "2": "Nodemailer-Übergabe an den Nexus-Posteingang für Follow-up"
       },
-      "cta": "Mehr erfahren"
-    },
-    "aianalytics": {
-      "title": "KI & Daten",
-      "type": "RAG · Bots · Data Pipelines",
-      "badge": "Roadmap",
-      "description": "Maßgeschneiderte KI-Lösungen für Telekom-Betrieb: RAG-Systeme über interne Dokumente, automatisierte Reporting-Bots und Datenpipelines vom Feld zum Dashboard.",
-      "metrics": [
-        {
-          "value": "RAG",
-          "label": "Systeme"
-        },
-        {
-          "value": "ETL",
-          "label": "Pipelines"
-        },
-        {
-          "value": "LLM",
-          "label": "Bots"
-        }
-      ],
-      "features": {
-        "0": "RAG über Projektdokumente, SOPs und Compliance-Datenbanken",
-        "1": "Automatisierte Datenpipelines vom Feld zum Reporting-Dashboard"
-      },
-      "cta": "Demnächst"
+      "cta": "Automatisierung besprechen"
     }
   },
   "stats": {
@@ -242,9 +247,9 @@
   },
   "portfolio": {
     "label": "Ausgewählt",
-    "title": "Erste Projekte.",
-    "titleHighlight": "Im Aufbau.",
-    "subtitle": "HMR Nexus Engineering GmbH ist ein neues Unternehmen — 2026. Unsere ersten Glasfaser- und Softwareprojekte laufen jetzt an. Dieser Bereich wird zu unseren Projektakten, sobald Projekte abgeschlossen sind.",
+    "title": "Aktuelle Arbeitsbereiche.",
+    "titleHighlight": "Glasfaser, Verdichtung und Software.",
+    "subtitle": "HMR Nexus konzentriert sich auf FTTH-Arbeiten in Deutschland und die Software, die diesen Betrieb steuerbar macht: NE3/NE4, NAS, finale Kundenanschlüsse, Teamkoordination und internes Management.",
     "status": {
       "active": "Laufend",
       "completed": "Abgeschlossen"
@@ -255,52 +260,157 @@
     },
     "projects": {
       "ne3": {
-        "tag": "NE3 Ausbau",
-        "title": "NE3 Regionalverteilung",
-        "description": "Erste regionale Glasfaser-Verteilnetze in Niedersachsen. Details werden veröffentlicht, sobald Verträge und NDAs dies zulassen.",
+        "tag": "NE3-Verteilung",
+        "title": "Regionale NE3-Verteilung",
+        "description": "FTTH-Verteilnetz: Fasereinblasen, Spleißungen in POP und DP, Messungen, Dokumentation und technische Übergabe.",
         "metrics": {
-          "stage": "Phase",
+          "stage": "Umfang",
           "region": "Region",
           "year": "Jahr"
+        },
+        "detail": {
+          "intro": "NE3 umfasst die Verteilung vor dem finalen Kundenanschluss. Kernarbeit: Faser einblasen, in POP und DP spleißen, bei Bedarf messen und das Netz für NE4 oder Zertifizierung dokumentieren.",
+          "step1": "Abschnitt vorbereiten: Pläne, beteiligte POP/DP, Rohre, Schächte, Cabinets, Genehmigungen/Zugang und reale Standortbedingungen prüfen.",
+          "step2": "Einblasen/Ziehen: Rohre vorbereiten, ggf. schmieren/führen, Faser/Kabel einblasen und Route gemäß Planung kontrollieren.",
+          "step3": "Spleißung und Netzordnung: Spleißungen in POP, DP, Muffen oder Cabinets, Faseridentifikation und physische Ordnung für den Betrieb.",
+          "step4": "Messung und Abschluss: Prüfungen wenn im Umfang, Fotos, Vorfälle, As-built/Redlines, offene Punkte und technische Übergabe.",
+          "output1": "Abschnittsprotokoll mit Standort, Status, Fotos und technischen Hinweisen.",
+          "output2": "Offene Punkte getrennt nach Ursache: Zugang, Material, Schaden, Tiefbau, Dokumentation oder Kundenkoordination.",
+          "output3": "Abschlusspaket für QA, interne Zertifizierung, NE4-Fortführung oder Abrechnungsvorbereitung.",
+          "signal1": "Jeder Abschnitt hat einen klaren Status: bereit, teilweise, blockiert oder bei Dritten offen.",
+          "signal2": "Spleiße, Messungen und Fotos sind dem richtigen physischen Punkt zugeordnet.",
+          "signal3": "Die Übergabe verhindert, dass das nächste Team die Geschichte aus WhatsApp rekonstruieren muss."
         }
       },
       "ne4": {
         "tag": "NE4 FTTH",
-        "title": "NE4 Hausanschlüsse",
-        "description": "Erste FTTH-Projekte — Hausanschlüsse, Spleißung und Aktivierung. Kennzahlen folgen, sobald Projekte abgeschlossen sind.",
+        "title": "NE4 finaler FTTH-Anschluss",
+        "description": "Finaler FTTH-Anschluss vom DP/HÜP bis GF-TA/ONT: Innenroute, Spleißung oder Terminierung, QA-Fotos und prüfbarer technischer Abschluss.",
         "metrics": {
-          "stage": "Phase",
+          "stage": "Umfang",
           "region": "Region",
           "year": "Jahr"
+        },
+        "detail": {
+          "intro": "NE4 ist der finale Anschluss im Kundenumfeld. Wichtig sind Zugang und Route, Arbeit von DP/HÜP bis GF-TA/ONT wenn zutreffend, saubere Terminierung und klare Nachweise für QA, zweite Anfahrt oder Abrechnung.",
+          "step1": "Termin, Adresse, Zugang, Gebäudetyp, DP/HÜP und mögliche Innenroute validieren.",
+          "step2": "Innen-Drop oder relevanten Abschnitt vorbereiten: Eintrittspunkt, Leitungsweg/Bohrung wenn zutreffend und Routenschutz.",
+          "step3": "GF-TA/ONT montieren oder vorbereiten, mit Spleißung/Konnektorisierung und technischer Prüfung vor Abschluss.",
+          "step4": "Abschluss mit Fotos, Blocker-Notizen, Besuchsnachweis und Endstatus für QA, Abrechnung oder zweite Anfahrt.",
+          "output1": "Adressbericht mit DP/HÜP, Innenroute, GF-TA/ONT, Vorher-/Nachher-Fotos und Besuchsergebnis.",
+          "output2": "Offene Punkte nach Ursache: kein Zugang, Kunde nicht anwesend, Route blockiert, Material fehlt, Tiefbau, Schaden oder Aktivierung außerhalb des Umfangs.",
+          "output3": "Technischer Abschluss für Koordination: erledigt, teilweise, blockiert oder zweite Anfahrt erforderlich.",
+          "signal1": "Die Kette DP → HÜP → GF-TA → ONT bleibt sichtbar statt in losen Notizen zu verschwinden.",
+          "signal2": "QA-Fotos verbinden jedes physische Bauteil mit der richtigen Adresse und dem Techniker.",
+          "signal3": "Statuswerte ermöglichen zweite Anfahrten ohne WhatsApp-Archäologie."
         }
       },
       "workManager": {
         "tag": "Software · PWA",
         "title": "Work Manager",
-        "description": "Unsere PWA für Glasfaser-Projektmanagement. Im produktiven Einsatz über den Zyklus Einblasen → Gespleißt → Aktiv → Zertifiziert → Fakturiert.",
+        "description": "Interne PWA für Glasfaserbetrieb: Termine, Team-PINs, Offline-Warteschlange, Feldberichte, PDF/Excel-Export und Projektstatusfluss.",
         "metrics": {
           "stage": "Status",
           "type": "Typ",
           "year": "Seit"
+        },
+        "detail": {
+          "intro": "Work Manager ist die interne PWA für NE4-Feldteams. Sie bündelt Termine, Techniker-PIN, Berichte, Offline-Warteschlange, Nachweise und Exporte, damit Informationen nicht zwischen WhatsApp, Excel und losen Notizen verschwinden.",
+          "step1": "Koordination lädt oder synchronisiert Termine und Teamzuweisungen.",
+          "step2": "Techniker melden sich per PIN an, sehen ihre Arbeit und füllen den Bericht mobil aus.",
+          "step3": "Die App speichert Nachweise und Daten offline, wenn die Feldverbindung ausfällt.",
+          "step4": "Koordination exportiert PDF/Excel und aktualisiert Projektstatus.",
+          "output1": "Strukturierte technische Berichte vom Mobilgerät.",
+          "output2": "Offline-Warteschlange zur Reduktion von Informationsverlust im Feld.",
+          "output3": "Exporte und Status für Koordination und Administration.",
+          "signal1": "Weniger Abhängigkeit von Chats für kritische Informationen.",
+          "signal2": "Einfacher Technikerzugang ohne vollständiges Konto.",
+          "signal3": "Daten vorbereitet für QA, Nachverfolgung und Reports."
         }
       },
       "fincontrol": {
-        "tag": "Software · SaaS",
+        "tag": "Software · Finanzen",
         "title": "FinControl",
-        "description": "Finanzmanagementsystem: Transaktionen, Debitoren/Kreditoren, Cashflow und Reports. Im Einsatz in unserem eigenen Betrieb.",
+        "description": "Finanzkontroll-App für unseren Betrieb: Transaktionen, Kostenstellen, Debitoren/Kreditoren, Cash-Signale und interne Reports.",
         "metrics": {
           "stage": "Status",
           "type": "Typ",
           "year": "Seit"
+        },
+        "detail": {
+          "intro": "FinControl organisiert die operative Finanzebene: Transaktionen, Projekte, Kostenstellen, Debitoren, Kreditoren und interne Reports. Es ersetzt keine offizielle Buchhaltung; es schafft tägliche operative Sichtbarkeit für klarere Entscheidungen.",
+          "step1": "Einnahmen, Ausgaben, Konten und Klassifizierung nach Projekt oder Kostenstelle erfassen.",
+          "step2": "Debitoren/Kreditoren und relevante Daten für Cashflow-Sichtbarkeit verfolgen.",
+          "step3": "Dashboard mit Diagrammen und Signalen zu Liquidität, Kosten und Verpflichtungen.",
+          "step4": "Interne PDF-Reports für administrative Prüfung und Entscheidungen.",
+          "output1": "Operative Sicht auf Cash, Zahlungen, Forderungen und Projekte.",
+          "output2": "Interne Reports für administrative und finanzielle Gespräche.",
+          "output3": "Datenstruktur bereit für spätere Buchhaltungsautomatisierung.",
+          "signal1": "Ausgaben sind mit Projekt/Kategorie verbunden.",
+          "signal2": "Forderungen und Verbindlichkeiten sind sichtbar, bevor sie wehtun.",
+          "signal3": "Reports sind intern und nachvollziehbar, nicht dekorativ."
+        }
+      },
+      "nas": {
+        "tag": "NAS · Kundenanschluss",
+        "title": "NAS: Acometida bis Haus",
+        "description": "Kundenanschluss von der vorhandenen Acometida über Garten/Außenroute bis ins Haus, mit Eintritt, Gerätemontage, QA-Fotos und technischem Abschluss.",
+        "metrics": {
+          "stage": "Umfang",
+          "region": "Region",
+          "year": "Jahr"
+        },
+        "detail": {
+          "intro": "NAS ist die Arbeit, die Verbindung von der vorhandenen Acometida bis ins Kundenhaus zu bringen. Die Essenz: Garten-/Außenroute, Hauseintritt, Montage von HÜP/GF-TA/ONT wenn zutreffend und saubere Abschlussdokumentation.",
+          "step1": "Termin, vorhandene Acometida, Garten-/Außenroute, Hauszugang und Eintrittspunkt prüfen.",
+          "step2": "Außenroute ausführen: Graben oder leichte Leitungsführung wenn zutreffend, Mikrorohr/Kabel schützen und Eintritt über Fassade oder Keller.",
+          "step3": "HÜP, GF-TA und ONT/Router montieren wenn zutreffend, mit Terminierung, Spleißung/Konnektorisierung und sauberer Verkabelung.",
+          "step4": "Abschluss mit Vorher-/Nachher-Fotos, Gerätenachweis, echtem Blocker falls vorhanden und Status für QA oder Abrechnung.",
+          "output1": "Kundenbericht mit Außenroute, Eintrittspunkt, montierten Geräten und QA-Fotos.",
+          "output2": "Reale offene Punkte: Garten/Route blockiert, Kunde abwesend, Material fehlt, Innenzugang, Schaden oder Aktivierung außerhalb des Umfangs.",
+          "output3": "Technischer Abschluss für Koordination: installiert, teilweise, blockiert oder zweite Anfahrt erforderlich.",
+          "signal1": "Die Route Acometida → Garten → Haus → Geräte ist klar und prüfbar.",
+          "signal2": "Fotos zeigen Außenarbeit und Innenmontage.",
+          "signal3": "Der Endstatus hilft QA, Planung zweiter Anfahrten und Abrechnung ohne erfundene Angaben."
+        }
+      },
+      "densification": {
+        "tag": "Verdichtung",
+        "title": "Finale Kundenanschlüsse",
+        "description": "Finale FTTH-Anschlüsse in bereits ausgebauten Gebieten: Termine, fehlende Drops, Kundeninstallation, Nachweise und zweite Anfahrten.",
+        "metrics": {
+          "stage": "Umfang",
+          "type": "Fokus",
+          "year": "Jahr"
+        },
+        "detail": {
+          "intro": "Verdichtung schließt Kunden in bereits ausgebauten Gebieten ab. Fokus: Termine ordnen, Zugang lösen, finale Anschlüsse ausführen, Nachweise dokumentieren und klar machen, was erledigt ist oder eine zweite Anfahrt braucht.",
+          "step1": "Adresse, Netzverfügbarkeit, Vorstatus und Terminfenster prüfen.",
+          "step2": "Kunde/Team koordinieren und finale FTTH-Arbeit vorbereiten.",
+          "step3": "Finalen Anschluss, Installation oder Prüfung gemäß Umfang und Standortbedingungen ausführen.",
+          "step4": "Mit Ergebnis, Nachweisen, offenen Punkten und Status für Follow-up oder Abrechnung schließen.",
+          "output1": "Kunden-/Adressdatensatz mit Endstatus oder Blocker-Grund.",
+          "output2": "Abschlussnachweise und Notizen für nächste Aktionen.",
+          "output3": "Saubere Basis für interne Fortschrittsmessung ohne sensible öffentliche KPIs.",
+          "signal1": "Fehlgeschlagene Termine werden dokumentiert, nicht versteckt.",
+          "signal2": "Zweite Anfahrten entstehen aus einem realen Status, nicht aus Erinnerung.",
+          "signal3": "Jeder Abschluss hat genug Nachweise für administrative Kontrolle."
         }
       }
+    },
+    "detail": {
+      "open": "Technische Übersicht öffnen",
+      "window": "technische Übersicht",
+      "close": "Projektübersicht schließen",
+      "outputs": "Ergebnisse",
+      "signal": "Kontrolle"
     }
   },
   "contact": {
     "label": "Briefing",
-    "title": "Sagen Sie uns, was Sie brauchen.",
-    "titleHighlight": "Antwort bis morgen.",
-    "subtitle": "Ob Glasfaser-Ausbau oder Software-Entwicklung – wir beraten Sie gerne und finden die optimale Lösung.",
+    "title": "Beschreiben Sie das Projekt.",
+    "titleHighlight": "Wir antworten konkret.",
+    "subtitle": "Für Glasfaser, operative Software oder Automatisierung geht es zuerst um Umfang, Standort, Dringlichkeit und aktuellen Status. Danach können wir konkret antworten.",
     "info": {
       "title": "Lassen Sie uns sprechen",
       "description": "Haben Sie ein Projekt im Kopf oder Fragen zu unseren Dienstleistungen? Unser Team steht Ihnen für ein unverbindliches Gespräch zur Verfügung.",
@@ -344,23 +454,29 @@
     "germanTech": "Deutsche Ingenieurskunst",
     "iso": "DIN · EN · ISO",
     "ftth": "NE3 · NE4 zertifiziert",
-    "availability": "24 / 7 Field Ops"
+    "availability": "Feldkoordination"
   },
   "teamSection": {
-    "label": "Menschen",
-    "title": "Zwei Partner.",
-    "titleHighlight": "Ein Tisch.",
-    "description": "Glasfaser, Operations, Software. Wir teilen die Arbeit, nicht die Verantwortung.",
+    "label": "Leitung",
+    "title": "Klare Verantwortlichkeiten.",
+    "titleHighlight": "Ein operatives Team.",
+    "description": "Das Unternehmen verbindet administrative Führung in Deutschland mit technischer Ausführung und Systementwicklung für Glasfaserprojekte. Die Struktur ist klein, direkt und auf messbare Lieferung ausgerichtet.",
     "members": {
       "ceo": {
         "name": "Isabelle Horstmann",
-        "role": "Geschäftsführerin",
+        "role": "Geschäftsführerin · Administration und Vertretung",
         "location": "Celle, Deutschland",
-        "bio": "Geschäftsführerin der HMR Nexus Engineering GmbH. Verantwortet Recht, Governance und vertragliche Operationen des Unternehmens.",
+        "bio": "Isabelle Horstmann ist Geschäftsführerin der HMR Nexus Engineering GmbH. Ihr Aufgabenbereich umfasst rechtliche Vertretung, Unternehmensadministration, Vertragskoordination und die operative Struktur für die Zusammenarbeit mit Kunden und Lieferanten in Deutschland.",
         "experience": [
           "Geschäftsführung",
           "Recht & Governance",
           "Operations"
+        ],
+        "label": "Geschäftsführung",
+        "focus": [
+          "Rechtliche Vertretung und Administration der HMR Nexus Engineering GmbH",
+          "Vertragskoordination, formale Kommunikation und Unternehmensdokumentation",
+          "Operative Struktur, damit Projekte klar ausgeführt werden können"
         ]
       },
       "coo": {
@@ -376,16 +492,23 @@
       },
       "cto": {
         "name": "Jeisson A. Romero",
-        "role": "Mitgründer & Engineering",
+        "role": "Project Lead · Glasfaser und operative Software",
         "location": "Celle, Deutschland",
-        "bio": "Bauingenieur und Systems Builder. Leitet die Glasfaser-Projektumsetzung und entwickelt den Software-Stack, den die Teams im Feld nutzen.",
+        "bio": "Jeisson A. Romero Lesmes verantwortet die technische und operative Seite: Koordination von Glasfaserprojekten, Prozessdesign für Feldarbeit und die interne Software-Schicht für Termine, Reports, Finanzen und Qualitätskontrolle.",
         "experience": [
           "Glasfaser-Projektmanagement",
           "Software Engineering",
           "Field Operations"
+        ],
+        "label": "Operations und Engineering",
+        "focus": [
+          "FTTH/NE3/NE4-Projektmanagement und Koordination von Feldteams",
+          "Prozessdesign für Dokumentation, QA, Zertifizierung und Abrechnung",
+          "Entwicklung von Lumen, Work Manager, FinControl und internen Automatisierungen"
         ]
       }
-    }
+    },
+    "focusLabel": "Verantwortlichkeiten"
   },
   "whatsapp": {
     "tooltip": "Brauchen Sie Hilfe? Schreiben Sie uns! 💬",
@@ -404,26 +527,43 @@
   },
   "dualMap": {
     "label": "Geografie",
-    "title": "Zwei Länder.",
-    "titleHighlight": "Ein System.",
-    "subtitle": "Engineering in Celle. Software in Bogotá. Derselbe Stack, derselbe Slack, dieselbe Uhr.",
+    "title": "Betrieb in Deutschland.",
+    "titleHighlight": "Software-Unterstützung aus Kolumbien.",
+    "subtitle": "Das Unternehmen operiert von Celle aus und wird durch Softwareentwicklung aus Bogotá unterstützt. Das Modell ist einfach: Feldarbeit erzeugt Informationen; Software ordnet sie für Projektsteuerung, Qualität und Administration.",
     "germany": {
       "city": "Celle",
       "role": "Hauptsitz",
-      "description": "Field Operations für NE3/NE4-Ausbau in Niedersachsen und der DACH-Region. Teams, Spleißarbeiten, QA.",
+      "description": "Celle bündelt die operative Koordination: FTTH-Projekte, Feldteams, NAS/Zugang, finale Kundenanschlüsse, Spleißung, Qualitätskontrolle und Dokumentation.",
       "stats": {
         "fiber": "km / Monat",
         "quality": "Spleiß in Spec"
-      }
+      },
+      "lanes": {
+        "fiber": "NE3 · NE4 Ausführung",
+        "quality": "Spleißung · QA · Dokumentation",
+        "client": "Übergabe an Endkunden"
+      },
+      "country": "Deutschland"
     },
     "colombia": {
       "city": "Bogotá",
       "role": "Entwicklungs-Hub",
-      "description": "Software-Engineering für Field Operations, Dashboards und KI-Agents. Gleiches Team, andere Zeitzone.",
+      "description": "Bogotá unterstützt die Entwicklung interner Tools: Lumen, Work Manager, FinControl und Automatisierungen für Kundenaufnahme und Nachverfolgung.",
       "stats": {
         "connections": "Anschlüsse",
         "support": "Rufbereitschaft"
-      }
+      },
+      "lanes": {
+        "software": "Lumen · Work Manager",
+        "ops": "FinControl · Dashboards",
+        "ai": "Kundenbot · Automatisierung"
+      },
+      "country": "Kolumbien"
+    },
+    "flow": {
+      "field": "Feld",
+      "software": "Software",
+      "control": "Steuerung"
     }
   },
   "footer": {

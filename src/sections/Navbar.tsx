@@ -44,7 +44,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
     { id: 'services',  label: '01 · ' + t('nav.services') },
     { id: 'products',  label: '02 · ' + t('nav.products') },
     { id: 'portfolio', label: '03 · ' + t('nav.portfolio') },
-    { id: 'contact',   label: '04 · ' + t('nav.contact') },
+    { id: 'contact',   label: '05 · ' + t('nav.contact') },
   ];
 
   const languages = [

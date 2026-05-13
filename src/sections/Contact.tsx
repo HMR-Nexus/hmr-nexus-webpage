@@ -18,7 +18,7 @@ interface ContactProps {
 const HONEYPOT_FIELD = 'website';
 
 /**
- * NEXUS Contact — 04 · Direct. Technical. Calm.
+ * NEXUS Contact — 05 · Direct. Technical. Calm.
  * No glow, no gradients. A brief, not a funnel.
  */
 export function Contact({ preselectedType }: ContactProps) {
@@ -92,7 +92,7 @@ export function Contact({ preselectedType }: ContactProps) {
         <MotionSection>
           <div className="section-head">
             <div>
-              <div className="meta">04 · {t('contact.label')}</div>
+              <div className="meta">05 · {t('contact.label')}</div>
             </div>
             <div>
               <h2>
@@ -112,7 +112,7 @@ export function Contact({ preselectedType }: ContactProps) {
         >
           {/* Left column: address card */}
           <motion.div variants={cardEntrance}>
-            <div className="mono-tag text-paper/45 mb-6">04.1 · BRIEFING</div>
+            <div className="mono-tag text-paper/45 mb-6">05.1 · BRIEFING</div>
             <p className="text-paper/80 text-[16px] leading-[1.55] mb-10">
               {t('contact.info.description')}
             </p>
