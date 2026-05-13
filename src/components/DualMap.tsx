@@ -15,7 +15,9 @@ interface Hub {
   focus: string[];
 }
 
-const routePath = 'M301 235 C365 148 457 122 525 108';
+const mainRoute = 'M328 235 C382 118 462 73 525 108';
+const softwareRoute = 'M328 235 C394 188 470 176 525 108';
+const coordinationRoute = 'M328 235 C364 292 502 250 525 108';
 
 export function DualMap() {
   const { t } = useTranslation();
@@ -72,24 +74,28 @@ export function DualMap() {
         <MotionSection>
           <div className="grid lg:grid-cols-[1.22fr_0.78fr]" style={{ border: '1px solid var(--rule)' }}>
             <div className="relative min-h-[420px] md:min-h-[640px] overflow-hidden border-b lg:border-b-0 lg:border-r border-paper/10 bg-[#0A0B0D]">
-              <WorldMapSVG className="absolute inset-0 h-full w-full opacity-100" />
+              <WorldMapSVG className="absolute inset-0 h-full w-full opacity-95" />
               <div
-                className="absolute inset-0 opacity-[0.16] mix-blend-screen"
+                className="absolute inset-0 opacity-[0.10]"
                 style={{
-                  backgroundImage: 'linear-gradient(rgba(255,77,46,0.28) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,238,0.18) 1px, transparent 1px)',
-                  backgroundSize: '50px 50px',
+                  backgroundImage: 'linear-gradient(rgba(245,243,238,0.30) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,238,0.22) 1px, transparent 1px)',
+                  backgroundSize: '64px 64px',
                 }}
               />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_52%_24%,rgba(255,77,46,0.11),transparent_24%),radial-gradient(circle_at_30%_48%,rgba(245,243,238,0.08),transparent_22%),linear-gradient(180deg,rgba(10,11,13,0)_0%,rgba(10,11,13,0.42)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_53%_25%,rgba(255,77,46,0.08),transparent_23%),radial-gradient(circle_at_30%_48%,rgba(245,243,238,0.07),transparent_21%),linear-gradient(180deg,rgba(10,11,13,0.08)_0%,rgba(10,11,13,0.62)_100%)]" />
 
-              <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="World map showing operations in Germany and software support from Colombia">
+              <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="World map showing operational route between Colombia and Germany">
                 <defs>
-                  <linearGradient id="nexusRoute" x1="301" y1="235" x2="525" y2="108" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#F5F3EE" stopOpacity="0.65" />
+                  <linearGradient id="routeMain" x1="328" y1="235" x2="525" y2="108" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F5F3EE" stopOpacity="0.86" />
                     <stop offset="1" stopColor="#FF4D2E" stopOpacity="1" />
                   </linearGradient>
+                  <linearGradient id="routeSoft" x1="328" y1="235" x2="525" y2="108" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F5F3EE" stopOpacity="0.38" />
+                    <stop offset="1" stopColor="#F5F3EE" stopOpacity="0.72" />
+                  </linearGradient>
                   <filter id="mapNodeGlow" x="-80%" y="-80%" width="260%" height="260%">
-                    <feGaussianBlur stdDeviation="8" result="blur" />
+                    <feGaussianBlur stdDeviation="7" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
                       <feMergeNode in="SourceGraphic" />
@@ -97,47 +103,82 @@ export function DualMap() {
                   </filter>
                 </defs>
 
-                <path d={routePath} fill="none" stroke="rgba(245,243,238,0.18)" strokeWidth="1.2" />
+                <path d={mainRoute} fill="none" stroke="rgba(245,243,238,0.14)" strokeWidth="5.5" strokeLinecap="round" />
+                <path d={softwareRoute} fill="none" stroke="rgba(245,243,238,0.12)" strokeWidth="1.2" strokeDasharray="4 10" strokeLinecap="round" />
+                <path d={coordinationRoute} fill="none" stroke="rgba(255,77,46,0.18)" strokeWidth="1.2" strokeDasharray="2 12" strokeLinecap="round" />
                 <motion.path
-                  d={routePath}
+                  d={mainRoute}
                   fill="none"
-                  stroke="url(#nexusRoute)"
+                  stroke="url(#routeMain)"
                   strokeWidth="2.8"
-                  strokeDasharray="10 10"
+                  strokeLinecap="round"
                   initial={{ pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 1.35, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.path
+                  d={softwareRoute}
+                  fill="none"
+                  stroke="url(#routeSoft)"
+                  strokeWidth="1.7"
+                  strokeDasharray="7 9"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 0.78 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.1, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.path
+                  d={coordinationRoute}
+                  fill="none"
+                  stroke="#FF4D2E"
+                  strokeWidth="1.5"
+                  strokeDasharray="5 11"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  whileInView={{ pathLength: 1, opacity: 0.52 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.2, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 />
 
-                <g transform="translate(301 235)">
-                  <motion.circle r="30" fill="none" stroke="rgba(245,243,238,0.30)" strokeWidth="1" initial={{ scale: 0.75, opacity: 0 }} whileInView={{ scale: 1.25, opacity: 1 }} transition={{ duration: 1.6, repeat: Infinity, repeatType: 'reverse' }} />
-                  <circle r="9" fill="#F5F3EE" filter="url(#mapNodeGlow)" />
-                  <line x1="12" y1="-11" x2="58" y2="-46" stroke="rgba(245,243,238,0.28)" />
-                  <circle cx="64" cy="-50" r="3" fill="rgba(245,243,238,0.62)" />
+                <motion.circle cx="396" cy="132" r="3.2" fill="#F5F3EE" initial={{ opacity: 0 }} whileInView={{ opacity: 0.82 }} viewport={{ once: true }} transition={{ delay: 0.7 }} />
+                <motion.circle cx="450" cy="94" r="2.6" fill="rgba(245,243,238,0.68)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.85 }} />
+
+                <g transform="translate(328 235)">
+                  <motion.circle r="34" fill="rgba(245,243,238,0.025)" stroke="rgba(245,243,238,0.24)" strokeWidth="1" initial={{ scale: 0.82, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.55 }} />
+                  <circle r="10" fill="#0A0B0D" stroke="#F5F3EE" strokeWidth="3" filter="url(#mapNodeGlow)" />
+                  <circle r="3" fill="#F5F3EE" />
+                  <path d="M14 -16L66 -58" stroke="rgba(245,243,238,0.34)" strokeWidth="1" />
+                  <rect x="68" y="-84" width="138" height="52" fill="rgba(10,11,13,0.92)" stroke="rgba(245,243,238,0.22)" />
+                  <text x="84" y="-62" fill="rgba(245,243,238,0.9)" fontFamily="JetBrains Mono, monospace" fontSize="12" letterSpacing="1.4">COLOMBIA</text>
+                  <text x="84" y="-44" fill="rgba(245,243,238,0.48)" fontFamily="JetBrains Mono, monospace" fontSize="10">software · ops</text>
                 </g>
 
                 <g transform="translate(525 108)">
-                  <motion.circle r="36" fill="none" stroke="rgba(255,77,46,0.42)" strokeWidth="1" initial={{ scale: 0.75, opacity: 0 }} whileInView={{ scale: 1.2, opacity: 1 }} transition={{ duration: 1.5, repeat: Infinity, repeatType: 'reverse', delay: 0.2 }} />
-                  <circle r="10" fill="#FF4D2E" filter="url(#mapNodeGlow)" />
-                  <line x1="14" y1="8" x2="56" y2="30" stroke="rgba(255,77,46,0.42)" />
-                  <circle cx="64" cy="34" r="3" fill="rgba(255,77,46,0.82)" />
+                  <motion.circle r="40" fill="rgba(255,77,46,0.035)" stroke="rgba(255,77,46,0.34)" strokeWidth="1" initial={{ scale: 0.82, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.16 }} />
+                  <circle r="11" fill="#0A0B0D" stroke="#FF4D2E" strokeWidth="3" filter="url(#mapNodeGlow)" />
+                  <circle r="3.5" fill="#FF4D2E" />
+                  <path d="M16 13L70 48" stroke="rgba(255,77,46,0.38)" strokeWidth="1" />
+                  <rect x="72" y="26" width="132" height="52" fill="rgba(10,11,13,0.84)" stroke="rgba(255,77,46,0.28)" />
+                  <text x="88" y="48" fill="#FF4D2E" fontFamily="JetBrains Mono, monospace" fontSize="12" letterSpacing="1.4">GERMANY</text>
+                  <text x="88" y="66" fill="rgba(245,243,238,0.52)" fontFamily="JetBrains Mono, monospace" fontSize="10">field delivery</text>
                 </g>
               </svg>
 
-              <div className="absolute left-5 top-5 mono-tag text-paper/50">COUNTRIES OF OPERATION · DE / CO</div>
-              <div className="absolute bottom-5 left-5 right-5 grid sm:grid-cols-3 border border-paper/10 bg-ink/88 backdrop-blur-sm">
+              <div className="absolute left-5 top-5 border border-paper/10 bg-ink/70 px-3 py-2 mono-tag text-paper/55 backdrop-blur-sm">OPERATIONS MAP · CO ⇄ DE</div>
+              <div className="absolute bottom-5 left-5 right-5 grid sm:grid-cols-3 border border-paper/10 bg-ink/86 backdrop-blur-md">
                 <div className="p-4 border-b sm:border-b-0 sm:border-r border-paper/10">
-                  <div className="mono-tag text-paper/40">01</div>
-                  <div className="font-display text-[19px] text-paper">{t('dualMap.flow.field')}</div>
+                  <div className="mono-tag text-paper/40">01 · FIELD</div>
+                  <div className="font-display text-[18px] text-paper">{t('dualMap.flow.field')}</div>
                 </div>
                 <div className="p-4 border-b sm:border-b-0 sm:border-r border-paper/10">
-                  <div className="mono-tag text-paper/40">02</div>
-                  <div className="font-display text-[19px] text-paper">{t('dualMap.flow.software')}</div>
+                  <div className="mono-tag text-paper/40">02 · SOFTWARE</div>
+                  <div className="font-display text-[18px] text-paper">{t('dualMap.flow.software')}</div>
                 </div>
                 <div className="p-4">
-                  <div className="mono-tag text-paper/40">03</div>
-                  <div className="font-display text-[19px] text-[color:var(--accent)]">{t('dualMap.flow.control')}</div>
+                  <div className="mono-tag text-paper/40">03 · CONTROL</div>
+                  <div className="font-display text-[18px] text-[color:var(--accent)]">{t('dualMap.flow.control')}</div>
                 </div>
               </div>
             </div>
