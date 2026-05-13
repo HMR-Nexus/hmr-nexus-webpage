@@ -6,6 +6,10 @@ echo "[BUILD] Running production build..."
 npm run build
 
 echo "[DEPLOY] Pushing to Netlify..."
-netlify deploy --prod --dir=dist
+if command -v netlify >/dev/null 2>&1; then
+  netlify deploy --prod --dir=dist
+else
+  npx netlify-cli deploy --prod --dir=dist
+fi
 
 echo "[DONE] Live at https://hmr-nexus.com"
