@@ -104,8 +104,26 @@ export function DualMap() {
                 </defs>
 
                 <path d={mainRoute} fill="none" stroke="rgba(245,243,238,0.14)" strokeWidth="5.5" strokeLinecap="round" />
-                <path d={softwareRoute} fill="none" stroke="rgba(245,243,238,0.12)" strokeWidth="1.2" strokeDasharray="4 10" strokeLinecap="round" />
-                <path d={coordinationRoute} fill="none" stroke="rgba(255,77,46,0.18)" strokeWidth="1.2" strokeDasharray="2 12" strokeLinecap="round" />
+                <motion.path
+                  d={softwareRoute}
+                  fill="none"
+                  stroke="rgba(245,243,238,0.14)"
+                  strokeWidth="1.2"
+                  strokeDasharray="4 10"
+                  strokeLinecap="round"
+                  animate={{ strokeDashoffset: [0, -28] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: 'linear' }}
+                />
+                <motion.path
+                  d={coordinationRoute}
+                  fill="none"
+                  stroke="rgba(255,77,46,0.20)"
+                  strokeWidth="1.2"
+                  strokeDasharray="2 12"
+                  strokeLinecap="round"
+                  animate={{ strokeDashoffset: [0, -32] }}
+                  transition={{ duration: 5.6, repeat: Infinity, ease: 'linear' }}
+                />
                 <motion.path
                   d={mainRoute}
                   fill="none"
@@ -142,11 +160,49 @@ export function DualMap() {
                   transition={{ duration: 1.2, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
                 />
 
+                <motion.path
+                  d={mainRoute}
+                  fill="none"
+                  stroke="#F5F3EE"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                  strokeDasharray="1 210"
+                  animate={{ strokeDashoffset: [60, -260], opacity: [0, 0.82, 0] }}
+                  transition={{ duration: 3.9, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.path
+                  d={coordinationRoute}
+                  fill="none"
+                  stroke="#FF4D2E"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeDasharray="1 190"
+                  animate={{ strokeDashoffset: [-120, 190], opacity: [0, 0.62, 0] }}
+                  transition={{ duration: 5.2, repeat: Infinity, ease: 'easeInOut', delay: 0.7 }}
+                />
+
                 <motion.circle cx="396" cy="132" r="3.2" fill="#F5F3EE" initial={{ opacity: 0 }} whileInView={{ opacity: 0.82 }} viewport={{ once: true }} transition={{ delay: 0.7 }} />
                 <motion.circle cx="450" cy="94" r="2.6" fill="rgba(245,243,238,0.68)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.85 }} />
 
                 <g transform="translate(328 235)">
-                  <motion.circle r="34" fill="rgba(245,243,238,0.025)" stroke="rgba(245,243,238,0.24)" strokeWidth="1" initial={{ scale: 0.82, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.55 }} />
+                  <motion.circle
+                    r="34"
+                    fill="rgba(245,243,238,0.025)"
+                    stroke="rgba(245,243,238,0.24)"
+                    strokeWidth="1"
+                    initial={{ scale: 0.82, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.55 }}
+                  />
+                  <motion.circle
+                    r="24"
+                    fill="none"
+                    stroke="rgba(245,243,238,0.26)"
+                    strokeWidth="1"
+                    animate={{ scale: [0.75, 1.65], opacity: [0.42, 0] }}
+                    transition={{ duration: 3.2, repeat: Infinity, ease: 'easeOut' }}
+                  />
                   <circle r="10" fill="#0A0B0D" stroke="#F5F3EE" strokeWidth="3" filter="url(#mapNodeGlow)" />
                   <circle r="3" fill="#F5F3EE" />
                   <path d="M14 -16L66 -58" stroke="rgba(245,243,238,0.34)" strokeWidth="1" />
@@ -156,7 +212,24 @@ export function DualMap() {
                 </g>
 
                 <g transform="translate(525 108)">
-                  <motion.circle r="40" fill="rgba(255,77,46,0.035)" stroke="rgba(255,77,46,0.34)" strokeWidth="1" initial={{ scale: 0.82, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.16 }} />
+                  <motion.circle
+                    r="40"
+                    fill="rgba(255,77,46,0.035)"
+                    stroke="rgba(255,77,46,0.34)"
+                    strokeWidth="1"
+                    initial={{ scale: 0.82, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.55, delay: 0.16 }}
+                  />
+                  <motion.circle
+                    r="27"
+                    fill="none"
+                    stroke="rgba(255,77,46,0.32)"
+                    strokeWidth="1"
+                    animate={{ scale: [0.72, 1.72], opacity: [0.5, 0] }}
+                    transition={{ duration: 3.2, repeat: Infinity, ease: 'easeOut', delay: 1.1 }}
+                  />
                   <circle r="11" fill="#0A0B0D" stroke="#FF4D2E" strokeWidth="3" filter="url(#mapNodeGlow)" />
                   <circle r="3.5" fill="#FF4D2E" />
                   <path d="M16 13L70 48" stroke="rgba(255,77,46,0.38)" strokeWidth="1" />
