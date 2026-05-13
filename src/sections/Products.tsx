@@ -157,7 +157,7 @@ export function Products({ onRequestDemo }: ProductsProps) {
                   <img
                     src={heroProduct.image}
                     alt={t(`products.${heroProduct.key}.imageAlt`)}
-                    className="absolute inset-0 h-full w-full object-cover opacity-100 saturate-[1.05] brightness-[1.18]"
+                    className="absolute inset-0 h-full w-full object-cover opacity-100 contrast-[1.02]"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/5 to-transparent" />
@@ -194,7 +194,7 @@ export function Products({ onRequestDemo }: ProductsProps) {
                 <img
                   src={p.image}
                   alt={t(`products.${p.key}.imageAlt`)}
-                  className="absolute inset-0 h-full w-full object-cover opacity-100 saturate-[1.05] brightness-[1.15]"
+                  className="absolute inset-0 h-full w-full object-cover opacity-100 contrast-[1.02]"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
