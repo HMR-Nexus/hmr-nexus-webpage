@@ -14,7 +14,7 @@
     "title2": "for Germany",
     "title3": "executed with",
     "title4": "discipline.",
-    "subtitle": "HMR Nexus Engineering GmbH supports FTTH projects in Germany with NE3/NE4 execution, technical documentation and clean handover.",
+    "subtitle": "Technical partner for FTTH projects in Germany. We coordinate field teams, document with rigor and deliver traceable work: from distribution network to final connection.",
     "btnPrimary": "Fiber capabilities",
     "btnSecondary": "View digital tools",
     "stats": {
@@ -22,13 +22,27 @@
       "connections": "Connections",
       "countries": "Countries"
     },
-    "title5": "FTTH execution, documentation and control",
-    "title6": "for projects in Germany."
+    "title5": "Field coordination, documentation and clean handover",
+    "title6": "for executed projects."
   },
   "values": {
     "quality": "Quality",
     "innovation": "Innovation",
-    "service": "Service"
+    "service": "Service",
+    "planning": "Planning",
+    "field": "Field execution",
+    "documentation": "Documentation",
+    "coordination": "Coordination",
+    "title": "Why Nexus",
+    "titleHighlight": "Real execution",
+    "subtitle": "We don't sell technology. We deliver verifiable work: completed connections, complete documentation and clean handover.",
+    "description": "Each project has a known responsible party, visible status and documented closeout. This is what sets us apart.",
+    "why": {
+      "planning": "We plan with real data, not empty spreadsheets. Every segment, every connection, every team has a clear assignment.",
+      "field": "Field work is our daily business. In-house or coordinated teams, familiar with German standards and defined processes.",
+      "documentation": "Documentation is not an add-on. It's part of every closeout: photos, status, field notes and handover so there's no room for interpretation.",
+      "coordination": "We coordinate teams, appointments and priorities. We don't expect the client to solve logistics problems."
+    }
   },
   "services": {
     "label": "Fiber deployment",
@@ -308,9 +322,9 @@
   },
   "portfolio": {
     "label": "References",
-    "title": "Current fiber deployment scopes.",
-    "titleHighlight": "NE3, NE4, NAS and densification.",
-    "subtitle": "Selected operational areas without client names, addresses or private KPIs. The examples show the type of work Nexus can structure and document for FTTH projects in Germany.",
+    "title": "Real work areas.",
+    "titleHighlight": "Each case has a problem, work and result.",
+    "subtitle": "These are the areas where we execute projects. We don't invent cases: each one reflects a real scope with its context, challenges and documented deliverables.",
     "status": {
       "active": "Active",
       "completed": "Completed"
@@ -323,14 +337,14 @@
       "ne3": {
         "tag": "NE3 Distribution",
         "title": "Regional NE3 Distribution",
-        "description": "FTTH distribution network: fiber blowing, splicing in POP and DP, measurements, documentation and technical handover.",
+        "description": "Bringing fiber from the existing distribution network to each building's handover point. Work includes blowing, splicing at POP and intermediate points, measurements and documentation so the network is ready for NE4.",
         "metrics": {
           "stage": "Scope",
           "region": "Region",
           "year": "Year"
         },
         "detail": {
-          "intro": "NE3 covers distribution before the final customer connection. The core work is blowing fiber, splicing in POP and DP, measuring where applicable and documenting the network for NE4 continuation or certification.",
+          "intro": "Problem: getting fiber to each building when the distribution network exists but doesn't reach the handover point. Work: blow fiber, splice at POP and intermediate points, measure per spec. Result: documented network ready to connect final customers.",
           "step1": "Segment preparation: review plans, involved POP/DP, ducts, chambers, cabinets, permits/access and real site conditions before intervention.",
           "step2": "Blowing/pulling: prepare ducts, lubrication/guide where applicable, blow fiber/cable and control the route according to design.",
           "step3": "Network splicing and order: splices in POP, DP, closures or cabinets, fiber identification and physical organization for operations.",
@@ -346,7 +360,7 @@
       "ne4": {
         "tag": "NE4 FTTH",
         "title": "NE4 final FTTH connection",
-        "description": "Final FTTH connection from DP/HÜP to GF-TA/ONT: indoor route, splice or termination, QA photos and verifiable technical closeout.",
+        "description": "Connecting the final customer to the existing handover point. We check access, execute the indoor drop where applicable, mount the terminal equipment and document with photos and clear status for QA or second visit.",
         "metrics": {
           "stage": "Scope",
           "region": "Region",
@@ -415,7 +429,7 @@
       "nas": {
         "tag": "NAS · Customer connection",
         "title": "NAS: drop to customer home",
-        "description": "Customer connection from the existing drop through garden/exterior route to the home, with entry, equipment mounting, QA photos and technical closeout.",
+        "description": "Bringing the connection from the existing drop in the street to inside the home. Route through garden or facade, building entry, HÜP and terminal equipment mounting where applicable, with final state documentation.",
         "metrics": {
           "stage": "Scope",
           "region": "Region",
@@ -438,7 +452,7 @@
       "densification": {
         "tag": "Densification",
         "title": "Final Customer Connections",
-        "description": "Final FTTH connections in already built areas: appointments, missing drops, customer-side installation, evidence and second visits.",
+        "description": "Closing pending connections in areas where the network is already deployed. We manage appointments, solve access issues, execute the final installation and document the result with clear status: complete, partial or second visit required.",
         "metrics": {
           "stage": "Scope",
           "type": "Focus",

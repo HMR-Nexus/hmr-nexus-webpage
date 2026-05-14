@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { Navbar } from './sections/Navbar';
 import { Hero } from './sections/Hero';
+import { Values } from './sections/Values';
 import { TrustBanner } from './components/TrustBanner';
 import { LiveGrid } from './components/LiveGrid';
 import { toPageId, type PageId } from './lib/navigation';
@@ -74,6 +75,7 @@ function App() {
               onScrollToProducts={() => navigateTo('products')}
             />
             <TrustBanner />
+            <Values />
           </>
         );
     }

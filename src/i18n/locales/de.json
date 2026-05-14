@@ -14,7 +14,7 @@
     "title2": "für Deutschland",
     "title3": "präzise",
     "title4": "umgesetzt.",
-    "subtitle": "HMR Nexus Engineering GmbH unterstützt FTTH-Projekte in Deutschland mit NE3/NE4-Ausführung, technischer Dokumentation und klarer Übergabe.",
+    "subtitle": "Technischer Partner für FTTH-Projekte in Deutschland. Wir koordinieren Feldteams, dokumentieren mit Sorgfalt und liefern nachvollziehbare Arbeit: vom Verteilnetz bis zum finalen Anschluss.",
     "btnPrimary": "Glasfaser-Leistungen",
     "btnSecondary": "Digitale Werkzeuge ansehen",
     "stats": {
@@ -22,13 +22,27 @@
       "connections": "Hausanschlüsse",
       "countries": "Länder"
     },
-    "title5": "FTTH-Ausführung, Dokumentation und Steuerung",
-    "title6": "für Projekte in Deutschland."
+    "title5": "Feldkoordination, Dokumentation und klare Übergabe",
+    "title6": "für ausgeführte Projekte."
   },
   "values": {
     "quality": "Qualität",
     "innovation": "Innovation",
-    "service": "Service"
+    "service": "Service",
+    "planning": "Planung",
+    "field": "Feldausführung",
+    "documentation": "Dokumentation",
+    "coordination": "Koordination",
+    "title": "Warum Nexus",
+    "titleHighlight": "Echte Ausführung",
+    "subtitle": "Wir verkaufen keine Technologie. Wir liefern überprüfbare Arbeit: abgeschlossene Anschlüsse, vollständige Dokumentation und klare Übergabe.",
+    "description": "Jedes Projekt hat einen bekannten Verantwortlichen, sichtbaren Status und dokumentierten Abschluss. Das unterscheidet uns.",
+    "why": {
+      "planning": "Wir planen mit echten Daten, nicht mit leeren Tabellen. Jeder Abschnitt, jeder Anschluss, jedes Team hat eine klare Zuweisung.",
+      "field": "Feldarbeit ist unser tägliches Geschäft. Eigene oder koordinierte Teams, vertraut mit deutschen Standards und definierten Prozessen.",
+      "documentation": "Dokumentation ist kein Anhang. Sie ist Teil jedes Abschlusses: Fotos, Status, Feldnotizen und Übergabe, damit kein Interpretationsspielraum bleibt.",
+      "coordination": "Wir koordinieren Teams, Termine und Prioritäten. Wir erwarten nicht, dass der Kunde Logistikprobleme löst."
+    }
   },
   "services": {
     "label": "Glasfaser-Ausbau",
@@ -308,9 +322,9 @@
   },
   "portfolio": {
     "label": "Referenzen",
-    "title": "Arbeitsbereiche im Glasfaserausbau.",
-    "titleHighlight": "NE3, NE4, NAS und Nachverdichtung.",
-    "subtitle": "Ausgewählte operative Bereiche ohne Kundennamen, Adressen oder private Kennzahlen. Die Beispiele zeigen, welche Art von Arbeit Nexus für FTTH-Projekte in Deutschland strukturiert und dokumentiert.",
+    "title": "Echte Arbeitsbereiche.",
+    "titleHighlight": "Jeder Fall hat ein Problem, Arbeit und Ergebnis.",
+    "subtitle": "Dies sind die Bereiche, in denen wir Projekte ausführen. Wir erfinden keine Fälle: Jeder spiegelt einen realen Umfang wider mit seinem Kontext, Herausforderungen und dokumentierten Ergebnissen.",
     "status": {
       "active": "Laufend",
       "completed": "Abgeschlossen"
@@ -323,7 +337,7 @@
       "ne3": {
         "tag": "NE3-Verteilung",
         "title": "Regionale NE3-Verteilung",
-        "description": "FTTH-Verteilnetz: Fasereinblasen, Spleißungen in POP und DP, Messungen, Dokumentation und technische Übergabe.",
+        "description": "Glasfaser vom bestehenden Verteilnetz bis zu den Übergabepunkten jedes Gebäudes bringen. Die Arbeit umfasst Einblasen, Spleißen an POP und Zwischenpunkten, Messungen und Dokumentation, damit das Netz für NE4 bereit ist.",
         "metrics": {
           "stage": "Umfang",
           "region": "Region",
@@ -346,7 +360,7 @@
       "ne4": {
         "tag": "NE4 FTTH",
         "title": "NE4 finaler FTTH-Anschluss",
-        "description": "Finaler FTTH-Anschluss vom DP/HÜP bis GF-TA/ONT: Innenroute, Spleißung oder Terminierung, QA-Fotos und prüfbarer technischer Abschluss.",
+        "description": "Den Endkunden mit dem bestehenden Übergabepunkt verbinden. Wir prüfen Zugang, führen den Innenanschluss aus wo zutreffend, montieren das Endgerät und dokumentieren mit Fotos und klarem Status für QA oder zweite Anfahrt.",
         "metrics": {
           "stage": "Umfang",
           "region": "Region",
@@ -415,7 +429,7 @@
       "nas": {
         "tag": "NAS · Kundenanschluss",
         "title": "NAS: Acometida bis Haus",
-        "description": "Kundenanschluss von der vorhandenen Acometida über Garten/Außenroute bis ins Haus, mit Eintritt, Gerätemontage, QA-Fotos und technischem Abschluss.",
+        "description": "Die Verbindung von der vorhandenen Acometida im öffentlichen Bereich bis ins Innere des Hauses bringen. Route durch Garten oder Fassade, Gebäudeeintritt, HÜP und Endgerätemontage wo zutreffend, mit Dokumentation des Endzustands.",
         "metrics": {
           "stage": "Umfang",
           "region": "Region",
@@ -438,7 +452,7 @@
       "densification": {
         "tag": "Verdichtung",
         "title": "Finale Kundenanschlüsse",
-        "description": "Finale FTTH-Anschlüsse in bereits ausgebauten Gebieten: Termine, fehlende Drops, Kundeninstallation, Nachweise und zweite Anfahrten.",
+        "description": "Offene Anschlüsse in Gebieten schließen, wo das Netz bereits verlegt ist. Wir verwalten Termine, lösen Zugangsprobleme, führen die finale Installation aus und dokumentieren das Ergebnis mit klarem Status: abgeschlossen, teilweise oder zweite Anfahrt erforderlich.",
         "metrics": {
           "stage": "Umfang",
           "type": "Fokus",

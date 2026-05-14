@@ -13,8 +13,8 @@
     "title1": "Infraestructura de fibra",
     "title2": "en Alemania",
     "title3": "ejecutada con",
-    "title4": "precisión.",
-    "subtitle": "HMR Nexus Engineering GmbH apoya proyectos FTTH en Alemania con ejecución NE3/NE4, documentación técnica y handover claro.",
+    "title4": "disciplina.",
+    "subtitle": "Socio técnico para proyectos FTTH en Alemania. Coordinamos equipos de campo, documentamos con rigor y entregamos trabajo trazable: desde la red de distribución hasta la conexión final.",
     "btnPrimary": "Capacidades de fibra",
     "btnSecondary": "Ver herramientas digitales",
     "stats": {
@@ -22,13 +22,27 @@
       "connections": "Conexiones",
       "countries": "Países"
     },
-    "title5": "Ejecución FTTH, documentación y control",
-    "title6": "para proyectos en Alemania."
+    "title5": "Coordinación de campo, documentación y handover claro",
+    "title6": "para proyectos ejecutados."
   },
   "values": {
     "quality": "Calidad",
     "innovation": "Innovación",
-    "service": "Servicio"
+    "service": "Servicio",
+    "planning": "Planificación",
+    "field": "Ejecución de campo",
+    "documentation": "Documentación",
+    "coordination": "Coordinación",
+    "title": "Por qué Nexus",
+    "titleHighlight": "Ejecución real",
+    "subtitle": "No vendemos tecnología. Entregamos trabajo que se puede verificar: conexiones terminadas, documentación completa y handover limpio.",
+    "description": "Cada proyecto cuenta con un responsable conocido, estado visible y cierre documentado. Esto es lo que nos diferencia.",
+    "why": {
+      "planning": "Planificamos con datos reales, no con hojas de cálculo vacías. Cada tramo, cada conexión, cada equipo tiene una asignación clara.",
+      "field": "El trabajo de campo es nuestro día a día. Equipos propios o coordinados, con conocimiento de las normas alemanas y proceso definido.",
+      "documentation": "La documentación no es un anexo. Es parte de cada cierre: fotos, estados, notas de campo y handover para que no haya margen de interpretación.",
+      "coordination": "Coordinamos equipos, citas y prioridades. No esperamos que el cliente resuelva los problemas de logística."
+    }
   },
   "services": {
     "label": "Despliegue de fibra",
@@ -328,9 +342,9 @@
   },
   "portfolio": {
     "label": "Referencias",
-    "title": "Ámbitos actuales de despliegue de fibra.",
-    "titleHighlight": "NE3, NE4, NAS y densificación.",
-    "subtitle": "Áreas operativas seleccionadas sin nombres de clientes, direcciones ni KPIs privados. Los ejemplos muestran el tipo de trabajo que Nexus puede estructurar y documentar para proyectos FTTH en Alemania.",
+    "title": "Áreas de trabajo real.",
+    "titleHighlight": "Cada caso tiene un problema, trabajo y resultado.",
+    "subtitle": "Estos son los ámbitos donde ejecutamos proyectos. No inventamos casos: cada uno refleja un alcance real con su contexto, desafíos y entregables documentados.",
     "status": {
       "active": "En Curso",
       "completed": "Completado"
@@ -343,14 +357,14 @@
       "ne3": {
         "tag": "Distribución NE3",
         "title": "Distribución Regional NE3",
-        "description": "Red de distribución FTTH: soplado de fibra, fusiones en POP y DP, mediciones, documentación y handover técnico.",
+        "description": "Llevar fibra desde la red de distribución existente hasta los puntos de entrega de cada edificio. El trabajo incluye soplado, fusión en POP y puntos intermedios, mediciones y documentación para que la red quede lista para NE4.",
         "metrics": {
           "stage": "Alcance",
           "region": "Región",
           "year": "Año"
         },
         "detail": {
-          "intro": "NE3 cubre la distribución antes del cliente final. El núcleo del trabajo es soplar fibra, fusionar en POP y DP, medir cuando aplica y dejar la red documentada para continuidad NE4 o certificación.",
+          "intro": "Problema: hacer llegar fibra a cada edificio cuando la red de distribución ya existe pero no llega al punto de entrega. Trabajo: soplar fibra, fusionar en POP y puntos intermedios, medir según spec. Resultado: red documentada lista para conectar clientes finales.",
           "step1": "Preparación del tramo: revisión de planos, POP/DP involucrados, ductos, cámaras, armarios, permisos/accesos y condiciones reales antes de intervenir.",
           "step2": "Soplado/tendido: preparación de ductos, lubricación/guía si aplica, soplado de fibra/cable y control del recorrido según diseño.",
           "step3": "Fusión y orden de red: empalmes en POP, DP, cierres o armarios, identificación de fibras y organización del punto para operación.",
@@ -366,14 +380,14 @@
       "ne4": {
         "tag": "NE4 FTTH",
         "title": "NE4: conexión final FTTH",
-        "description": "Conexión FTTH final desde DP/HÜP hasta GF-TA/ONT: ruta interior, fusión o terminación, fotos QA y cierre técnico verificable.",
+        "description": "Conectar el hogar del cliente final al punto de entrega existente. Revisamos acceso, ejecutamos la acometida interior cuando aplica, montamos el equipo terminal y documentamos con fotos y estado claro para QA o segunda visita.",
         "metrics": {
           "stage": "Alcance",
           "region": "Región",
           "year": "Año"
         },
-        "detail": {
-          "intro": "NE4 es la conexión final dentro del entorno del cliente. Lo importante es validar acceso y ruta, trabajar desde DP/HÜP hasta GF-TA/ONT cuando aplica, terminar correctamente y dejar evidencia clara para QA, segunda visita o facturación.",
+"detail": {
+            "intro": "Problema: el cliente final necesita que su hogar se conecte a la red existente. Trabajo: validar acceso, ejecutar acometida interior, montar equipo terminal, documentar con fotos. Resultado: conexión terminada con estado claro para activación o segunda visita.",
           "step1": "Validar cita, dirección, acceso, tipo de vivienda, DP/HÜP y ruta interior posible.",
           "step2": "Preparar la acometida interior o tramo correspondiente: entrada, canalización/perforación si aplica y protección del recorrido.",
           "step3": "Montar o preparar GF-TA/ONT, con fusión/conectorización y revisión técnica antes de cerrar.",
@@ -435,14 +449,14 @@
       "nas": {
         "tag": "NAS · Conexión cliente",
         "title": "NAS: acometida hasta vivienda",
-        "description": "Conexión al cliente desde la acometida por jardín/exterior hasta la vivienda, con entrada, montaje de equipos, fotos QA y cierre técnico.",
+        "description": "Llevar la conexión desde la acometida existente en vía pública hasta el interior de la vivienda. Ruta por jardín o fachada, entrada al edificio, montaje de HÜP y equipo terminal cuando aplica, con documentación del estado final.",
         "metrics": {
           "stage": "Alcance",
           "region": "Región",
           "year": "Año"
         },
         "detail": {
-          "intro": "NAS es el trabajo de llevar la conexión desde la acometida existente hasta la casa del cliente. La esencia: ruta por jardín o exterior, entrada a vivienda, montaje de HÜP/GF-TA/ONT cuando aplica y documentación limpia del cierre.",
+          "intro": "Problema: el punto de entrega está en la vía pública y hay que atravesar el terreno del cliente hasta el interior. Trabajo: ruta exterior por jardín o fachada, entrada al edificio, montaje de equipo terminal. Resultado: conexión terminada y documentada desde la acometida hasta el equipo.",
           "step1": "Revisar cita, acometida disponible, ruta por jardín/exterior, acceso a vivienda y punto de entrada.",
           "step2": "Ejecutar la ruta exterior: zanja o canalización ligera si aplica, protección del microducto/cable y entrada por fachada o sótano.",
           "step3": "Montar HÜP, GF-TA y ONT/router cuando aplica, con terminación, fusión/conectorización y orden del cableado.",
@@ -458,14 +472,14 @@
       "densification": {
         "tag": "Densificación",
         "title": "Conexiones finales al cliente",
-        "description": "Conexiones FTTH finales en zonas ya construidas: citas, acometidas pendientes, instalación en cliente, evidencias y segundas visitas.",
+        "description": "Cerrar las conexiones pendientes en zonas donde la red ya está desplegada. Gestionamos citas, resolvemos accesos, ejecutamos la instalación final y documentamos el resultado con estado claro: terminado, parcial o segunda visita.",
         "metrics": {
           "stage": "Alcance",
           "type": "Foco",
           "year": "Año"
         },
         "detail": {
-          "intro": "La densificación cierra clientes en zonas ya construidas. El foco está en ordenar citas, resolver accesos, ejecutar conexiones finales, documentar evidencias y dejar claro qué queda terminado o requiere segunda visita.",
+          "intro": "Problema: hay clientes pendientes en zonas donde la red ya está instalada pero las conexiones no se completaron. Trabajo: gestionar citas, resolver bloqueos de acceso, ejecutar la conexión final. Resultado: clientes conectados con estado documentado o motivo claro de segunda visita.",
           "step1": "Revisión de dirección, disponibilidad de red, estado previo y ventana de cita.",
           "step2": "Coordinación con cliente/equipo y preparación del trabajo final FTTH.",
           "step3": "Ejecución de conexión final, instalación o revisión según alcance y condiciones del sitio.",
