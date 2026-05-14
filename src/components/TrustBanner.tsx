@@ -30,7 +30,7 @@ export function TrustBanner() {
             variants={fadeInUp}
             className="mono-tag text-paper/40 pr-6 border-r border-[color:var(--rule)]"
           >
-            Credentials
+            {t('trustBanner.label')}
           </motion.span>
           {trustItems.map((item, index) => (
             <motion.div

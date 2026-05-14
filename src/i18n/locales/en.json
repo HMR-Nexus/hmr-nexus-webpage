@@ -1,28 +1,29 @@
 {
   "nav": {
     "home": "Home",
-    "services": "Services",
-    "products": "Products",
-    "portfolio": "Projects",
+    "services": "Fiber",
+    "products": "Software",
+    "portfolio": "References",
     "contact": "Contact",
-    "cta": "Request Project"
+    "cta": "Request Project",
+    "history": "Story"
   },
   "hero": {
     "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Fiber infrastructure",
-    "title2": "and software",
-    "title3": "for field",
-    "title4": "operations.",
-    "subtitle": "HMR Nexus Engineering GmbH delivers fiber-optic projects in Germany and builds operational software for crews, documentation, financial control and technical follow-up.",
-    "btnPrimary": "View services",
-    "btnSecondary": "View software",
+    "title2": "for Germany",
+    "title3": "executed with",
+    "title4": "discipline.",
+    "subtitle": "HMR Nexus Engineering GmbH supports FTTH projects in Germany with NE3/NE4 execution, technical documentation and clean handover.",
+    "btnPrimary": "Fiber capabilities",
+    "btnSecondary": "View digital tools",
     "stats": {
       "km": "km Fiber",
       "connections": "Connections",
       "countries": "Countries"
     },
-    "title5": "Fiber, software and operational control",
-    "title6": "from one team."
+    "title5": "FTTH execution, documentation and control",
+    "title6": "for projects in Germany."
   },
   "values": {
     "quality": "Quality",
@@ -30,10 +31,10 @@
     "service": "Service"
   },
   "services": {
-    "label": "Capabilities",
-    "title": "Fiber infrastructure and operational software.",
-    "titleHighlight": "One team for execution and control.",
-    "subtitle": "We focus on FTTH/NE3/NE4 deployment, field coordination, technical documentation and digital tools that keep the operation traceable from start to finish.",
+    "label": "Fiber deployment",
+    "title": "Fiber deployment for NE3 and NE4.",
+    "titleHighlight": "Execution, documentation and handover.",
+    "subtitle": "Focus on FTTH field work: distribution network, house connection, splicing, technical evidence and clean handover to project management, operations or billing.",
     "fiber": {
       "title": "Fiber-optic execution.",
       "subtitle": "Fibre · Field",
@@ -169,10 +170,10 @@
     }
   },
   "products": {
-    "label": "Software stack",
-    "title": "Operational software for fiber and management.",
-    "titleHighlight": "Real tools, in use or in development.",
-    "subtitle": "These products come from concrete operating needs: coordinating field work, recording evidence, controlling costs and handling customer requests. They are not presented as public platforms until they are ready.",
+    "label": "Digital tools",
+    "title": "Tools for operational control.",
+    "titleHighlight": "Built from fiber deployment practice.",
+    "subtitle": "Nexus develops digital tools for appointments, field reports, evidence, finance and customer communication — wherever operational workflows need to become clearer and traceable.",
     "status": {
       "live": "Live internal",
       "beta": "Beta",
@@ -306,10 +307,10 @@
     "saas": "SaaS Product"
   },
   "portfolio": {
-    "label": "Selected work",
-    "title": "Current work areas.",
-    "titleHighlight": "Fiber, densification and software.",
-    "subtitle": "HMR Nexus focuses on FTTH work in Germany and the software needed to control that operation: NE3/NE4, NAS, final customer connections, crew coordination and internal management.",
+    "label": "References",
+    "title": "Current fiber deployment scopes.",
+    "titleHighlight": "NE3, NE4, NAS and densification.",
+    "subtitle": "Selected operational areas without client names, addresses or private KPIs. The examples show the type of work Nexus can structure and document for FTTH projects in Germany.",
     "status": {
       "active": "Active",
       "completed": "Completed"
@@ -511,10 +512,11 @@
     }
   },
   "trustBanner": {
-    "germanTech": "German Engineering",
-    "iso": "DIN · EN · ISO",
-    "ftth": "NE3 · NE4 certified",
-    "availability": "Field coordination"
+    "germanTech": "FTTH · NE3 · NE4",
+    "iso": "Documentation & QA",
+    "ftth": "Field coordination",
+    "availability": "Germany · Lower Saxony",
+    "label": "Operational focus"
   },
   "teamSection": {
     "label": "Leadership",
@@ -639,5 +641,35 @@
     },
     "copyright": "© 2026 HMR Nexus Engineering GmbH. All rights reserved.",
     "madeIn": "Made with precision in Celle, Germany"
+  },
+  "history": {
+    "label": "Story",
+    "title": "Built from field",
+    "titleHighlight": "operations.",
+    "subtitle": "Nexus connects fiber deployment experience with clean documentation and digital tools for operations.",
+    "intro": "HMR Nexus Engineering GmbH comes from practical FTTH work: field coordination, technical evidence, handover and operational control. The goal is simple: less friction between site, project management and client.",
+    "principles": {
+      "field": "Field work must stay traceable — from assignment to handover.",
+      "documentation": "Documentation is not an appendix; it is part of execution.",
+      "control": "Digital tools are built where workflows need to become repeatable and measurable."
+    },
+    "steps": {
+      "origin": {
+        "title": "Origin",
+        "text": "The foundation is operational fiber work in Germany and the daily coordination of teams, appointments and evidence."
+      },
+      "field": {
+        "title": "Field work",
+        "text": "NE3, NE4, NAS and densification are treated as concrete work scopes with clear states and clean handover."
+      },
+      "software": {
+        "title": "Tools",
+        "text": "Software grows from recurring operational problems: appointments, reports, photos, finance and status clarity."
+      },
+      "today": {
+        "title": "Today",
+        "text": "Nexus presents itself as a focused partner for FTTH execution, documentation and operational control."
+      }
+    }
   }
 }

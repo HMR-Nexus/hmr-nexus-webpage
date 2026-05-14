@@ -115,17 +115,17 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 32px;
-    padding-bottom: 48px;
+    padding-bottom: 32px;
     border-bottom: 1px solid var(--rule);
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 
   @media (max-width: 900px) {
     .section-head {
       grid-template-columns: 1fr;
       gap: 16px;
-      padding-bottom: 32px;
-      margin-bottom: 32px;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
     }
   }
 

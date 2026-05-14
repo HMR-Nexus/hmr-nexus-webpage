@@ -1,28 +1,29 @@
 {
   "nav": {
     "home": "Startseite",
-    "services": "Leistungen",
-    "products": "Produkte",
-    "portfolio": "Projekte",
+    "services": "Glasfaser",
+    "products": "Software",
+    "portfolio": "Referenzen",
     "contact": "Kontakt",
-    "cta": "Projekt anfragen"
+    "cta": "Projekt anfragen",
+    "history": "Historie"
   },
   "hero": {
     "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Glasfaser-Infrastruktur",
-    "title2": "und Software",
-    "title3": "für Field",
-    "title4": "Operations.",
-    "subtitle": "HMR Nexus Engineering GmbH realisiert Glasfaserprojekte in Deutschland und entwickelt operative Software für Teams, Dokumentation, Finanzkontrolle und technische Nachverfolgung.",
-    "btnPrimary": "Leistungen ansehen",
-    "btnSecondary": "Software ansehen",
+    "title2": "für Deutschland",
+    "title3": "präzise",
+    "title4": "umgesetzt.",
+    "subtitle": "HMR Nexus Engineering GmbH unterstützt FTTH-Projekte in Deutschland mit NE3/NE4-Ausführung, technischer Dokumentation und klarer Übergabe.",
+    "btnPrimary": "Glasfaser-Leistungen",
+    "btnSecondary": "Digitale Werkzeuge ansehen",
     "stats": {
       "km": "km Glasfaser",
       "connections": "Hausanschlüsse",
       "countries": "Länder"
     },
-    "title5": "Glasfaser, Software und operative Kontrolle",
-    "title6": "aus einem Team."
+    "title5": "FTTH-Ausführung, Dokumentation und Steuerung",
+    "title6": "für Projekte in Deutschland."
   },
   "values": {
     "quality": "Qualität",
@@ -30,10 +31,10 @@
     "service": "Service"
   },
   "services": {
-    "label": "Leistungen",
-    "title": "Glasfaser-Infrastruktur und operative Software.",
-    "titleHighlight": "Ein Team für Ausführung und Steuerung.",
-    "subtitle": "Wir konzentrieren uns auf FTTH/NE3/NE4-Ausbau, Feldkoordination, technische Dokumentation und digitale Werkzeuge, die den Betrieb von Anfang bis Ende nachvollziehbar machen.",
+    "label": "Glasfaser-Ausbau",
+    "title": "Glasfaser-Ausbau für NE3 und NE4.",
+    "titleHighlight": "Ausführung, Dokumentation und Übergabe.",
+    "subtitle": "Fokus auf FTTH-Feldarbeit: Verteilnetz, Hausanschluss, Spleißung, technische Nachweise und saubere Übergabe an Projektleitung, Betrieb oder Abrechnung.",
     "fiber": {
       "title": "Ausführung von Glasfaserarbeiten.",
       "subtitle": "Glasfaser · Feld",
@@ -169,10 +170,10 @@
     }
   },
   "products": {
-    "label": "Software-Stack",
-    "title": "Operative Software für Glasfaser und Management.",
-    "titleHighlight": "Reale Tools, im Einsatz oder in Entwicklung.",
-    "subtitle": "Diese Produkte entstehen aus konkreten betrieblichen Anforderungen: Feldarbeit koordinieren, Nachweise erfassen, Kosten kontrollieren und Kundenanfragen strukturiert bearbeiten. Sie werden erst als öffentliche Plattformen dargestellt, wenn sie bereit sind.",
+    "label": "Digitale Werkzeuge",
+    "title": "Werkzeuge für operative Kontrolle.",
+    "titleHighlight": "Aus der Praxis des Glasfaserausbaus.",
+    "subtitle": "Nexus entwickelt digitale Werkzeuge für Termine, Feldberichte, Nachweise, Finanzen und Kundenkommunikation — dort, wo operative Abläufe klarer und nachvollziehbarer werden müssen.",
     "status": {
       "live": "Intern live",
       "beta": "Beta",
@@ -306,10 +307,10 @@
     "saas": "SaaS Produkt"
   },
   "portfolio": {
-    "label": "Ausgewählt",
-    "title": "Aktuelle Arbeitsbereiche.",
-    "titleHighlight": "Glasfaser, Verdichtung und Software.",
-    "subtitle": "HMR Nexus konzentriert sich auf FTTH-Arbeiten in Deutschland und die Software, die diesen Betrieb steuerbar macht: NE3/NE4, NAS, finale Kundenanschlüsse, Teamkoordination und internes Management.",
+    "label": "Referenzen",
+    "title": "Arbeitsbereiche im Glasfaserausbau.",
+    "titleHighlight": "NE3, NE4, NAS und Nachverdichtung.",
+    "subtitle": "Ausgewählte operative Bereiche ohne Kundennamen, Adressen oder private Kennzahlen. Die Beispiele zeigen, welche Art von Arbeit Nexus für FTTH-Projekte in Deutschland strukturiert und dokumentiert.",
     "status": {
       "active": "Laufend",
       "completed": "Abgeschlossen"
@@ -511,10 +512,11 @@
     }
   },
   "trustBanner": {
-    "germanTech": "Deutsche Ingenieurskunst",
-    "iso": "DIN · EN · ISO",
-    "ftth": "NE3 · NE4 zertifiziert",
-    "availability": "Feldkoordination"
+    "germanTech": "FTTH · NE3 · NE4",
+    "iso": "Dokumentation & QA",
+    "ftth": "Feldkoordination",
+    "availability": "Deutschland · Niedersachsen",
+    "label": "Operativer Fokus"
   },
   "teamSection": {
     "label": "Leitung",
@@ -639,5 +641,35 @@
     },
     "copyright": "© 2026 HMR Nexus Engineering GmbH. Alle Rechte vorbehalten.",
     "madeIn": "Made with precision in Celle, Germany"
+  },
+  "history": {
+    "label": "Historie",
+    "title": "Aus der Praxis",
+    "titleHighlight": "in die Ausführung.",
+    "subtitle": "Nexus verbindet Erfahrung im Glasfaserausbau mit sauberer Dokumentation und digitalen Werkzeugen für den Betrieb.",
+    "intro": "HMR Nexus Engineering GmbH entsteht aus der praktischen Arbeit an FTTH-Projekten: Feldkoordination, technische Nachweise, Übergabe und operative Kontrolle. Der Anspruch ist einfach: weniger Reibung zwischen Baustelle, Projektleitung und Kunde.",
+    "principles": {
+      "field": "Feldarbeit muss nachvollziehbar bleiben — vom Auftrag bis zur Übergabe.",
+      "documentation": "Dokumentation ist kein Anhang, sondern Teil der Ausführung.",
+      "control": "Digitale Werkzeuge entstehen dort, wo Abläufe wiederholbar und messbar werden müssen."
+    },
+    "steps": {
+      "origin": {
+        "title": "Ursprung",
+        "text": "Die Basis liegt in operativen Glasfaserprojekten in Deutschland und in der täglichen Koordination von Teams, Terminen und Nachweisen."
+      },
+      "field": {
+        "title": "Feldarbeit",
+        "text": "NE3, NE4, NAS und Nachverdichtung werden als konkrete Arbeitsbereiche betrachtet — mit klaren Zuständen und sauberer Übergabe."
+      },
+      "software": {
+        "title": "Werkzeuge",
+        "text": "Software entsteht aus wiederkehrenden operativen Problemen: Termine, Berichte, Fotos, Finanzen und Statusklarheit."
+      },
+      "today": {
+        "title": "Heute",
+        "text": "Nexus präsentiert sich als fokussierter Partner für FTTH-Ausführung, Dokumentation und operative Steuerung."
+      }
+    }
   }
 }

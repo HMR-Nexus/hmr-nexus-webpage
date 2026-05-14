@@ -3,16 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NexusLockup } from '@/components/NexusLockup';
+import type { PageId } from '@/lib/navigation';
 
 interface NavbarProps {
-  onScrollToContact: () => void;
+  activePage: PageId;
+  onNavigate: (page: PageId, projectType?: string) => void;
 }
 
 /**
  * NEXUS Navbar — editorial rail, sticky, mono-labels.
  * Inspired by the Brand Guidelines top rail: dot + wordmark + section links + locale.
  */
-export function Navbar({ onScrollToContact }: NavbarProps) {
+export function Navbar({ activePage, onNavigate }: NavbarProps) {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,17 +36,18 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
     i18n.changeLanguage(lng);
   }, [i18n]);
 
-  const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  const navigate = useCallback((page: PageId, projectType?: string) => {
+    onNavigate(page, projectType);
     setIsMobileMenuOpen(false);
-  }, []);
+  }, [onNavigate]);
 
   const navLinks = [
-    { id: 'services',  label: '01 · ' + t('nav.services') },
-    { id: 'products',  label: '02 · ' + t('nav.products') },
-    { id: 'portfolio', label: '03 · ' + t('nav.portfolio') },
-    { id: 'contact',   label: '05 · ' + t('nav.contact') },
+    { id: 'home' as const,      label: t('nav.home') },
+    { id: 'history' as const,   label: t('nav.history') },
+    { id: 'services' as const,  label: t('nav.services') },
+    { id: 'portfolio' as const, label: t('nav.portfolio') },
+    { id: 'products' as const,  label: t('nav.products') },
+    { id: 'contact' as const,   label: t('nav.contact') },
   ];
 
   const languages = [
@@ -64,7 +67,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
         <div className="max-w-[1440px] mx-auto px-6 md:px-7 py-3.5 flex items-center justify-between">
           {/* Left: lockup (symbol + small wordmark) */}
           <button
-            onClick={() => scrollToSection('home')}
+            onClick={() => navigate('home')}
             className="flex items-center text-paper"
             aria-label="NEXUS — home"
           >
@@ -76,8 +79,11 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="mono-tag text-paper opacity-60 hover:opacity-100 transition-opacity"
+                onClick={() => navigate(link.id)}
+                className={`mono-tag text-paper transition-opacity ${
+                  activePage === link.id ? 'opacity-100 text-[color:var(--accent)]' : 'opacity-60 hover:opacity-100'
+                }`}
+                aria-current={activePage === link.id ? 'page' : undefined}
               >
                 {link.label}
               </button>
@@ -111,7 +117,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
 
             {/* CTA */}
             <button
-              onClick={onScrollToContact}
+              onClick={() => navigate('contact')}
               className="hidden md:inline-flex items-center gap-2 px-4 py-2 mono-tag bg-laser text-ink hover:opacity-90 transition-opacity"
             >
               <span className="dot-accent" style={{ background: 'var(--ink)' }} />
@@ -150,8 +156,10 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
               {navLinks.map((link) => (
                 <button
                   key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="font-display text-[32px] leading-[0.95] tracking-tight text-paper text-left"
+                  onClick={() => navigate(link.id)}
+                  className={`font-display text-[32px] leading-[0.95] tracking-tight text-left ${
+                    activePage === link.id ? 'text-[color:var(--accent)]' : 'text-paper'
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -178,7 +186,7 @@ export function Navbar({ onScrollToContact }: NavbarProps) {
               </div>
 
               <button
-                onClick={() => { onScrollToContact(); setIsMobileMenuOpen(false); }}
+                onClick={() => navigate('contact')}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 mono-tag bg-laser text-ink w-max"
               >
                 <span className="dot-accent" style={{ background: 'var(--ink)' }} />

@@ -87,7 +87,7 @@ export function Contact({ preselectedType }: ContactProps) {
   const errorMessage = (label: string) => `${label}: ${t('contact.form.error')}`;
 
   return (
-    <section id="contact" className="bg-ink text-paper py-24 md:py-32">
+    <section id="contact" className="bg-ink text-paper py-16 md:py-20 pt-28 md:pt-32 min-h-[calc(100svh-80px)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-7">
         <MotionSection>
           <div className="section-head">

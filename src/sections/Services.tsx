@@ -3,256 +3,80 @@ import type { TFunction } from 'i18next';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
 import { staggerContainer, cardEntrance, listItemSlide } from '@/lib/motion';
-import { getLocalizedAssetLanguage, getLocalizedSvgSrc, type LocalizedAssetLanguage } from '@/lib/localizedAssets';
 
-type ServiceBase = 'fiber' | 'software';
-type DiagramFolder = 'ne3' | 'ne4' | 'servicios';
-
-interface ServiceItem {
-  key: string;
-}
-
-interface DiagramItem {
-  file: string;
-  titleKey: string;
-  captionKey: string;
-}
-
-/**
- * NEXUS Services — 01 · Two disciplines, one system.
- * Editorial section-head + numbered disciplines, mono-labels, no icons dressing.
- */
 interface ServicesProps {
   onRequestNE4Briefing?: () => void;
 }
 
-interface DisciplineProps {
-  num: string;
-  subtitle: string;
-  title: string;
-  description: string;
-  items: ServiceItem[];
-  base: ServiceBase;
-  t: TFunction;
+type FiberServiceKey = 'ne3' | 'ne4' | 'tiefbau' | 'pm';
+
+interface FiberService {
+  key: FiberServiceKey;
+  marker: string;
 }
 
-interface NE4HighlightProps {
-  onRequestNE4Briefing?: () => void;
-  t: TFunction;
-}
-
-interface DiagramGalleryProps {
-  label: string;
-  title: string;
-  description: string;
-  folder: DiagramFolder;
-  items: DiagramItem[];
-  language: LocalizedAssetLanguage;
-  t: TFunction;
-}
-
-const fiberServices: ServiceItem[] = [
-  { key: 'ne3' },
-  { key: 'ne4' },
-  { key: 'tiefbau' },
-  { key: 'pm' },
+const fiberServices: FiberService[] = [
+  { key: 'ne3', marker: 'NE3' },
+  { key: 'ne4', marker: 'NE4' },
+  { key: 'tiefbau', marker: 'CIVIL' },
+  { key: 'pm', marker: 'QA' },
 ];
 
-const softwareServices: ServiceItem[] = [
-  { key: 'control' },
-  { key: 'bot' },
-  { key: 'mobile' },
-  { key: 'integration' },
-];
+const lifecycleSteps = ['survey', 'install', 'splice', 'document'];
+const qualitySignals = ['photos', 'checks', 'handover'];
 
-const ne4ScopeItems = ['handover', 'connection', 'splice', 'activation'];
-const ne4LifecycleSteps = ['survey', 'install', 'splice', 'document'];
-const ne4QualitySignals = ['photos', 'checks', 'handover'];
-
-const serviceVisuals: DiagramItem[] = [
-  {
-    file: 'services-capability-map',
-    titleKey: 'services.visuals.services.items.capabilityMap.title',
-    captionKey: 'services.visuals.services.items.capabilityMap.caption',
-  },
-  {
-    file: 'services-operating-loop',
-    titleKey: 'services.visuals.services.items.operatingLoop.title',
-    captionKey: 'services.visuals.services.items.operatingLoop.caption',
-  },
-  {
-    file: 'services-quality-handover',
-    titleKey: 'services.visuals.services.items.qualityHandover.title',
-    captionKey: 'services.visuals.services.items.qualityHandover.caption',
-  },
-];
-
-const ne3Visuals: DiagramItem[] = [
-  {
-    file: 'ne3-network-overview',
-    titleKey: 'services.visuals.ne3.items.networkOverview.title',
-    captionKey: 'services.visuals.ne3.items.networkOverview.caption',
-  },
-  {
-    file: 'ne3-field-execution-flow',
-    titleKey: 'services.visuals.ne3.items.fieldExecution.title',
-    captionKey: 'services.visuals.ne3.items.fieldExecution.caption',
-  },
-  {
-    file: 'ne3-ne4-boundary',
-    titleKey: 'services.visuals.ne3.items.boundary.title',
-    captionKey: 'services.visuals.ne3.items.boundary.caption',
-  },
-];
-
-const ne4Visuals: DiagramItem[] = [
-  {
-    file: 'ne4-building-overview',
-    titleKey: 'services.visuals.ne4.items.buildingOverview.title',
-    captionKey: 'services.visuals.ne4.items.buildingOverview.caption',
-  },
-  {
-    file: 'ne4-topology-comparison',
-    titleKey: 'services.visuals.ne4.items.topology.title',
-    captionKey: 'services.visuals.ne4.items.topology.caption',
-  },
-  {
-    file: 'ne4-installation-flow',
-    titleKey: 'services.visuals.ne4.items.installationFlow.title',
-    captionKey: 'services.visuals.ne4.items.installationFlow.caption',
-  },
-];
-
-function Discipline({ num, subtitle, title, description, items, base, t }: DisciplineProps) {
+function CapabilityCards({ t }: { t: TFunction }) {
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: '-60px' }}
       variants={staggerContainer}
-      className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 py-14 md:py-20 rule-top"
+      className="grid md:grid-cols-2 xl:grid-cols-4"
+      style={{ border: '1px solid var(--rule)' }}
     >
-      <motion.div variants={cardEntrance}>
-        <div className="mono-tag text-paper/50 mb-5">{num} · {subtitle}</div>
-        <h3
-          className="font-display text-paper mb-5"
-          style={{ fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 0.95, letterSpacing: '-0.03em', fontWeight: 400 }}
+      {fiberServices.map((service, index) => (
+        <motion.article
+          key={service.key}
+          variants={cardEntrance}
+          className="p-5 md:p-6 min-h-[220px] flex flex-col hover:bg-paper/[0.025] transition-colors"
+          style={{
+            borderLeft: index % 4 === 0 ? 'none' : '1px solid var(--rule)',
+            borderTop: index >= 4 ? '1px solid var(--rule)' : 'none',
+          }}
         >
-          {title}
-        </h3>
-        <p className="text-paper/70 text-[16px] leading-[1.55] max-w-[44ch]">
-          {description}
-        </p>
-      </motion.div>
-
-      <motion.div variants={cardEntrance}>
-        <motion.ul
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06, delayChildren: 0.15 } } }}
-          className="divide-y divide-[color:var(--rule)]"
-        >
-          {items.map((service, index) => (
-            <motion.li
-              key={service.key}
-              variants={listItemSlide}
-              className="grid grid-cols-[40px_1fr] md:grid-cols-[60px_1fr_auto] gap-4 md:gap-8 py-5 items-baseline"
-            >
-              <span className="mono-tag text-paper/40">
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <div className="flex-1 min-w-0">
-                <span className="font-display text-paper text-[20px] md:text-[22px] font-medium block leading-tight">
-                  {t(`services.${base}.items.${service.key}_label`)}
-                </span>
-                <span className="text-paper/60 text-[14px] block mt-1">
-                  {t(`services.${base}.items.${service.key}`)}
-                </span>
-              </div>
-              <span className="mono-tag text-paper/40 hidden md:inline text-right">
-                ↗
-              </span>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
+          <div className="flex items-center justify-between mb-8">
+            <span className="mono-tag text-paper/42">{String(index + 1).padStart(2, '0')}</span>
+            <span className="mono-tag text-[color:var(--accent)]">{service.marker}</span>
+          </div>
+          <h3 className="font-display text-paper text-[24px] leading-[1] tracking-[-0.025em] font-medium mb-4">
+            {t(`services.fiber.items.${service.key}_label`)}
+          </h3>
+          <p className="text-paper/68 text-[14px] leading-[1.55] mt-auto">
+            {t(`services.fiber.items.${service.key}`)}
+          </p>
+        </motion.article>
+      ))}
     </motion.div>
   );
 }
 
-function DiagramGallery({ label, title, description, folder, items, language, t }: DiagramGalleryProps) {
+function ExecutionSummary({ onRequestNE4Briefing, t }: { onRequestNE4Briefing?: () => void; t: TFunction }) {
   return (
-    <MotionSection className="py-10 md:py-14 rule-top">
+    <MotionSection className="mt-8">
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-80px' }}
         variants={staggerContainer}
-      >
-        <motion.div variants={cardEntrance} className="grid md:grid-cols-[0.75fr_1.25fr] gap-6 md:gap-10 mb-8">
-          <div className="mono-tag text-paper/45">{label}</div>
-          <div>
-            <h3 className="font-display text-paper text-[28px] md:text-[40px] leading-[0.98] tracking-[-0.03em] font-normal mb-4">
-              {title}
-            </h3>
-            <p className="text-paper/65 text-[15px] leading-[1.55] max-w-[68ch]">
-              {description}
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div variants={staggerContainer} className="grid lg:grid-cols-3 gap-5">
-          {items.map((item) => (
-            <motion.figure
-              key={item.file}
-              variants={cardEntrance}
-              className="border border-[color:var(--rule)] bg-paper/[0.03] overflow-hidden"
-            >
-              <div className="bg-[#111318] p-2 md:p-3">
-                <img
-                  src={getLocalizedSvgSrc(folder, item.file, language)}
-                  alt={t(item.titleKey)}
-                  loading="lazy"
-                  decoding="async"
-                  className="block w-full h-auto"
-                />
-              </div>
-              <figcaption className="p-4 border-t border-[color:var(--rule)]">
-                <span className="font-display text-paper text-[18px] leading-tight block">
-                  {t(item.titleKey)}
-                </span>
-                <span className="text-paper/55 text-[13px] leading-[1.5] block mt-2">
-                  {t(item.captionKey)}
-                </span>
-              </figcaption>
-            </motion.figure>
-          ))}
-        </motion.div>
-      </motion.div>
-    </MotionSection>
-  );
-}
-
-function NE4Highlight({ onRequestNE4Briefing, t }: NE4HighlightProps) {
-  return (
-    <MotionSection className="py-14 md:py-20 rule-top">
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-80px' }}
-        variants={staggerContainer}
-        className="grid lg:grid-cols-[0.9fr_1.5fr] gap-12 lg:gap-20 border border-[color:var(--rule)] p-6 md:p-8 lg:p-10"
+        className="grid lg:grid-cols-[0.9fr_1.35fr] gap-8 lg:gap-12 border border-[color:var(--rule)] p-5 md:p-7"
       >
         <motion.div variants={cardEntrance}>
-          <div className="mono-tag text-paper/50 mb-5">01.1A · {t('services.ne4.label')}</div>
-          <h3
-            className="font-display text-paper mb-5"
-            style={{ fontSize: 'clamp(30px, 4vw, 52px)', lineHeight: 0.95, letterSpacing: '-0.03em', fontWeight: 400 }}
-          >
+          <div className="mono-tag text-paper/50 mb-4">01.1 · {t('services.ne4.label')}</div>
+          <h3 className="font-display text-paper text-[30px] md:text-[42px] leading-[0.98] tracking-[-0.03em] font-normal mb-4">
             {t('services.ne4.title')}
           </h3>
-          <p className="text-paper/70 text-[16px] leading-[1.55] max-w-[46ch] mb-8">
+          <p className="text-paper/68 text-[15px] leading-[1.55] max-w-[52ch] mb-6">
             {t('services.ne4.intro')}
           </p>
           <button
@@ -266,30 +90,14 @@ function NE4Highlight({ onRequestNE4Briefing, t }: NE4HighlightProps) {
           </button>
         </motion.div>
 
-        <motion.div variants={cardEntrance} className="grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="mono-tag text-paper/45 mb-4">{t('services.ne4.scope.title')}</div>
-            <motion.ul variants={staggerContainer} className="space-y-4">
-              {ne4ScopeItems.map((item) => (
-                <motion.li key={item} variants={listItemSlide} className="rule-top pt-4">
-                  <span className="font-display text-paper text-[18px] block leading-tight">
-                    {t(`services.ne4.scope.items.${item}.label`)}
-                  </span>
-                  <span className="text-paper/60 text-[14px] block mt-1 leading-[1.5]">
-                    {t(`services.ne4.scope.items.${item}.text`)}
-                  </span>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </div>
-
+        <motion.div variants={cardEntrance} className="grid md:grid-cols-2 gap-6 lg:gap-8">
           <div>
             <div className="mono-tag text-paper/45 mb-4">{t('services.ne4.lifecycle.title')}</div>
-            <motion.ol variants={staggerContainer} className="space-y-4">
-              {ne4LifecycleSteps.map((step, index) => (
-                <motion.li key={step} variants={listItemSlide} className="grid grid-cols-[32px_1fr] gap-3 rule-top pt-4">
+            <motion.ol variants={staggerContainer} className="grid gap-3">
+              {lifecycleSteps.map((step, index) => (
+                <motion.li key={step} variants={listItemSlide} className="grid grid-cols-[34px_1fr] gap-3 border border-paper/10 px-3 py-3">
                   <span className="mono-tag text-paper/40">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="text-paper/70 text-[14px] leading-[1.5]">
+                  <span className="text-paper/70 text-[13px] leading-[1.45]">
                     {t(`services.ne4.lifecycle.steps.${step}`)}
                   </span>
                 </motion.li>
@@ -299,10 +107,10 @@ function NE4Highlight({ onRequestNE4Briefing, t }: NE4HighlightProps) {
 
           <div>
             <div className="mono-tag text-paper/45 mb-4">{t('services.ne4.quality.title')}</div>
-            <motion.ul variants={staggerContainer} className="space-y-4">
-              {ne4QualitySignals.map((signal) => (
-                <motion.li key={signal} variants={listItemSlide} className="flex gap-3 rule-top pt-4 text-paper/70 text-[14px] leading-[1.5]">
-                  <span className="dot-accent mt-2 shrink-0" />
+            <motion.ul variants={staggerContainer} className="grid gap-3">
+              {qualitySignals.map((signal) => (
+                <motion.li key={signal} variants={listItemSlide} className="flex gap-3 border border-paper/10 px-3 py-3 text-paper/70 text-[13px] leading-[1.45]">
+                  <span className="dot-accent mt-1.5 shrink-0" />
                   <span>{t(`services.ne4.quality.signals.${signal}`)}</span>
                 </motion.li>
               ))}
@@ -315,78 +123,28 @@ function NE4Highlight({ onRequestNE4Briefing, t }: NE4HighlightProps) {
 }
 
 export function Services({ onRequestNE4Briefing }: ServicesProps) {
-  const { t, i18n } = useTranslation();
-  const diagramLanguage = getLocalizedAssetLanguage(i18n.resolvedLanguage || i18n.language);
+  const { t } = useTranslation();
 
   return (
-    <section id="services" className="bg-ink text-paper py-24 md:py-32">
+    <section id="services" className="bg-ink text-paper py-16 md:py-20 pt-28 md:pt-32 min-h-[calc(100svh-80px)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-7">
-        {/* Section Head — brand system pattern */}
         <MotionSection>
           <div className="section-head">
             <div>
-              <div className="meta">01 · {t('services.label')}</div>
+              <div className="meta">02 · {t('services.label')}</div>
             </div>
             <div>
               <h2>
                 {t('services.title')}<br/>
                 <span className="text-paper/50">{t('services.titleHighlight')}</span>
               </h2>
+              <p style={{ marginTop: 24 }}>{t('services.subtitle')}</p>
             </div>
           </div>
         </MotionSection>
 
-        <DiagramGallery
-          label={t('services.visuals.services.label')}
-          title={t('services.visuals.services.title')}
-          description={t('services.visuals.services.description')}
-          folder="servicios"
-          items={serviceVisuals}
-          language={diagramLanguage}
-          t={t}
-        />
-
-        <Discipline
-          num="01.1"
-          subtitle={t('services.fiber.subtitle')}
-          title={t('services.fiber.title')}
-          description={t('services.fiber.description')}
-          items={fiberServices}
-          base="fiber"
-          t={t}
-        />
-
-        <DiagramGallery
-          label={t('services.visuals.ne3.label')}
-          title={t('services.visuals.ne3.title')}
-          description={t('services.visuals.ne3.description')}
-          folder="ne3"
-          items={ne3Visuals}
-          language={diagramLanguage}
-          t={t}
-        />
-
-        <NE4Highlight onRequestNE4Briefing={onRequestNE4Briefing} t={t} />
-
-        <DiagramGallery
-          label={t('services.visuals.ne4.label')}
-          title={t('services.visuals.ne4.title')}
-          description={t('services.visuals.ne4.description')}
-          folder="ne4"
-          items={ne4Visuals}
-          language={diagramLanguage}
-          t={t}
-        />
-
-        <Discipline
-          num="01.2"
-          subtitle={t('services.software.subtitle')}
-          title={t('services.software.title')}
-          description={t('services.software.description')}
-          items={softwareServices}
-          base="software"
-          t={t}
-        />
+        <CapabilityCards t={t} />
+        <ExecutionSummary onRequestNE4Briefing={onRequestNE4Briefing} t={t} />
       </div>
     </section>
   );

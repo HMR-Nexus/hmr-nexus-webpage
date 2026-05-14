@@ -1,28 +1,29 @@
 {
   "nav": {
     "home": "Inicio",
-    "services": "Servicios",
-    "products": "Productos",
-    "portfolio": "Proyectos",
-    "contact": "Contacto",
-    "cta": "Solicitar Proyecto"
+    "services": "Fibra",
+    "products": "Software",
+    "portfolio": "Referencias",
+    "contact": "Contáctenos",
+    "cta": "Solicitar Proyecto",
+    "history": "Historia"
   },
   "hero": {
     "badge": "● HMR · ENGINEERING GMBH",
     "title1": "Infraestructura de fibra",
-    "title2": "y software",
-    "title3": "para operaciones",
-    "title4": "en campo.",
-    "subtitle": "HMR Nexus Engineering GmbH ejecuta proyectos de fibra óptica en Alemania y desarrolla software operativo para coordinar equipos, documentación, control financiero y seguimiento técnico.",
-    "btnPrimary": "Ver servicios",
-    "btnSecondary": "Ver software",
+    "title2": "en Alemania",
+    "title3": "ejecutada con",
+    "title4": "precisión.",
+    "subtitle": "HMR Nexus Engineering GmbH apoya proyectos FTTH en Alemania con ejecución NE3/NE4, documentación técnica y handover claro.",
+    "btnPrimary": "Capacidades de fibra",
+    "btnSecondary": "Ver herramientas digitales",
     "stats": {
       "km": "km Fibra",
       "connections": "Conexiones",
       "countries": "Países"
     },
-    "title5": "Fibra, software y control operativo",
-    "title6": "desde un solo equipo."
+    "title5": "Ejecución FTTH, documentación y control",
+    "title6": "para proyectos en Alemania."
   },
   "values": {
     "quality": "Calidad",
@@ -30,10 +31,10 @@
     "service": "Servicio"
   },
   "services": {
-    "label": "Capacidades",
-    "title": "Fibra óptica y software operativo.",
-    "titleHighlight": "Un equipo para ejecutar y controlar.",
-    "subtitle": "Nos enfocamos en despliegues FTTH/NE3/NE4, coordinación de campo, documentación técnica y herramientas digitales para que la operación sea trazable de principio a fin.",
+    "label": "Despliegue de fibra",
+    "title": "Despliegue de fibra para NE3 y NE4.",
+    "titleHighlight": "Ejecución, documentación y entrega.",
+    "subtitle": "Foco en trabajo FTTH de campo: red de distribución, acometida, fusión, evidencias técnicas y handover claro para proyecto, operación o facturación.",
     "fiber": {
       "title": "Ejecución de fibra óptica.",
       "subtitle": "Fibra · Campo",
@@ -169,10 +170,10 @@
     }
   },
   "products": {
-    "label": "Stack de software",
-    "title": "Software operativo para fibra y gestión.",
-    "titleHighlight": "Herramientas reales, en uso o desarrollo.",
-    "subtitle": "Estos productos nacen de necesidades concretas de operación: coordinar campo, registrar evidencias, controlar costos y atender solicitudes de clientes. No se presentan como plataformas públicas hasta que estén listas.",
+    "label": "Herramientas digitales",
+    "title": "Herramientas para control operativo.",
+    "titleHighlight": "Nacidas de la práctica en fibra.",
+    "subtitle": "Nexus desarrolla herramientas digitales para citas, reportes de campo, evidencias, finanzas y comunicación con clientes: justo donde la operación necesita más claridad y trazabilidad.",
     "status": {
       "live": "Live interno",
       "beta": "Beta",
@@ -326,10 +327,10 @@
     }
   },
   "portfolio": {
-    "label": "Trabajo seleccionado",
-    "title": "Áreas de trabajo actuales.",
-    "titleHighlight": "Fibra, densificación y software.",
-    "subtitle": "HMR Nexus se enfoca en proyectos FTTH en Alemania y en el software que permite controlar esa operación: NE3/NE4, NAS, conexiones finales al cliente, coordinación de equipos y gestión interna.",
+    "label": "Referencias",
+    "title": "Ámbitos actuales de despliegue de fibra.",
+    "titleHighlight": "NE3, NE4, NAS y densificación.",
+    "subtitle": "Áreas operativas seleccionadas sin nombres de clientes, direcciones ni KPIs privados. Los ejemplos muestran el tipo de trabajo que Nexus puede estructurar y documentar para proyectos FTTH en Alemania.",
     "status": {
       "active": "En Curso",
       "completed": "Completado"
@@ -531,10 +532,11 @@
     }
   },
   "trustBanner": {
-    "germanTech": "Ingeniería alemana",
-    "iso": "DIN · EN · ISO",
-    "ftth": "NE3 · NE4 certificado",
-    "availability": "Coordinación de campo"
+    "germanTech": "FTTH · NE3 · NE4",
+    "iso": "Documentación & QA",
+    "ftth": "Coordinación de campo",
+    "availability": "Alemania · Niedersachsen",
+    "label": "Foco operativo"
   },
   "teamSection": {
     "label": "Dirección",
@@ -659,5 +661,35 @@
     },
     "copyright": "© 2026 HMR Nexus Engineering GmbH. Todos los derechos reservados.",
     "madeIn": "Made with precision in Celle, Germany"
+  },
+  "history": {
+    "label": "Historia",
+    "title": "Desde la operación",
+    "titleHighlight": "hacia la ejecución.",
+    "subtitle": "Nexus conecta experiencia en despliegue de fibra con documentación clara y herramientas digitales para operar mejor.",
+    "intro": "HMR Nexus Engineering GmbH nace de trabajo práctico en proyectos FTTH: coordinación de campo, evidencias técnicas, handover y control operativo. La idea es simple: menos fricción entre obra, coordinación y cliente.",
+    "principles": {
+      "field": "El trabajo de campo tiene que quedar trazable: desde la orden hasta la entrega.",
+      "documentation": "La documentación no es un anexo; es parte de la ejecución.",
+      "control": "Las herramientas digitales nacen donde los procesos deben repetirse y medirse mejor."
+    },
+    "steps": {
+      "origin": {
+        "title": "Origen",
+        "text": "La base está en operación real de fibra en Alemania y en coordinar equipos, citas y evidencias todos los días."
+      },
+      "field": {
+        "title": "Campo",
+        "text": "NE3, NE4, NAS y densificación se tratan como ámbitos concretos de trabajo, con estados claros y handover limpio."
+      },
+      "software": {
+        "title": "Herramientas",
+        "text": "El software aparece desde problemas operativos repetidos: citas, reportes, fotos, finanzas y claridad de estado."
+      },
+      "today": {
+        "title": "Hoy",
+        "text": "Nexus se presenta como partner enfocado en ejecución FTTH, documentación y control operativo."
+      }
+    }
   }
 }

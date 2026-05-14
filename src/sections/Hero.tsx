@@ -28,7 +28,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex flex-col bg-ink text-paper overflow-hidden pt-20"
+      className="relative min-h-[84svh] flex flex-col bg-ink text-paper overflow-hidden pt-20"
     >
       {/* Top meta rail — editorial metadata */}
       <div className="border-b border-[color:var(--rule)]">
@@ -40,7 +40,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
       </div>
 
       {/* Main composition */}
-      <div className="flex-1 flex flex-col justify-between max-w-[1440px] w-full mx-auto px-6 md:px-7 py-14 md:py-20">
+      <div className="flex-1 flex flex-col justify-between max-w-[1440px] w-full mx-auto px-6 md:px-7 py-10 md:py-14">
         <motion.div initial="hidden" animate="visible" variants={containerVariants}>
           {/* Section label */}
           <motion.div variants={childVariants} className="flex items-center gap-2.5 mb-10 md:mb-16">
@@ -75,7 +75,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
           {/* Subline + technical metadata */}
           <motion.div
             variants={childVariants}
-            className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start"
+            className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start"
           >
             <div className="md:col-span-1 mono-tag text-paper/50 pt-2">00.1</div>
 
@@ -108,7 +108,7 @@ export function Hero({ onScrollToServices, onScrollToProducts }: HeroProps) {
           variants={childVariants}
           initial="hidden"
           animate="visible"
-          className="mt-16 md:mt-24 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
+          className="mt-12 md:mt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8"
         >
           <div className="flex flex-col sm:flex-row gap-3">
             <button
