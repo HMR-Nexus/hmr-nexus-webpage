@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Nexus services capability map</title>
+  <desc id="desc">Nexus styled service capability map connecting fiber field execution and operational software.</desc>
+  
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F5F3EE" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#FF4D2E"/>
+    </marker>
+    <filter id="laserGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .bg{fill:#0A0B0D}.paper{fill:#F5F3EE}.bone{fill:#EAE6DC}.mist{fill:#9A9A94}.graphite{fill:#1A1C20}.laser{fill:#FF4D2E}.rule{stroke:#F5F3EE;stroke-opacity:.14}.ruleStrong{stroke:#F5F3EE;stroke-opacity:.28}.accentStroke{stroke:#FF4D2E}.mutedStroke{stroke:#9A9A94;stroke-opacity:.45}.title{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:68px;font-weight:400;letter-spacing:-2.5px}.h2{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:-.7px}.h3{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:600}.body{font-family:Inter,Arial,sans-serif;font-size:17px;font-weight:400}.small{font-family:Inter,Arial,sans-serif;font-size:14px}.mono{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:13px;letter-spacing:1.3px;text-transform:uppercase}.monoSmall{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.thin{stroke-width:1}.med{stroke-width:2}.heavy{stroke-width:4}.dash{stroke-dasharray:8 10}.node{fill:#101216;stroke:#F5F3EE;stroke-opacity:.18;stroke-width:1}.nodeAccent{fill:#121317;stroke:#FF4D2E;stroke-opacity:.72;stroke-width:2}.zone{fill:#FF4D2E;fill-opacity:.055;stroke:#FF4D2E;stroke-opacity:.3;stroke-width:1}.ghost{opacity:.42}.noFill{fill:none}.round{stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" class="bg"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <text x="96" y="92" class="mono laser">NEXUS FIELD DIAGRAM · SERVICES MAP</text>
+  <line x1="96" y1="134" x2="1504" y2="134" class="rule thin"/>
+  <text x="96" y="196" class="title paper">Zwei Disziplinen, ein operatives System</text>
+  <text x="100" y="238" class="body mist">Nexus verbindet Glasfaser-Ausführung mit Software, damit Feldarbeit steuerbar und nachweisbar wird.</text>
+
+  <rect x="96" y="322" width="580" height="430" fill="#101216" stroke="#F5F3EE" stroke-opacity=".16"/>
+  <rect x="924" y="322" width="580" height="430" fill="#101216" stroke="#F5F3EE" stroke-opacity=".16"/>
+  <rect x="710" y="405" width="180" height="250" class="nodeAccent"/>
+  <text x="746" y="452" class="monoSmall laser">NEXUS</text>
+  <text x="744" y="496" class="h3 paper">Field</text>
+  <text x="744" y="526" class="h3 paper">+ Software</text>
+  <text x="744" y="576" class="small mist">Planen</text>
+  <text x="744" y="600" class="small mist">Ausführen</text>
+  <text x="744" y="624" class="small mist">Kontrollieren</text>
+
+  <text x="132" y="370" class="mono laser">01 · FIBER / FIELD</text>
+  <text x="960" y="370" class="mono laser">02 · SOFTWARE / CONTROL</text>
+
+  <g transform="translate(132 420)">
+    <rect width="215" height="96" class="nodeAccent"/><text x="22" y="36" class="monoSmall laser">NE3 AUSBAU</text><text x="22" y="68" class="small bone">Verteilung bis HÜP</text>
+    <rect x="255" width="215" height="96" class="node"/><text x="277" y="36" class="monoSmall laser">NE4 FTTH</text><text x="277" y="68" class="small bone">Gebäude bis GF-TA</text>
+    <rect y="145" width="215" height="96" class="node"/><text x="22" y="181" class="monoSmall laser">TIEFBAU</text><text x="22" y="213" class="small bone">Leerrohr &amp; Kabelwege</text>
+    <rect x="255" y="145" width="215" height="96" class="nodeAccent"/><text x="277" y="181" class="monoSmall laser">PM / QA</text><text x="277" y="213" class="small bone">Planung &amp; Kontrolle</text>
+  </g>
+
+  <g transform="translate(960 420)">
+    <rect width="215" height="96" class="nodeAccent"/><text x="22" y="36" class="monoSmall laser">CONTROL</text><text x="22" y="68" class="small bone">Projektsteuerung</text>
+    <rect x="255" width="215" height="96" class="node"/><text x="277" y="36" class="monoSmall laser">BOT</text><text x="277" y="68" class="small bone">Termine &amp; Kunden</text>
+    <rect y="145" width="215" height="96" class="node"/><text x="22" y="181" class="monoSmall laser">MOBILE APPS</text><text x="22" y="213" class="small bone">Techniker vor Ort</text>
+    <rect x="255" y="145" width="215" height="96" class="nodeAccent"/><text x="277" y="181" class="monoSmall laser">INTEGRATION</text><text x="277" y="213" class="small bone">SAP, GIS, Legacy</text>
+  </g>
+
+  <path d="M676 535H710" class="noFill accentStroke heavy round" marker-end="url(#arrow)"/>
+  <path d="M890 535H924" class="noFill accentStroke heavy round" marker-end="url(#arrow)"/>
+  <path d="M890 585C985 720 1240 710 1378 655" class="noFill mutedStroke med dash round"/>
+  <path d="M710 585C615 720 360 710 222 655" class="noFill mutedStroke med dash round"/>
+
+  <rect x="96" y="812" width="1408" height="96" fill="#101216" stroke="#F5F3EE" stroke-opacity=".12"/>
+  <text x="128" y="850" class="monoSmall laser">MERKSATZ</text>
+  <text x="128" y="884" class="body bone">Der Service ist nicht nur Montage. Der Service ist Montage plus Steuerung, Nachweis und Übergabe.</text>
+</svg>

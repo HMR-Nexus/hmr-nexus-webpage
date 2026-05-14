@@ -107,6 +107,65 @@
         "integration_label": "Integración",
         "integration": "SAP, GIS y sistemas heredados"
       }
+    },
+    "visuals": {
+      "services": {
+        "label": "01.0 · Visuales del sistema",
+        "title": "Vista visual de la cadena operativa de Nexus.",
+        "description": "Estos diagramas muestran cómo ejecución de campo, control por software y entrega de calidad funcionan como un solo sistema operativo.",
+        "items": {
+          "capabilityMap": {
+            "title": "Mapa de capacidades",
+            "caption": "Conecta NE3, NE4, obra civil, PM-QA y software en una sola vista operativa."
+          },
+          "operatingLoop": {
+            "title": "Ciclo operativo",
+            "caption": "Del pedido a la ejecución de campo, documentación y vuelta al control."
+          },
+          "qualityHandover": {
+            "title": "Entrega de calidad",
+            "caption": "Muestra qué evidencias vuelven trazable el cierre técnico."
+          }
+        }
+      },
+      "ne3": {
+        "label": "01.1B · Visuales NE3",
+        "title": "NE3 desde la red de distribución hasta el punto de entrega.",
+        "description": "Vistas técnicas de la red exterior: distribución, ejecución en campo y límite con la red interior del edificio.",
+        "items": {
+          "networkOverview": {
+            "title": "Vista general NE3",
+            "caption": "PoP, distribuidor de calle, ruta, cierres y punto de entrega en una sola vista."
+          },
+          "fieldExecution": {
+            "title": "Flujo de ejecución en campo",
+            "caption": "Secuencia desde ruta y obra civil hasta tendido, fusión, medición y entrega."
+          },
+          "boundary": {
+            "title": "Límite NE3 a NE4",
+            "caption": "HÜP/Gf-AP/APL como interfaz técnica entre red exterior y red interior."
+          }
+        }
+      },
+      "ne4": {
+        "label": "01.1C · Visuales NE4",
+        "title": "NE4 dentro del edificio hasta la toma del cliente.",
+        "description": "Estos diagramas muestran distribución interior, opciones de topología y proceso de instalación hasta GF-TA y NT/ONT.",
+        "items": {
+          "buildingOverview": {
+            "title": "Vista del edificio",
+            "caption": "Desde HÜP por montante y distribución de planta hasta la toma de fibra del cliente."
+          },
+          "topology": {
+            "title": "Comparación de topologías",
+            "caption": "Compara distribución centralizada y por planta en edificios multifamiliares."
+          },
+          "installationFlow": {
+            "title": "Flujo de instalación",
+            "caption": "Revisión en sitio, ruta interior, montaje, fusión, medición y documentación."
+          }
+        }
+      }
     }
   },
   "products": {
@@ -232,7 +291,8 @@
         "2": "Handoff por Nodemailer al inbox de Nexus para seguimiento"
       },
       "cta": "Hablar automatización"
-    }
+    },
+    "visualSafeLabel": "SANITIZADO · SIN DATOS DE CLIENTE"
   },
   "stats": {
     "label": "Operaciones",

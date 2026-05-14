@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">NE4 in-building fiber network overview</title>
+  <desc id="desc">Nexus styled technical diagram showing NE4 from HÜP/Gf-AP/APL through building distributor, riser, floor distribution, GF-TA, ONT and router.</desc>
+  
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F5F3EE" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#FF4D2E"/>
+    </marker>
+    <filter id="laserGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .bg{fill:#0A0B0D}.paper{fill:#F5F3EE}.bone{fill:#EAE6DC}.mist{fill:#9A9A94}.graphite{fill:#1A1C20}.laser{fill:#FF4D2E}.rule{stroke:#F5F3EE;stroke-opacity:.14}.ruleStrong{stroke:#F5F3EE;stroke-opacity:.28}.accentStroke{stroke:#FF4D2E}.mutedStroke{stroke:#9A9A94;stroke-opacity:.45}.title{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:68px;font-weight:400;letter-spacing:-2.5px}.h2{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:-.7px}.h3{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:600}.body{font-family:Inter,Arial,sans-serif;font-size:17px;font-weight:400}.small{font-family:Inter,Arial,sans-serif;font-size:14px}.mono{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:13px;letter-spacing:1.3px;text-transform:uppercase}.monoSmall{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.thin{stroke-width:1}.med{stroke-width:2}.heavy{stroke-width:4}.dash{stroke-dasharray:8 10}.node{fill:#101216;stroke:#F5F3EE;stroke-opacity:.18;stroke-width:1}.nodeAccent{fill:#121317;stroke:#FF4D2E;stroke-opacity:.72;stroke-width:2}.zone{fill:#FF4D2E;fill-opacity:.055;stroke:#FF4D2E;stroke-opacity:.3;stroke-width:1}.ghost{opacity:.42}.noFill{fill:none}.round{stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" class="bg"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <text x="96" y="92" class="mono laser">NEXUS FIELD DIAGRAM · NE4 / GEBÄUDENETZ</text>
+  <line x1="96" y1="134" x2="1504" y2="134" class="rule thin"/>
+  <text x="96" y="196" class="title paper">Wie NE4 die Faser im Gebäude verteilt</text>
+  <text x="100" y="238" class="body mist">Vom HÜP/Gf-AP im Technikraum über Steigzonen bis zur Glasfaser-Teilnehmeranschlussdose in der Wohnung.</text>
+
+  <rect x="96" y="305" width="1408" height="454" class="zone"/>
+  <text x="124" y="344" class="mono laser">NETZEBENE 4 · INHOUSE-GLASFASERVERKABELUNG</text>
+
+  <g transform="translate(188 355)">
+    <path d="M0 365V110L155 15L310 110V365Z" fill="#101216" stroke="#F5F3EE" stroke-opacity=".22" stroke-width="2"/>
+    <line x1="0" y1="272" x2="310" y2="272" class="rule"/>
+    <line x1="0" y1="185" x2="310" y2="185" class="rule"/>
+    <line x1="0" y1="98" x2="310" y2="98" class="rule"/>
+    <text x="28" y="75" class="monoSmall mist">DG / WHG 05</text>
+    <text x="28" y="162" class="monoSmall mist">1. OG / WHG 03-04</text>
+    <text x="28" y="249" class="monoSmall mist">EG / WHG 01-02</text>
+    <text x="28" y="337" class="monoSmall mist">KELLER / TECHNIK</text>
+  </g>
+
+  <path d="M146 690H270" class="noFill mutedStroke med dash round"/>
+  <text x="120" y="670" class="monoSmall mist">NE3 kommt von außen</text>
+
+  <g transform="translate(420 625)">
+    <rect width="180" height="88" class="nodeAccent"/>
+    <text x="20" y="31" class="monoSmall laser">01 · HÜP</text>
+    <text x="20" y="59" class="h3 paper">Gf-AP / APL</text>
+  </g>
+
+  <g transform="translate(675 625)">
+    <rect width="190" height="88" class="node"/>
+    <text x="20" y="31" class="monoSmall laser">02 · VERTEILER</text>
+    <text x="20" y="59" class="h3 paper">Gf-GV</text>
+  </g>
+
+  <path d="M600 668H675" class="noFill accentStroke heavy round" marker-end="url(#arrow)" filter="url(#laserGlow)"/>
+  <path d="M865 668H960V435" class="noFill accentStroke heavy round" marker-end="url(#arrow)" filter="url(#laserGlow)"/>
+  <text x="890" y="632" class="monoSmall laser">Steigzone</text>
+
+  <g transform="translate(880 392)">
+    <rect width="170" height="72" class="nodeAccent"/>
+    <text x="18" y="28" class="monoSmall laser">03 · ETAGE</text>
+    <text x="18" y="54" class="h3 paper">Etagenverteiler</text>
+  </g>
+
+  <path d="M1050 428H1168" class="noFill accentStroke heavy round" marker-end="url(#arrow)" filter="url(#laserGlow)"/>
+  <g transform="translate(1168 365)">
+    <rect width="238" height="126" class="nodeAccent"/>
+    <text x="22" y="34" class="monoSmall laser">04 · WOHNUNG</text>
+    <text x="22" y="66" class="h3 paper">GF-TA</text>
+    <text x="22" y="96" class="small mist">Teilnehmeranschlussdose</text>
+  </g>
+
+  <path d="M1287 491V564" class="noFill accentStroke med round" marker-end="url(#arrow)"/>
+  <g transform="translate(1168 565)">
+    <rect width="238" height="102" class="node"/>
+    <text x="22" y="32" class="monoSmall laser">05 · AKTIVE GERÄTE</text>
+    <text x="22" y="62" class="h3 paper">ONT / NT → Router</text>
+    <text x="22" y="87" class="small mist">Optisch zu elektrisch</text>
+  </g>
+
+  <rect x="96" y="817" width="1408" height="92" fill="#101216" stroke="#F5F3EE" stroke-opacity=".12"/>
+  <text x="128" y="855" class="monoSmall laser">TECHNISCHE KERNAUSSAGE</text>
+  <text x="128" y="888" class="body bone">NE4 beginnt am HÜP/Gf-AP/APL und endet beim Teilnehmeranschluss in der Nutzungseinheit.</text>
+  <text x="96" y="947" class="monoSmall mist">Sources basis: Telekom Hausverkabelung · Deutsche Telekom Glasfaser · MICUS NE4 · EWE NETZ NE4</text>
+</svg>

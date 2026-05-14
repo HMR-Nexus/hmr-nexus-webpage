@@ -107,6 +107,65 @@
         "integration_label": "Integration",
         "integration": "SAP, GIS and legacy systems"
       }
+    },
+    "visuals": {
+      "services": {
+        "label": "01.0 · System visuals",
+        "title": "Visual overview of the Nexus delivery chain.",
+        "description": "These diagrams show how field execution, software control, and quality handover work together as one operating system.",
+        "items": {
+          "capabilityMap": {
+            "title": "Capability map",
+            "caption": "Connects NE3, NE4, civil works, PM-QA, and software in one operational view."
+          },
+          "operatingLoop": {
+            "title": "Operating loop",
+            "caption": "From order intake through field execution and documentation back into control."
+          },
+          "qualityHandover": {
+            "title": "Quality handover",
+            "caption": "Shows which evidence makes the technical closeout traceable."
+          }
+        }
+      },
+      "ne3": {
+        "label": "01.1B · NE3 visuals",
+        "title": "NE3 from distribution network to handover point.",
+        "description": "Technical views of the outside plant: distribution, field execution, and the boundary to the building network.",
+        "items": {
+          "networkOverview": {
+            "title": "NE3 network overview",
+            "caption": "PoP, street cabinet, route, closures, and handover point in one system view."
+          },
+          "fieldExecution": {
+            "title": "Field execution flow",
+            "caption": "Sequence from route and civil works to cable pull, splicing, measurement, and handover."
+          },
+          "boundary": {
+            "title": "NE3 to NE4 boundary",
+            "caption": "HÜP/Gf-AP/APL as the technical interface between outside plant and in-building network."
+          }
+        }
+      },
+      "ne4": {
+        "label": "01.1C · NE4 visuals",
+        "title": "NE4 inside the building to the customer outlet.",
+        "description": "These diagrams show in-building distribution, topology options, and the installation process up to GF-TA and NT/ONT.",
+        "items": {
+          "buildingOverview": {
+            "title": "Building overview",
+            "caption": "From HÜP through riser and floor distribution to the fiber subscriber outlet."
+          },
+          "topology": {
+            "title": "Topology comparison",
+            "caption": "Compares centralized and floor-based distribution in multi-dwelling buildings."
+          },
+          "installationFlow": {
+            "title": "Installation flow",
+            "caption": "Site check, internal route, mounting, splicing, measurement, and documentation."
+          }
+        }
+      }
     }
   },
   "products": {
@@ -232,7 +291,8 @@
         "2": "Nodemailer handoff to the Nexus inbox for follow-up"
       },
       "cta": "Talk automation"
-    }
+    },
+    "visualSafeLabel": "SANITIZED · NO CLIENT DATA"
   },
   "stats": {
     "label": "Operations",

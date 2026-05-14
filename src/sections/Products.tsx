@@ -162,7 +162,7 @@ export function Products({ onRequestDemo }: ProductsProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/5 to-transparent" />
                   <div className="absolute left-4 bottom-4 mono-tag text-paper/60">
-                    REAL PRODUCT MAP · NO STOCK CLAIMS
+                    {t('products.visualSafeLabel')}
                   </div>
                 </div>
                 {renderMetrics(heroProduct.key)}

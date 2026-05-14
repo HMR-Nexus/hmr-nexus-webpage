@@ -107,6 +107,65 @@
         "integration_label": "Integration",
         "integration": "SAP, GIS und Bestandssysteme"
       }
+    },
+    "visuals": {
+      "services": {
+        "label": "01.0 · Systembilder",
+        "title": "Visuelle Übersicht der Nexus-Leistungskette.",
+        "description": "Die Diagramme zeigen, wie Feldarbeit, Softwaresteuerung und Qualitätssicherung als ein operatives System zusammenlaufen.",
+        "items": {
+          "capabilityMap": {
+            "title": "Leistungskarte",
+            "caption": "Verbindet NE3, NE4, Tiefbau, PM-QS und Software in einer operativen Übersicht."
+          },
+          "operatingLoop": {
+            "title": "Betriebsloop",
+            "caption": "Vom Auftrag über Feldarbeit und Dokumentation zurück zur Steuerung."
+          },
+          "qualityHandover": {
+            "title": "Qualitätsübergabe",
+            "caption": "Zeigt, welche Nachweise den technischen Abschluss nachvollziehbar machen."
+          }
+        }
+      },
+      "ne3": {
+        "label": "01.1B · NE3 Visuals",
+        "title": "NE3 vom Verteilnetz bis zum Übergabepunkt.",
+        "description": "Technische Darstellungen der Außenstrecke: Verteilung, Feldablauf und Grenze zur Gebäudenetzebene.",
+        "items": {
+          "networkOverview": {
+            "title": "NE3-Netzübersicht",
+            "caption": "PoP, NVt, Trasse, Muffen und Übergabepunkt im Zusammenhang."
+          },
+          "fieldExecution": {
+            "title": "Feldablauf",
+            "caption": "Sequenz von Trasse, Tiefbau, Einzug, Spleißung, Messung und Übergabe."
+          },
+          "boundary": {
+            "title": "Grenze NE3 zu NE4",
+            "caption": "HÜP/Gf-AP/APL als technische Schnittstelle zwischen Außen- und Gebäudenetz."
+          }
+        }
+      },
+      "ne4": {
+        "label": "01.1C · NE4 Visuals",
+        "title": "NE4 im Gebäude bis zur Kundendose.",
+        "description": "Die Diagramme zeigen Gebäudeverteilung, Topologieoptionen und den Installationsprozess bis GF-TA und NT/ONT.",
+        "items": {
+          "buildingOverview": {
+            "title": "Gebäudeübersicht",
+            "caption": "Vom HÜP über Steigzone und Etagenverteiler bis zur Glasfaser-Teilnehmeranschlussdose."
+          },
+          "topology": {
+            "title": "Topologievergleich",
+            "caption": "Vergleich zentraler und etagenbasierter Verteilung im Mehrfamilienhaus."
+          },
+          "installationFlow": {
+            "title": "Installationsfluss",
+            "caption": "Vor-Ort-Prüfung, Innenweg, Montage, Spleißung, Messung und Dokumentation."
+          }
+        }
+      }
     }
   },
   "products": {
@@ -232,7 +291,8 @@
         "2": "Nodemailer-Übergabe an den Nexus-Posteingang für Follow-up"
       },
       "cta": "Automatisierung besprechen"
-    }
+    },
+    "visualSafeLabel": "SANITISIERT · KEINE KUNDENDATEN"
   },
   "stats": {
     "label": "Operations",

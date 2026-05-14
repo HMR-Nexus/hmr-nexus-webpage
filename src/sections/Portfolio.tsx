@@ -36,11 +36,11 @@ const projects: Project[] = [
     metrics: [{ key: 'stage', value: 'FTTH' }, { key: 'type', value: 'LAST' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'workManager', status: 'active', accent: 'paper',
+    key: 'workManager', status: 'active', accent: 'paper', visual: '/assets/software/work-manager.webp',
     metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'PWA' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'fincontrol', status: 'active', accent: 'paper',
+    key: 'fincontrol', status: 'active', accent: 'paper', visual: '/assets/software/fincontrol.webp',
     metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'SaaS' }, { key: 'year', value: '2026' }],
   },
 ];
@@ -380,7 +380,12 @@ export function Portfolio() {
 
               {project.visual && (
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden border border-paper/10 bg-paper/[0.025]">
-                  <img src={project.visual} alt="" className="h-full w-full object-cover opacity-95 transition duration-500 group-hover:opacity-100 group-hover:scale-[1.02]" loading="lazy" />
+                  <img
+                    src={project.visual}
+                    alt=""
+                    className="h-full w-full object-cover opacity-95 transition duration-500 group-hover:opacity-100 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#0A0B0D]/65 via-[#0A0B0D]/10 to-transparent" />
                 </div>
               )}

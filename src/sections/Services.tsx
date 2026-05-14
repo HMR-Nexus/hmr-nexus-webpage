@@ -3,11 +3,19 @@ import type { TFunction } from 'i18next';
 import { motion } from 'framer-motion';
 import { MotionSection } from '@/components/MotionSection';
 import { staggerContainer, cardEntrance, listItemSlide } from '@/lib/motion';
+import { getLocalizedAssetLanguage, getLocalizedSvgSrc, type LocalizedAssetLanguage } from '@/lib/localizedAssets';
 
 type ServiceBase = 'fiber' | 'software';
+type DiagramFolder = 'ne3' | 'ne4' | 'servicios';
 
 interface ServiceItem {
   key: string;
+}
+
+interface DiagramItem {
+  file: string;
+  titleKey: string;
+  captionKey: string;
 }
 
 /**
@@ -33,6 +41,16 @@ interface NE4HighlightProps {
   t: TFunction;
 }
 
+interface DiagramGalleryProps {
+  label: string;
+  title: string;
+  description: string;
+  folder: DiagramFolder;
+  items: DiagramItem[];
+  language: LocalizedAssetLanguage;
+  t: TFunction;
+}
+
 const fiberServices: ServiceItem[] = [
   { key: 'ne3' },
   { key: 'ne4' },
@@ -50,6 +68,60 @@ const softwareServices: ServiceItem[] = [
 const ne4ScopeItems = ['handover', 'connection', 'splice', 'activation'];
 const ne4LifecycleSteps = ['survey', 'install', 'splice', 'document'];
 const ne4QualitySignals = ['photos', 'checks', 'handover'];
+
+const serviceVisuals: DiagramItem[] = [
+  {
+    file: 'services-capability-map',
+    titleKey: 'services.visuals.services.items.capabilityMap.title',
+    captionKey: 'services.visuals.services.items.capabilityMap.caption',
+  },
+  {
+    file: 'services-operating-loop',
+    titleKey: 'services.visuals.services.items.operatingLoop.title',
+    captionKey: 'services.visuals.services.items.operatingLoop.caption',
+  },
+  {
+    file: 'services-quality-handover',
+    titleKey: 'services.visuals.services.items.qualityHandover.title',
+    captionKey: 'services.visuals.services.items.qualityHandover.caption',
+  },
+];
+
+const ne3Visuals: DiagramItem[] = [
+  {
+    file: 'ne3-network-overview',
+    titleKey: 'services.visuals.ne3.items.networkOverview.title',
+    captionKey: 'services.visuals.ne3.items.networkOverview.caption',
+  },
+  {
+    file: 'ne3-field-execution-flow',
+    titleKey: 'services.visuals.ne3.items.fieldExecution.title',
+    captionKey: 'services.visuals.ne3.items.fieldExecution.caption',
+  },
+  {
+    file: 'ne3-ne4-boundary',
+    titleKey: 'services.visuals.ne3.items.boundary.title',
+    captionKey: 'services.visuals.ne3.items.boundary.caption',
+  },
+];
+
+const ne4Visuals: DiagramItem[] = [
+  {
+    file: 'ne4-building-overview',
+    titleKey: 'services.visuals.ne4.items.buildingOverview.title',
+    captionKey: 'services.visuals.ne4.items.buildingOverview.caption',
+  },
+  {
+    file: 'ne4-topology-comparison',
+    titleKey: 'services.visuals.ne4.items.topology.title',
+    captionKey: 'services.visuals.ne4.items.topology.caption',
+  },
+  {
+    file: 'ne4-installation-flow',
+    titleKey: 'services.visuals.ne4.items.installationFlow.title',
+    captionKey: 'services.visuals.ne4.items.installationFlow.caption',
+  },
+];
 
 function Discipline({ num, subtitle, title, description, items, base, t }: DisciplineProps) {
   return (
@@ -106,6 +178,59 @@ function Discipline({ num, subtitle, title, description, items, base, t }: Disci
         </motion.ul>
       </motion.div>
     </motion.div>
+  );
+}
+
+function DiagramGallery({ label, title, description, folder, items, language, t }: DiagramGalleryProps) {
+  return (
+    <MotionSection className="py-10 md:py-14 rule-top">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-80px' }}
+        variants={staggerContainer}
+      >
+        <motion.div variants={cardEntrance} className="grid md:grid-cols-[0.75fr_1.25fr] gap-6 md:gap-10 mb-8">
+          <div className="mono-tag text-paper/45">{label}</div>
+          <div>
+            <h3 className="font-display text-paper text-[28px] md:text-[40px] leading-[0.98] tracking-[-0.03em] font-normal mb-4">
+              {title}
+            </h3>
+            <p className="text-paper/65 text-[15px] leading-[1.55] max-w-[68ch]">
+              {description}
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div variants={staggerContainer} className="grid lg:grid-cols-3 gap-5">
+          {items.map((item) => (
+            <motion.figure
+              key={item.file}
+              variants={cardEntrance}
+              className="border border-[color:var(--rule)] bg-paper/[0.03] overflow-hidden"
+            >
+              <div className="bg-[#111318] p-2 md:p-3">
+                <img
+                  src={getLocalizedSvgSrc(folder, item.file, language)}
+                  alt={t(item.titleKey)}
+                  loading="lazy"
+                  decoding="async"
+                  className="block w-full h-auto"
+                />
+              </div>
+              <figcaption className="p-4 border-t border-[color:var(--rule)]">
+                <span className="font-display text-paper text-[18px] leading-tight block">
+                  {t(item.titleKey)}
+                </span>
+                <span className="text-paper/55 text-[13px] leading-[1.5] block mt-2">
+                  {t(item.captionKey)}
+                </span>
+              </figcaption>
+            </motion.figure>
+          ))}
+        </motion.div>
+      </motion.div>
+    </MotionSection>
   );
 }
 
@@ -190,7 +315,8 @@ function NE4Highlight({ onRequestNE4Briefing, t }: NE4HighlightProps) {
 }
 
 export function Services({ onRequestNE4Briefing }: ServicesProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const diagramLanguage = getLocalizedAssetLanguage(i18n.resolvedLanguage || i18n.language);
 
   return (
     <section id="services" className="bg-ink text-paper py-24 md:py-32">
@@ -210,6 +336,16 @@ export function Services({ onRequestNE4Briefing }: ServicesProps) {
           </div>
         </MotionSection>
 
+        <DiagramGallery
+          label={t('services.visuals.services.label')}
+          title={t('services.visuals.services.title')}
+          description={t('services.visuals.services.description')}
+          folder="servicios"
+          items={serviceVisuals}
+          language={diagramLanguage}
+          t={t}
+        />
+
         <Discipline
           num="01.1"
           subtitle={t('services.fiber.subtitle')}
@@ -220,7 +356,27 @@ export function Services({ onRequestNE4Briefing }: ServicesProps) {
           t={t}
         />
 
+        <DiagramGallery
+          label={t('services.visuals.ne3.label')}
+          title={t('services.visuals.ne3.title')}
+          description={t('services.visuals.ne3.description')}
+          folder="ne3"
+          items={ne3Visuals}
+          language={diagramLanguage}
+          t={t}
+        />
+
         <NE4Highlight onRequestNE4Briefing={onRequestNE4Briefing} t={t} />
+
+        <DiagramGallery
+          label={t('services.visuals.ne4.label')}
+          title={t('services.visuals.ne4.title')}
+          description={t('services.visuals.ne4.description')}
+          folder="ne4"
+          items={ne4Visuals}
+          language={diagramLanguage}
+          t={t}
+        />
 
         <Discipline
           num="01.2"

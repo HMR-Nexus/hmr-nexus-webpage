@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Field to software operating loop</title>
+  <desc id="desc">Nexus styled loop diagram showing how field execution, quality evidence and software control reinforce each other.</desc>
+  
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F5F3EE" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#FF4D2E"/>
+    </marker>
+    <filter id="laserGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .bg{fill:#0A0B0D}.paper{fill:#F5F3EE}.bone{fill:#EAE6DC}.mist{fill:#9A9A94}.graphite{fill:#1A1C20}.laser{fill:#FF4D2E}.rule{stroke:#F5F3EE;stroke-opacity:.14}.ruleStrong{stroke:#F5F3EE;stroke-opacity:.28}.accentStroke{stroke:#FF4D2E}.mutedStroke{stroke:#9A9A94;stroke-opacity:.45}.title{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:68px;font-weight:400;letter-spacing:-2.5px}.h2{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:-.7px}.h3{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:600}.body{font-family:Inter,Arial,sans-serif;font-size:17px;font-weight:400}.small{font-family:Inter,Arial,sans-serif;font-size:14px}.mono{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:13px;letter-spacing:1.3px;text-transform:uppercase}.monoSmall{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.thin{stroke-width:1}.med{stroke-width:2}.heavy{stroke-width:4}.dash{stroke-dasharray:8 10}.node{fill:#101216;stroke:#F5F3EE;stroke-opacity:.18;stroke-width:1}.nodeAccent{fill:#121317;stroke:#FF4D2E;stroke-opacity:.72;stroke-width:2}.zone{fill:#FF4D2E;fill-opacity:.055;stroke:#FF4D2E;stroke-opacity:.3;stroke-width:1}.ghost{opacity:.42}.noFill{fill:none}.round{stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" class="bg"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <text x="96" y="92" class="mono laser">NEXUS FIELD DIAGRAM · OPERATING LOOP</text>
+  <line x1="96" y1="134" x2="1504" y2="134" class="rule thin"/>
+  <text x="96" y="196" class="title paper">Vom Feld zurück ins System</text>
+  <text x="100" y="238" class="body mist">Gute Ausführung erzeugt Daten. Gute Daten verbessern die nächste Ausführung.</text>
+
+  <circle cx="800" cy="535" r="235" fill="#FF4D2E" fill-opacity=".035" stroke="#FF4D2E" stroke-opacity=".28" stroke-width="2"/>
+  <path d="M800 300C930 300 1035 405 1035 535C1035 665 930 770 800 770C670 770 565 665 565 535C565 405 670 300 800 300" class="noFill accentStroke heavy round" marker-end="url(#arrow)" filter="url(#laserGlow)"/>
+
+  <g transform="translate(650 438)">
+    <rect width="300" height="194" class="nodeAccent"/>
+    <text x="36" y="46" class="monoSmall laser">NEXUS CONTROL CORE</text>
+    <text x="36" y="88" class="h2 paper">Operative Wahrheit</text>
+    <text x="36" y="128" class="small mist">Status, Evidenz, Termine,</text>
+    <text x="36" y="152" class="small mist">Qualität und Übergabe</text>
+  </g>
+
+  <g transform="translate(650 292)">
+    <rect width="300" height="92" class="node"/>
+    <text x="26" y="35" class="monoSmall laser">01 · PLAN</text>
+    <text x="26" y="66" class="h3 paper">Auftrag &amp; Route</text>
+  </g>
+  <g transform="translate(1010 488)">
+    <rect width="300" height="92" class="nodeAccent"/>
+    <text x="26" y="35" class="monoSmall laser">02 · EXECUTE</text>
+    <text x="26" y="66" class="h3 paper">Techniker vor Ort</text>
+  </g>
+  <g transform="translate(650 684)">
+    <rect width="300" height="92" class="node"/>
+    <text x="26" y="35" class="monoSmall laser">03 · VERIFY</text>
+    <text x="26" y="66" class="h3 paper">Fotos &amp; Messwerte</text>
+  </g>
+  <g transform="translate(290 488)">
+    <rect width="300" height="92" class="nodeAccent"/>
+    <text x="26" y="35" class="monoSmall laser">04 · REPORT</text>
+    <text x="26" y="66" class="h3 paper">Handover &amp; Billing</text>
+  </g>
+
+  <rect x="96" y="832" width="1408" height="76" fill="#101216" stroke="#F5F3EE" stroke-opacity=".12"/>
+  <text x="128" y="878" class="body bone">Wenn Feldarbeit nicht dokumentiert wird, ist sie operativ unsichtbar. Nexus macht sie messbar.</text>
+  <text x="96" y="947" class="monoSmall mist">Designed for Nexus Engineering · service principle: field execution connected to operational software</text>
+</svg>

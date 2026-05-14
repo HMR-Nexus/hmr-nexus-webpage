@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">NE3 execution workflow</title>
+  <desc id="desc">Nexus technical diagram showing planning, civil works, cable blowing, splicing, OTDR testing and documentation.</desc>
+  
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F5F3EE" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#FF4D2E"/>
+    </marker>
+    <filter id="laserGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .bg{fill:#0A0B0D}.paper{fill:#F5F3EE}.bone{fill:#EAE6DC}.mist{fill:#9A9A94}.graphite{fill:#1A1C20}.laser{fill:#FF4D2E}.rule{stroke:#F5F3EE;stroke-opacity:.14}.ruleStrong{stroke:#F5F3EE;stroke-opacity:.28}.accentStroke{stroke:#FF4D2E}.mutedStroke{stroke:#9A9A94;stroke-opacity:.45}.title{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:68px;font-weight:400;letter-spacing:-2.5px}.h2{font-family:Space Grotesk,Inter,Arial,sans-serif;font-size:30px;font-weight:500;letter-spacing:-.7px}.h3{font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:600}.body{font-family:Inter,Arial,sans-serif;font-size:17px;font-weight:400}.small{font-family:Inter,Arial,sans-serif;font-size:14px}.mono{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:13px;letter-spacing:1.3px;text-transform:uppercase}.monoSmall{font-family:JetBrains Mono,Menlo,Consolas,monospace;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.thin{stroke-width:1}.med{stroke-width:2}.heavy{stroke-width:4}.dash{stroke-dasharray:8 10}.node{fill:#101216;stroke:#F5F3EE;stroke-opacity:.18;stroke-width:1}.nodeAccent{fill:#121317;stroke:#FF4D2E;stroke-opacity:.72;stroke-width:2}.zone{fill:#FF4D2E;fill-opacity:.055;stroke:#FF4D2E;stroke-opacity:.3;stroke-width:1}.ghost{opacity:.42}.noFill{fill:none}.round{stroke-linecap:round;stroke-linejoin:round}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1000" class="bg"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <text x="96" y="92" class="mono laser">NEXUS FIELD DIAGRAM · NE3 DELIVERY FLOW</text>
+  <line x1="96" y1="134" x2="1504" y2="134" class="rule thin"/>
+  <text x="96" y="196" class="title paper">From rollout plan to measurable fiber</text>
+  <text x="100" y="238" class="body mist">A real NE3 workflow does not end with cable: without splicing, testing and documentation there is no reliable network.</text>
+
+  <path d="M190 482H1410" class="noFill accentStroke heavy round" marker-end="url(#arrow)" filter="url(#laserGlow)"/>
+  <path d="M190 536H1410" class="noFill mutedStroke med round dash"/>
+
+  <g>
+    <rect x="96" y="340" width="214" height="310" class="node"/>
+    <text x="124" y="382" class="monoSmall laser">01 · PLANNING</text>
+    <path d="M140 436H248M140 472H248M170 418V512M218 418V512" stroke="#F5F3EE" stroke-opacity=".22" stroke-width="2"/>
+    <circle cx="194" cy="466" r="18" fill="#FF4D2E"/>
+    <text x="124" y="560" class="h3 paper">Route and survey</text>
+    <text x="124" y="592" class="small mist">Existing state, paths,</text>
+    <text x="124" y="616" class="small mist">permits, HÜP</text>
+  </g>
+  <g>
+    <rect x="342" y="340" width="214" height="310" class="nodeAccent"/>
+    <text x="370" y="382" class="monoSmall laser">02 · CIVIL</text>
+    <path d="M390 498H508" stroke="#FF4D2E" stroke-width="5"/>
+    <path d="M390 454C430 426 468 426 508 454" fill="none" stroke="#F5F3EE" stroke-opacity=".32" stroke-width="2"/>
+    <path d="M404 500V530M452 500V530M500 500V530" stroke="#F5F3EE" stroke-opacity=".22" stroke-width="2"/>
+    <text x="370" y="560" class="h3 paper">Duct / trench</text>
+    <text x="370" y="592" class="small mist">Duct route, trench</text>
+    <text x="370" y="616" class="small mist">or existing infrastructure</text>
+  </g>
+  <g>
+    <rect x="588" y="340" width="214" height="310" class="node"/>
+    <text x="616" y="382" class="monoSmall laser">03 · CABLE</text>
+    <path d="M636 485C666 455 724 455 754 485" fill="none" stroke="#FF4D2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M636 512C666 482 724 482 754 512" fill="none" stroke="#F5F3EE" stroke-opacity=".26" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="636" cy="485" r="6" fill="#FF4D2E"/><circle cx="754" cy="485" r="6" fill="#FF4D2E"/>
+    <text x="616" y="560" class="h3 paper">Cable blowing</text>
+    <text x="616" y="592" class="small mist">Microcable through</text>
+    <text x="616" y="616" class="small mist">duct bundle</text>
+  </g>
+  <g>
+    <rect x="834" y="340" width="214" height="310" class="nodeAccent"/>
+    <text x="862" y="382" class="monoSmall laser">04 · SPLICE</text>
+    <rect x="888" y="444" width="106" height="78" fill="#0A0B0D" stroke="#FF4D2E" stroke-width="2"/>
+    <path d="M902 483H980M941 456V510" stroke="#FF4D2E" stroke-width="3"/>
+    <text x="862" y="560" class="h3 paper">Closure / NVt</text>
+    <text x="862" y="592" class="small mist">Fibers spliced,</text>
+    <text x="862" y="616" class="small mist">slack stored</text>
+  </g>
+  <g>
+    <rect x="1080" y="340" width="214" height="310" class="node"/>
+    <text x="1108" y="382" class="monoSmall laser">05 · QA</text>
+    <polyline points="1124,505 1160,470 1190,492 1228,430 1260,452" fill="none" stroke="#FF4D2E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="1124" y1="528" x2="1260" y2="528" stroke="#F5F3EE" stroke-opacity=".25"/>
+    <text x="1108" y="560" class="h3 paper">OTDR testing</text>
+    <text x="1108" y="592" class="small mist">Check attenuation,</text>
+    <text x="1108" y="616" class="small mist">locate faults</text>
+  </g>
+  <g>
+    <rect x="1326" y="340" width="178" height="310" class="nodeAccent"/>
+    <text x="1352" y="382" class="monoSmall laser">06 · HANDOVER</text>
+    <path d="M1370 438H1460V530H1370Z" fill="none" stroke="#FF4D2E" stroke-width="2"/>
+    <path d="M1388 462H1442M1388 486H1442M1388 510H1424" stroke="#F5F3EE" stroke-opacity=".35" stroke-width="2"/>
+    <text x="1352" y="560" class="h3 paper">Documentation</text>
+    <text x="1352" y="592" class="small mist">Photos, protocol,</text>
+    <text x="1352" y="616" class="small mist">as-built handover</text>
+  </g>
+
+  <rect x="96" y="742" width="1408" height="126" fill="#101216" stroke="#F5F3EE" stroke-opacity=".12"/>
+  <text x="128" y="782" class="monoSmall laser">QUALITY RULE</text>
+  <text x="128" y="820" class="body bone">An NE3 route is production-ready only when route, fiber mapping, splices and measurements are documented.</text>
+  <text x="128" y="850" class="body mist">Otherwise you only laid cable. No network. That is the difference between work and infrastructure.</text>
+  <text x="96" y="936" class="monoSmall mist">Designed for Nexus Engineering · palette: ink / paper / laser · technical editorial SVG diagram</text>
+</svg>
