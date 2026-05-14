@@ -20,28 +20,20 @@ interface Project {
 
 const projects: Project[] = [
   {
-    key: 'ne3', status: 'active', accent: 'laser', visual: '/assets/projects/ne3-distribution.webp',
+    key: 'ne3', status: 'active', accent: 'laser', visual: '/assets/projects/ne3-distribution-render.jpg',
     metrics: [{ key: 'stage', value: 'NE3' }, { key: 'region', value: 'DE' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'ne4', status: 'active', accent: 'laser', visual: '/assets/projects/ne4-ftth-connection.webp',
+    key: 'ne4', status: 'active', accent: 'laser', visual: '/assets/projects/ne4-ftth-connection-render.jpg',
     metrics: [{ key: 'stage', value: 'NE4' }, { key: 'region', value: 'DE' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'nas', status: 'active', accent: 'paper', visual: '/assets/projects/nas-access-site.webp',
+    key: 'nas', status: 'active', accent: 'paper', visual: '/assets/projects/nas-access-site-render.jpg',
     metrics: [{ key: 'stage', value: 'NAS' }, { key: 'region', value: 'DE' }, { key: 'year', value: '2026' }],
   },
   {
-    key: 'densification', status: 'active', accent: 'paper', visual: '/assets/projects/ftth-densification.webp',
+    key: 'densification', status: 'active', accent: 'paper', visual: '/assets/projects/ftth-densification-render.jpg',
     metrics: [{ key: 'stage', value: 'FTTH' }, { key: 'type', value: 'LAST' }, { key: 'year', value: '2026' }],
-  },
-  {
-    key: 'workManager', status: 'active', accent: 'paper', visual: '/assets/software/work-manager.webp',
-    metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'PWA' }, { key: 'year', value: '2026' }],
-  },
-  {
-    key: 'fincontrol', status: 'active', accent: 'paper', visual: '/assets/software/fincontrol.webp',
-    metrics: [{ key: 'stage', value: 'LIVE' }, { key: 'type', value: 'SaaS' }, { key: 'year', value: '2026' }],
   },
 ];
 
@@ -302,7 +294,7 @@ export function Portfolio() {
   const [activeProjectKey, setActiveProjectKey] = useState<string | null>(null);
 
   return (
-    <section id="portfolio" className="bg-ink text-paper py-24 md:py-32">
+    <section id="portfolio" className="bg-ink text-paper py-16 md:py-20 pt-28 md:pt-32 min-h-[calc(100svh-80px)]">
       <div className="max-w-[1440px] mx-auto px-6 md:px-7">
         <MotionSection>
           <div className="section-head">
@@ -324,7 +316,7 @@ export function Portfolio() {
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
           variants={staggerContainer}
-          className="grid lg:grid-cols-2"
+          className="grid md:grid-cols-2 xl:grid-cols-4"
           style={{ border: '1px solid var(--rule)' }}
         >
           {projects.map((project, idx) => (
@@ -333,13 +325,12 @@ export function Portfolio() {
               key={project.key}
               variants={cardEntrance}
               onClick={() => setActiveProjectKey(project.key)}
-              className="group p-8 md:p-10 hover:bg-paper/[0.025] transition-colors duration-300 text-left cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--accent)]"
+              className="group p-5 md:p-6 hover:bg-paper/[0.025] transition-colors duration-300 text-left cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--accent)] flex flex-col min-h-[430px]"
               style={{
-                borderLeft: idx % 2 === 1 ? '1px solid var(--rule)' : 'none',
-                borderTop: idx >= 2 ? '1px solid var(--rule)' : 'none',
+                borderLeft: idx === 0 ? 'none' : '1px solid var(--rule)',
               }}
             >
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center justify-between mb-4 gap-4">
                 <span className="mono-tag text-paper/50">
                   CASE · {String(idx + 1).padStart(3, '0')} · {t(`portfolio.projects.${project.key}.tag`)}
                 </span>
@@ -356,30 +347,8 @@ export function Portfolio() {
                 )}
               </div>
 
-              <div className="mb-7">
-                <div
-                  className="font-display text-paper tabular-nums"
-                  style={{ fontSize: 'clamp(64px, 8vw, 120px)', lineHeight: 0.85, letterSpacing: '-0.04em', fontWeight: 300 }}
-                >
-                  {project.metrics[0].value}
-                </div>
-                <div className="mono-tag text-paper/55 mt-2">
-                  {t(`portfolio.projects.${project.key}.metrics.${project.metrics[0].key}`)}
-                </div>
-              </div>
-
-              <h3
-                className="font-display text-paper mb-2"
-                style={{ fontSize: 22, lineHeight: 1.1, letterSpacing: '-0.02em', fontWeight: 500 }}
-              >
-                {t(`portfolio.projects.${project.key}.title`)}
-              </h3>
-              <p className="text-paper/65 text-[14px] leading-[1.55] mb-6 max-w-[52ch]">
-                {t(`portfolio.projects.${project.key}.description`)}
-              </p>
-
               {project.visual && (
-                <div className="relative mb-6 aspect-[16/9] overflow-hidden border border-paper/10 bg-paper/[0.025]">
+                <div className="relative mb-5 aspect-[16/10] overflow-hidden border border-paper/10 bg-paper/[0.025]">
                   <img
                     src={project.visual}
                     alt=""
@@ -390,7 +359,17 @@ export function Portfolio() {
                 </div>
               )}
 
-              <div className="grid grid-cols-2 gap-6 pt-5 rule-top">
+              <div className="mono-tag text-[color:var(--accent)] mb-2">
+                {project.metrics[0].value} · {t(`portfolio.projects.${project.key}.metrics.${project.metrics[0].key}`)}
+              </div>
+              <h3 className="font-display text-paper text-[24px] leading-[1] tracking-[-0.025em] font-medium mb-3">
+                {t(`portfolio.projects.${project.key}.title`)}
+              </h3>
+              <p className="text-paper/65 text-[14px] leading-[1.55] mb-5">
+                {t(`portfolio.projects.${project.key}.description`)}
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 pt-4 rule-top mt-auto">
                 {project.metrics.slice(1).map((m) => (
                   <div key={m.key}>
                     <div
@@ -405,7 +384,7 @@ export function Portfolio() {
                   </div>
                 ))}
               </div>
-              <div className="mt-7 mono-tag text-paper/40 group-hover:text-[color:var(--accent)] transition-colors">{t('portfolio.detail.open')}</div>
+              <div className="mt-5 mono-tag text-paper/40 group-hover:text-[color:var(--accent)] transition-colors">{t('portfolio.detail.open')}</div>
             </motion.button>
           ))}
         </motion.div>
