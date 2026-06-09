@@ -11,7 +11,8 @@ export function WhatsAppButton() {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const phoneNumber = '+491****4448';
+  // wa.me requires digits only — no '+', spaces, or leading zeros
+  const phoneNumber = '4917631524448';
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">

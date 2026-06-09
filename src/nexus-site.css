@@ -1481,6 +1481,165 @@
 .ns-fo-cta h2 em { font-style: italic; font-weight: 400; }
 .ns-fo-cta .actions { display: flex; gap: 14px; justify-content: center; margin-top: 46px; flex-wrap: wrap; }
 
+/* ═══════════════ FO CASES (production proof block) ═══════════════ */
+.ns-fo-cases {
+  padding: clamp(80px, 10vw, 140px) var(--ns-pad);
+  border-top: 1px solid var(--ns-line);
+  background: var(--ns-ink);
+}
+.ns-fo-cases .head {
+  max-width: 860px;
+  margin: 0 auto clamp(52px, 7vw, 88px);
+  text-align: center;
+}
+.ns-fo-cases .eyebrow {
+  font-family: var(--f-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ns-sub);
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ns-fo-cases .eyebrow::before,
+.ns-fo-cases .eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--ns-sub);
+  opacity: 0.5;
+}
+.ns-fo-cases h2 {
+  font-family: var(--f-display, sans-serif);
+  font-weight: 300;
+  font-size: clamp(30px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ns-paper);
+  margin: 0 0 18px;
+}
+.ns-fo-cases h2 em { font-style: italic; font-weight: 400; color: var(--ns-sub); }
+.ns-fo-cases .sub {
+  font-size: 15px;
+  color: rgba(245,243,238,0.5);
+  max-width: 56ch;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Grid — 2×2 at wide, 1-col at mobile */
+.ns-fo-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--ns-line);
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid var(--ns-line);
+}
+.ns-fo-case-card {
+  background: var(--ns-ink);
+  padding: 36px 40px 40px;
+  position: relative;
+  transition: background 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ns-fo-case-card:hover { background: rgba(245,243,238,0.03); }
+.ns-fo-case-card .card-eyebrow {
+  font-family: var(--f-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ns-sub);
+  margin-bottom: 14px;
+}
+.ns-fo-case-card .card-name {
+  font-family: var(--f-display, sans-serif);
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 26px);
+  letter-spacing: -0.03em;
+  color: var(--ns-paper);
+  margin: 0 0 6px;
+}
+.ns-fo-case-card .card-tag {
+  font-family: var(--f-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(245,243,238,0.38);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.ns-fo-case-card .card-desc {
+  font-size: 14px;
+  color: rgba(245,243,238,0.55);
+  line-height: 1.7;
+  flex: 1;
+  margin: 0 0 24px;
+}
+.ns-fo-case-card .card-status {
+  display: inline-block;
+  font-family: var(--f-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--ns-sub);
+  color: var(--ns-sub);
+  align-self: flex-start;
+}
+.ns-fo-case-card .card-status.live {
+  border-color: var(--ns-sub);
+  color: var(--ns-sub);
+  background: var(--ns-sub-soft, rgba(0,255,127,0.06));
+}
+.ns-fo-case-card .card-status.internal {
+  border-color: rgba(245,243,238,0.25);
+  color: rgba(245,243,238,0.45);
+  background: transparent;
+}
+.ns-fo-case-card .card-status.dev {
+  border-color: rgba(245,243,238,0.35);
+  color: rgba(245,243,238,0.55);
+  background: transparent;
+}
+/* Hover lift — match stage diagram idiom */
+.ns-fo-case-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.22s ease;
+  pointer-events: none;
+}
+.ns-fo-case-card:hover::after { border-color: rgba(var(--ns-sub-rgb, 0,200,100), 0.18); }
+
+/* Reveal animation — reuse existing pattern */
+.ns-fo-cases .head[data-ns-reveal],
+.ns-fo-case-card[data-ns-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.ns-fo-cases .head[data-ns-reveal].in,
+.ns-fo-case-card[data-ns-reveal].in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ns-fo-case-card[data-ns-reveal]:nth-child(2) { transition-delay: 0.07s; }
+.ns-fo-case-card[data-ns-reveal]:nth-child(3) { transition-delay: 0.14s; }
+.ns-fo-case-card[data-ns-reveal]:nth-child(4) { transition-delay: 0.21s; }
+
+@media (max-width: 680px) {
+  .ns-fo-cases-grid { grid-template-columns: 1fr; }
+  .ns-fo-case-card { padding: 28px 24px 32px; }
+}
+
 /* SVG diagram primitive classes */
 .dg-line { stroke: rgba(245,243,238,0.5); stroke-width: 1.4; fill: none; }
 .dg-line-2 { stroke: rgba(245,243,238,0.22); stroke-width: 1; fill: none; }

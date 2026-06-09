@@ -884,7 +884,7 @@
       "ctaPrimary": "Mein System gestalten",
       "ctaSecondary": "Prozess ansehen",
       "verbsLead": "Wir programmieren nicht nur",
-      "verbs": ["Analysiert", "Gestaltet", "Strukturiert", "Entwickelt", "Integriert", "Automatisiert", "Pflegt"],
+      "verbs": ["Analyse", "Design", "Struktur", "Entwicklung", "Integration", "Automatisierung", "Wartung"],
       "stages": {
         "01": {
           "num": "Etappe 01",
@@ -949,8 +949,41 @@
         "h2b": "in ein",
         "h2em": "klares System",
         "h2c": "überführen.",
-        "btnPrimary": "Mein System gestalten",
-        "btnSecondary": "Beratung anfordern"
+        "btnPrimary": "Projekt starten",
+        "btnSecondary": "Kontakt aufnehmen"
+      },
+      "cases": {
+        "eyebrow": "Von der Theorie in die Produktion",
+        "heading": "Software, die wir bereits",
+        "headingEm": "betreiben",
+        "headingC": ".",
+        "sub": "Wir gestalten nicht nur Systeme für andere — wir betreiben unsere eigenen. Diese Werkzeuge entstanden aus dem realen Glasfaserbetrieb.",
+        "items": {
+          "lumen": {
+            "name": "Lumen",
+            "tag": "Fiber Ops · Supabase · Vercel",
+            "desc": "Operative Plattform für Glasfaser-Aufträge, doppelte interne und Kundenzertifizierung, Abrechnungsvorbereitung und Technikerberichte. Entwickelt entlang der Abläufe deutscher FTTH-Projekte.",
+            "status": "In Entwicklung"
+          },
+          "bot": {
+            "name": "Termin-Bot",
+            "tag": "Telegram · Groq LLM · Node.js",
+            "desc": "@NexusEngineeringBot ist live auf Telegram. Er nimmt Kundenanfragen entgegen, qualifiziert Leads und vereinbart Termine autonom mit einem Groq-Sprachmodell.",
+            "status": "Live"
+          },
+          "fincontrol": {
+            "name": "Finanzkontrolle",
+            "tag": "Finanzen · Firebase · Recharts",
+            "desc": "Internes Finanzwerkzeug für den Glasfaserbetrieb: Transaktionen, Projekte, Kostenstellen, Debitoren und Kreditoren, Cashflow-Kennzahlen und PDF-Reporting.",
+            "status": "Interner Betrieb"
+          },
+          "fieldops": {
+            "name": "Feldberichte & Work Manager",
+            "tag": "PWA · Offline · IndexedDB",
+            "desc": "Field-Service-Management für NE4-Installationsteams. Koordinator- und Techniker-PIN-Zugang, Offline-First-Queue, Berichtsworkflow mit PDF- und Excel-Export.",
+            "status": "Interner Betrieb"
+          }
+        }
       }
     },
     "legal": {

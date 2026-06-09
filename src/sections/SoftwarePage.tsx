@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { setPendingAnchor } from '@/lib/navAnchor';
 
 interface SoftwarePageProps {
   onNavigate: (page: 'home' | 'fibra' | 'software') => void;
@@ -186,13 +187,15 @@ const DiagramDev = () => (
     <text x="76" y="248" className="dg-txt">WEB APP</text>
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-fill-acc" />
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-acc" />
-    <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">API</text>
+    <text x="240" y="181" textAnchor="middle" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">API</text>
+    <text x="240" y="195" textAnchor="middle" className="dg-txt" fill="rgba(245,243,238,0.4)" style={{ fontSize: '9px' }}>Supabase</text>
     <g className="dg-fill" stroke="rgba(245,243,238,0.35)">
       <ellipse cx="360" cy="148" rx="40" ry="12" />
       <path d="M320 148 V212 a40 12 0 0 0 80 0 V148" />
     </g>
     <path d="M320 180 a40 12 0 0 0 80 0" className="dg-line-2" />
-    <text x="360" y="244" textAnchor="middle" className="dg-txt">DATABASE</text>
+    <text x="360" y="238" textAnchor="middle" className="dg-txt">DATABASE</text>
+    <text x="360" y="252" textAnchor="middle" className="dg-txt" fill="rgba(245,243,238,0.35)" style={{ fontSize: '9px' }}>Supabase · RLS</text>
     <g className="dg-acc">
       <path d="M180 180 H210" />
       <path d="M270 180 H320" />
@@ -226,7 +229,8 @@ const DiagramAI = () => (
       <line x1="344" y1="194" x2="412" y2="194" />
       <line x1="344" y1="212" x2="412" y2="212" />
     </g>
-    <text x="330" y="246" className="dg-txt">REPORT</text>
+    <text x="330" y="240" className="dg-txt">REPORT</text>
+    <text x="330" y="254" className="dg-txt" fill="rgba(245,243,238,0.35)" style={{ fontSize: '9px' }}>Telegram · Groq</text>
     <g className="dg-line-2">
       <path d="M150 175 L186 185" />
       <path d="M290 188 L330 190" />
@@ -322,9 +326,32 @@ const DIAGRAMS = [
   DiagramAI, DiagramIntegrations, DiagramQA, DiagramDeploy,
 ];
 
+/* ── Cases block ───────────────────────────────────── */
+type StatusVariant = 'live' | 'dev' | 'internal';
+
+interface CaseCardProps {
+  name: string;
+  tag: string;
+  desc: string;
+  status: string;
+  statusVariant: StatusVariant;
+}
+
+function CaseCard({ name, tag, desc, status, statusVariant }: CaseCardProps) {
+  return (
+    <div className="ns-fo-case-card" data-ns-reveal>
+      <div className="card-eyebrow">NEXUS · PRODUCT</div>
+      <h3 className="card-name">{name}</h3>
+      <div className="card-tag">{tag}</div>
+      <p className="card-desc">{desc}</p>
+      <span className={`card-status ${statusVariant}`}>{status}</span>
+    </div>
+  );
+}
+
 /* ── Main component ────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function SoftwarePage(_props: SoftwarePageProps) {
+export function SoftwarePage({ onNavigate }: SoftwarePageProps) {
   const { t } = useTranslation();
   const flowRef = useRef<HTMLElement | null>(null);
   const fillRef = useFillSpine(flowRef);
@@ -447,6 +474,41 @@ export function SoftwarePage(_props: SoftwarePageProps) {
         })}
       </section>
 
+      {/* CASES — from theory to production */}
+      <section className="ns-fo-cases">
+        <div className="head" data-ns-reveal>
+          <div className="eyebrow">{t('nexus.software.cases.eyebrow')}</div>
+          <h2>
+            {t('nexus.software.cases.heading')} <em>{t('nexus.software.cases.headingEm')}</em>{t('nexus.software.cases.headingC')}
+          </h2>
+          <p className="sub">{t('nexus.software.cases.sub')}</p>
+        </div>
+        <div className="ns-fo-cases-grid">
+          {(
+            [
+              { key: 'lumen',      variant: 'dev'      as StatusVariant },
+              { key: 'bot',        variant: 'live'     as StatusVariant },
+              { key: 'fincontrol', variant: 'internal' as StatusVariant },
+              { key: 'fieldops',   variant: 'internal' as StatusVariant },
+            ] as const
+          ).map(({ key, variant }) => {
+            const item = t(`nexus.software.cases.items.${key}`, { returnObjects: true }) as {
+              name: string; tag: string; desc: string; status: string;
+            };
+            return (
+              <CaseCard
+                key={key}
+                name={item.name}
+                tag={item.tag}
+                desc={item.desc}
+                status={item.status}
+                statusVariant={variant}
+              />
+            );
+          })}
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="ns-fo-cta" id="ns-sw-contact">
         <div className="glowbg" aria-hidden="true" />
@@ -457,18 +519,24 @@ export function SoftwarePage(_props: SoftwarePageProps) {
             {t('nexus.software.cta.h2b')} <em>{t('nexus.software.cta.h2em')}</em>{t('nexus.software.cta.h2c')}
           </h2>
           <div className="actions" data-ns-reveal>
-            <a
-              href="mailto:info@hmr-nexus.com?subject=Design+my+system"
+            <button
               className="ns-btn ns-btn-primary"
+              onClick={() => {
+                setPendingAnchor('ns-contact');
+                onNavigate('home');
+              }}
             >
               {t('nexus.software.cta.btnPrimary')} <span className="ar">→</span>
-            </a>
-            <a
-              href="mailto:info@hmr-nexus.com?subject=Consultancy+request"
+            </button>
+            <button
               className="ns-btn ns-btn-ghost"
+              onClick={() => {
+                setPendingAnchor('ns-contact');
+                onNavigate('home');
+              }}
             >
               {t('nexus.software.cta.btnSecondary')}
-            </a>
+            </button>
           </div>
         </div>
       </section>

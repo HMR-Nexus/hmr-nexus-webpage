@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { setPendingAnchor } from '@/lib/navAnchor';
 
 interface FibraPageProps {
   onNavigate: (page: 'home' | 'fibra' | 'software') => void;
@@ -318,7 +319,7 @@ const DIAGRAMS = [Diagram01, Diagram02, Diagram03, Diagram04, Diagram05, Diagram
 
 /* ── Main component ────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function FibraPage(_props: FibraPageProps) {
+export function FibraPage({ onNavigate }: FibraPageProps) {
   const { t } = useTranslation();
   const flowRef = useRef<HTMLElement | null>(null);
   const fillRef = useFillSpine(flowRef);
@@ -457,18 +458,24 @@ export function FibraPage(_props: FibraPageProps) {
             {t('nexus.fibra.cta.h2b')} <em>{t('nexus.fibra.cta.h2em')}</em>{t('nexus.fibra.cta.h2c')}
           </h2>
           <div className="actions" data-ns-reveal>
-            <a
-              href="mailto:info@hmr-nexus.com?subject=Project+evaluation+request"
+            <button
               className="ns-btn ns-btn-primary"
+              onClick={() => {
+                setPendingAnchor('ns-contact');
+                onNavigate('home');
+              }}
             >
               {t('nexus.fibra.cta.btnPrimary')} <span className="ar">→</span>
-            </a>
-            <a
-              href="mailto:info@hmr-nexus.com?subject=Quote+request"
+            </button>
+            <button
               className="ns-btn ns-btn-ghost"
+              onClick={() => {
+                setPendingAnchor('ns-contact');
+                onNavigate('home');
+              }}
             >
               {t('nexus.fibra.cta.btnSecondary')}
-            </a>
+            </button>
           </div>
         </div>
       </section>

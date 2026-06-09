@@ -98,29 +98,31 @@ function ImprintContent({ lang }: { lang: string }) {
       <h2>Angaben gemäß § 5 TMG</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Deutschland<br />
+        Riethkamp 1E<br />
+        29229 Celle, Deutschland
       </p>
       <h2>Kontakt</h2>
       <p>
         Telefon: +49 176 31524448<br />
         E-Mail: info@hmr-nexus.com
       </p>
-      <h2>Vertretungsberechtigt</h2>
-      <p>Geschäftsführer: [Name des Geschäftsführers]</p>
+      <h2>Vertretungsberechtigte Person</h2>
+      <p>Geschäftsführerin: Isabelle Horstmann</p>
       <h2>Registereintrag</h2>
       <p>
-        Handelsregister: Amtsgericht Lüneburg<br />
-        Registernummer: HRB [Nummer]
+        Handelsregister: Amtsgericht Lüneburg{/* TODO: Amtsgericht Lüneburg — verify this is correct for GmbH seated in Celle (Niedersachsen) before publishing */}<br />
+        Registernummer: HRB &lt;PENDIENTE_JARL&gt;{/* TODO: número HRB real */}
       </p>
       <h2>Umsatzsteuer-ID</h2>
       <p>
         Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
-        DE [Nummer]
+        DE &lt;PENDIENTE_JARL&gt;{/* TODO: USt-IdNr real */}
       </p>
       <h2>Verantwortlich für den Inhalt gemäß § 55 Abs. 2 RStV</h2>
       <p>
         HMR Nexus Engineering GmbH<br />
-        Celle, Deutschland
+        Riethkamp 1E<br />
+        29229 Celle, Deutschland
       </p>
       <h2>EU-Streitschlichtung</h2>
       <p>
@@ -150,7 +152,8 @@ function ImprintContent({ lang }: { lang: string }) {
       <h2>Information pursuant to § 5 TMG</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Germany<br />
+        Riethkamp 1E<br />
+        29229 Celle, Germany
       </p>
       <h2>Contact</h2>
       <p>
@@ -158,21 +161,22 @@ function ImprintContent({ lang }: { lang: string }) {
         Email: info@hmr-nexus.com
       </p>
       <h2>Authorized Representative</h2>
-      <p>Managing Director: [Managing Director Name]</p>
+      <p>Managing Director: Isabelle Horstmann</p>
       <h2>Commercial Register</h2>
       <p>
-        Register Court: Amtsgericht Lüneburg<br />
-        Register Number: HRB [Number]
+        Register Court: Amtsgericht Lüneburg{/* TODO: Amtsgericht Lüneburg — verify this is correct for GmbH seated in Celle (Niedersachsen) before publishing */}<br />
+        Register Number: HRB &lt;PENDIENTE_JARL&gt;{/* TODO: número HRB real */}
       </p>
       <h2>VAT ID</h2>
       <p>
         VAT Identification Number pursuant to § 27a of the German VAT Act:<br />
-        DE [Number]
+        DE &lt;PENDIENTE_JARL&gt;{/* TODO: USt-IdNr real */}
       </p>
       <h2>Responsible for Content pursuant to § 55 Abs. 2 RStV</h2>
       <p>
         HMR Nexus Engineering GmbH<br />
-        Celle, Germany
+        Riethkamp 1E<br />
+        29229 Celle, Germany
       </p>
       <h2>EU Dispute Resolution</h2>
       <p>
@@ -203,7 +207,8 @@ function ImprintContent({ lang }: { lang: string }) {
       <h2>Information pursuant to § 5 TMG</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Germany<br />
+        Riethkamp 1E<br />
+        29229 Celle, Germany
       </p>
       <h2>Contact</h2>
       <p>
@@ -211,21 +216,22 @@ function ImprintContent({ lang }: { lang: string }) {
         Email: info@hmr-nexus.com
       </p>
       <h2>Authorized Representative</h2>
-      <p>Managing Director: [Managing Director Name]</p>
+      <p>Managing Director: Isabelle Horstmann</p>
       <h2>Commercial Register</h2>
       <p>
-        Register Court: Amtsgericht Lüneburg<br />
-        Register Number: HRB [Number]
+        Register Court: Amtsgericht Lüneburg{/* TODO: Amtsgericht Lüneburg — verify this is correct for GmbH seated in Celle (Niedersachsen) before publishing */}<br />
+        Register Number: HRB &lt;PENDIENTE_JARL&gt;{/* TODO: número HRB real */}
       </p>
       <h2>VAT ID</h2>
       <p>
         VAT Identification Number pursuant to § 27a of the German VAT Act:<br />
-        DE [Number]
+        DE &lt;PENDIENTE_JARL&gt;{/* TODO: USt-IdNr real */}
       </p>
       <h2>Responsible for Content pursuant to § 55 Abs. 2 RStV</h2>
       <p>
         HMR Nexus Engineering GmbH<br />
-        Celle, Germany
+        Riethkamp 1E<br />
+        29229 Celle, Germany
       </p>
       <h2>EU Dispute Resolution</h2>
       <p>
@@ -262,7 +268,8 @@ function PrivacyContent({ lang }: { lang: string }) {
       <h2>1. Verantwortlicher</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Deutschland<br />
+        Riethkamp 1E<br />
+        29229 Celle, Deutschland<br />
         E-Mail: info@hmr-nexus.com<br />
         Telefon: +49 176 31524448
       </p>
@@ -300,7 +307,7 @@ function PrivacyContent({ lang }: { lang: string }) {
 
       <h2>4. Drittanbieter-Dienste</h2>
       <h3>4.1 Hosting</h3>
-      <p>Diese Website wird bei Hostinger International Ltd. gehostet.</p>
+      <p>Diese Website wird bei Netlify, Inc. gehostet.</p>
       <h3>4.2 Google Fonts</h3>
       <p>
         Diese Seite nutzt Google Fonts zur einheitlichen Darstellung von Schriftarten.
@@ -342,7 +349,8 @@ function PrivacyContent({ lang }: { lang: string }) {
       <h2>1. Data Controller</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Germany<br />
+        Riethkamp 1E<br />
+        29229 Celle, Germany<br />
         Email: info@hmr-nexus.com<br />
         Phone: +49 176 31524448
       </p>
@@ -380,7 +388,7 @@ function PrivacyContent({ lang }: { lang: string }) {
 
       <h2>4. Third-Party Services</h2>
       <h3>4.1 Hosting</h3>
-      <p>This website is hosted by Hostinger International Ltd.</p>
+      <p>This website is hosted by Netlify, Inc.</p>
       <h3>4.2 Google Fonts</h3>
       <p>
         This site uses Google Fonts for uniform font display.
@@ -423,7 +431,8 @@ function PrivacyContent({ lang }: { lang: string }) {
       <h2>1. Data Controller</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Germany<br />
+        Riethkamp 1E<br />
+        29229 Celle, Germany<br />
         Email: info@hmr-nexus.com<br />
         Phone: +49 176 31524448
       </p>
@@ -459,7 +468,7 @@ function PrivacyContent({ lang }: { lang: string }) {
 
       <h2>4. Third-Party Services</h2>
       <h3>4.1 Hosting</h3>
-      <p>This website is hosted by Hostinger International Ltd.</p>
+      <p>This website is hosted by Netlify, Inc.</p>
       <h3>4.2 Google Fonts</h3>
       <p>
         This site uses Google Fonts for uniform font display.

@@ -884,7 +884,7 @@
       "ctaPrimary": "Design my system",
       "ctaSecondary": "View the process",
       "verbsLead": "We don't just code",
-      "verbs": ["Analyses", "Designs", "Structures", "Develops", "Integrates", "Automates", "Maintains"],
+      "verbs": ["Analysis", "Design", "Structure", "Development", "Integration", "Automation", "Maintenance"],
       "stages": {
         "01": {
           "num": "Stage 01",
@@ -949,8 +949,41 @@
         "h2b": "into a",
         "h2em": "clear system",
         "h2c": ".",
-        "btnPrimary": "Design my system",
-        "btnSecondary": "Request consultancy"
+        "btnPrimary": "Start a project",
+        "btnSecondary": "Contact us"
+      },
+      "cases": {
+        "eyebrow": "From theory to production",
+        "heading": "Software we already",
+        "headingEm": "operate",
+        "headingC": ".",
+        "sub": "We don't just design systems for others — we run our own. These are the tools built from real fiber operations.",
+        "items": {
+          "lumen": {
+            "name": "Lumen",
+            "tag": "Fiber Ops · Supabase · Vercel",
+            "desc": "Operational platform for fiber work orders, dual internal and client certification, billing preparation and technician field reports. Built around the workflows used in German FTTH projects.",
+            "status": "In development"
+          },
+          "bot": {
+            "name": "Appointment Bot",
+            "tag": "Telegram · Groq LLM · Node.js",
+            "desc": "@NexusEngineeringBot is live on Telegram. It captures client enquiries, qualifies leads and schedules appointments autonomously using a Groq language model.",
+            "status": "Live"
+          },
+          "fincontrol": {
+            "name": "Financial Control",
+            "tag": "Finance · Firebase · Recharts",
+            "desc": "Internal finance tool for the fiber operation: transactions, projects, cost centers, accounts receivable and payable, cash-flow metrics and PDF reporting.",
+            "status": "Internal ops"
+          },
+          "fieldops": {
+            "name": "Field Reports & Work Manager",
+            "tag": "PWA · Offline · IndexedDB",
+            "desc": "Field-service management for NE4 installation teams. Coordinator and technician PIN access, offline-first queue, report workflow with PDF and Excel export.",
+            "status": "Internal ops"
+          }
+        }
       }
     },
     "legal": {
