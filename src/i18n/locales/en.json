@@ -491,7 +491,7 @@
       "description": "Do you have a project in mind or questions about our services? Our team is available for a non-binding conversation.",
       "address": {
         "title": "Headquarters",
-        "line1": "Am Riethkamp 1E",
+        "line1": "Riethkamp 1E",
         "line2": "29229 Celle, Germany"
       },
       "phone": {
@@ -791,7 +791,7 @@
           "emailCta": "Write to info@hmr-nexus.com",
           "phoneLabel": "Phone",
           "addressLabel": "Address",
-          "addressLine1": "Am Riethkamp 1E",
+          "addressLine1": "Riethkamp 1E",
           "addressLine2": "29229 Celle, Germany",
           "hours": "Mon–Fri · 08:00–18:00 CET"
         }
@@ -808,7 +808,7 @@
         },
         "address": {
           "heading": "Address",
-          "street": "Am Riethkamp 1E",
+          "street": "Riethkamp 1E",
           "city": "29229 Celle",
           "country": "Germany"
         },

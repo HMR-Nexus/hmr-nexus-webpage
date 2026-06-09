@@ -491,7 +491,7 @@
       "description": "Haben Sie ein Projekt im Kopf oder Fragen zu unseren Dienstleistungen? Unser Team steht Ihnen für ein unverbindliches Gespräch zur Verfügung.",
       "address": {
         "title": "Hauptsitz",
-        "line1": "Am Riethkamp 1E",
+        "line1": "Riethkamp 1E",
         "line2": "29229 Celle, Deutschland"
       },
       "phone": {
@@ -791,7 +791,7 @@
           "emailCta": "info@hmr-nexus.com schreiben",
           "phoneLabel": "Telefon",
           "addressLabel": "Adresse",
-          "addressLine1": "Am Riethkamp 1E",
+          "addressLine1": "Riethkamp 1E",
           "addressLine2": "29229 Celle, Deutschland",
           "hours": "Mo–Fr · 08:00–18:00 MEZ"
         }
@@ -808,7 +808,7 @@
         },
         "address": {
           "heading": "Standort",
-          "street": "Am Riethkamp 1E",
+          "street": "Riethkamp 1E",
           "city": "29229 Celle",
           "country": "Deutschland"
         },
