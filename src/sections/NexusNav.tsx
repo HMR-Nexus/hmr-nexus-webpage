@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import type { PageId } from '@/lib/navigation';
 import { setPendingAnchor } from '@/lib/navAnchor';
 
@@ -24,7 +25,63 @@ function NexusSymbol({ size = 22 }: { size?: number }) {
   );
 }
 
+/** Language switcher — EN / DE, mono labels, laser accent on active */
+function LangSwitcher({ mobile = false }: { mobile?: boolean }) {
+  const { i18n } = useTranslation();
+  const current = i18n.resolvedLanguage ?? i18n.language;
+
+  const switchTo = (lng: string) => {
+    if (current !== lng) i18n.changeLanguage(lng);
+  };
+
+  const containerStyle: React.CSSProperties = mobile
+    ? { display: 'flex', alignItems: 'center', gap: 8, padding: '12px 0' }
+    : { display: 'flex', alignItems: 'center', gap: 6 };
+
+  const btnBase: React.CSSProperties = {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    fontFamily: "var(--f-mono, 'JetBrains Mono', monospace)",
+    fontSize: 11,
+    fontWeight: 500,
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase',
+    padding: '2px 0',
+    transition: 'color 0.18s',
+  };
+
+  const sep: React.CSSProperties = {
+    fontFamily: "var(--f-mono, 'JetBrains Mono', monospace)",
+    fontSize: 11,
+    color: 'rgba(245,243,238,0.25)',
+    userSelect: 'none',
+  };
+
+  return (
+    <div style={containerStyle} aria-label="Language selection">
+      {(['en', 'de'] as const).map((lng, i) => (
+        <span key={lng} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          {i > 0 && <span style={sep}>/</span>}
+          <button
+            onClick={() => switchTo(lng)}
+            style={{
+              ...btnBase,
+              color: current === lng ? '#FF4D2E' : 'rgba(245,243,238,0.45)',
+            }}
+            aria-label={`Switch to ${lng === 'en' ? 'English' : 'German'}`}
+            aria-pressed={current === lng}
+          >
+            {lng.toUpperCase()}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -81,13 +138,13 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
               className={activePage === 'fibra' ? 'active' : ''}
               onClick={() => navigate('fibra')}
             >
-              Fibra
+              {t('nexus.nav.fibra')}
             </button>
             <button
               className={activePage === 'software' ? 'active' : ''}
               onClick={() => navigate('software')}
             >
-              Software
+              {t('nexus.nav.software')}
             </button>
             <button
               onClick={() => {
@@ -95,9 +152,11 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
                 navigate('home');
               }}
             >
-              Process
+              {t('nexus.nav.process')}
             </button>
           </div>
+
+          <LangSwitcher />
 
           <button
             className="ns-nav-cta"
@@ -106,12 +165,12 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
               navigate('home');
             }}
           >
-            Let&apos;s talk <span>→</span>
+            {t('nexus.nav.letsTalk')} <span>→</span>
           </button>
 
           <button
             className={`ns-menu-btn${mobileOpen ? ' open' : ''}`}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? t('nexus.nav.closeMenu') : t('nexus.nav.openMenu')}
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -135,18 +194,24 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
           >
             <div className="links">
               <button className={activePage === 'home' ? 'active' : ''} onClick={() => navigate('home')}>
-                Home
+                {t('nexus.nav.home')}
               </button>
               <button className={activePage === 'fibra' ? 'active' : ''} onClick={() => navigate('fibra')}>
-                Fibra
+                {t('nexus.nav.fibra')}
               </button>
               <button className={activePage === 'software' ? 'active' : ''} onClick={() => navigate('software')}>
-                Software
+                {t('nexus.nav.software')}
               </button>
             </div>
+            <div style={{ padding: '0 0 8px 0' }}>
+              <LangSwitcher mobile />
+            </div>
             <div className="cta-wrap">
-              <button className="ns-btn ns-btn-primary" onClick={() => navigate('home')}>
-                Let&apos;s talk <span className="ar">→</span>
+              <button className="ns-btn ns-btn-primary" onClick={() => {
+                setPendingAnchor('ns-contact');
+                navigate('home');
+              }}>
+                {t('nexus.nav.letsTalk')} <span className="ar">→</span>
               </button>
             </div>
           </motion.div>
@@ -162,6 +227,7 @@ interface SubNavProps {
 }
 
 export function NexusSubNav({ onBack }: SubNavProps) {
+  const { t } = useTranslation();
   return (
     <div className="ns-subnav" aria-label="Sub-page navigation">
       <div className="inner">
@@ -174,15 +240,18 @@ export function NexusSubNav({ onBack }: SubNavProps) {
           <span className="wm">NEXUS</span>
         </button>
         <div className="slogan" aria-label="Company slogan">
-          <span>Calidad</span>
+          <span>{t('nexus.nav.slogan.quality')}</span>
           <span className="sep">·</span>
-          <span>Compromiso</span>
+          <span>{t('nexus.nav.slogan.commitment')}</span>
           <span className="sep">·</span>
-          <span>Innovación</span>
+          <span>{t('nexus.nav.slogan.innovation')}</span>
         </div>
-        <button className="back-btn" onClick={onBack} aria-label="Go back">
-          <span>←</span> Volver
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <LangSwitcher />
+          <button className="back-btn" onClick={onBack} aria-label="Go back">
+            <span>←</span> {t('nexus.nav.back')}
+          </button>
+        </div>
       </div>
     </div>
   );

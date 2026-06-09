@@ -1,6 +1,6 @@
-export type PageId = 'home' | 'history' | 'services' | 'portfolio' | 'products' | 'contact' | 'fibra' | 'software';
+export type PageId = 'home' | 'fibra' | 'software';
 
-export const pageIds: PageId[] = ['home', 'history', 'services', 'portfolio', 'products', 'contact', 'fibra', 'software'];
+export const pageIds: PageId[] = ['home', 'fibra', 'software'];
 
 export function toPageId(value?: string | null): PageId {
   const normalized = value?.replace(/^#/, '') as PageId | undefined;

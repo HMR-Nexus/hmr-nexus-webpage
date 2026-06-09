@@ -656,6 +656,332 @@
     "copyright": "© 2026 HMR Nexus Engineering GmbH. Alle Rechte vorbehalten.",
     "madeIn": "Made with precision in Celle, Germany"
   },
+  "nexus": {
+    "nav": {
+      "fibra": "Glasfaser",
+      "software": "Software",
+      "process": "Prozess",
+      "letsTalk": "Gespräch starten",
+      "home": "Startseite",
+      "openMenu": "Menü öffnen",
+      "closeMenu": "Menü schließen",
+      "slogan": {
+        "quality": "Qualität",
+        "commitment": "Engagement",
+        "innovation": "Innovation"
+      },
+      "back": "Zurück"
+    },
+    "home": {
+      "ticker": {
+        "live": "LIVE · 12 TEAMS IM EINSATZ",
+        "location": "CELLE · DE",
+        "fibreLaid": "HEUTE VERLEGTE GLASFASER"
+      },
+      "eyebrow": "HMR · NEXUS ENGINEERING GMBH",
+      "hero": {
+        "line1": "Innovation.",
+        "line2": "Qualität.",
+        "line3": "Engagement.",
+        "subtitle": "Ein Ingenieurbüro, das sich an drei Grundsätzen messen lässt — bei jedem Projekt, in jeder Disziplin.",
+        "ctaPrimary": "Projekt starten",
+        "ctaSecondary": "Was wir tun",
+        "scroll": "Scrollen"
+      },
+      "marquee": {
+        "items": ["Innovation", "Qualität", "Engagement", "Kabelzug", "Einblasung RA / RD", "Fusion Splicing", "FTTH Activation", "NE3 · NE4", "OTDR Verified"]
+      },
+      "div01": {
+        "idx": "Bereich 01 · Feld",
+        "h2a": "Glasfaser,",
+        "h2b": "im Boden",
+        "body1": "Subunternehmer-Engineering für deutsche Netzbetreiber. Wir verlegen Kabel, blasen Leerrohre, spleißen Glasfaser und aktivieren Anschlüsse — normgerecht, termingerecht, mit der Dokumentation, die einer Prüfung standhält.",
+        "body2": "Schutzhelme, OTDRs und NE3/NE4-Projektleitung in der DACH-Region. Feldengineering, das einer Prüfung standhält.",
+        "feat": {
+          "01": "Kabelzug · 144F & 288F",
+          "02": "Einblasung · RA / RD",
+          "03": "Spleißarbeiten · ≤ 0,08 dB",
+          "04": "FTTH-Aktivierung",
+          "05": "NE3 / NE4 Projektleitung"
+        },
+        "cta": "Glasfaserarbeiten ansehen"
+      },
+      "stats": {
+        "idx": "In Zahlen",
+        "h2a": "Gemessen.",
+        "h2b": "Nicht",
+        "h2em": "vermarktet",
+        "km": "km Glasfaser · pro Monat",
+        "splice": "Ø Spleißdämpfung · dB",
+        "sla": "Störung → Behebung · SLA",
+        "system": "System · durchgängig"
+      },
+      "div02": {
+        "idx": "Bereich 02 · Code",
+        "h2a": "Die Software,",
+        "h2b": "die wir",
+        "h2em": "im Feld nutzen",
+        "body1": "Ein operativer Stack für Telekommunikations-Feldarbeit: Produktionskennzahlen, Kosten pro Einheit, Qualitätskontrolle und offene Tickets — in Echtzeit synchronisiert in ein Portal, das Ihr Kunde einsehen kann.",
+        "body2": "Produktionsreife Software für Netzbetreiber und Auftragnehmer, die Echtzeit-Kontrolle über ihre Netze benötigen.",
+        "feat": {
+          "01": "Live-Produktions-Dashboards — jeder Abschnitt, jedes Team.",
+          "02": "Kosten- und Margentransparenz bis auf den Meter.",
+          "03": "AXON — der KI-Agent, der Abweichungen erkennt, bevor sie teuer werden."
+        },
+        "cta": "Software-Arbeiten ansehen"
+      },
+      "process": {
+        "idx": "Wie ein Projekt abläuft",
+        "h2a": "Vier Phasen.",
+        "h2em": "Eine",
+        "h2b": "Quelle der Wahrheit.",
+        "phases": {
+          "01": { "phase": "Phase 01", "title": "Bestandsaufnahme", "body": "Wir begehen die Route, modellieren sie maßstabsgetreu und kalkulieren auf den Meter genau — keine versteckten Überraschungen im Vertrag." },
+          "02": { "phase": "Phase 02", "title": "Aufbau", "body": "Teams verlegen, blasen und spleißen. Jeder Schritt wird vor Ort protokolliert und live synchronisiert. Sie sehen den Fortschritt in Echtzeit." },
+          "03": { "phase": "Phase 03", "title": "Aktivierung", "body": "FTTH-Inbetriebnahme und OTDR-verifizierte Übergabe. Spleißdämpfung, Port-Belegungspläne und As-Built-Unterlagen in einem Paket exportiert." },
+          "04": { "phase": "Phase 04", "title": "Betrieb", "body": "Wir überwachen das Netz rund um die Uhr. Störungen erzeugen Tickets, entsenden das nächste Team und schließen den Regelkreis — schnell." }
+        }
+      },
+      "thesis": {
+        "idx": "These",
+        "quote1": "Die meisten Auftragnehmer verschwinden nach der Übergabe.",
+        "quote2": "Wir werden an",
+        "quoteEm": "dem gemessen, was danach passiert",
+        "cite": "— Horstmann · Mehls · Romero · Gründer"
+      },
+      "cta": {
+        "h2a": "Lassen Sie uns das",
+        "h2em": "nächste",
+        "h2b": "Projekt bauen.",
+        "email": "info@hmr-nexus.com",
+        "phone": "+49 176 31524448"
+      },
+      "footer": {
+        "slogan": {
+          "innovation": "Innovation",
+          "quality": "Qualität",
+          "commitment": "Engagement"
+        },
+        "contact": {
+          "heading": "Kontakt",
+          "hours": "Mo–Fr · 08:00–18:00"
+        },
+        "address": {
+          "heading": "Standort",
+          "street": "Am Riethkamp 1E",
+          "city": "29229 Celle",
+          "country": "Deutschland"
+        },
+        "company": {
+          "heading": "Unternehmen",
+          "fibra": "Glasfaserarbeiten",
+          "software": "Softwareentwicklung",
+          "process": "Prozess"
+        },
+        "legal": {
+          "heading": "Rechtliches",
+          "register": "AG Celle",
+          "imprint": "Impressum",
+          "privacy": "Datenschutz",
+          "terms": "AGB"
+        },
+        "status": "Alle Systeme · betriebsbereit"
+      }
+    },
+    "fibra": {
+      "eyebrow": "Glasfaserarbeiten",
+      "h1a": "Von der Planung",
+      "h1b": "bis zur",
+      "h1hl": "Aktivierung",
+      "h1c": ".",
+      "subtitle": "Wir führen Glasfaserprojekte mit technischer und operativer Kontrolle in jeder Phase aus. NEXUS installiert nicht nur: wir strukturieren, koordinieren, führen aus, messen, dokumentieren und übergeben.",
+      "ctaPrimary": "Angebot anfordern",
+      "ctaSecondary": "Prozess ansehen",
+      "verbsLead": "Wir installieren nicht nur Glasfaser",
+      "verbs": ["Strukturiert", "Koordiniert", "Führt aus", "Misst", "Dokumentiert", "Übergibt"],
+      "stages": {
+        "01": {
+          "num": "Etappe 01",
+          "title": "Beratung & Strukturierung",
+          "body": "Wir analysieren den tatsächlichen Projektumfang, definieren Phasen, organisieren Ressourcen und prüfen technische Anforderungen, um eine klare Ausführungsstruktur mit geschätzten Zeitplänen vorzubereiten.",
+          "specs": ["Umfang", "Phasen", "Ressourcen", "Zeitplan"],
+          "corner": "PHASE · PLANUNG"
+        },
+        "02": {
+          "num": "Etappe 02",
+          "title": "Kalkulation",
+          "body": "Wir erstellen Kalkulationen auf Basis des tatsächlichen Umfangs: Tiefbau, NE3, Spleißarbeiten, Einblasung, Installationen, Aktivierungen, Termine, Geräte und operativer Support. Jede Position aufgeschlüsselt und begründet.",
+          "specs": ["Tiefbau", "NE3", "Spleißarbeiten", "Einblasung", "Geräte"],
+          "corner": "PHASE · KOSTEN"
+        },
+        "03": {
+          "num": "Etappe 03",
+          "title": "Termine & operative Koordination",
+          "body": "Wir koordinieren Termine mit Kunden, Technikern, Verwaltern, Eigentümern und Standortverantwortlichen. Präzise Koordination vermeidet Verzögerungen und verbessert die Ausführung im Feld.",
+          "specs": ["Kunden", "Techniker", "Standorte", "Terminplan"],
+          "corner": "PHASE · KOORDINATION"
+        },
+        "04": {
+          "num": "Etappe 04",
+          "title": "Tiefbau",
+          "body": "Grabungsarbeiten, Kanalisation, Leerrohre und Genehmigungen. Wir bereiten die Trasse vor, lösen Kreuzungen und Schachtprobleme, führen Reparaturen durch und koordinieren mit der bestehenden Infrastruktur.",
+          "specs": ["Grabung", "Leerrohre", "Genehmigungen", "Schächte", "Kreuzungen"],
+          "corner": "PHASE · TIEFBAU"
+        },
+        "05": {
+          "num": "Etappe 05",
+          "title": "Außennetz · NE3",
+          "body": "Glasfaserverlegung, Haupttrassen und Verteilung zu Gebäuden und Übergabepunkten. Wir übergeben das Außennetz technisch vorbereitet für die Fortsetzung der Inneninstallation.",
+          "specs": ["Verlegung", "Trassen", "Verteilung", "Übergabe"],
+          "corner": "PHASE · AUSSENNETZ · NE3"
+        },
+        "06": {
+          "num": "Etappe 06",
+          "title": "Spleißarbeiten & Messungen",
+          "body": "Glasfaserspleißungen, Muffen, ODF und CTO. Wir führen Durchgangsmessungen und OTDR-Messungen mit Qualitätskontrolle und technischer Dokumentation für jeden Punkt durch.",
+          "specs": ["Spleißungen", "ODF / CTO", "OTDR", "Durchgangsmessung", "QS"],
+          "corner": "PHASE · SPLEISSEN & MESSEN"
+        },
+        "07": {
+          "num": "Etappe 07",
+          "title": "Einblasung",
+          "body": "Einblasung in Leerrohre und Mikrorohre mit Trassensteuerung, Kabelvorbereitung und Trassenvalidierung. Wir prüfen jeden Abschnitt vor der Fortsetzung.",
+          "specs": ["Mikrorohre", "Trassen", "Kabelverlegung", "Validierung"],
+          "corner": "PHASE · EINBLASUNG"
+        },
+        "08": {
+          "num": "Etappe 08",
+          "title": "Installation & Aktivierung · NE5",
+          "body": "Endkundeninstallation, Geräteanbindung und ONT/Router wo zutreffend. Wir validieren den Dienst, aktivieren den Anschluss und führen den abschließenden Funktionstest durch.",
+          "specs": ["ONT / Router", "Anschluss", "Aktivierung", "Abschlusstest"],
+          "corner": "PHASE · INSTALLATION · NE5"
+        },
+        "09": {
+          "num": "Etappe 09",
+          "title": "Übergabe & Dokumentation",
+          "body": "Technischer Abschluss mit Fotodokumentation, Berichten, Messungen und finalem Projektstatus. Wir übergeben vollständige und nachvollziehbare Dokumentation der gesamten Ausführung.",
+          "specs": ["Berichte", "Dokumentation", "Messungen", "As-Built"],
+          "corner": "PHASE · ÜBERGABE"
+        }
+      },
+      "cta": {
+        "eyebrow": "Jetzt starten",
+        "h2a": "Wir bewerten Ihr Glasfaserprojekt",
+        "h2b": "von",
+        "h2em": "Anfang bis Ende",
+        "h2c": ".",
+        "btnPrimary": "Projektbewertung anfordern",
+        "btnSecondary": "Angebot anfordern"
+      }
+    },
+    "software": {
+      "eyebrow": "Softwareentwicklung",
+      "h1a": "Komplexe Prozesse,",
+      "h1b": "klare",
+      "h1c": "Systeme.",
+      "subtitle": "Wir entwickeln Software, die komplexe Prozesse in klare, messbare und skalierbare Systeme überführt. Wir programmieren nicht nur: wir analysieren, gestalten, strukturieren, entwickeln, integrieren, automatisieren und warten.",
+      "ctaPrimary": "Mein System gestalten",
+      "ctaSecondary": "Prozess ansehen",
+      "verbsLead": "Wir programmieren nicht nur",
+      "verbs": ["Analysiert", "Gestaltet", "Strukturiert", "Entwickelt", "Integriert", "Automatisiert", "Pflegt"],
+      "stages": {
+        "01": {
+          "num": "Etappe 01",
+          "title": "Beratung & Prozessanalyse",
+          "body": "Bevor wir programmieren, verstehen wir das Unternehmen: Arbeitsabläufe, operative Probleme, Nutzer, Daten, Schnittstellen, Risiken und reale Ziele. Software beginnt mit der richtigen Frage.",
+          "specs": ["Arbeitsabläufe", "Nutzer", "Daten", "Risiken", "Ziele"],
+          "corner": "PHASE · ANALYSE"
+        },
+        "02": {
+          "num": "Etappe 02",
+          "title": "Projektstrukturierung",
+          "body": "Wir definieren Umfang, Module, Prioritäten, Architektur, Roadmap, Budget, Zeitrahmen und Lieferkriterien. Ein klarer Plan, bevor die erste Zeile geschrieben wird.",
+          "specs": ["Umfang", "Module", "Architektur", "Roadmap", "Lieferung"],
+          "corner": "PHASE · STRUKTUR"
+        },
+        "03": {
+          "num": "Etappe 03",
+          "title": "UX/UI & Produktdesign",
+          "body": "Klare Benutzeroberflächen, Dashboards, Verwaltungspanels, Formulare und interne Abläufe, die für den täglichen Einsatz konzipiert sind. Design, das Reibung und Fehler reduziert, nicht erhöht.",
+          "specs": ["Dashboards", "Panels", "Formulare", "Abläufe"],
+          "corner": "PHASE · UX / UI"
+        },
+        "04": {
+          "num": "Etappe 04",
+          "title": "Frontend- & Backend-Entwicklung",
+          "body": "Wir entwickeln Webanwendungen, APIs, Datenbanken, interne Panels, Verwaltungssysteme, Portale und operative Werkzeuge. Software, die dem realen Tagesbetrieb standhält.",
+          "specs": ["Web-App", "APIs", "Datenbank", "Panels"],
+          "corner": "PHASE · ENTWICKLUNG"
+        },
+        "05": {
+          "num": "Etappe 05",
+          "title": "Automatisierung & künstliche Intelligenz",
+          "body": "Bots, Assistenten und Automatisierung sich wiederholender Aufgaben. Datenanalyse, Berichterstellung, Informationsklassifizierung und KI-gestützter operativer Support.",
+          "specs": ["Bots", "Assistenten", "Berichte", "Klassifizierung"],
+          "corner": "PHASE · AUTOMATISIERUNG · KI"
+        },
+        "06": {
+          "num": "Etappe 06",
+          "title": "Integrationen",
+          "body": "Wir verbinden CRMs, ERPs, externe APIs, interne Systeme, WhatsApp/Telegram, E-Mail, Kalender, Tabellen, Zahlungssysteme und die Plattformen, die Sie bereits nutzen. Alles spricht dieselbe Sprache.",
+          "specs": ["CRM / ERP", "APIs", "Chat", "Zahlungen", "Kalender"],
+          "corner": "PHASE · INTEGRATIONEN"
+        },
+        "07": {
+          "num": "Etappe 07",
+          "title": "Testing, Sicherheit & Qualität",
+          "body": "Tests, Fehlersteuerung, Nutzerberechtigungen, Validierungen, Nachvollziehbarkeit und Backups. Architektur-Best-Practices für ein zuverlässiges und prüfbares System.",
+          "specs": ["Tests", "Berechtigungen", "Validierungen", "Backups"],
+          "corner": "PHASE · QUALITÄT & SICHERHEIT"
+        },
+        "08": {
+          "num": "Etappe 08",
+          "title": "Deployment, Wartung & Weiterentwicklung",
+          "body": "Wir begleiten Launch, Monitoring und Support. Kontinuierliche Verbesserungen und Skalierbarkeit: Das System wächst mit Ihrer Organisation, anstatt sie zu bremsen.",
+          "specs": ["Launch", "Monitoring", "Support", "Skalierbarkeit"],
+          "corner": "PHASE · DEPLOYMENT & EVOLUTION"
+        }
+      },
+      "cta": {
+        "eyebrow": "Jetzt starten",
+        "h2a": "Lassen Sie uns Ihren Betrieb",
+        "h2b": "in ein",
+        "h2em": "klares System",
+        "h2c": "überführen.",
+        "btnPrimary": "Mein System gestalten",
+        "btnSecondary": "Beratung anfordern"
+      }
+    },
+    "legal": {
+      "lastUpdated": "Zuletzt aktualisiert: Februar 2026",
+      "close": "Schließen"
+    },
+    "chat": {
+      "openLabel": "Nexus fragen",
+      "greeting": "Hallo. Ich bin der **Nexus Engineering**-Assistent.\n\nWie kann ich Ihnen helfen? Ich beantworte Fragen zu Glasfaser, Software, Projekten oder Angeboten.",
+      "rateLimit": "[RATE LIMIT] Zu viele Nachrichten. Bitte warten Sie einen Moment.",
+      "error": "[ERROR] Verbindungsproblem. Kontaktieren Sie uns direkt: **info@hmr-nexus.com**",
+      "invalidReply": "Ungültige Antwort.",
+      "placeholder": "Nachricht eingeben…",
+      "send": "Nachricht senden",
+      "continueOnTelegram": "In Telegram fortsetzen",
+      "closeChat": "Chat schließen",
+      "connecting": "[VERBINDEN...]",
+      "typing": "[SCHREIBT...]",
+      "quickActions": {
+        "fibra": "GLASFASER",
+        "software": "SOFTWARE",
+        "quote": "ANGEBOT",
+        "contact": "KONTAKT"
+      },
+      "quickTexts": {
+        "fibra": "Welche Glasfaser-Dienstleistungen bieten Sie an?",
+        "software": "Welche Softwarelösungen entwickeln Sie?",
+        "quote": "Ich möchte ein Angebot für ein Projekt anfragen",
+        "contact": "Wie kann ich Sie direkt kontaktieren?"
+      }
+    }
+  },
   "history": {
     "label": "Historie",
     "title": "Aus der Praxis",

@@ -4,19 +4,20 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 import de from './locales/de.json';
 import en from './locales/en.json';
-import es from './locales/es.json';
-
-const supportedLanguages = new Set(['de', 'en', 'es']);
-
-const getDocumentLanguage = (lng?: string) => {
-  const baseLanguage = lng?.split('-')[0];
-  return baseLanguage && supportedLanguages.has(baseLanguage) ? baseLanguage : 'es';
-};
 
 const updateDocumentLanguage = (lng?: string) => {
   if (typeof document === 'undefined') return;
-  document.documentElement.lang = getDocumentLanguage(lng);
+  const base = lng?.split('-')[0];
+  document.documentElement.lang = (base === 'en' || base === 'de') ? base : 'de';
 };
+
+// Clean up any stale 'es' value left in localStorage from the old config
+if (typeof window !== 'undefined') {
+  const stored = localStorage.getItem('i18nextLng');
+  if (stored && !['de', 'en'].includes(stored.split('-')[0])) {
+    localStorage.removeItem('i18nextLng');
+  }
+}
 
 i18n
   .use(LanguageDetector)
@@ -25,9 +26,11 @@ i18n
     resources: {
       de: { translation: de },
       en: { translation: en },
-      es: { translation: es },
     },
-    fallbackLng: 'es',
+    supportedLngs: ['de', 'en'],
+    fallbackLng: 'de',
+    load: 'languageOnly',
+    nonExplicitSupportedLngs: true,
     debug: false,
     interpolation: {
       escapeValue: false,

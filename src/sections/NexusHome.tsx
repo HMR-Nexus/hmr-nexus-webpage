@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 import type { PageId } from '@/lib/navigation';
 import { consumePendingAnchor } from '@/lib/navAnchor';
+import type { LegalPage } from '@/components/LegalOverlay';
 
 interface NexusHomeProps {
   onNavigate: (page: PageId) => void;
+  onLegal?: (page: LegalPage) => void;
 }
 
 const prefersReduced = () =>
@@ -124,28 +128,17 @@ function Terminal() {
 }
 
 /* ── Process section ───────────────────────────────── */
-const PHASES = [
-  {
-    phase: 'Phase 01', title: 'Survey',
-    body: 'We walk the route, model it to scale, and quote to the metre — no surprises buried in the contract.',
-  },
-  {
-    phase: 'Phase 02', title: 'Build',
-    body: 'Crews pull, blow and splice. Every action logged on-site, synced live. You watch progress the moment it happens.',
-  },
-  {
-    phase: 'Phase 03', title: 'Activate',
-    body: 'FTTH commissioning and OTDR-verified handover. Splice loss, port maps and as-builts exported in one pack.',
-  },
-  {
-    phase: 'Phase 04', title: 'Operate',
-    body: 'We monitor the network around the clock. Faults raise tickets, dispatch the nearest crew, and close the loop — fast.',
-  },
-];
-
 function ProcessSection() {
+  const { t } = useTranslation();
   const secRef = useRef<HTMLElement | null>(null);
   const [sectionVisible, setSectionVisible] = useState(() => prefersReduced());
+
+  const phases = [
+    t('nexus.home.process.phases.01', { returnObjects: true }),
+    t('nexus.home.process.phases.02', { returnObjects: true }),
+    t('nexus.home.process.phases.03', { returnObjects: true }),
+    t('nexus.home.process.phases.04', { returnObjects: true }),
+  ] as Array<{ phase: string; title: string; body: string }>;
 
   useEffect(() => {
     if (prefersReduced()) return;
@@ -167,14 +160,14 @@ function ProcessSection() {
     >
       <div className="inner">
         <div className="ns-sec-head">
-          <div className="idx" data-ns-reveal>How a project runs</div>
+          <div className="idx" data-ns-reveal>{t('nexus.home.process.idx')}</div>
           <h2 data-ns-reveal>
-            Four phases.<br /><em>One</em> source of truth.
+            {t('nexus.home.process.h2a')}<br /><em>{t('nexus.home.process.h2em')}</em> {t('nexus.home.process.h2b')}
           </h2>
         </div>
         <div className="ns-timeline" data-ns-stagger>
           <div className="trackline" />
-          {PHASES.map((p, i) => (
+          {phases.map((p, i) => (
             <div key={p.title} className="ns-tstep" style={{ '--i': i } as React.CSSProperties}>
               <div className="ns-tstep-num" />
               <div className="ph">{p.phase}</div>
@@ -189,19 +182,21 @@ function ProcessSection() {
 }
 
 /* ── Main component ────────────────────────────────── */
-export function NexusHome({ onNavigate }: NexusHomeProps) {
+export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLElement | null>(null);
   const [heroIn, setHeroIn] = useState(false);
   const [utcTime, setUtcTime] = useState('');
   const [kmVal, setKmVal] = useState('2.8 KM');
   const kmRef = useRef(2.8);
 
+  const marqueeItems = t('nexus.home.marquee.items', { returnObjects: true }) as string[];
+
   /* Hero entrance + consume any pending scroll anchor from nav */
   useEffect(() => {
     requestAnimationFrame(() => setHeroIn(true));
     const anchor = consumePendingAnchor();
     if (anchor) {
-      // Wait for the component to paint before scrolling
       requestAnimationFrame(() => {
         setTimeout(() => {
           document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' });
@@ -235,8 +230,8 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
   useEffect(() => {
     const path = document.getElementById('ns-fibrePath') as SVGPathElement | null;
     if (!path) return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
     const len = path.getTotalLength();
     path.style.strokeDasharray = String(len);
     path.style.strokeDashoffset = String(len);
@@ -250,8 +245,8 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
   useEffect(() => {
     const fibre = heroRef.current?.querySelector('.fibre') as HTMLElement | null;
     if (!fibre) return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
     const onScroll = () => {
       const y = window.scrollY;
       if (y < window.innerHeight) fibre.style.transform = `translateY(${y * 0.18}px)`;
@@ -260,18 +255,11 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* Stagger h1 line delays */
+  /* Generic reveal observer — runs on every render so it catches FibraPage/SoftwarePage too */
   useEffect(() => {
-    document.querySelectorAll('.ns-hero h1 .line > span').forEach((el, i) => {
-      (el as HTMLElement).style.transitionDelay = `${0.15 + i * 0.11}s`;
-    });
-  }, []);
-
-  /* Generic reveal observer */
-  useEffect(() => {
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targets = document.querySelectorAll('[data-ns-reveal]:not(.ns-hero *), [data-ns-stagger], [data-ns-clip], .ns-process, .ns-timeline');
-    if (prefersReduced) { targets.forEach(el => el.classList.add('in')); return; }
+    if (reduced) { targets.forEach(el => el.classList.add('in')); return; }
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -281,6 +269,22 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
     targets.forEach(el => io.observe(el));
     return () => io.disconnect();
   }, []);
+
+  const reduced = prefersReduced();
+
+  /* Framer-motion hero stagger variants */
+  const heroContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.11, delayChildren: 0.1 } },
+  };
+  const heroLine = {
+    hidden: { opacity: 0, y: reduced ? 0 : 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
+  };
+  const heroSub = {
+    hidden: { opacity: 0, y: reduced ? 0 : 14 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
+  };
 
   return (
     <div className="ns-root">
@@ -337,42 +341,60 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
         </div>
 
         <div className="ticker" aria-label="Live status">
-          <div><span className="live">●</span> LIVE · 12 CREWS IN FIELD</div>
-          <div>CELLE · DE · <span className="v">{utcTime}</span></div>
-          <div>FIBRE LAID TODAY · <span className="v">{kmVal}</span></div>
+          <div><span className="live">●</span> {t('nexus.home.ticker.live')}</div>
+          <div>{t('nexus.home.ticker.location')} · <span className="v">{utcTime}</span></div>
+          <div>{t('nexus.home.ticker.fibreLaid')} · <span className="v">{kmVal}</span></div>
         </div>
 
         <div className="inner">
           <div className="eyebrow">
             <span className="pulse-dot" aria-hidden="true" />
-            HMR · NEXUS ENGINEERING GMBH
+            {t('nexus.home.eyebrow')}
           </div>
-          <h1>
-            <span className="line"><span>Innovación.</span></span>
-            <span className="line"><span>Calidad.</span></span>
-            <span className="line"><span className="hl">Compromiso.</span></span>
-          </h1>
-          <p className="sub">
-            An engineering company held to three principles — and measured by them on every project, in every discipline.
-          </p>
-          <div className="actions">
+
+          <motion.h1
+            variants={heroContainer}
+            initial="hidden"
+            animate={heroIn ? 'visible' : 'hidden'}
+          >
+            <motion.span className="line" variants={heroLine}><span>{t('nexus.home.hero.line1')}</span></motion.span>
+            <motion.span className="line" variants={heroLine}><span>{t('nexus.home.hero.line2')}</span></motion.span>
+            <motion.span className="line" variants={heroLine}><span className="hl">{t('nexus.home.hero.line3')}</span></motion.span>
+          </motion.h1>
+
+          <motion.p
+            className="sub"
+            variants={heroSub}
+            initial="hidden"
+            animate={heroIn ? 'visible' : 'hidden'}
+            transition={{ delay: 0.45 }}
+          >
+            {t('nexus.home.hero.subtitle')}
+          </motion.p>
+
+          <motion.div
+            className="actions"
+            initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+            animate={heroIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ delay: 0.6, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
             <button
               className="ns-btn ns-btn-primary"
               onClick={() => document.getElementById('ns-contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Start a project <span className="ar">→</span>
+              {t('nexus.home.hero.ctaPrimary')} <span className="ar">→</span>
             </button>
             <button
               className="ns-btn ns-btn-ghost"
               onClick={() => document.getElementById('ns-work')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              What we do
+              {t('nexus.home.hero.ctaSecondary')}
             </button>
-          </div>
+          </motion.div>
         </div>
 
         <div className="scrollcue" aria-hidden="true">
-          <span className="scue-label">Scroll</span>
+          <span className="scue-label">{t('nexus.home.hero.scroll')}</span>
           <span className="bar" />
         </div>
       </section>
@@ -380,11 +402,8 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       {/* ═══ MARQUEE ═══ */}
       <div className="ns-marquee" aria-hidden="true">
         <div className="track">
-          {['Innovación','Calidad','Compromiso','Kabelzug','Einblasung RA / RD','Fusion Splicing','FTTH Activation','NE3 · NE4','OTDR Verified'].map(item => (
-            <span key={item} className="item">{item}</span>
-          ))}
-          {['Innovación','Calidad','Compromiso','Kabelzug','Einblasung RA / RD','Fusion Splicing','FTTH Activation','NE3 · NE4','OTDR Verified'].map(item => (
-            <span key={`${item}-2`} className="item">{item}</span>
+          {[...marqueeItems, ...marqueeItems].map((item, idx) => (
+            <span key={`${item}-${idx}`} className="item">{item}</span>
           ))}
         </div>
       </div>
@@ -393,26 +412,20 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       <section className="ns-blk" id="ns-work">
         <div className="inner">
           <div className="ns-sec-head">
-            <div className="idx" data-ns-reveal>Division 01 · Field</div>
+            <div className="idx" data-ns-reveal>{t('nexus.home.div01.idx')}</div>
             <h2 data-ns-reveal>
-              Fibre, in the<br /><em>ground</em>.
+              {t('nexus.home.div01.h2a')}<br /><em>{t('nexus.home.div01.h2b')}</em>.
             </h2>
           </div>
           <div className="ns-software">
             <div className="copy" data-ns-reveal>
-              <p>Subcontract engineering for German carriers. We pull cable, blow tubes, splice fibre and activate homes — to spec, on schedule, with the paperwork that survives an audit.</p>
-              <p>Hard hats, OTDRs, and NE3 / NE4 project leadership across the DACH region. Field engineering that holds up under audit.</p>
+              <p>{t('nexus.home.div01.body1')}</p>
+              <p>{t('nexus.home.div01.body2')}</p>
               <div className="ns-feat">
-                {[
-                  ['01', 'Kabelzug · 144F & 288F'],
-                  ['02', 'Einblasung · RA / RD'],
-                  ['03', 'Spleißarbeiten · ≤ 0.08 dB'],
-                  ['04', 'FTTH Aktivierung'],
-                  ['05', 'NE3 / NE4 Projektleitung'],
-                ].map(([k, t]) => (
+                {(['01','02','03','04','05'] as const).map(k => (
                   <div key={k} className="row">
                     <span className="k">{k}</span>
-                    <span className="t">{t}</span>
+                    <span className="t">{t(`nexus.home.div01.feat.${k}`)}</span>
                   </div>
                 ))}
               </div>
@@ -421,30 +434,23 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
                 style={{ marginTop: 36 }}
                 onClick={() => onNavigate('fibra')}
               >
-                Ver trabajos de fibra <span className="ar">→</span>
+                {t('nexus.home.div01.cta')} <span className="ar">→</span>
               </button>
             </div>
             <div data-ns-reveal style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              {/* Decorative fibre cross-section graphic */}
               <svg viewBox="0 0 480 360" style={{ width: '100%', maxWidth: 480, opacity: 0.85 }} fill="none" aria-hidden="true">
                 <rect width="480" height="360" fill="rgba(245,243,238,0.02)" rx="8" />
-                {/* Ground layer */}
                 <line x1="40" y1="200" x2="440" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.4" />
                 <text x="44" y="190" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="rgba(245,243,238,0.5)" letterSpacing="0.06em">SURFACE</text>
-                {/* Trench */}
                 <path d="M160 200 L180 310 L300 310 L320 200" fill="rgba(245,243,238,0.05)" stroke="rgba(245,243,238,0.3)" strokeWidth="1.2" />
-                {/* Duct */}
                 <rect x="195" y="255" width="90" height="30" rx="15" fill="rgba(245,243,238,0.06)" stroke="rgba(245,243,238,0.35)" strokeWidth="1.2" />
-                {/* Fibre cable */}
                 <circle cx="240" cy="270" r="8" fill="rgba(255,77,46,0.18)" stroke="#FF4D2E" strokeWidth="1.5" />
                 <circle cx="240" cy="270" r="3" fill="#FF4D2E" />
                 <text x="300" y="275" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="var(--ns-accent,#FF4D2E)" letterSpacing="0.08em">FIBRE</text>
-                {/* OTDR signal lines */}
                 <g stroke="rgba(245,243,238,0.2)" strokeWidth="1">
                   <line x1="40" y1="225" x2="440" y2="225" />
                   <line x1="40" y1="250" x2="440" y2="250" />
                 </g>
-                {/* Poles / towers */}
                 <line x1="80" y1="120" x2="80" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
                 <line x1="400" y1="100" x2="400" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
                 <line x1="80" y1="120" x2="400" y2="100" stroke="rgba(245,243,238,0.18)" strokeWidth="1" strokeDasharray="4 4" />
@@ -459,14 +465,14 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       <section className="ns-blk light" id="ns-numbers">
         <div className="inner">
           <div className="ns-sec-head">
-            <div className="idx" data-ns-reveal>By the numbers</div>
-            <h2 data-ns-reveal>Measured.<br />Not <em>marketed</em>.</h2>
+            <div className="idx" data-ns-reveal>{t('nexus.home.stats.idx')}</div>
+            <h2 data-ns-reveal>{t('nexus.home.stats.h2a')}<br />{t('nexus.home.stats.h2b')} <em>{t('nexus.home.stats.h2em')}</em>.</h2>
           </div>
           <div className="ns-stats" data-ns-stagger>
-            <StatItem value={40} suffix="+" label="KM fibre · per month" />
-            <StatItem value={0.04} dec={2} label="Avg splice loss · dB" />
-            <StatItem value={72} suffix="h" label="Fault → fix · SLA" />
-            <StatItem value={1} label="System · end to end" hl />
+            <StatItem value={40} suffix="+" label={t('nexus.home.stats.km')} />
+            <StatItem value={0.04} dec={2} label={t('nexus.home.stats.splice')} />
+            <StatItem value={72} suffix="h" label={t('nexus.home.stats.sla')} />
+            <StatItem value={1} label={t('nexus.home.stats.system')} hl />
           </div>
         </div>
       </section>
@@ -475,35 +481,29 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       <section className="ns-blk" id="ns-software">
         <div className="inner">
           <div className="ns-sec-head">
-            <div className="idx" data-ns-reveal>Division 02 · Code</div>
+            <div className="idx" data-ns-reveal>{t('nexus.home.div02.idx')}</div>
             <h2 data-ns-reveal>
-              The software<br />we use <em>on site</em>.
+              {t('nexus.home.div02.h2a')}<br />{t('nexus.home.div02.h2b')} <em>{t('nexus.home.div02.h2em')}</em>.
             </h2>
           </div>
           <div className="ns-software">
             <div className="copy" data-ns-reveal>
-              <p>One operational stack for telecom field work: production metrics, cost-per-unit, quality control and open tickets — synced in real time to a portal your customer can watch.</p>
-              <p>Production-grade software sold to carriers and contractors who need real-time control over their networks.</p>
+              <p>{t('nexus.home.div02.body1')}</p>
+              <p>{t('nexus.home.div02.body2')}</p>
               <div className="ns-feat">
-                <div className="row">
-                  <span className="k">01</span>
-                  <span className="t">Live production dashboards — every segment, every crew.</span>
-                </div>
-                <div className="row">
-                  <span className="k">02</span>
-                  <span className="t">Cost &amp; margin truth, down to the metre.</span>
-                </div>
-                <div className="row">
-                  <span className="k">03</span>
-                  <span className="t">AXON — the AI agent that flags drift before it costs you.</span>
-                </div>
+                {(['01','02','03'] as const).map(k => (
+                  <div key={k} className="row">
+                    <span className="k">{k}</span>
+                    <span className="t">{t(`nexus.home.div02.feat.${k}`)}</span>
+                  </div>
+                ))}
               </div>
               <button
                 className="ns-btn ns-btn-primary"
                 style={{ marginTop: 36 }}
                 onClick={() => onNavigate('software')}
               >
-                Ver desarrollo de software <span className="ar">→</span>
+                {t('nexus.home.div02.cta')} <span className="ar">→</span>
               </button>
             </div>
             <Terminal />
@@ -517,14 +517,14 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       {/* ═══ QUOTE ═══ */}
       <section className="ns-blk light" id="ns-thesis">
         <div className="inner ns-quote-blk">
-          <div className="ns-idx-mono" data-ns-reveal style={{ opacity: 0.55 }}>Thesis</div>
+          <div className="ns-idx-mono" data-ns-reveal style={{ opacity: 0.55 }}>{t('nexus.home.thesis.idx')}</div>
           <div>
             <blockquote data-ns-reveal>
-              Most contractors vanish at handover.<br />
-              We&apos;re measured on <em>what happens next</em>.
+              {t('nexus.home.thesis.quote1')}<br />
+              {t('nexus.home.thesis.quote2')} <em>{t('nexus.home.thesis.quoteEm')}</em>.
             </blockquote>
             <div className="ns-quote-cite" data-ns-reveal>
-              — Horstmann · Melhs · Romero · Founders
+              {t('nexus.home.thesis.cite')}
             </div>
           </div>
         </div>
@@ -533,20 +533,14 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
       {/* ═══ CTA ═══ */}
       <section className="ns-cta-blk" id="ns-contact">
         <h2 data-ns-reveal>
-          Let&apos;s build the<br /><em>next</em> one.
+          {t('nexus.home.cta.h2a')}<br /><em>{t('nexus.home.cta.h2em')}</em> {t('nexus.home.cta.h2b')}
         </h2>
         <div className="actions" data-ns-reveal>
-          <a
-            href="mailto:info@hmr-nexus.com"
-            className="ns-btn ns-btn-primary"
-          >
-            info@hmr-nexus.com <span className="ar">→</span>
+          <a href="mailto:info@hmr-nexus.com" className="ns-btn ns-btn-primary">
+            {t('nexus.home.cta.email')} <span className="ar">→</span>
           </a>
-          <a
-            href="tel:+4917631524448"
-            className="ns-btn ns-btn-ghost"
-          >
-            +49 176 31524448
+          <a href="tel:+4917631524448" className="ns-btn ns-btn-ghost">
+            {t('nexus.home.cta.phone')}
           </a>
         </div>
       </section>
@@ -557,36 +551,36 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
           NEXUS<span className="dot">.</span>
         </div>
         <div className="slogan-tag" data-ns-reveal>
-          <span>Innovación</span><span className="sep">·</span>
-          <span>Calidad</span><span className="sep">·</span>
-          <span>Compromiso</span>
+          <span>{t('nexus.home.footer.slogan.innovation')}</span><span className="sep">·</span>
+          <span>{t('nexus.home.footer.slogan.quality')}</span><span className="sep">·</span>
+          <span>{t('nexus.home.footer.slogan.commitment')}</span>
         </div>
         <div className="cols">
           <div data-ns-reveal style={{ '--i': 0 } as React.CSSProperties}>
-            <h4>Kontakt</h4>
+            <h4>{t('nexus.home.footer.contact.heading')}</h4>
             <ul>
               <li><a href="mailto:info@hmr-nexus.com">info@hmr-nexus.com</a></li>
               <li>+49 176 31524448</li>
-              <li>Mo–Fr · 08:00–18:00</li>
+              <li>{t('nexus.home.footer.contact.hours')}</li>
             </ul>
           </div>
           <div data-ns-reveal style={{ '--i': 1 } as React.CSSProperties}>
-            <h4>Sitz</h4>
+            <h4>{t('nexus.home.footer.address.heading')}</h4>
             <ul>
-              <li>Am Riethkamp 1E</li>
-              <li>29229 Celle</li>
-              <li>Deutschland</li>
+              <li>{t('nexus.home.footer.address.street')}</li>
+              <li>{t('nexus.home.footer.address.city')}</li>
+              <li>{t('nexus.home.footer.address.country')}</li>
             </ul>
           </div>
           <div data-ns-reveal style={{ '--i': 2 } as React.CSSProperties}>
-            <h4>Company</h4>
+            <h4>{t('nexus.home.footer.company.heading')}</h4>
             <ul>
               <li>
                 <button
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
                   onClick={() => onNavigate('fibra')}
                 >
-                  Trabajos de fibra
+                  {t('nexus.home.footer.company.fibra')}
                 </button>
               </li>
               <li>
@@ -594,7 +588,7 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
                   onClick={() => onNavigate('software')}
                 >
-                  Desarrollo de software
+                  {t('nexus.home.footer.company.software')}
                 </button>
               </li>
               <li>
@@ -602,23 +596,51 @@ export function NexusHome({ onNavigate }: NexusHomeProps) {
                   style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
                   onClick={() => document.getElementById('ns-process')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Process
+                  {t('nexus.home.footer.company.process')}
                 </button>
               </li>
             </ul>
           </div>
           <div data-ns-reveal style={{ '--i': 3 } as React.CSSProperties}>
-            <h4>Legal</h4>
+            <h4>{t('nexus.home.footer.legal.heading')}</h4>
             <ul>
-              <li>AG Celle</li>
+              <li>{t('nexus.home.footer.legal.register')}</li>
               <li><a href="https://hmr-nexus.com">hmr-nexus.com</a></li>
+              {onLegal && (
+                <>
+                  <li>
+                    <button
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      onClick={() => onLegal('imprint')}
+                    >
+                      {t('nexus.home.footer.legal.imprint')}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      onClick={() => onLegal('privacy')}
+                    >
+                      {t('nexus.home.footer.legal.privacy')}
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      onClick={() => onLegal('terms')}
+                    >
+                      {t('nexus.home.footer.legal.terms')}
+                    </button>
+                  </li>
+                </>
+              )}
               <li>© {new Date().getFullYear()} HMR Nexus Engineering GmbH</li>
             </ul>
           </div>
         </div>
         <div className="legal">
           <div>© {new Date().getFullYear()} HMR Nexus Engineering GmbH</div>
-          <div><span className="live">●</span> All systems · operational</div>
+          <div><span className="live">●</span> {t('nexus.home.footer.status')}</div>
         </div>
       </footer>
     </div>

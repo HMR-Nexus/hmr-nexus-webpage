@@ -11,8 +11,8 @@ interface LegalOverlayProps {
 }
 
 export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
-  const { i18n } = useTranslation();
-  const lang = i18n.language;
+  const { i18n, t } = useTranslation();
+  const lang = i18n.resolvedLanguage ?? i18n.language;
 
   // Lock body scroll when open
   useEffect(() => {
@@ -37,7 +37,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
         <motion.div
           role="dialog"
           aria-modal="true"
-          aria-label={page === 'imprint' ? 'Legal Notice' : page === 'privacy' ? 'Privacy Policy' : 'Terms and Conditions'}
+          aria-label={page === 'imprint' ? t('nexus.home.footer.legal.imprint') : page === 'privacy' ? t('nexus.home.footer.legal.privacy') : t('nexus.home.footer.legal.terms')}
           className="fixed inset-0 z-[100] flex items-start justify-center bg-black/90 overflow-y-auto overscroll-contain"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -56,7 +56,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-2 text-nd-text-disabled hover:text-nd-text-display transition-colors duration-200"
-              aria-label="Close"
+              aria-label={t('nexus.legal.close')}
             >
               <X className="w-5 h-5" />
             </button>
@@ -78,9 +78,7 @@ export function LegalOverlay({ page, onClose }: LegalOverlayProps) {
             </div>
 
             <p className="mt-8 pt-4 border-t border-nd-border nothing-label">
-              {lang === 'es' ? 'Última actualización: Febrero 2026'
-                : lang === 'en' ? 'Last updated: February 2026'
-                : 'Zuletzt aktualisiert: Februar 2026'}
+              {t('nexus.legal.lastUpdated')}
             </p>
           </motion.div>
         </motion.div>
@@ -198,62 +196,62 @@ function ImprintContent({ lang }: { lang: string }) {
     </div>
   );
 
-  // Spanish (default)
+  // Default: English
   return (
     <div>
-      <h1>Aviso Legal</h1>
-      <h2>Información según § 5 TMG</h2>
+      <h1>Legal Notice</h1>
+      <h2>Information pursuant to § 5 TMG</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Alemania<br />
+        Celle, Germany<br />
       </p>
-      <h2>Contacto</h2>
+      <h2>Contact</h2>
       <p>
-        Teléfono: +49 176 31524448<br />
-        Correo electrónico: info@hmr-nexus.com
+        Phone: +49 176 31524448<br />
+        Email: info@hmr-nexus.com
       </p>
-      <h2>Representante Autorizado</h2>
-      <p>Director General: [Nombre del Director General]</p>
-      <h2>Registro Mercantil</h2>
+      <h2>Authorized Representative</h2>
+      <p>Managing Director: [Managing Director Name]</p>
+      <h2>Commercial Register</h2>
       <p>
-        Tribunal de Registro: Amtsgericht Lüneburg<br />
-        Número de Registro: HRB [Número]
+        Register Court: Amtsgericht Lüneburg<br />
+        Register Number: HRB [Number]
       </p>
-      <h2>Identificación Fiscal</h2>
+      <h2>VAT ID</h2>
       <p>
-        Número de identificación de IVA según § 27a de la Ley del IVA alemana:<br />
-        DE [Número]
+        VAT Identification Number pursuant to § 27a of the German VAT Act:<br />
+        DE [Number]
       </p>
-      <h2>Responsable del Contenido según § 55 Abs. 2 RStV</h2>
+      <h2>Responsible for Content pursuant to § 55 Abs. 2 RStV</h2>
       <p>
         HMR Nexus Engineering GmbH<br />
-        Celle, Alemania
+        Celle, Germany
       </p>
-      <h2>Resolución de Disputas de la UE</h2>
+      <h2>EU Dispute Resolution</h2>
       <p>
-        La Comisión Europea proporciona una plataforma para la resolución de disputas en línea (ODR).
-        Nuestra dirección de correo electrónico se encuentra arriba. No estamos obligados ni dispuestos
-        a participar en procedimientos de resolución de disputas ante una junta de arbitraje de consumidores.
+        The European Commission provides an online dispute resolution (ODR) platform.
+        Our email address can be found above. We are neither obligated nor willing to
+        participate in dispute resolution proceedings before a consumer arbitration board.
       </p>
-      <h2>Responsabilidad por el Contenido</h2>
+      <h2>Liability for Content</h2>
       <p>
-        Como proveedor de servicios, somos responsables de nuestro propio contenido en estas páginas de
-        acuerdo con la legislación general conforme al § 7 (1) TMG. Sin embargo, según los §§ 8–10 TMG,
-        no estamos obligados a supervisar la información de terceros transmitida o almacenada ni a
-        investigar circunstancias que indiquen actividad ilegal.
+        As a service provider, we are responsible for our own content on these pages in accordance
+        with general legislation pursuant to § 7 (1) TMG. According to §§ 8–10 TMG, however, we as
+        a service provider are not obligated to monitor transmitted or stored third-party information
+        or to investigate circumstances that indicate illegal activity.
       </p>
-      <h2>Responsabilidad por Enlaces</h2>
+      <h2>Liability for Links</h2>
       <p>
-        Nuestro sitio web contiene enlaces a sitios web externos de terceros sobre cuyo contenido no tenemos
-        influencia. Por lo tanto, no podemos asumir ninguna responsabilidad por dicho contenido externo.
-        El proveedor u operador respectivo de las páginas enlazadas es siempre responsable de su contenido.
+        Our website contains links to external third-party websites over whose content we have no influence.
+        Therefore, we cannot accept any liability for this external content. The respective provider or
+        operator of the linked pages is always responsible for their content.
       </p>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   DATENSCHUTZ / POLÍTICA DE PRIVACIDAD / PRIVACY POLICY
+   DATENSCHUTZ / PRIVACY POLICY
    ═══════════════════════════════════════════════════════════════════════ */
 
 function PrivacyContent({ lang }: { lang: string }) {
@@ -417,90 +415,86 @@ function PrivacyContent({ lang }: { lang: string }) {
     </div>
   );
 
-  // Spanish (default)
+  // Default: English
   return (
     <div>
-      <h1>Política de Privacidad</h1>
+      <h1>Privacy Policy</h1>
 
-      <h2>1. Responsable del Tratamiento</h2>
+      <h2>1. Data Controller</h2>
       <p>
         <strong>HMR Nexus Engineering GmbH</strong><br />
-        Celle, Alemania<br />
-        Correo electrónico: info@hmr-nexus.com<br />
-        Teléfono: +49 176 31524448
+        Celle, Germany<br />
+        Email: info@hmr-nexus.com<br />
+        Phone: +49 176 31524448
       </p>
 
-      <h2>2. Datos Recopilados</h2>
-      <h3>2.1 Formulario de Contacto</h3>
-      <p>
-        Cuando utiliza nuestro formulario de contacto, se procesan los siguientes datos:
-      </p>
+      <h2>2. Data Collection</h2>
+      <h3>2.1 Contact Form</h3>
+      <p>When you use our contact form, the following data is processed:</p>
       <ul>
-        <li>Nombre y apellido</li>
-        <li>Dirección de correo electrónico</li>
-        <li>Número de teléfono (opcional)</li>
-        <li>Empresa (opcional)</li>
-        <li>Mensaje</li>
+        <li>First and last name</li>
+        <li>Email address</li>
+        <li>Phone number (optional)</li>
+        <li>Company (optional)</li>
+        <li>Message</li>
       </ul>
       <p>
-        Los datos se procesan a través de <strong>Formspree</strong> (Formspree, Inc., EE.UU.).
-        Base legal: Art. 6(1)(b) RGPD (medidas precontractuales) y Art. 6(1)(f) RGPD
-        (interés legítimo en responder consultas).
+        Data is processed through <strong>Formspree</strong> (Formspree, Inc., USA).
+        Legal basis: Art. 6(1)(b) GDPR (pre-contractual measures) and Art. 6(1)(f) GDPR
+        (legitimate interest in responding to inquiries).
       </p>
 
-      <h3>2.2 Archivos de Registro del Servidor</h3>
+      <h3>2.2 Server Log Files</h3>
       <p>
-        El proveedor de hosting recopila automáticamente información en los archivos de registro del servidor
-        que su navegador transmite (dirección IP, tipo de navegador, sistema operativo, URL de referencia,
-        hora de la solicitud). Estos datos no se combinan con otras fuentes de datos.
+        The hosting provider automatically collects information in server log files that your browser
+        transmits (IP address, browser type, operating system, referrer URL, time of server request).
+        This data is not combined with other data sources.
       </p>
 
       <h2>3. Cookies</h2>
       <p>
-        Este sitio web solo utiliza cookies técnicamente necesarias para almacenar la preferencia de idioma.
-        No se utilizan cookies de seguimiento ni de marketing.
+        This website only uses technically necessary cookies to store your language preference.
+        No tracking or marketing cookies are used.
       </p>
 
-      <h2>4. Servicios de Terceros</h2>
+      <h2>4. Third-Party Services</h2>
       <h3>4.1 Hosting</h3>
-      <p>Este sitio web está alojado en Hostinger International Ltd.</p>
+      <p>This website is hosted by Hostinger International Ltd.</p>
       <h3>4.2 Google Fonts</h3>
       <p>
-        Este sitio utiliza Google Fonts para una visualización uniforme de fuentes tipográficas.
-        Al acceder a una página, su navegador carga las fuentes necesarias en su caché,
-        estableciendo una conexión con los servidores de Google.
+        This site uses Google Fonts for uniform font display.
+        When you access a page, your browser loads the required fonts into its cache,
+        establishing a connection to Google servers.
       </p>
       <h3>4.3 Formspree</h3>
       <p>
-        Utilizamos Formspree, Inc. para procesar el formulario de contacto.
-        Los datos se procesan en servidores en los EE.UU.
+        We use Formspree, Inc. to process the contact form.
+        Data is processed on servers in the USA.
       </p>
 
-      <h2>5. Sus Derechos</h2>
-      <p>Usted tiene derecho a:</p>
+      <h2>5. Your Rights</h2>
+      <p>You have the right to:</p>
       <ul>
-        <li><strong>Acceso</strong> a sus datos personales almacenados (Art. 15 RGPD)</li>
-        <li><strong>Rectificación</strong> de datos inexactos (Art. 16 RGPD)</li>
-        <li><strong>Supresión</strong> de sus datos (Art. 17 RGPD)</li>
-        <li><strong>Limitación</strong> del tratamiento (Art. 18 RGPD)</li>
-        <li><strong>Portabilidad</strong> de datos (Art. 20 RGPD)</li>
-        <li><strong>Oposición</strong> al tratamiento (Art. 21 RGPD)</li>
+        <li><strong>Access</strong> your stored personal data (Art. 15 GDPR)</li>
+        <li><strong>Rectification</strong> of inaccurate data (Art. 16 GDPR)</li>
+        <li><strong>Erasure</strong> of your data (Art. 17 GDPR)</li>
+        <li><strong>Restriction</strong> of processing (Art. 18 GDPR)</li>
+        <li><strong>Data portability</strong> (Art. 20 GDPR)</li>
+        <li><strong>Object</strong> to processing (Art. 21 GDPR)</li>
       </ul>
-      <p>
-        Para consultas, por favor contacte a: <strong>info@hmr-nexus.com</strong>
-      </p>
+      <p>For inquiries, please contact: <strong>info@hmr-nexus.com</strong></p>
 
-      <h2>6. Derecho de Reclamación</h2>
+      <h2>6. Right to Complain</h2>
       <p>
-        Usted tiene derecho a presentar una reclamación ante una autoridad de supervisión
-        de protección de datos sobre el tratamiento de sus datos personales.
+        You have the right to lodge a complaint with a data protection supervisory authority
+        regarding the processing of your personal data.
       </p>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   AGB / TÉRMINOS / TERMS
+   AGB / TERMS
    ═══════════════════════════════════════════════════════════════════════ */
 
 function TermsContent({ lang }: { lang: string }) {
@@ -624,63 +618,61 @@ function TermsContent({ lang }: { lang: string }) {
     </div>
   );
 
-  // Spanish (default)
+  // Default: English
   return (
     <div>
-      <h1>Términos y Condiciones</h1>
+      <h1>Terms and Conditions</h1>
 
-      <h2>1. Alcance</h2>
+      <h2>1. Scope</h2>
       <p>
-        Estos Términos y Condiciones se aplican al uso del sitio web de HMR Nexus Engineering GmbH
-        así como a todas las relaciones comerciales entre HMR Nexus Engineering GmbH y sus clientes.
+        These Terms and Conditions apply to the use of the website of HMR Nexus Engineering GmbH
+        as well as all business relationships between HMR Nexus Engineering GmbH and its clients.
       </p>
 
-      <h2>2. Descripción de Servicios</h2>
+      <h2>2. Description of Services</h2>
       <p>
-        HMR Nexus Engineering GmbH ofrece servicios en infraestructura de fibra óptica (NE3/NE4),
-        planificación de telecomunicaciones y desarrollo de software a medida. El alcance específico
-        de los servicios se define en el contrato individual correspondiente.
+        HMR Nexus Engineering GmbH provides services in fiber optic infrastructure (NE3/NE4),
+        telecommunications planning, and custom software development. The specific scope of
+        services is defined in the respective individual contract.
       </p>
 
-      <h2>3. Formación del Contrato</h2>
+      <h2>3. Contract Formation</h2>
       <p>
-        La presentación de nuestros servicios en el sitio web no constituye una oferta legalmente
-        vinculante. Un contrato solo se celebra mediante confirmación escrita del pedido o firma
-        de un contrato individual.
+        The presentation of our services on the website does not constitute a legally binding offer.
+        A contract is only concluded upon written order confirmation or signing of an individual contract.
       </p>
 
-      <h2>4. Propiedad Intelectual</h2>
+      <h2>4. Intellectual Property</h2>
       <p>
-        Todo el contenido de este sitio web (textos, gráficos, logotipos, software) es propiedad
-        intelectual de HMR Nexus Engineering GmbH y está protegido por la ley de derechos de autor.
-        Su reproducción o uso requiere consentimiento previo por escrito.
+        All content on this website (texts, graphics, logos, software) is the intellectual property
+        of HMR Nexus Engineering GmbH and is protected by copyright law. Reproduction or use
+        requires prior written consent.
       </p>
 
-      <h2>5. Limitación de Responsabilidad</h2>
+      <h2>5. Limitation of Liability</h2>
       <p>
-        HMR Nexus Engineering GmbH solo es responsable de los daños basados en conducta
-        intencional o gravemente negligente. La responsabilidad por negligencia leve queda
-        excluida a menos que se vean afectadas obligaciones contractuales esenciales.
-        La responsabilidad se limita a los daños previsibles y típicos del contrato.
+        HMR Nexus Engineering GmbH is only liable for damages based on intentional or grossly
+        negligent conduct. Liability for slight negligence is excluded unless essential contractual
+        obligations are affected. Liability is limited to foreseeable, contract-typical damages.
       </p>
 
-      <h2>6. Confidencialidad</h2>
+      <h2>6. Confidentiality</h2>
       <p>
-        Ambas partes se comprometen a mantener en secreto toda la información confidencial
-        recibida durante la colaboración y a no divulgarla a terceros.
+        Both parties agree to keep all confidential information received during the collaboration
+        secret and not to disclose it to third parties.
       </p>
 
-      <h2>7. Ley Aplicable y Jurisdicción</h2>
+      <h2>7. Applicable Law and Jurisdiction</h2>
       <p>
-        Se aplican las leyes de la República Federal de Alemania. El lugar de jurisdicción para
-        todas las disputas es Celle, Alemania, en la medida permitida por la ley.
+        The laws of the Federal Republic of Germany apply. The place of jurisdiction for all
+        disputes is Celle, Germany, to the extent permitted by law.
       </p>
 
-      <h2>8. Cláusula de Salvaguardia</h2>
+      <h2>8. Severability Clause</h2>
       <p>
-        Si alguna disposición de estos términos fuera o llegara a ser inválida, la validez de las
-        disposiciones restantes no se verá afectada. La disposición inválida será reemplazada por
-        una válida que se acerque más al propósito económico.
+        Should any provision of these terms be or become invalid, the validity of the remaining
+        provisions shall not be affected. The invalid provision shall be replaced by a valid one
+        that comes closest to the economic purpose.
       </p>
     </div>
   );

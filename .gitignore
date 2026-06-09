@@ -14,3 +14,7 @@ skills-lock.json
 
 # Local Netlify folder
 .netlify
+
+# Local agent tooling
+.pi/
+.pi-lens/

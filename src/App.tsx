@@ -1,17 +1,32 @@
 import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { toPageId, type PageId } from "./lib/navigation";
 import { NexusNav, NexusSubNav } from "./sections/NexusNav";
 import { NexusHome } from "./sections/NexusHome";
 import { FibraPage } from "./sections/FibraPage";
 import { SoftwarePage } from "./sections/SoftwarePage";
+import { LegalOverlay, type LegalPage } from "./components/LegalOverlay";
+import { ChatWidget } from "./components/ChatWidget";
+import { WhatsAppButton } from "./components/WhatsAppButton";
 import { useScrollProgress } from "./hooks/useScrollProgress";
 import "./i18n";
 import "./nexus-site.css";
+
+const prefersReduced = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const pageVariants = {
+  initial: { opacity: 0, y: prefersReduced() ? 0 : 12 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
+  exit:    { opacity: 0, y: prefersReduced() ? 0 : -6, transition: { duration: 0.2 } },
+};
 
 function App() {
   const [activePage, setActivePage] = useState<PageId>(() =>
     typeof window === "undefined" ? "home" : toPageId(window.location.hash)
   );
+  const [legalPage, setLegalPage] = useState<LegalPage>(null);
 
   const scrollProgress = useScrollProgress();
 
@@ -37,21 +52,16 @@ function App() {
   const renderPage = () => {
     switch (activePage) {
       case "fibra":
-        return (
-          <FibraPage
-            onNavigate={(page) => navigateTo(page)}
-          />
-        );
+        return <FibraPage onNavigate={(page) => navigateTo(page)} />;
       case "software":
-        return (
-          <SoftwarePage
-            onNavigate={(page) => navigateTo(page)}
-          />
-        );
+        return <SoftwarePage onNavigate={(page) => navigateTo(page)} />;
       case "home":
       default:
         return (
-          <NexusHome onNavigate={navigateTo} />
+          <NexusHome
+            onNavigate={navigateTo}
+            onLegal={(page) => setLegalPage(page)}
+          />
         );
     }
   };
@@ -87,10 +97,27 @@ function App() {
         <NexusNav activePage={activePage} onNavigate={navigateTo} />
       )}
 
-      {/* Main content */}
+      {/* Main content with page transitions */}
       <main id="main-content">
-        {renderPage()}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activePage}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            {renderPage()}
+          </motion.div>
+        </AnimatePresence>
       </main>
+
+      {/* Legal overlay */}
+      <LegalOverlay page={legalPage} onClose={() => setLegalPage(null)} />
+
+      {/* Floating widgets */}
+      <ChatWidget />
+      <WhatsAppButton />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-// Props kept for future use (navigation from within page)
 interface FibraPageProps {
   onNavigate: (page: 'home' | 'fibra' | 'software') => void;
 }
@@ -51,8 +51,8 @@ function useFillSpine(flowRef: React.RefObject<HTMLElement | null>) {
     const flow = flowRef.current;
     const fill = fillRef.current;
     if (!flow || !fill) return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { fill.style.height = '100%'; return; }
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { fill.style.height = '100%'; return; }
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -127,11 +127,11 @@ const Diagram02 = () => (
     <rect x="118" y="62" width="244" height="236" rx="4" className="dg-fill" stroke="rgba(245,243,238,0.22)" />
     <line x1="118" y1="98" x2="362" y2="98" className="dg-line-2" />
     <g className="dg-txt">
-      <text x="140" y="128">OBRA CIVIL</text><text x="318" y="128" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
+      <text x="140" y="128">CIVIL WORKS</text><text x="318" y="128" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
       <text x="140" y="156">NE3</text><text x="318" y="156" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
-      <text x="140" y="184">FUSIONES</text><text x="318" y="184" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
-      <text x="140" y="212">SOPLADO</text><text x="318" y="212" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
-      <text x="140" y="240">ACTIVACIÓN</text><text x="318" y="240" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
+      <text x="140" y="184">SPLICING</text><text x="318" y="184" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
+      <text x="140" y="212">BLOWING</text><text x="318" y="212" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
+      <text x="140" y="240">ACTIVATION</text><text x="318" y="240" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
     </g>
     <line x1="140" y1="258" x2="320" y2="258" className="dg-line-2" />
     <text x="140" y="284" className="dg-txt" fill="var(--ns-accent,#FF4D2E)" style={{ letterSpacing: '0.1em' }}>TOTAL</text>
@@ -165,9 +165,9 @@ const Diagram03 = () => (
       <path d="M380 291 L262 165" />
     </g>
     <g className="dg-txt" textAnchor="middle">
-      <text x="100" y="332">CLIENTE</text>
-      <text x="240" y="345">TÉCNICO</text>
-      <text x="380" y="332">SITIO</text>
+      <text x="100" y="332">CLIENT</text>
+      <text x="240" y="345">TECHNICIAN</text>
+      <text x="380" y="332">SITE</text>
     </g>
   </svg>
 );
@@ -181,7 +181,7 @@ const Diagram04 = () => (
       <line x1="360" y1="120" x2="360" y2="135" />
       <line x1="440" y1="120" x2="440" y2="135" />
     </g>
-    <text x="48" y="110" className="dg-txt">SUPERFICIE</text>
+    <text x="48" y="110" className="dg-txt">SURFACE</text>
     <path d="M170 120 L200 250 L280 250 L310 120" className="dg-fill" stroke="rgba(245,243,238,0.3)" />
     <path d="M170 120 L200 250 L280 250 L310 120" className="dg-line" />
     <circle cx="225" cy="222" r="20" className="dg-fill" stroke="rgba(245,243,238,0.4)" />
@@ -193,7 +193,7 @@ const Diagram04 = () => (
       <line x1="40" y1="200" x2="440" y2="200" />
       <line x1="40" y1="240" x2="440" y2="240" />
     </g>
-    <text x="300" y="245" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">DUCTO</text>
+    <text x="300" y="245" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">DUCT</text>
   </svg>
 );
 
@@ -215,8 +215,8 @@ const Diagram05 = () => (
       <line x1="300" y1="126" x2="324" y2="126" />
       <line x1="300" y1="142" x2="324" y2="142" />
     </g>
-    <text x="44" y="110" className="dg-txt">RUTA PRINCIPAL</text>
-    <text x="300" y="86" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">PUNTO DE ENTREGA</text>
+    <text x="44" y="110" className="dg-txt">MAIN ROUTE</text>
+    <text x="300" y="86" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">HANDOVER POINT</text>
   </svg>
 );
 
@@ -236,7 +236,7 @@ const Diagram06 = () => (
       <circle cx="240" cy="132" r="3" />
       <circle cx="290" cy="132" r="3" />
     </g>
-    <text x="150" y="84" className="dg-txt">CAJA · ODF / CTO</text>
+    <text x="150" y="84" className="dg-txt">ENCLOSURE · ODF / CTO</text>
     <rect x="90" y="210" width="300" height="110" rx="4" stroke="rgba(245,243,238,0.18)" fill="none" />
     <text x="102" y="230" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">OTDR</text>
     <path d="M100 300 L160 270 L160 282 L240 258 L240 268 L320 246 L380 244" className="dg-acc" />
@@ -259,9 +259,9 @@ const Diagram07 = () => (
       <path d="M330 168 L355 180 L330 192" />
       <path d="M360 168 L385 180 L360 192" />
     </g>
-    <text x="56" y="138" className="dg-txt">MICRODUCTO</text>
-    <text x="318" y="232" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AIRE → FIBRA</text>
-    <text x="70" y="258" className="dg-txt">VALIDACIÓN DE RUTA</text>
+    <text x="56" y="138" className="dg-txt">MICRODUCT</text>
+    <text x="318" y="232" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AIR → FIBRE</text>
+    <text x="70" y="258" className="dg-txt">ROUTE VALIDATION</text>
     <path d="M70 270 H410" className="dg-line-2 dg-dash" />
   </svg>
 );
@@ -286,7 +286,7 @@ const Diagram08 = () => (
       <path d="M376 222 a14 14 0 0 1 0 20" />
       <path d="M386 214 a26 26 0 0 1 0 36" />
     </g>
-    <text x="86" y="312" className="dg-txt">CLIENTE FINAL</text>
+    <text x="86" y="312" className="dg-txt">END CLIENT</text>
   </svg>
 );
 
@@ -294,7 +294,7 @@ const Diagram09 = () => (
   <svg viewBox="0 0 480 360" aria-hidden="true">
     <rect x="130" y="64" width="180" height="232" rx="4" className="dg-fill" stroke="rgba(245,243,238,0.22)" />
     <line x1="130" y1="98" x2="310" y2="98" className="dg-line-2" />
-    <text x="152" y="90" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">REPORTE FINAL</text>
+    <text x="152" y="90" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">FINAL REPORT</text>
     <g className="dg-acc">
       <path d="M156 126 l6 6 l10 -12" />
       <path d="M156 156 l6 6 l10 -12" />
@@ -310,83 +310,36 @@ const Diagram09 = () => (
     <circle cx="200" cy="228" r="4" className="dg-node" />
     <rect x="228" y="216" width="60" height="46" rx="3" stroke="rgba(245,243,238,0.18)" fill="none" />
     <path d="M240 250 L252 240 L268 250" className="dg-line-2" />
-    <text x="156" y="284" className="dg-txt">EVIDENCIA · MEDICIONES · AS-BUILT</text>
+    <text x="156" y="284" className="dg-txt">EVIDENCE · MEASUREMENTS · AS-BUILT</text>
   </svg>
 );
+
+const DIAGRAMS = [Diagram01, Diagram02, Diagram03, Diagram04, Diagram05, Diagram06, Diagram07, Diagram08, Diagram09];
 
 /* ── Main component ────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function FibraPage(_props: FibraPageProps) {
+  const { t } = useTranslation();
   const flowRef = useRef<HTMLElement | null>(null);
   const fillRef = useFillSpine(flowRef);
-
   const { ref: ctaRevRef, visible: ctaRevVisible } = useReveal();
 
-  const stages = [
-    {
-      num: 'Etapa 01', title: 'Consultoría & estructuración',
-      body: 'Analizamos el alcance real del proyecto, definimos fases, organizamos recursos y revisamos requerimientos técnicos para preparar una estructura de ejecución clara y tiempos estimados.',
-      specs: ['Alcance', 'Fases', 'Recursos', 'Cronograma'],
-      corner: 'FASE · PLANIFICACIÓN',
-      diagram: <Diagram01 />,
-    },
-    {
-      num: 'Etapa 02', title: 'Presupuestos',
-      body: 'Preparamos presupuestos según alcance real: obra civil, NE3, fusiones, soplado, instalaciones, activaciones, citas, equipos y soporte operativo. Cada partida desglosada y justificada.',
-      specs: ['Obra civil', 'NE3', 'Fusiones', 'Soplado', 'Equipos'],
-      corner: 'FASE · COSTOS',
-      diagram: <Diagram02 />,
-    },
-    {
-      num: 'Etapa 03', title: 'Citas & coordinación operativa',
-      body: 'Gestionamos citas con clientes, técnicos, administradores, propietarios y responsables de sitio. Una coordinación precisa evita retrasos y mejora la ejecución en campo.',
-      specs: ['Clientes', 'Técnicos', 'Sitios', 'Agenda'],
-      corner: 'FASE · COORDINACIÓN',
-      diagram: <Diagram03 />,
-    },
-    {
-      num: 'Etapa 04', title: 'Obra civil',
-      body: 'Apertura de zanjas, canalizaciones, ductos y permisos. Preparamos el recorrido, resolvemos cruces y cámaras, ejecutamos reparaciones y coordinamos con la infraestructura existente.',
-      specs: ['Zanjas', 'Ductos', 'Permisos', 'Cámaras', 'Cruces'],
-      corner: 'FASE · OBRA CIVIL',
-      diagram: <Diagram04 />,
-    },
-    {
-      num: 'Etapa 05', title: 'Red exterior · NE3',
-      body: 'Tendido de fibra, rutas principales y distribución hacia edificios y puntos de entrega. Dejamos la red exterior preparada técnicamente para continuar con la instalación interior.',
-      specs: ['Tendido', 'Rutas', 'Distribución', 'Entrega'],
-      corner: 'FASE · RED EXTERIOR · NE3',
-      diagram: <Diagram05 />,
-    },
-    {
-      num: 'Etapa 06', title: 'Fusiones & mediciones',
-      body: 'Empalmes de fibra, cajas, ODF y CTO. Ejecutamos pruebas de continuidad y mediciones OTDR con control de calidad y documentación técnica de cada punto.',
-      specs: ['Empalmes', 'ODF / CTO', 'OTDR', 'Continuidad', 'QA'],
-      corner: 'FASE · FUSIONES & MEDICIÓN',
-      diagram: <Diagram06 />,
-    },
-    {
-      num: 'Etapa 07', title: 'Soplado de fibra',
-      body: 'Soplado dentro de ductos y microductos con control de rutas, preparación del cableado y validación del tendido. Verificamos cada tramo antes de continuar.',
-      specs: ['Microductos', 'Rutas', 'Cableado', 'Validación'],
-      corner: 'FASE · SOPLADO',
-      diagram: <Diagram07 />,
-    },
-    {
-      num: 'Etapa 08', title: 'Instalación & activación · NE5',
-      body: 'Instalación final en cliente, conexión de equipos y ONT/router cuando aplica. Validamos el servicio, activamos la conexión y ejecutamos la prueba final de funcionamiento.',
-      specs: ['ONT / Router', 'Conexión', 'Activación', 'Prueba final'],
-      corner: 'FASE · INSTALACIÓN · NE5',
-      diagram: <Diagram08 />,
-    },
-    {
-      num: 'Etapa 09', title: 'Entrega & documentación',
-      body: 'Cierre técnico con evidencia fotográfica, reportes, mediciones y estado final del proyecto. Entregamos al cliente documentación completa y trazable de toda la ejecución.',
-      specs: ['Reportes', 'Evidencia', 'Mediciones', 'As-built'],
-      corner: 'FASE · ENTREGA',
-      diagram: <Diagram09 />,
-    },
-  ];
+  /* Generic reveal observer for this page */
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('[data-ns-reveal]:not(.ns-hero *), [data-ns-stagger], [data-ns-clip]');
+    if (reduced) { targets.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
+    );
+    targets.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const stageKeys = ['01','02','03','04','05','06','07','08','09'] as const;
 
   return (
     <div className="ns-root">
@@ -422,25 +375,25 @@ export function FibraPage(_props: FibraPageProps) {
         <div className="inner">
           <div className="eyebrow">
             <span className="dot" aria-hidden="true" />
-            Trabajos de fibra óptica
+            {t('nexus.fibra.eyebrow')}
           </div>
-          <h1>De la planificación<br />a la <span className="hl">activación</span>.</h1>
-          <p className="sub">
-            Ejecutamos proyectos de fibra con control técnico y operativo en cada etapa.
-            NEXUS no solo instala: estructura, coordina, ejecuta, mide, documenta y entrega.
-          </p>
+          <h1>
+            {t('nexus.fibra.h1a')}<br />
+            {t('nexus.fibra.h1b')} <span className="hl">{t('nexus.fibra.h1hl')}</span>{t('nexus.fibra.h1c')}
+          </h1>
+          <p className="sub">{t('nexus.fibra.subtitle')}</p>
           <div className="actions">
             <button
               className="ns-btn ns-btn-primary"
               onClick={() => document.getElementById('ns-fo-contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Pedir presupuesto <span className="ar">→</span>
+              {t('nexus.fibra.ctaPrimary')} <span className="ar">→</span>
             </button>
             <button
               className="ns-btn ns-btn-ghost"
               onClick={() => document.getElementById('ns-flujo')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Ver el proceso
+              {t('nexus.fibra.ctaSecondary')}
             </button>
           </div>
         </div>
@@ -449,9 +402,9 @@ export function FibraPage(_props: FibraPageProps) {
       {/* VERBS */}
       <div className="ns-fo-verbs" aria-label="What we do">
         <div className="inner">
-          <div className="lead">No solo instalamos fibra</div>
+          <div className="lead">{t('nexus.fibra.verbsLead')}</div>
           <div className="chips">
-            {['Estructura', 'Coordina', 'Ejecuta', 'Mide', 'Documenta', 'Entrega'].map(v => (
+            {(t('nexus.fibra.verbs', { returnObjects: true }) as string[]).map(v => (
               <span key={v} className="chip">{v}</span>
             ))}
           </div>
@@ -469,41 +422,52 @@ export function FibraPage(_props: FibraPageProps) {
           <div className="fill" ref={fillRef} />
         </div>
 
-        {stages.map(s => (
-          <Stage
-            key={s.num}
-            num={s.num}
-            title={s.title}
-            body={s.body}
-            specs={s.specs}
-            cornerLabel={s.corner}
-            diagram={s.diagram}
-          />
-        ))}
+        {stageKeys.map((k, i) => {
+          const stage = t(`nexus.fibra.stages.${k}`, { returnObjects: true }) as {
+            num: string; title: string; body: string; specs: string[]; corner: string;
+          };
+          const DiagramComp = DIAGRAMS[i];
+          return (
+            <Stage
+              key={k}
+              num={stage.num}
+              title={stage.title}
+              body={stage.body}
+              specs={stage.specs}
+              cornerLabel={stage.corner}
+              diagram={<DiagramComp />}
+            />
+          );
+        })}
       </section>
 
       {/* CTA */}
       <section className="ns-fo-cta" id="ns-fo-contact">
         <div className="glowbg" aria-hidden="true" />
         <div className="inner">
-          <div className={`eyebrow ${ctaRevVisible ? 'in' : ''}`} data-ns-reveal ref={ctaRevRef as React.RefObject<HTMLDivElement>}>
-            Empecemos
+          <div
+            className={`eyebrow ${ctaRevVisible ? 'in' : ''}`}
+            data-ns-reveal
+            ref={ctaRevRef as React.RefObject<HTMLDivElement>}
+          >
+            {t('nexus.fibra.cta.eyebrow')}
           </div>
           <h2 data-ns-reveal>
-            Evaluamos tu proyecto<br />de fibra <em>de principio a fin</em>.
+            {t('nexus.fibra.cta.h2a')}<br />
+            {t('nexus.fibra.cta.h2b')} <em>{t('nexus.fibra.cta.h2em')}</em>{t('nexus.fibra.cta.h2c')}
           </h2>
           <div className="actions" data-ns-reveal>
             <a
-              href="mailto:info@hmr-nexus.com?subject=Evaluación de proyecto de fibra"
+              href="mailto:info@hmr-nexus.com?subject=Project+evaluation+request"
               className="ns-btn ns-btn-primary"
             >
-              Solicitar evaluación del proyecto <span className="ar">→</span>
+              {t('nexus.fibra.cta.btnPrimary')} <span className="ar">→</span>
             </a>
             <a
-              href="mailto:info@hmr-nexus.com?subject=Solicitud de presupuesto"
+              href="mailto:info@hmr-nexus.com?subject=Quote+request"
               className="ns-btn ns-btn-ghost"
             >
-              Pedir presupuesto
+              {t('nexus.fibra.cta.btnSecondary')}
             </a>
           </div>
         </div>

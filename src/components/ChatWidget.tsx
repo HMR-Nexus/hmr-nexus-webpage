@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Minimize2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const API_URL = import.meta.env.VITE_CHAT_API_URL || 'https://hmr-nexus-bot-production.up.railway.app';
 const TG_BOT  = 'https://t.me/NexusEngineeringBot';
@@ -13,14 +14,9 @@ interface Message {
   ts: number;
 }
 
-const QUICK_ACTIONS = [
-  { label: 'FIBRA ÓPTICA',   text: '¿Qué servicios de fibra óptica ofrecen?' },
-  { label: 'SOFTWARE',       text: '¿Qué soluciones de software desarrollan?' },
-  { label: 'COTIZACIÓN',     text: 'Quiero solicitar una cotización para un proyecto' },
-  { label: 'CONTACTO',       text: '¿Cómo puedo contactarlos directamente?' },
-];
 
 export function ChatWidget() {
+  const { t } = useTranslation();
   const [open, setOpen]       = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput]     = useState('');
@@ -51,7 +47,7 @@ export function ChatWidget() {
       setTimeout(() => {
         setMessages([{
           role: 'bot',
-          text: 'Hola. Soy el asistente de **Nexus Engineering**.\n\n¿En qué puedo ayudarte? Puedo responder sobre fibra óptica, software, proyectos o cotizaciones.',
+          text: t('nexus.chat.greeting'),
           ts: Date.now(),
         }]);
       }, 400);
@@ -66,7 +62,7 @@ export function ChatWidget() {
     if (sendTimestamps.current.length >= RATE_LIMIT.maxMessages) {
       setMessages(prev => [...prev, {
         role: 'bot',
-        text: '[RATE LIMIT] Demasiados mensajes. Espera un momento.',
+        text: t('nexus.chat.rateLimit'),
         ts: now,
       }]);
       return;
@@ -88,12 +84,12 @@ export function ChatWidget() {
       const data = await res.json();
       const reply = typeof data.reply === 'string'
         ? data.reply.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]*>/g, '')
-        : 'Respuesta no válida.';
+        : t('nexus.chat.invalidReply');
       setMessages(prev => [...prev, { role: 'bot', text: reply, ts: Date.now() }]);
     } catch {
       setMessages(prev => [...prev, {
         role: 'bot',
-        text: '[ERROR] Problema de conexión. Contacta directamente: **info@hmr-nexus.com**',
+        text: t('nexus.chat.error'),
         ts: Date.now(),
       }]);
     } finally {
@@ -132,12 +128,12 @@ export function ChatWidget() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setOpen(true)}
-            aria-label="Abrir chat con asistente Nexus"
+            aria-label={t('nexus.chat.openLabel')}
             className="fixed bottom-6 right-[4.75rem] z-50 flex items-center gap-2 bg-ink px-4 py-2.5 hover:bg-graphite transition-colors"
             style={{ border: '1px solid var(--rule-strong)' }}
           >
             <span className="dot-accent animate-pulse-laser" />
-            <span className="mono-tag text-paper">ASK NEXUS</span>
+            <span className="mono-tag text-paper">{t('nexus.chat.openLabel').toUpperCase()}</span>
           </motion.button>
         )}
       </AnimatePresence>
@@ -168,14 +164,14 @@ export function ChatWidget() {
                   href={TG_BOT}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Continuar en Telegram"
+                  aria-label={t('nexus.chat.continueOnTelegram')}
                   className="mono-tag text-paper/50 hover:text-[color:var(--accent)] transition-colors"
                 >
                   TG ↗
                 </a>
                 <button
                   onClick={() => setOpen(false)}
-                  aria-label="Cerrar chat"
+                  aria-label={t('nexus.chat.closeChat')}
                   className="text-paper/50 hover:text-paper transition-colors"
                 >
                   <Minimize2 className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -187,7 +183,7 @@ export function ChatWidget() {
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 overscroll-contain">
               {messages.length === 0 && !loading && (
                 <div className="text-center mono-tag text-paper/40 mt-8">
-                  [CONNECTING...]
+                  {t('nexus.chat.connecting')}
                 </div>
               )}
 
@@ -219,7 +215,7 @@ export function ChatWidget() {
                 <div className="flex items-start gap-2 justify-start">
                   <span className="mono-tag text-[color:var(--accent)] pt-1 flex-shrink-0" style={{ width: 28 }}>NX</span>
                   <div className="mono-tag text-paper/60 px-3 py-2">
-                    [TYPING...]
+                    {t('nexus.chat.typing')}
                   </div>
                 </div>
               )}
@@ -227,14 +223,14 @@ export function ChatWidget() {
               {/* Quick actions */}
               {messages.length === 1 && !loading && (
                 <div className="grid grid-cols-2 gap-1.5 pt-2">
-                  {QUICK_ACTIONS.map(a => (
+                  {(['fibra','software','quote','contact'] as const).map(key => (
                     <button
-                      key={a.label}
-                      onClick={() => sendMessage(a.text)}
+                      key={key}
+                      onClick={() => sendMessage(t(`nexus.chat.quickTexts.${key}`))}
                       className="text-left px-3 py-2.5 mono-tag text-paper/75 hover:text-paper hover:bg-paper/5 transition-colors"
                       style={{ border: '1px solid var(--rule)' }}
                     >
-                      {a.label}
+                      {t(`nexus.chat.quickActions.${key}`)}
                     </button>
                   ))}
                 </div>
@@ -253,7 +249,7 @@ export function ChatWidget() {
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 aria-label="Message"
-                placeholder="Escribe tu mensaje…"
+                placeholder={t('nexus.chat.placeholder')}
                 disabled={loading}
                 autoComplete="off"
                 maxLength={500}
@@ -263,7 +259,7 @@ export function ChatWidget() {
               <button
                 type="submit"
                 disabled={!input.trim() || loading}
-                aria-label="Enviar mensaje"
+                aria-label={t('nexus.chat.send')}
                 className="px-3 py-2 bg-laser text-ink mono-tag disabled:opacity-30 transition-opacity hover:opacity-90"
               >
                 →

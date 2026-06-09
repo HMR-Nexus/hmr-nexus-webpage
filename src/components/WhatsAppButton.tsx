@@ -33,7 +33,7 @@ export function WhatsAppButton() {
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-paper/50 hover:text-paper transition-colors"
-                aria-label="Cerrar"
+                aria-label={t('nexus.chat.closeChat')}
               >
                 <X className="w-3.5 h-3.5" strokeWidth={1.5} />
               </button>

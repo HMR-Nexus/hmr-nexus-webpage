@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-// Props kept for future use (navigation from within page)
 interface SoftwarePageProps {
   onNavigate: (page: 'home' | 'fibra' | 'software') => void;
 }
@@ -33,8 +33,8 @@ function useFillSpine(flowRef: React.RefObject<HTMLElement | null>) {
     const flow = flowRef.current;
     const fill = fillRef.current;
     if (!flow || !fill) return;
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) { fill.style.height = '100%'; return; }
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { fill.style.height = '100%'; return; }
     let ticking = false;
     const onScroll = () => {
       if (ticking) return;
@@ -102,10 +102,10 @@ const DiagramAnalysis = () => (
     <rect x="250" y="240" width="90" height="40" rx="4" className="dg-fill-acc" />
     <rect x="250" y="240" width="90" height="40" rx="4" className="dg-acc" />
     <g className="dg-txt" textAnchor="middle">
-      <text x="155" y="134">FLUJO</text>
-      <text x="295" y="134">USUARIOS</text>
-      <text x="155" y="264">DATOS</text>
-      <text x="295" y="264" fill="var(--ns-accent,#FF4D2E)">PROBLEMA</text>
+      <text x="155" y="134">FLOW</text>
+      <text x="295" y="134">USERS</text>
+      <text x="155" y="264">DATA</text>
+      <text x="295" y="264" fill="var(--ns-accent,#FF4D2E)">PROBLEM</text>
     </g>
     <circle cx="295" cy="260" r="34" className="dg-acc" fill="none" />
     <line x1="320" y1="285" x2="350" y2="315" className="dg-acc" />
@@ -122,9 +122,9 @@ const DiagramStructure = () => (
     <rect x="96" y="96" width="80" height="52" rx="4" className="dg-fill-acc" />
     <rect x="96" y="96" width="80" height="52" rx="4" className="dg-acc" />
     <g className="dg-txt" textAnchor="middle">
-      <text x="136" y="126">MÓDULO 1</text>
-      <text x="136" y="190">MÓDULO 2</text>
-      <text x="136" y="254">MÓDULO 3</text>
+      <text x="136" y="126">MODULE 1</text>
+      <text x="136" y="190">MODULE 2</text>
+      <text x="136" y="254">MODULE 3</text>
     </g>
     <line x1="220" y1="186" x2="400" y2="186" className="dg-line" />
     <circle cx="240" cy="186" r="6" className="dg-node-acc" />
@@ -140,7 +140,7 @@ const DiagramStructure = () => (
       <text x="300" y="226">V2</text>
       <text x="360" y="152">V3</text>
     </g>
-    <text x="220" y="270" className="dg-txt">ROADMAP · PRIORIDADES</text>
+    <text x="220" y="270" className="dg-txt">ROADMAP · PRIORITIES</text>
   </svg>
 );
 
@@ -183,7 +183,7 @@ const DiagramDev = () => (
       <line x1="84" y1="186" x2="140" y2="186" />
       <line x1="84" y1="202" x2="160" y2="202" />
     </g>
-    <text x="76" y="248" className="dg-txt">APP WEB</text>
+    <text x="76" y="248" className="dg-txt">WEB APP</text>
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-fill-acc" />
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-acc" />
     <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">API</text>
@@ -192,7 +192,7 @@ const DiagramDev = () => (
       <path d="M320 148 V212 a40 12 0 0 0 80 0 V148" />
     </g>
     <path d="M320 180 a40 12 0 0 0 80 0" className="dg-line-2" />
-    <text x="360" y="244" textAnchor="middle" className="dg-txt">BASE DE DATOS</text>
+    <text x="360" y="244" textAnchor="middle" className="dg-txt">DATABASE</text>
     <g className="dg-acc">
       <path d="M180 180 H210" />
       <path d="M270 180 H320" />
@@ -212,11 +212,11 @@ const DiagramAI = () => (
       <rect x="60" y="180" width="90" height="20" rx="3" fill="none" />
       <rect x="60" y="210" width="90" height="20" rx="3" fill="none" />
     </g>
-    <text x="60" y="110" className="dg-txt">TAREAS</text>
+    <text x="60" y="110" className="dg-txt">TASKS</text>
     <path d="M240 130 L290 160 L290 215 L240 245 L190 215 L190 160 Z" className="dg-fill-acc" />
     <path d="M240 130 L290 160 L290 215 L240 245 L190 215 L190 160 Z" className="dg-acc" />
     <path d="M232 172 l-14 26 h18 l-6 22 l22 -32 h-18 l8 -16 z" className="dg-node-acc" />
-    <text x="240" y="270" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AGENTE IA</text>
+    <text x="240" y="270" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AI AGENT</text>
     <rect x="330" y="150" width="96" height="80" rx="4" className="dg-fill" stroke="rgba(245,243,238,0.3)" />
     <g className="dg-acc">
       <path d="M344 170 l5 5 l9 -10" />
@@ -226,7 +226,7 @@ const DiagramAI = () => (
       <line x1="344" y1="194" x2="412" y2="194" />
       <line x1="344" y1="212" x2="412" y2="212" />
     </g>
-    <text x="330" y="246" className="dg-txt">REPORTE</text>
+    <text x="330" y="246" className="dg-txt">REPORT</text>
     <g className="dg-line-2">
       <path d="M150 175 L186 185" />
       <path d="M290 188 L330 190" />
@@ -258,7 +258,7 @@ const DiagramIntegrations = () => (
     <g className="dg-txt" textAnchor="middle">
       <text x="240" y="82">CRM</text>
       <text x="390" y="184">ERP</text>
-      <text x="240" y="286">PAGOS</text>
+      <text x="240" y="286">PAYMENTS</text>
       <text x="90" y="184">MAIL</text>
       <text x="340" y="103">CHAT</text>
       <text x="146" y="255">API</text>
@@ -292,8 +292,8 @@ const DiagramQA = () => (
       <path d="M283 232 v-3 a4 4 0 0 1 8 0 v3" />
     </g>
     <g className="dg-txt">
-      <text x="302" y="207">PERMISOS · ROL</text>
-      <text x="302" y="241">TRAZABILIDAD</text>
+      <text x="302" y="207">PERMISSIONS · ROLE</text>
+      <text x="302" y="241">TRACEABILITY</text>
     </g>
   </svg>
 );
@@ -307,80 +307,44 @@ const DiagramDeploy = () => (
     <g className="dg-line-2">
       <line x1="250" y1="166" x2="410" y2="166" />
     </g>
-    <text x="262" y="138" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">MONITOREO</text>
+    <text x="262" y="138" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">MONITORING</text>
     <g className="dg-acc" fill="none" strokeWidth="1.6">
       <path d="M170 250 a40 40 0 1 1 12 28" />
     </g>
     <path d="M182 268 l-6 16 l16 -4 z" className="dg-node-acc" />
-    <text x="240" y="262" className="dg-txt">SOPORTE · MEJORAS CONTINUAS</text>
-    <text x="240" y="284" className="dg-txt">ESCALABILIDAD</text>
+    <text x="240" y="262" className="dg-txt">SUPPORT · CONTINUOUS IMPROVEMENT</text>
+    <text x="240" y="284" className="dg-txt">SCALABILITY</text>
   </svg>
 );
+
+const DIAGRAMS = [
+  DiagramAnalysis, DiagramStructure, DiagramUX, DiagramDev,
+  DiagramAI, DiagramIntegrations, DiagramQA, DiagramDeploy,
+];
 
 /* ── Main component ────────────────────────────────── */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function SoftwarePage(_props: SoftwarePageProps) {
+  const { t } = useTranslation();
   const flowRef = useRef<HTMLElement | null>(null);
   const fillRef = useFillSpine(flowRef);
 
-  const stages = [
-    {
-      num: 'Etapa 01', title: 'Consultoría & análisis del proceso',
-      body: 'Antes de programar, entendemos el negocio: flujos de trabajo, problemas operativos, usuarios, datos, integraciones, riesgos y objetivos reales. El software empieza por la pregunta correcta.',
-      specs: ['Flujos', 'Usuarios', 'Datos', 'Riesgos', 'Objetivos'],
-      corner: 'FASE · ANÁLISIS',
-      diagram: <DiagramAnalysis />,
-    },
-    {
-      num: 'Etapa 02', title: 'Estructuración del proyecto',
-      body: 'Definimos alcance, módulos, prioridades, arquitectura, roadmap, presupuesto, tiempos y criterios de entrega. Un plan claro antes de escribir la primera línea.',
-      specs: ['Alcance', 'Módulos', 'Arquitectura', 'Roadmap', 'Entrega'],
-      corner: 'FASE · ESTRUCTURA',
-      diagram: <DiagramStructure />,
-    },
-    {
-      num: 'Etapa 03', title: 'UX/UI & diseño de producto',
-      body: 'Interfaces claras, dashboards, paneles administrativos, formularios y flujos internos pensados para el uso diario. Diseño que reduce fricción y errores, no que los suma.',
-      specs: ['Dashboards', 'Paneles', 'Formularios', 'Flujos'],
-      corner: 'FASE · UX / UI',
-      diagram: <DiagramUX />,
-    },
-    {
-      num: 'Etapa 04', title: 'Desarrollo frontend & backend',
-      body: 'Construimos aplicaciones web, APIs, bases de datos, paneles internos, sistemas de gestión, portales y herramientas operativas. Software que aguanta el uso real, día tras día.',
-      specs: ['App web', 'APIs', 'Base de datos', 'Paneles'],
-      corner: 'FASE · DESARROLLO',
-      diagram: <DiagramDev />,
-    },
-    {
-      num: 'Etapa 05', title: 'Automatización e inteligencia artificial',
-      body: 'Bots, asistentes y automatización de tareas repetitivas. Análisis de datos, generación de reportes, clasificación de información y soporte operativo asistido por IA.',
-      specs: ['Bots', 'Asistentes', 'Reportes', 'Clasificación'],
-      corner: 'FASE · AUTOMATIZACIÓN · IA',
-      diagram: <DiagramAI />,
-    },
-    {
-      num: 'Etapa 06', title: 'Integraciones',
-      body: 'Conectamos con CRMs, ERPs, APIs externas, sistemas internos, WhatsApp/Telegram, correo, calendarios, hojas de cálculo, pagos y las plataformas que ya usas. Todo hablando el mismo idioma.',
-      specs: ['CRM / ERP', 'APIs', 'Chat', 'Pagos', 'Calendarios'],
-      corner: 'FASE · INTEGRACIONES',
-      diagram: <DiagramIntegrations />,
-    },
-    {
-      num: 'Etapa 07', title: 'Testing, seguridad & calidad',
-      body: 'Pruebas, control de errores, permisos por usuario, validaciones, trazabilidad y backups. Buenas prácticas de arquitectura para que el sistema sea confiable y auditable.',
-      specs: ['Pruebas', 'Permisos', 'Validaciones', 'Backups'],
-      corner: 'FASE · CALIDAD & SEGURIDAD',
-      diagram: <DiagramQA />,
-    },
-    {
-      num: 'Etapa 08', title: 'Deploy, mantenimiento & evolución',
-      body: 'Acompañamos el lanzamiento, el monitoreo y el soporte. Mejoras continuas y escalabilidad: el sistema crece con tu operación en lugar de frenarla.',
-      specs: ['Lanzamiento', 'Monitoreo', 'Soporte', 'Escalabilidad'],
-      corner: 'FASE · DEPLOY & EVOLUCIÓN',
-      diagram: <DiagramDeploy />,
-    },
-  ];
+  /* Generic reveal observer for this page */
+  useEffect(() => {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targets = document.querySelectorAll('[data-ns-reveal]:not(.ns-hero *), [data-ns-stagger], [data-ns-clip]');
+    if (reduced) { targets.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -8% 0px' }
+    );
+    targets.forEach(el => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  const stageKeys = ['01','02','03','04','05','06','07','08'] as const;
 
   return (
     <div className="ns-root">
@@ -399,7 +363,6 @@ export function SoftwarePage(_props: SoftwarePageProps) {
               <path d="M0 175 H1440 M0 350 H1440 M0 525 H1440" />
               <path d="M360 0 V700 M720 0 V700 M1080 0 V700" />
             </g>
-            {/* node network */}
             <g stroke="rgba(255,77,46,0.35)" strokeWidth="1.2" fill="none">
               <path d="M180 480 L420 360 L660 420 L900 300 L1180 360" />
               <path d="M420 360 L520 200 M660 420 L760 560 M900 300 L1040 180" />
@@ -419,25 +382,24 @@ export function SoftwarePage(_props: SoftwarePageProps) {
         <div className="inner">
           <div className="eyebrow">
             <span className="dot" aria-hidden="true" />
-            Desarrollo de software
+            {t('nexus.software.eyebrow')}
           </div>
-          <h1>Procesos complejos,<br />sistemas <span className="hl">claros</span>.</h1>
-          <p className="sub">
-            Diseñamos software que convierte procesos complejos en sistemas claros, medibles y escalables.
-            No solo programamos: analizamos, diseñamos, estructuramos, desarrollamos, integramos, automatizamos y mantenemos.
-          </p>
+          <h1>
+            {t('nexus.software.h1a')}<br /><span className="hl">{t('nexus.software.h1b')}</span> {t('nexus.software.h1c')}
+          </h1>
+          <p className="sub">{t('nexus.software.subtitle')}</p>
           <div className="actions">
             <button
               className="ns-btn ns-btn-primary"
               onClick={() => document.getElementById('ns-sw-contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Diseñar mi sistema <span className="ar">→</span>
+              {t('nexus.software.ctaPrimary')} <span className="ar">→</span>
             </button>
             <button
               className="ns-btn ns-btn-ghost"
               onClick={() => document.getElementById('ns-sw-flujo')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Ver el proceso
+              {t('nexus.software.ctaSecondary')}
             </button>
           </div>
         </div>
@@ -446,9 +408,9 @@ export function SoftwarePage(_props: SoftwarePageProps) {
       {/* VERBS */}
       <div className="ns-fo-verbs" aria-label="What we do">
         <div className="inner">
-          <div className="lead">No solo programamos</div>
+          <div className="lead">{t('nexus.software.verbsLead')}</div>
           <div className="chips">
-            {['Analiza', 'Diseña', 'Estructura', 'Desarrolla', 'Integra', 'Automatiza', 'Mantiene'].map(v => (
+            {(t('nexus.software.verbs', { returnObjects: true }) as string[]).map(v => (
               <span key={v} className="chip">{v}</span>
             ))}
           </div>
@@ -466,39 +428,46 @@ export function SoftwarePage(_props: SoftwarePageProps) {
           <div className="fill" ref={fillRef} />
         </div>
 
-        {stages.map(s => (
-          <Stage
-            key={s.num}
-            num={s.num}
-            title={s.title}
-            body={s.body}
-            specs={s.specs}
-            cornerLabel={s.corner}
-            diagram={s.diagram}
-          />
-        ))}
+        {stageKeys.map((k, i) => {
+          const stage = t(`nexus.software.stages.${k}`, { returnObjects: true }) as {
+            num: string; title: string; body: string; specs: string[]; corner: string;
+          };
+          const DiagramComp = DIAGRAMS[i];
+          return (
+            <Stage
+              key={k}
+              num={stage.num}
+              title={stage.title}
+              body={stage.body}
+              specs={stage.specs}
+              cornerLabel={stage.corner}
+              diagram={<DiagramComp />}
+            />
+          );
+        })}
       </section>
 
       {/* CTA */}
       <section className="ns-fo-cta" id="ns-sw-contact">
         <div className="glowbg" aria-hidden="true" />
         <div className="inner">
-          <div className="eyebrow" data-ns-reveal>Empecemos</div>
+          <div className="eyebrow" data-ns-reveal>{t('nexus.software.cta.eyebrow')}</div>
           <h2 data-ns-reveal>
-            Convirtamos tu operación<br />en un <em>sistema claro</em>.
+            {t('nexus.software.cta.h2a')}<br />
+            {t('nexus.software.cta.h2b')} <em>{t('nexus.software.cta.h2em')}</em>{t('nexus.software.cta.h2c')}
           </h2>
           <div className="actions" data-ns-reveal>
             <a
-              href="mailto:info@hmr-nexus.com?subject=Diseñar mi sistema"
+              href="mailto:info@hmr-nexus.com?subject=Design+my+system"
               className="ns-btn ns-btn-primary"
             >
-              Diseñar mi sistema <span className="ar">→</span>
+              {t('nexus.software.cta.btnPrimary')} <span className="ar">→</span>
             </a>
             <a
-              href="mailto:info@hmr-nexus.com?subject=Solicitud de consultoría"
+              href="mailto:info@hmr-nexus.com?subject=Consultancy+request"
               className="ns-btn ns-btn-ghost"
             >
-              Solicitar consultoría
+              {t('nexus.software.cta.btnSecondary')}
             </a>
           </div>
         </div>

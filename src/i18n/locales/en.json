@@ -204,7 +204,7 @@
       "type": "Fiber Ops · Supabase · Vercel",
       "badge": "In development",
       "imageAlt": "Abstract dark product visual for Lumen fiber operations platform",
-      "description": "Operational platform for fiber work orders, Rückmeldungen, dual certification, billing preparation and technician field reports. Designed around the workflows used in German fiber projects.",
+      "description": "Operational platform for fiber work orders, status feedback, dual certification, billing preparation and technician field reports. Designed around the workflows used in German fiber projects.",
       "metrics": [
         {
           "value": "WO",
@@ -655,6 +655,332 @@
     },
     "copyright": "© 2026 HMR Nexus Engineering GmbH. All rights reserved.",
     "madeIn": "Made with precision in Celle, Germany"
+  },
+  "nexus": {
+    "nav": {
+      "fibra": "Fibre",
+      "software": "Software",
+      "process": "Process",
+      "letsTalk": "Let's talk",
+      "home": "Home",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "slogan": {
+        "quality": "Quality",
+        "commitment": "Commitment",
+        "innovation": "Innovation"
+      },
+      "back": "Back"
+    },
+    "home": {
+      "ticker": {
+        "live": "LIVE · 12 CREWS IN FIELD",
+        "location": "CELLE · DE",
+        "fibreLaid": "FIBRE LAID TODAY"
+      },
+      "eyebrow": "HMR · NEXUS ENGINEERING GMBH",
+      "hero": {
+        "line1": "Innovation.",
+        "line2": "Quality.",
+        "line3": "Commitment.",
+        "subtitle": "An engineering company held to three principles — and measured by them on every project, in every discipline.",
+        "ctaPrimary": "Start a project",
+        "ctaSecondary": "What we do",
+        "scroll": "Scroll"
+      },
+      "marquee": {
+        "items": ["Innovation", "Quality", "Commitment", "Kabelzug", "Einblasung RA / RD", "Fusion Splicing", "FTTH Activation", "NE3 · NE4", "OTDR Verified"]
+      },
+      "div01": {
+        "idx": "Division 01 · Field",
+        "h2a": "Fibre, in the",
+        "h2b": "ground",
+        "body1": "Subcontract engineering for German carriers. We pull cable, blow tubes, splice fibre and activate homes — to spec, on schedule, with the paperwork that survives an audit.",
+        "body2": "Hard hats, OTDRs, and NE3 / NE4 project leadership across the DACH region. Field engineering that holds up under audit.",
+        "feat": {
+          "01": "Kabelzug · 144F & 288F",
+          "02": "Einblasung · RA / RD",
+          "03": "Splice work · ≤ 0.08 dB",
+          "04": "FTTH Activation",
+          "05": "NE3 / NE4 Project management"
+        },
+        "cta": "View fibre work"
+      },
+      "stats": {
+        "idx": "By the numbers",
+        "h2a": "Measured.",
+        "h2b": "Not",
+        "h2em": "marketed",
+        "km": "KM fibre · per month",
+        "splice": "Avg splice loss · dB",
+        "sla": "Fault → fix · SLA",
+        "system": "System · end to end"
+      },
+      "div02": {
+        "idx": "Division 02 · Code",
+        "h2a": "The software",
+        "h2b": "we use",
+        "h2em": "on site",
+        "body1": "One operational stack for telecom field work: production metrics, cost-per-unit, quality control and open tickets — synced in real time to a portal your customer can watch.",
+        "body2": "Production-grade software sold to carriers and contractors who need real-time control over their networks.",
+        "feat": {
+          "01": "Live production dashboards — every segment, every crew.",
+          "02": "Cost & margin truth, down to the metre.",
+          "03": "AXON — the AI agent that flags drift before it costs you."
+        },
+        "cta": "View software work"
+      },
+      "process": {
+        "idx": "How a project runs",
+        "h2a": "Four phases.",
+        "h2em": "One",
+        "h2b": "source of truth.",
+        "phases": {
+          "01": { "phase": "Phase 01", "title": "Survey", "body": "We walk the route, model it to scale, and quote to the metre — no surprises buried in the contract." },
+          "02": { "phase": "Phase 02", "title": "Build", "body": "Crews pull, blow and splice. Every action logged on-site, synced live. You watch progress the moment it happens." },
+          "03": { "phase": "Phase 03", "title": "Activate", "body": "FTTH commissioning and OTDR-verified handover. Splice loss, port maps and as-builts exported in one pack." },
+          "04": { "phase": "Phase 04", "title": "Operate", "body": "We monitor the network around the clock. Faults raise tickets, dispatch the nearest crew, and close the loop — fast." }
+        }
+      },
+      "thesis": {
+        "idx": "Thesis",
+        "quote1": "Most contractors vanish at handover.",
+        "quote2": "We're measured on",
+        "quoteEm": "what happens next",
+        "cite": "— Horstmann · Mehls · Romero · Founders"
+      },
+      "cta": {
+        "h2a": "Let's build the",
+        "h2em": "next",
+        "h2b": "one.",
+        "email": "info@hmr-nexus.com",
+        "phone": "+49 176 31524448"
+      },
+      "footer": {
+        "slogan": {
+          "innovation": "Innovation",
+          "quality": "Quality",
+          "commitment": "Commitment"
+        },
+        "contact": {
+          "heading": "Contact",
+          "hours": "Mon–Fri · 08:00–18:00"
+        },
+        "address": {
+          "heading": "Address",
+          "street": "Am Riethkamp 1E",
+          "city": "29229 Celle",
+          "country": "Germany"
+        },
+        "company": {
+          "heading": "Company",
+          "fibra": "Fibre work",
+          "software": "Software development",
+          "process": "Process"
+        },
+        "legal": {
+          "heading": "Legal",
+          "register": "AG Celle",
+          "imprint": "Imprint",
+          "privacy": "Privacy",
+          "terms": "Terms"
+        },
+        "status": "All systems · operational"
+      }
+    },
+    "fibra": {
+      "eyebrow": "Fibre optic works",
+      "h1a": "From planning",
+      "h1b": "to",
+      "h1hl": "activation",
+      "h1c": ".",
+      "subtitle": "We execute fibre projects with technical and operational control at every stage. NEXUS doesn't just install: it structures, coordinates, executes, measures, documents and delivers.",
+      "ctaPrimary": "Request a quote",
+      "ctaSecondary": "View the process",
+      "verbsLead": "We don't just install fibre",
+      "verbs": ["Structures", "Coordinates", "Executes", "Measures", "Documents", "Delivers"],
+      "stages": {
+        "01": {
+          "num": "Stage 01",
+          "title": "Consultancy & structuring",
+          "body": "We analyse the real project scope, define phases, organise resources and review technical requirements to prepare a clear execution structure with estimated timelines.",
+          "specs": ["Scope", "Phases", "Resources", "Schedule"],
+          "corner": "PHASE · PLANNING"
+        },
+        "02": {
+          "num": "Stage 02",
+          "title": "Budgeting",
+          "body": "We prepare budgets based on real scope: civil works, NE3, splicing, blowing, installations, activations, appointments, equipment and operational support. Every line item broken down and justified.",
+          "specs": ["Civil works", "NE3", "Splicing", "Blowing", "Equipment"],
+          "corner": "PHASE · COSTS"
+        },
+        "03": {
+          "num": "Stage 03",
+          "title": "Appointments & operational coordination",
+          "body": "We manage appointments with clients, technicians, administrators, property owners and site managers. Precise coordination avoids delays and improves field execution.",
+          "specs": ["Clients", "Technicians", "Sites", "Schedule"],
+          "corner": "PHASE · COORDINATION"
+        },
+        "04": {
+          "num": "Stage 04",
+          "title": "Civil works",
+          "body": "Trenching, ducting, conduits and permits. We prepare the route, resolve crossings and chambers, carry out repairs and coordinate with existing infrastructure.",
+          "specs": ["Trenching", "Ducting", "Permits", "Chambers", "Crossings"],
+          "corner": "PHASE · CIVIL WORKS"
+        },
+        "05": {
+          "num": "Stage 05",
+          "title": "Outdoor network · NE3",
+          "body": "Fibre routing, main routes and distribution to buildings and delivery points. We leave the outdoor network technically prepared to continue with indoor installation.",
+          "specs": ["Routing", "Routes", "Distribution", "Handover"],
+          "corner": "PHASE · OUTDOOR NETWORK · NE3"
+        },
+        "06": {
+          "num": "Stage 06",
+          "title": "Splicing & measurements",
+          "body": "Fibre joints, enclosures, ODF and CTO. We carry out continuity tests and OTDR measurements with quality control and technical documentation for each point.",
+          "specs": ["Joints", "ODF / CTO", "OTDR", "Continuity", "QA"],
+          "corner": "PHASE · SPLICING & MEASUREMENT"
+        },
+        "07": {
+          "num": "Stage 07",
+          "title": "Fibre blowing",
+          "body": "Blowing inside ducts and microducts with route control, cable preparation and route validation. We verify each section before proceeding.",
+          "specs": ["Microducts", "Routes", "Cabling", "Validation"],
+          "corner": "PHASE · BLOWING"
+        },
+        "08": {
+          "num": "Stage 08",
+          "title": "Installation & activation · NE5",
+          "body": "Final customer installation, equipment connection and ONT/router where applicable. We validate the service, activate the connection and carry out the final functional test.",
+          "specs": ["ONT / Router", "Connection", "Activation", "Final test"],
+          "corner": "PHASE · INSTALLATION · NE5"
+        },
+        "09": {
+          "num": "Stage 09",
+          "title": "Handover & documentation",
+          "body": "Technical closeout with photographic evidence, reports, measurements and final project status. We deliver complete and traceable documentation of the entire execution.",
+          "specs": ["Reports", "Evidence", "Measurements", "As-built"],
+          "corner": "PHASE · HANDOVER"
+        }
+      },
+      "cta": {
+        "eyebrow": "Let's start",
+        "h2a": "We evaluate your fibre project",
+        "h2b": "from",
+        "h2em": "start to finish",
+        "h2c": ".",
+        "btnPrimary": "Request project evaluation",
+        "btnSecondary": "Request a quote"
+      }
+    },
+    "software": {
+      "eyebrow": "Software development",
+      "h1a": "Complex processes,",
+      "h1b": "clear",
+      "h1c": "systems.",
+      "subtitle": "We design software that converts complex processes into clear, measurable and scalable systems. We don't just code: we analyse, design, structure, develop, integrate, automate and maintain.",
+      "ctaPrimary": "Design my system",
+      "ctaSecondary": "View the process",
+      "verbsLead": "We don't just code",
+      "verbs": ["Analyses", "Designs", "Structures", "Develops", "Integrates", "Automates", "Maintains"],
+      "stages": {
+        "01": {
+          "num": "Stage 01",
+          "title": "Consultancy & process analysis",
+          "body": "Before coding, we understand the business: workflows, operational problems, users, data, integrations, risks and real objectives. Software starts with the right question.",
+          "specs": ["Workflows", "Users", "Data", "Risks", "Objectives"],
+          "corner": "PHASE · ANALYSIS"
+        },
+        "02": {
+          "num": "Stage 02",
+          "title": "Project structuring",
+          "body": "We define scope, modules, priorities, architecture, roadmap, budget, timelines and delivery criteria. A clear plan before writing the first line.",
+          "specs": ["Scope", "Modules", "Architecture", "Roadmap", "Delivery"],
+          "corner": "PHASE · STRUCTURE"
+        },
+        "03": {
+          "num": "Stage 03",
+          "title": "UX/UI & product design",
+          "body": "Clear interfaces, dashboards, admin panels, forms and internal flows designed for daily use. Design that reduces friction and errors, not adds to them.",
+          "specs": ["Dashboards", "Panels", "Forms", "Flows"],
+          "corner": "PHASE · UX / UI"
+        },
+        "04": {
+          "num": "Stage 04",
+          "title": "Frontend & backend development",
+          "body": "We build web applications, APIs, databases, internal panels, management systems, portals and operational tools. Software that holds up under real daily use.",
+          "specs": ["Web app", "APIs", "Database", "Panels"],
+          "corner": "PHASE · DEVELOPMENT"
+        },
+        "05": {
+          "num": "Stage 05",
+          "title": "Automation & artificial intelligence",
+          "body": "Bots, assistants and automation of repetitive tasks. Data analysis, report generation, information classification and AI-assisted operational support.",
+          "specs": ["Bots", "Assistants", "Reports", "Classification"],
+          "corner": "PHASE · AUTOMATION · AI"
+        },
+        "06": {
+          "num": "Stage 06",
+          "title": "Integrations",
+          "body": "We connect with CRMs, ERPs, external APIs, internal systems, WhatsApp/Telegram, email, calendars, spreadsheets, payments and the platforms you already use. Everything speaking the same language.",
+          "specs": ["CRM / ERP", "APIs", "Chat", "Payments", "Calendars"],
+          "corner": "PHASE · INTEGRATIONS"
+        },
+        "07": {
+          "num": "Stage 07",
+          "title": "Testing, security & quality",
+          "body": "Tests, error control, user permissions, validations, traceability and backups. Architecture best practices so the system is reliable and auditable.",
+          "specs": ["Tests", "Permissions", "Validations", "Backups"],
+          "corner": "PHASE · QUALITY & SECURITY"
+        },
+        "08": {
+          "num": "Stage 08",
+          "title": "Deploy, maintenance & evolution",
+          "body": "We support launch, monitoring and support. Continuous improvements and scalability: the system grows with your operation instead of holding it back.",
+          "specs": ["Launch", "Monitoring", "Support", "Scalability"],
+          "corner": "PHASE · DEPLOY & EVOLUTION"
+        }
+      },
+      "cta": {
+        "eyebrow": "Let's start",
+        "h2a": "Let's turn your operation",
+        "h2b": "into a",
+        "h2em": "clear system",
+        "h2c": ".",
+        "btnPrimary": "Design my system",
+        "btnSecondary": "Request consultancy"
+      }
+    },
+    "legal": {
+      "lastUpdated": "Last updated: February 2026",
+      "close": "Close"
+    },
+    "chat": {
+      "openLabel": "Ask Nexus",
+      "greeting": "Hello. I'm the **Nexus Engineering** assistant.\n\nHow can I help you? I can answer questions about fibre optics, software, projects or quotes.",
+      "rateLimit": "[RATE LIMIT] Too many messages. Please wait a moment.",
+      "error": "[ERROR] Connection problem. Contact us directly: **info@hmr-nexus.com**",
+      "invalidReply": "Invalid response.",
+      "placeholder": "Type your message…",
+      "send": "Send message",
+      "continueOnTelegram": "Continue on Telegram",
+      "closeChat": "Close chat",
+      "connecting": "[CONNECTING...]",
+      "typing": "[TYPING...]",
+      "quickActions": {
+        "fibra": "FIBRE OPTICS",
+        "software": "SOFTWARE",
+        "quote": "QUOTE",
+        "contact": "CONTACT"
+      },
+      "quickTexts": {
+        "fibra": "What fibre optic services do you offer?",
+        "software": "What software solutions do you develop?",
+        "quote": "I'd like to request a quote for a project",
+        "contact": "How can I contact you directly?"
+      }
+    }
   },
   "history": {
     "label": "Story",
