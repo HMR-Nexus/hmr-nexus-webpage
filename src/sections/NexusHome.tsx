@@ -1,9 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import type { PageId } from '@/lib/navigation';
 import { consumePendingAnchor } from '@/lib/navAnchor';
 import type { LegalPage } from '@/components/LegalOverlay';
+import {
+  FORMSPREE_CONFIG,
+  validateEmail,
+  checkSpamPatterns,
+} from '@/config/formspree';
 
 interface NexusHomeProps {
   onNavigate: (page: PageId) => void;
@@ -178,6 +183,263 @@ function ProcessSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+/* ── Contact form ──────────────────────────────────── */
+type FormState = 'idle' | 'submitting' | 'success' | 'error';
+
+interface FormFields {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  message?: string;
+}
+
+function ContactForm() {
+  const { t } = useTranslation();
+  const [fields, setFields] = useState<FormFields>({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [formState, setFormState] = useState<FormState>('idle');
+  const [honeypot, setHoneypot] = useState('');
+
+  const { validation } = FORMSPREE_CONFIG.security;
+
+  const validate = useCallback((f: FormFields): FormErrors => {
+    const e: FormErrors = {};
+    const name = f.name.trim();
+    const email = f.email.trim();
+    const message = f.message.trim();
+
+    if (!name) e.name = t('nexus.home.contact.form.errors.nameRequired');
+    else if (name.length < validation.minNameLength) e.name = t('nexus.home.contact.form.errors.nameTooShort');
+    else if (name.length > validation.maxNameLength) e.name = t('nexus.home.contact.form.errors.nameTooLong');
+
+    if (!email) e.email = t('nexus.home.contact.form.errors.emailRequired');
+    else if (!validateEmail(email)) e.email = t('nexus.home.contact.form.errors.emailInvalid');
+    else if (email.length > validation.maxEmailLength) e.email = t('nexus.home.contact.form.errors.emailTooLong');
+
+    if (!message) e.message = t('nexus.home.contact.form.errors.messageRequired');
+    else if (message.length < validation.minMessageLength) e.message = t('nexus.home.contact.form.errors.messageTooShort');
+    else if (message.length > validation.maxMessageLength) e.message = t('nexus.home.contact.form.errors.messageTooLong');
+    else if (checkSpamPatterns(message)) e.message = t('nexus.home.contact.form.errors.messageSpam');
+
+    return e;
+  }, [t, validation]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFields(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Honeypot check — if filled, silently fake success (bot trap)
+    if (honeypot) { setFormState('success'); return; }
+
+    const errs = validate(fields);
+    if (Object.keys(errs).length > 0) { setErrors(errs); return; }
+    setErrors({});
+    setFormState('submitting');
+
+    try {
+      const res = await fetch(FORMSPREE_CONFIG.formUrl, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fields.name.trim(),
+          email: fields.email.trim(),
+          message: fields.message.trim(),
+          _subject: 'Website contact — Nexus Engineering',
+        }),
+      });
+
+      if (res.ok) {
+        setFormState('success');
+      } else {
+        setFormState('error');
+      }
+    } catch {
+      setFormState('error');
+    }
+  };
+
+  const handleReset = () => {
+    setFields({ name: '', email: '', message: '' });
+    setErrors({});
+    setFormState('idle');
+  };
+
+  return (
+    <div className="ns-contact-grid">
+      {/* ── Form column ── */}
+      <div>
+        {formState === 'success' ? (
+          <div className="ns-contact-success" data-ns-reveal>
+            <div className="ok-mark">✓ OK</div>
+            <h3>{t('nexus.home.contact.form.successTitle')}</h3>
+            <p>{t('nexus.home.contact.form.successBody')}</p>
+            <button
+              type="button"
+              className="ns-btn ns-btn-ghost ns-btn-sm"
+              style={{ marginTop: '16px', alignSelf: 'flex-start' }}
+              onClick={handleReset}
+            >
+              {t('nexus.home.contact.form.reset')}
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} noValidate>
+            {/* Honeypot — hidden from real users */}
+            <div className="ns-contact-honeypot" aria-hidden="true">
+              <label htmlFor="ns-hp-website">Website</label>
+              <input
+                id="ns-hp-website"
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={e => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
+            {/* Name */}
+            <div className="ns-contact-field">
+              <label className="ns-contact-label" htmlFor="ns-cf-name">
+                {t('nexus.home.contact.form.name')}
+              </label>
+              <input
+                id="ns-cf-name"
+                name="name"
+                type="text"
+                className="ns-contact-input"
+                placeholder={t('nexus.home.contact.form.namePlaceholder')}
+                value={fields.name}
+                onChange={handleChange}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? 'ns-cf-name-err' : undefined}
+                autoComplete="name"
+              />
+              {errors.name && (
+                <span id="ns-cf-name-err" className="ns-contact-error" role="alert">
+                  {errors.name}
+                </span>
+              )}
+            </div>
+
+            {/* Email */}
+            <div className="ns-contact-field">
+              <label className="ns-contact-label" htmlFor="ns-cf-email">
+                {t('nexus.home.contact.form.email')}
+              </label>
+              <input
+                id="ns-cf-email"
+                name="email"
+                type="email"
+                className="ns-contact-input"
+                placeholder={t('nexus.home.contact.form.emailPlaceholder')}
+                value={fields.email}
+                onChange={handleChange}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? 'ns-cf-email-err' : undefined}
+                autoComplete="email"
+                inputMode="email"
+              />
+              {errors.email && (
+                <span id="ns-cf-email-err" className="ns-contact-error" role="alert">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+
+            {/* Message */}
+            <div className="ns-contact-field">
+              <label className="ns-contact-label" htmlFor="ns-cf-message">
+                {t('nexus.home.contact.form.message')}
+              </label>
+              <textarea
+                id="ns-cf-message"
+                name="message"
+                className="ns-contact-textarea"
+                placeholder={t('nexus.home.contact.form.messagePlaceholder')}
+                value={fields.message}
+                onChange={handleChange}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? 'ns-cf-message-err' : undefined}
+              />
+              {errors.message && (
+                <span id="ns-cf-message-err" className="ns-contact-error" role="alert">
+                  {errors.message}
+                </span>
+              )}
+            </div>
+
+            {/* Submit */}
+            <div className="ns-contact-submit-row">
+              <button
+                type="submit"
+                className="ns-btn ns-btn-primary"
+                disabled={formState === 'submitting'}
+              >
+                {formState === 'submitting'
+                  ? t('nexus.home.contact.form.submitting')
+                  : <>{t('nexus.home.contact.form.submit')} <span className="ar">→</span></>
+                }
+              </button>
+            </div>
+
+            {/* Error banner */}
+            {formState === 'error' && (
+              <div className="ns-contact-banner" role="alert" data-ns-reveal>
+                <strong>{t('nexus.home.contact.form.errorTitle')}</strong>{' '}
+                {t('nexus.home.contact.form.errorBody')}{' '}
+                <a href="mailto:info@hmr-nexus.com">info@hmr-nexus.com</a>.
+              </div>
+            )}
+          </form>
+        )}
+      </div>
+
+      {/* ── Direct contact rail ── */}
+      <div className="ns-contact-rail" data-ns-reveal>
+        {/* Email CTA */}
+        <div className="ns-contact-rail-item">
+          <div className="ns-contact-rail-label">{t('nexus.home.contact.rail.emailLabel')}</div>
+          <a
+            href="mailto:info@hmr-nexus.com"
+            className="ns-contact-email-cta ns-btn ns-btn-ghost"
+          >
+            {t('nexus.home.contact.rail.emailCta')} <span className="ar">→</span>
+          </a>
+        </div>
+
+        {/* Phone */}
+        <div className="ns-contact-rail-item">
+          <div className="ns-contact-rail-label">{t('nexus.home.contact.rail.phoneLabel')}</div>
+          <div className="ns-contact-rail-value">
+            <a href="tel:+4917631524448" className="ns-contact-tel">+49 176 31524448</a>
+          </div>
+          <div className="ns-contact-rail-value" style={{ fontSize: '12px', marginTop: '4px', color: 'rgba(245,243,238,0.38)' }}>
+            {t('nexus.home.contact.rail.hours')}
+          </div>
+        </div>
+
+        {/* Address */}
+        <div className="ns-contact-rail-item">
+          <div className="ns-contact-rail-label">{t('nexus.home.contact.rail.addressLabel')}</div>
+          <div className="ns-contact-rail-value">
+            {t('nexus.home.contact.rail.addressLine1')}<br />
+            {t('nexus.home.contact.rail.addressLine2')}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -547,18 +809,26 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
         </div>
       </section>
 
-      {/* ═══ CTA ═══ */}
-      <section className="ns-cta-blk" id="ns-contact">
-        <h2 data-ns-reveal>
-          {t('nexus.home.cta.h2a')}<br /><em>{t('nexus.home.cta.h2em')}</em> {t('nexus.home.cta.h2b')}
-        </h2>
-        <div className="actions" data-ns-reveal>
-          <a href="mailto:info@hmr-nexus.com" className="ns-btn ns-btn-primary">
-            {t('nexus.home.cta.email')} <span className="ar">→</span>
-          </a>
-          <a href="tel:+4917631524448" className="ns-btn ns-btn-ghost">
-            {t('nexus.home.cta.phone')}
-          </a>
+      {/* ═══ CONTACT ═══ */}
+      <section className="ns-contact-blk" id="ns-contact">
+        <div className="inner">
+          <div className="ns-contact-eyebrow" data-ns-reveal>
+            {t('nexus.home.contact.eyebrow')}
+          </div>
+          <h2
+            data-ns-reveal
+            style={{
+              fontFamily: 'var(--f-display, \'Space Grotesk\', sans-serif)',
+              fontWeight: 300,
+              fontSize: 'clamp(40px, 8vw, 128px)',
+              lineHeight: 0.92,
+              letterSpacing: '-0.05em',
+              color: 'var(--ns-paper)',
+            }}
+          >
+            {t('nexus.home.cta.h2a')}<br /><em>{t('nexus.home.cta.h2em')}</em> {t('nexus.home.cta.h2b')}
+          </h2>
+          <ContactForm />
         </div>
       </section>
 

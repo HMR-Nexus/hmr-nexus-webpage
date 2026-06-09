@@ -757,6 +757,45 @@
         "email": "info@hmr-nexus.com",
         "phone": "+49 176 31524448"
       },
+      "contact": {
+        "eyebrow": "Direktkontakt",
+        "form": {
+          "name": "Vollständiger Name",
+          "namePlaceholder": "Ihr Name",
+          "email": "E-Mail",
+          "emailPlaceholder": "ihre@email.de",
+          "message": "Nachricht",
+          "messagePlaceholder": "Beschreiben Sie Ihr Projekt oder Ihre Frage…",
+          "submit": "Nachricht senden",
+          "submitting": "Wird gesendet…",
+          "reset": "Weitere Nachricht senden",
+          "errors": {
+            "nameRequired": "Name ist erforderlich",
+            "nameTooShort": "Der Name muss mindestens 2 Zeichen lang sein",
+            "nameTooLong": "Der Name darf maximal 50 Zeichen lang sein",
+            "emailRequired": "E-Mail ist erforderlich",
+            "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
+            "emailTooLong": "Die E-Mail-Adresse darf maximal 100 Zeichen lang sein",
+            "messageRequired": "Nachricht ist erforderlich",
+            "messageTooShort": "Die Nachricht muss mindestens 10 Zeichen lang sein",
+            "messageTooLong": "Die Nachricht darf maximal 1000 Zeichen lang sein",
+            "messageSpam": "Bitte entfernen Sie Links aus Ihrer Nachricht und versuchen Sie es erneut"
+          },
+          "successTitle": "Nachricht erhalten.",
+          "successBody": "Wir melden uns innerhalb eines Werktages bei Ihnen.",
+          "errorTitle": "Etwas ist schiefgelaufen.",
+          "errorBody": "Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an"
+        },
+        "rail": {
+          "emailLabel": "Direkt per E-Mail",
+          "emailCta": "info@hmr-nexus.com schreiben",
+          "phoneLabel": "Telefon",
+          "addressLabel": "Adresse",
+          "addressLine1": "Am Riethkamp 1E",
+          "addressLine2": "29229 Celle, Deutschland",
+          "hours": "Mo–Fr · 08:00–18:00 MEZ"
+        }
+      },
       "footer": {
         "slogan": {
           "innovation": "Innovation",

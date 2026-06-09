@@ -757,6 +757,45 @@
         "email": "info@hmr-nexus.com",
         "phone": "+49 176 31524448"
       },
+      "contact": {
+        "eyebrow": "Direct contact",
+        "form": {
+          "name": "Full name",
+          "namePlaceholder": "Your name",
+          "email": "Email",
+          "emailPlaceholder": "your@email.com",
+          "message": "Message",
+          "messagePlaceholder": "Tell us about your project or question…",
+          "submit": "Send message",
+          "submitting": "Sending…",
+          "reset": "Send another message",
+          "errors": {
+            "nameRequired": "Name is required",
+            "nameTooShort": "Name must be at least 2 characters",
+            "nameTooLong": "Name must be 50 characters or fewer",
+            "emailRequired": "Email is required",
+            "emailInvalid": "Please enter a valid email address",
+            "emailTooLong": "Email must be 100 characters or fewer",
+            "messageRequired": "Message is required",
+            "messageTooShort": "Message must be at least 10 characters",
+            "messageTooLong": "Message must be 1000 characters or fewer",
+            "messageSpam": "Please remove links from your message and try again"
+          },
+          "successTitle": "Message received.",
+          "successBody": "We'll get back to you within one business day.",
+          "errorTitle": "Something went wrong.",
+          "errorBody": "Please try again, or write us directly at"
+        },
+        "rail": {
+          "emailLabel": "Email us directly",
+          "emailCta": "Write to info@hmr-nexus.com",
+          "phoneLabel": "Phone",
+          "addressLabel": "Address",
+          "addressLine1": "Am Riethkamp 1E",
+          "addressLine2": "29229 Celle, Germany",
+          "hours": "Mon–Fri · 08:00–18:00 CET"
+        }
+      },
       "footer": {
         "slogan": {
           "innovation": "Innovation",

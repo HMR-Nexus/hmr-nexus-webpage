@@ -1008,27 +1008,268 @@
   text-transform: uppercase;
 }
 
-/* ═══════════════ CTA ═══════════════ */
-.ns-cta-blk {
-  text-align: center;
-  padding: clamp(100px, 14vw, 200px) var(--ns-pad);
+/* ═══════════════ CONTACT FORM SECTION ═══════════════ */
+.ns-contact-blk {
+  padding: clamp(96px, 12vw, 160px) var(--ns-pad);
   background: var(--ns-ink);
-}
-.ns-cta-blk h2 {
-  font-family: var(--f-display, sans-serif);
-  font-weight: 300;
-  font-size: clamp(40px, 8vw, 128px);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
+  border-bottom: 1px solid var(--ns-line);
   color: var(--ns-paper);
 }
-.ns-cta-blk h2 em { font-style: italic; font-weight: 400; }
-.ns-cta-blk .actions {
+.ns-contact-blk .inner {
+  max-width: var(--ns-maxw);
+  margin: 0 auto;
+}
+
+/* Eyebrow above the h2 */
+.ns-contact-eyebrow {
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ns-accent);
+  margin-bottom: 18px;
   display: flex;
-  gap: 14px;
-  justify-content: center;
-  margin-top: 48px;
+  align-items: center;
+  gap: 10px;
+}
+.ns-contact-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--ns-accent);
+}
+
+/* Two-column layout: form | rail */
+.ns-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: start;
+  margin-top: 56px;
+}
+
+/* ── Field labels ───────────────────────────────────── */
+.ns-contact-label {
+  display: block;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,243,238,0.55);
+  margin-bottom: 8px;
+}
+
+/* ── Inputs / textarea ──────────────────────────────── */
+.ns-contact-input,
+.ns-contact-textarea {
+  width: 100%;
+  background: var(--ns-ink-2);
+  border: 1px solid var(--ns-line);
+  color: var(--ns-paper);
+  font-family: var(--f-body, 'Inter', sans-serif);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 14px 16px;
+  border-radius: 0;
+  outline: none;
+  transition:
+    border-color .3s var(--ns-ease-soft),
+    box-shadow .3s var(--ns-ease-soft),
+    background-color .3s var(--ns-ease-soft);
+  -webkit-appearance: none;
+}
+.ns-contact-input::placeholder,
+.ns-contact-textarea::placeholder {
+  color: rgba(245,243,238,0.28);
+}
+.ns-contact-input:focus,
+.ns-contact-textarea:focus {
+  border-color: var(--ns-accent);
+  box-shadow: 0 0 0 3px rgba(255,77,46,0.14);
+  background: rgba(22,25,32,0.9);
+}
+.ns-contact-input[aria-invalid="true"],
+.ns-contact-textarea[aria-invalid="true"] {
+  border-color: rgba(255,77,46,0.7);
+  box-shadow: 0 0 0 3px rgba(255,77,46,0.1);
+}
+.ns-contact-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* ── Field wrapper ──────────────────────────────────── */
+.ns-contact-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+}
+.ns-contact-field:last-of-type { margin-bottom: 0; }
+
+/* ── Inline error message ───────────────────────────── */
+.ns-contact-error {
+  margin-top: 6px;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ns-accent);
+}
+
+/* ── Submit row ─────────────────────────────────────── */
+.ns-contact-submit-row {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
   flex-wrap: wrap;
+}
+
+/* ── Error banner ───────────────────────────────────── */
+.ns-contact-banner {
+  margin-top: 24px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255,77,46,0.4);
+  background: rgba(255,77,46,0.07);
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(245,243,238,0.82);
+}
+.ns-contact-banner a {
+  color: var(--ns-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Success state ──────────────────────────────────── */
+.ns-contact-success {
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ns-contact-success .ok-mark {
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ns-accent);
+  margin-bottom: 4px;
+}
+.ns-contact-success h3 {
+  font-family: var(--f-display, 'Space Grotesk', sans-serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 46px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ns-paper);
+}
+.ns-contact-success p {
+  font-size: 16px;
+  color: rgba(245,243,238,0.65);
+  max-width: 44ch;
+  line-height: 1.55;
+}
+
+/* ── Direct contact rail ────────────────────────────── */
+.ns-contact-rail {
+  padding-top: 4px;
+  border-top: 1px solid var(--ns-line);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.ns-contact-rail-item {}
+.ns-contact-rail-label {
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245,243,238,0.42);
+  margin-bottom: 10px;
+}
+.ns-contact-rail-value {
+  font-size: 14px;
+  color: rgba(245,243,238,0.78);
+  line-height: 1.7;
+}
+
+/* Email CTA button in rail */
+.ns-contact-email-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ns-paper);
+  border: 1px solid var(--ns-line-2);
+  padding: 11px 16px;
+  border-radius: 0;
+  text-decoration: none;
+  transition:
+    border-color .3s var(--ns-ease-soft),
+    color .3s var(--ns-ease-soft),
+    background-color .3s var(--ns-ease-soft);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ns-contact-email-cta .ar {
+  display: inline-block;
+  transition: transform .42s var(--ns-ease-spring);
+}
+@media (hover: hover) {
+  .ns-contact-email-cta:hover {
+    border-color: var(--ns-accent);
+    color: var(--ns-accent);
+  }
+  .ns-contact-email-cta:hover .ar { transform: translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-contact-email-cta { transition: none; }
+  .ns-contact-email-cta .ar { transition: none; }
+}
+
+/* Tel link in rail */
+.ns-contact-tel {
+  color: rgba(245,243,238,0.6);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .3s var(--ns-ease-soft);
+}
+.ns-contact-tel:hover { color: var(--ns-paper); }
+
+/* Honeypot — visually hidden, keep out of tab order */
+.ns-contact-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 880px) {
+  .ns-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .ns-contact-rail {
+    border-top: 1px solid var(--ns-line);
+    padding-top: 32px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px 40px;
+  }
+}
+@media (max-width: 390px) {
+  .ns-contact-blk { overflow-x: hidden; }
+  .ns-contact-input,
+  .ns-contact-textarea { font-size: 16px; /* prevent iOS zoom */ }
 }
 
 /* ═══════════════ FOOTER ═══════════════ */
