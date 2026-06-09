@@ -12,15 +12,7 @@ export function Footer() {
   const { t } = useTranslation();
   const [legalPage, setLegalPage] = useState<LegalPage>(null);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      window.history.pushState(null, '', `#${sectionId}`);
-    }
-  };
-
-  const navLinks = ['services', 'products', 'portfolio', 'contact'];
+  const navLinks = ['home', 'history', 'services', 'products', 'contact'];
   const legalLinks: { key: string; page: LegalPage }[] = [
     { key: 'imprint', page: 'imprint' },
     { key: 'privacy', page: 'privacy' },
@@ -31,7 +23,7 @@ export function Footer() {
 
   return (
     <>
-      <footer className="bg-ink text-paper rule-top">
+      <footer className="relative z-10 bg-ink text-paper rule-top">
         <div className="max-w-[1440px] mx-auto px-6 md:px-7 py-16 md:py-20">
           {/* Big wordmark + lockup */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16">
@@ -53,7 +45,7 @@ export function Footer() {
           </div>
 
           {/* Mid: nav + legal in columns */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 rule-top pt-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-12 rule-top pt-10">
             <div>
               <div className="mono-tag text-paper/50 mb-4">SECTIONS</div>
               <ul className="space-y-2.5">
@@ -61,10 +53,6 @@ export function Footer() {
                   <li key={id}>
                     <a
                       href={`#${id}`}
-                      onClick={(event) => {
-                        event.preventDefault();
-                        scrollToSection(id);
-                      }}
                       className="text-paper/80 hover:text-paper text-[15px] transition-colors"
                     >
                       {t(`nav.${id}`)}

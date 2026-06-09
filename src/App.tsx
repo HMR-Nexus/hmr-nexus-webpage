@@ -1,112 +1,96 @@
-import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { Navbar } from './sections/Navbar';
-import { Hero } from './sections/Hero';
-import { Values } from './sections/Values';
-import { TrustBanner } from './components/TrustBanner';
-import { LiveGrid } from './components/LiveGrid';
-import { toPageId, type PageId } from './lib/navigation';
-import './i18n';
-
-// Lazy-load below-the-fold sections for faster initial paint
-const Services    = lazy(() => import('./sections/Services').then(m => ({ default: m.Services })));
-const Products    = lazy(() => import('./sections/Products').then(m => ({ default: m.Products })));
-const Portfolio   = lazy(() => import('./sections/Portfolio').then(m => ({ default: m.Portfolio })));
-const History     = lazy(() => import('./sections/History').then(m => ({ default: m.History })));
-const Contact     = lazy(() => import('./sections/Contact').then(m => ({ default: m.Contact })));
-const Footer      = lazy(() => import('./sections/Footer').then(m => ({ default: m.Footer })));
-
-/* Nothing-style loading indicator */
-function SectionLoader() {
-  return (
-    <div className="py-16 flex justify-center">
-      <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-nd-text-disabled">
-        [LOADING...]
-      </span>
-    </div>
-  );
-}
+import { useState, useEffect, useCallback } from "react";
+import { toPageId, type PageId } from "./lib/navigation";
+import { NexusNav, NexusSubNav } from "./sections/NexusNav";
+import { NexusHome } from "./sections/NexusHome";
+import { FibraPage } from "./sections/FibraPage";
+import { SoftwarePage } from "./sections/SoftwarePage";
+import { useScrollProgress } from "./hooks/useScrollProgress";
+import "./i18n";
+import "./nexus-site.css";
 
 function App() {
-  const [preselectedProjectType, setPreselectedProjectType] = useState<string>('');
-  const [activePage, setActivePage] = useState<PageId>(() => (
-    typeof window === 'undefined' ? 'home' : toPageId(window.location.hash)
-  ));
+  const [activePage, setActivePage] = useState<PageId>(() =>
+    typeof window === "undefined" ? "home" : toPageId(window.location.hash)
+  );
 
-  // Framer Motion scroll progress
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const scrollProgress = useScrollProgress();
 
   useEffect(() => {
-    const onHashChange = () => setActivePage(toPageId(window.location.hash));
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    const onHashChange = () => {
+      setActivePage(toPageId(window.location.hash));
+      window.scrollTo({ top: 0, behavior: "instant" });
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  const navigateTo = useCallback((page: PageId, projectType?: string) => {
-    if (projectType) {
-      setPreselectedProjectType(projectType);
-    }
+  const navigateTo = useCallback((page: PageId) => {
     setActivePage(page);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.location.hash = page;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }, []);
+
+  const isSubPage = activePage === "fibra" || activePage === "software";
 
   const renderPage = () => {
     switch (activePage) {
-      case 'history':
-        return <History />;
-      case 'services':
-        return <Services onRequestNE4Briefing={() => navigateTo('contact', 'ne4')} />;
-      case 'portfolio':
-        return <Portfolio />;
-      case 'products':
-        return <Products onRequestDemo={() => navigateTo('contact', 'saas')} />;
-      case 'contact':
-        return <Contact preselectedType={preselectedProjectType} />;
-      case 'home':
+      case "fibra":
+        return (
+          <FibraPage
+            onNavigate={(page) => navigateTo(page)}
+          />
+        );
+      case "software":
+        return (
+          <SoftwarePage
+            onNavigate={(page) => navigateTo(page)}
+          />
+        );
+      case "home":
       default:
         return (
-          <>
-            <Hero
-              onScrollToServices={() => navigateTo('services')}
-              onScrollToProducts={() => navigateTo('products')}
-            />
-            <TrustBanner />
-            <Values />
-          </>
+          <NexusHome onNavigate={navigateTo} />
         );
     }
   };
 
   return (
-    <div className="min-h-screen bg-nd-black text-nd-text-primary font-sans overflow-x-hidden relative">
-      {/* Global LiveGrid — dots breathe and code flashes across entire page */}
-      <div className="fixed inset-0 z-0 opacity-25">
-        <LiveGrid />
-      </div>
+    <div
+      className="ns-root"
+      style={{
+        background: "#0A0B0D",
+        minHeight: "100vh",
+        color: "#F5F3EE",
+        overflowX: "hidden",
+      }}
+    >
+      {/* Grain overlay */}
+      <div className="ns-grain" aria-hidden="true" />
 
-      {/* Scroll Progress Bar — Nothing: thin, Nexus blue accent */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-px z-50 bg-nexus-blue origin-left"
-        style={{ scaleX }}
+      {/* Scroll progress bar */}
+      <div
+        className="ns-progress"
+        style={{ width: `${scrollProgress}%` }}
+        role="progressbar"
+        aria-label="Page scroll progress"
+        aria-valuenow={Math.round(scrollProgress)}
+        aria-valuemin={0}
+        aria-valuemax={100}
       />
 
-      {/* Navbar — always eager */}
-      <Navbar activePage={activePage} onNavigate={navigateTo} />
+      {/* Navigation */}
+      {isSubPage ? (
+        <NexusSubNav onBack={() => navigateTo("home")} />
+      ) : (
+        <NexusNav activePage={activePage} onNavigate={navigateTo} />
+      )}
 
-      {/* Main Content — above LiveGrid */}
-      <main id="main-content" className="relative z-10">
-        <Suspense fallback={<SectionLoader />}>
-          {renderPage()}
-        </Suspense>
+      {/* Main content */}
+      <main id="main-content">
+        {renderPage()}
       </main>
-
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
     </div>
   );
 }
