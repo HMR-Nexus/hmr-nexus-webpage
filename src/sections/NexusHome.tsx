@@ -207,6 +207,15 @@ function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [formState, setFormState] = useState<FormState>('idle');
   const [honeypot, setHoneypot] = useState('');
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  // Not every visitor has a mailto handler configured — copy the address as
+  // a fallback so the click always produces a visible result.
+  const handleEmailClick = () => {
+    navigator.clipboard?.writeText('info@hmr-nexus.com').catch(() => {});
+    setEmailCopied(true);
+    window.setTimeout(() => setEmailCopied(false), 2500);
+  };
 
   const { validation } = FORMSPREE_CONFIG.security;
 
@@ -414,9 +423,13 @@ function ContactForm() {
           <a
             href="mailto:info@hmr-nexus.com"
             className="ns-contact-email-cta ns-btn ns-btn-ghost"
+            onClick={handleEmailClick}
           >
             {t('nexus.home.contact.rail.emailCta')} <span className="ar">→</span>
           </a>
+          <div className="ns-contact-copied" role="status" aria-live="polite">
+            {emailCopied ? t('nexus.home.contact.rail.copied') : ' '}
+          </div>
         </div>
 
         {/* Phone */}

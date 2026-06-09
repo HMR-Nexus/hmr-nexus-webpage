@@ -789,6 +789,7 @@
         "rail": {
           "emailLabel": "Direkt per E-Mail",
           "emailCta": "info@hmr-nexus.com schreiben",
+          "copied": "Adresse in die Zwischenablage kopiert",
           "phoneLabel": "Telefon",
           "addressLabel": "Adresse",
           "addressLine1": "Riethkamp 1E",

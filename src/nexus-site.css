@@ -1219,6 +1219,15 @@
   display: inline-block;
   transition: transform .42s var(--ns-ease-spring);
 }
+.ns-contact-copied {
+  min-height: 16px;
+  margin-top: 8px;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ns-green, #00C26A);
+}
 @media (hover: hover) {
   .ns-contact-email-cta:hover {
     border-color: var(--ns-accent);
