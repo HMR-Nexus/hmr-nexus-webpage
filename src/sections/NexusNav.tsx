@@ -91,6 +91,21 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
     setMobileOpen(false);
   };
 
+  // Navigating to the current page is a React no-op (no remount), so the
+  // pending-anchor handoff never fires — scroll directly when already home.
+  const goToAnchor = (id: string) => {
+    if (activePage === 'home') {
+      setMobileOpen(false);
+      // Small delay so the mobile menu closes and body scroll unlocks first
+      window.setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 80);
+    } else {
+      setPendingAnchor(id);
+      navigate('home');
+    }
+  };
+
   const navClass = [
     'ns-nav',
     scrolled ? 'scrolled' : '',
@@ -119,25 +134,14 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
             >
               {t('nexus.nav.software')}
             </button>
-            <button
-              onClick={() => {
-                setPendingAnchor('ns-process');
-                navigate('home');
-              }}
-            >
+            <button onClick={() => goToAnchor('ns-process')}>
               {t('nexus.nav.process')}
             </button>
           </div>
 
           <LangSwitcher />
 
-          <button
-            className="ns-nav-cta"
-            onClick={() => {
-              setPendingAnchor('ns-contact');
-              navigate('home');
-            }}
-          >
+          <button className="ns-nav-cta" onClick={() => goToAnchor('ns-contact')}>
             {t('nexus.nav.letsTalk')} <span className="ar">→</span>
           </button>
 
@@ -180,10 +184,7 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
               <LangSwitcher mobile />
             </div>
             <div className="cta-wrap">
-              <button className="ns-btn ns-btn-primary" onClick={() => {
-                setPendingAnchor('ns-contact');
-                navigate('home');
-              }}>
+              <button className="ns-btn ns-btn-primary" onClick={() => goToAnchor('ns-contact')}>
                 {t('nexus.nav.letsTalk')} <span className="ar">→</span>
               </button>
             </div>
