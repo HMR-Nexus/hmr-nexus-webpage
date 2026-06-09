@@ -14,13 +14,63 @@
   --ns-mist: #9A9A94;
   --ns-accent: #FF4D2E;
   --ns-accent-2: #FF6B50;
+  --ns-green: #00C26A;
   --ns-line: rgba(245,243,238,0.12);
   --ns-line-2: rgba(245,243,238,0.22);
   --ns-line-ink: rgba(10,11,13,0.12);
   --ns-ease: cubic-bezier(0.16,1,0.3,1);
   --ns-ease-io: cubic-bezier(0.65,0,0.35,1);
+  /* Premium expressive easing — soft, overshoot-free settle */
+  --ns-ease-soft: cubic-bezier(0.22,1,0.36,1);
+  /* Spring-like CSS transition for hover lift on cards/blocks */
+  --ns-ease-spring: cubic-bezier(0.34,1.56,0.64,1);
   --ns-maxw: 1360px;
   --ns-pad: 40px;
+  /* Per-division sub-accent — overridden by [data-accent] scopes.
+     Defaults to laser so untagged surfaces are unchanged. */
+  --ns-sub: var(--ns-accent);
+  --ns-sub-glow: rgba(255,77,46,0.32);
+  --ns-sub-soft: rgba(255,77,46,0.14);
+}
+
+/* ── Per-division accent scopes ────────────────────────────── */
+/* Fiber keeps laser; software shifts the sub-accent to signal green.
+   Only the --ns-sub* vars change — the brand laser stays the global accent. */
+[data-accent="laser"] {
+  --ns-sub: var(--ns-accent);
+  --ns-sub-glow: rgba(255,77,46,0.32);
+  --ns-sub-soft: rgba(255,77,46,0.14);
+}
+[data-accent="green"] {
+  --ns-sub: var(--ns-green);
+  --ns-sub-glow: rgba(0,194,106,0.30);
+  --ns-sub-soft: rgba(0,194,106,0.13);
+}
+
+/* ── Global selection + dark scrollbar ─────────────────────── */
+.ns-root ::selection {
+  background: rgba(255,77,46,0.28);
+  color: var(--ns-paper);
+}
+.ns-root {
+  scrollbar-color: rgba(245,243,238,0.22) transparent;
+}
+.ns-root *::-webkit-scrollbar { width: 10px; height: 10px; }
+.ns-root *::-webkit-scrollbar-track { background: transparent; }
+.ns-root *::-webkit-scrollbar-thumb {
+  background: rgba(245,243,238,0.16);
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.ns-root *::-webkit-scrollbar-thumb:hover { background: rgba(245,243,238,0.3); background-clip: padding-box; }
+
+/* ── Global focus-visible baseline ─────────────────────────── */
+.ns-root :focus { outline: none; }
+.ns-root :focus-visible {
+  outline: 2px solid var(--ns-paper);
+  outline-offset: 3px;
+  border-radius: 1px;
 }
 
 /* ── Grain overlay ─────────────────────────────────────────── */
@@ -70,13 +120,23 @@
   left: 0;
   right: 0;
   z-index: 120;
-  transition: transform .5s var(--ns-ease), background .4s, border-color .4s, backdrop-filter .4s;
+  /* idle: blur 0 so the scrolled state can interpolate smoothly */
+  background: rgba(10,11,13,0);
+  backdrop-filter: blur(0px) saturate(1);
   border-bottom: 1px solid transparent;
+  transition:
+    transform .6s var(--ns-ease-soft),
+    background-color .5s var(--ns-ease-soft),
+    border-color .5s var(--ns-ease-soft),
+    backdrop-filter .5s var(--ns-ease-soft);
 }
 .ns-nav.scrolled {
-  background: rgba(10,11,13,0.72);
-  backdrop-filter: blur(20px) saturate(1.2);
+  background: rgba(10,11,13,0.66);
+  backdrop-filter: blur(22px) saturate(1.3);
   border-bottom-color: var(--ns-line);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-nav { transition: none; }
 }
 .ns-nav.hide { transform: translateY(-110%); }
 .ns-nav .inner {
@@ -123,33 +183,93 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 0;
+  width: 100%;
   height: 1px;
   background: var(--ns-accent);
-  transition: width .4s var(--ns-ease);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .45s var(--ns-ease-soft);
 }
 .ns-navlinks button:hover,
 .ns-navlinks button.active { opacity: 1; }
 .ns-navlinks button:hover::after,
-.ns-navlinks button.active::after { width: 100%; }
-.ns-nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--ns-accent);
-  color: var(--ns-ink);
-  padding: 10px 16px;
+.ns-navlinks button.active::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ns-navlinks button::after { transition: none; }
+}
+
+/* ── Language switcher ─────────────────────────────────────── */
+.ns-lang { display: flex; align-items: center; gap: 6px; }
+.ns-lang.mobile { padding: 12px 0; }
+.ns-lang .sep {
   font-family: var(--f-mono, 'JetBrains Mono', monospace);
   font-size: 11px;
+  color: rgba(245,243,238,0.25);
+  user-select: none;
+}
+.ns-lang button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 1px;
+  color: rgba(245,243,238,0.45);
+  transition: color .25s var(--ns-ease-soft);
+}
+.ns-lang button:hover { color: rgba(245,243,238,0.8); }
+.ns-lang button.active { color: var(--ns-accent); }
+.ns-lang button.active:hover { color: var(--ns-accent); }
+.ns-nav-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: var(--ns-accent);
+  color: var(--ns-ink);
+  padding: 11px 18px;
+  font-family: var(--f-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 2px;
-  transition: transform .3s var(--ns-ease), background .3s;
-  will-change: transform;
   cursor: pointer;
   border: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform .42s var(--ns-ease-soft),
+    box-shadow .42s var(--ns-ease-soft),
+    filter .3s var(--ns-ease-soft);
+  will-change: transform;
 }
-.ns-nav-cta:hover { background: var(--ns-accent-2); }
+.ns-nav-cta .ar {
+  display: inline-block;
+  line-height: 1;
+  transition: transform .42s var(--ns-ease-spring);
+}
+@media (hover: hover) {
+  .ns-nav-cta:hover {
+    filter: brightness(1.07);
+    box-shadow: 0 8px 26px -8px rgba(255,77,46,0.4), 0 0 0 1px rgba(255,77,46,0.32);
+    transform: translateY(-1px);
+  }
+  .ns-nav-cta:hover .ar { transform: translateX(4px); }
+}
+.ns-nav-cta:active { transform: scale(0.98); transition-duration: .08s; filter: brightness(1.02); }
+@media (hover: none) {
+  .ns-nav-cta:active { box-shadow: 0 6px 18px -8px rgba(255,77,46,0.4); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-nav-cta, .ns-nav-cta .ar { transition: none; }
+  .ns-nav-cta:active { transform: none; }
+}
 .ns-menu-btn {
   display: none;
   flex-direction: column;
@@ -318,32 +438,109 @@
 }
 @keyframes ns-scrolldown { 0% { top: -50%; } 100% { top: 100%; } }
 
-/* ═══════════════ BUTTONS ═══════════════ */
+/* ═══════════════ BUTTON SYSTEM ═══════════════
+   One coherent system for every CTA on the site.
+   - Sizing scale: default + .ns-btn-sm (nav) + .ns-btn-lg.
+   - Primary: laser/sub-accent fill, luminous hover, spring arrow, press 0.98.
+   - Ghost: hairline border, paper sweep-fill from left, clean text swap.
+   - GPU-friendly: only transform/opacity/box-shadow animate.
+   The sub-accent (--ns-sub) lets a primary button inherit its division color
+   (laser for fiber, signal green for software) without new globals.
+   ────────────────────────────────────────────── */
 .ns-btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 9px;
   font-family: var(--f-mono, monospace);
   font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 15px 24px;
+  padding: 16px 28px;
   border-radius: 2px;
-  transition: transform .35s var(--ns-ease), background .3s, border-color .3s, color .3s;
-  will-change: transform;
   cursor: pointer;
   border: none;
+  white-space: nowrap;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  transition:
+    transform .42s var(--ns-ease-soft),
+    box-shadow .42s var(--ns-ease-soft),
+    background-color .3s var(--ns-ease-soft),
+    border-color .3s var(--ns-ease-soft),
+    color .3s var(--ns-ease-soft);
+  will-change: transform;
 }
-.ns-btn .ar { transition: transform .35s var(--ns-ease); }
-.ns-btn:hover .ar { transform: translateX(4px); }
-.ns-btn-primary { background: var(--ns-accent); color: var(--ns-ink); }
-.ns-btn-primary:hover { background: var(--ns-accent-2); }
+.ns-btn .ar {
+  display: inline-block;
+  line-height: 1;
+  transform: translateX(0);
+  transition: transform .42s var(--ns-ease-spring);
+}
+/* press — fast ease-out, consistent across all variants */
+.ns-btn:active { transform: scale(0.98); transition-duration: .08s; }
+@media (prefers-reduced-motion: reduce) {
+  .ns-btn, .ns-btn .ar { transition: none; }
+  .ns-btn:active { transform: none; }
+}
+
+/* ── Size scale ────────────────────────────────────────────── */
+.ns-btn-sm { padding: 11px 18px; font-size: 11px; letter-spacing: 0.1em; gap: 7px; }
+.ns-btn-lg { padding: 18px 34px; font-size: 13px; }
+
+/* ── Primary (laser / sub-accent fill) ─────────────────────── */
+.ns-btn-primary {
+  background: var(--ns-sub);
+  color: var(--ns-ink);
+}
+@media (hover: hover) {
+  .ns-btn-primary:hover {
+    background: var(--ns-sub);
+    filter: brightness(1.07);
+    box-shadow: 0 8px 30px -8px var(--ns-sub-glow), 0 0 0 1px var(--ns-sub-glow);
+    transform: translateY(-1px);
+  }
+  .ns-btn-primary:hover .ar { transform: translateX(4px); }
+}
+.ns-btn-primary:active { filter: brightness(1.02); }
+/* deliberate mobile tap state */
+@media (hover: none) {
+  .ns-btn-primary:active { box-shadow: 0 6px 20px -8px var(--ns-sub-glow); }
+}
+
+/* ── Ghost (hairline border, sweep fill) ───────────────────── */
 .ns-btn-ghost {
   border: 1px solid var(--ns-line-2);
   color: var(--ns-paper);
-  background: none;
+  background: transparent;
 }
-.ns-btn-ghost:hover { border-color: var(--ns-paper); background: rgba(245,243,238,0.04); }
+/* sweep layer — slides in from left, sits behind the label */
+.ns-btn-ghost::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ns-paper);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .5s var(--ns-ease-soft);
+}
+@media (hover: hover) {
+  .ns-btn-ghost:hover {
+    border-color: var(--ns-paper);
+    color: var(--ns-ink);
+  }
+  .ns-btn-ghost:hover::before { transform: scaleX(1); }
+  .ns-btn-ghost:hover .ar { transform: translateX(4px); }
+}
+.ns-btn-ghost:active { color: var(--ns-ink); border-color: var(--ns-paper); }
+.ns-btn-ghost:active::before { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ns-btn-ghost::before { transition: none; }
+}
 
 /* ═══════════════ MARQUEE ═══════════════ */
 .ns-marquee {
@@ -357,10 +554,13 @@
   display: inline-flex;
   gap: 48px;
   white-space: nowrap;
-  animation: ns-marquee 38s linear infinite;
+  animation: ns-marquee 48s linear infinite;
   will-change: transform;
 }
 .ns-marquee:hover .track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .ns-marquee .track { animation: none; }
+}
 .ns-marquee .item {
   font-family: var(--f-display, sans-serif);
   font-weight: 400;
@@ -417,20 +617,20 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-ns-reveal] {
     opacity: 0;
-    transform: translateY(34px);
-    transition: opacity 1s var(--ns-ease), transform 1s var(--ns-ease);
+    transform: translateY(22px);
+    transition: opacity .7s var(--ns-ease-soft), transform .7s var(--ns-ease-soft);
   }
   [data-ns-reveal].in { opacity: 1; transform: none; }
   [data-ns-clip] {
     clip-path: inset(0 100% 0 0);
-    transition: clip-path 1.1s var(--ns-ease);
+    transition: clip-path .9s var(--ns-ease-soft);
   }
   [data-ns-clip].in { clip-path: inset(0 0 0 0); }
   [data-ns-stagger] > * {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity .9s var(--ns-ease), transform .9s var(--ns-ease);
-    transition-delay: calc(var(--i,0) * 90ms);
+    transform: translateY(18px);
+    transition: opacity .68s var(--ns-ease-soft), transform .68s var(--ns-ease-soft);
+    transition-delay: calc(var(--i,0) * 75ms);
   }
   [data-ns-stagger].in > * { opacity: 1; transform: none; }
 }
@@ -445,6 +645,10 @@
   padding: clamp(28px, 3vw, 44px);
   border-right: 1px solid var(--ns-line-ink);
   position: relative;
+  transition: background-color .4s var(--ns-ease-soft);
+}
+@media (hover: hover) {
+  .ns-stat:hover { background: rgba(10,11,13,0.03); }
 }
 .ns-stat:last-child { border-right: none; }
 .ns-stat .num {
@@ -494,22 +698,113 @@
   padding: 16px 0;
   border-bottom: 1px solid var(--ns-line);
 }
+.ns-feat .row {
+  transition: background-color .4s var(--ns-ease-soft), padding-left .4s var(--ns-ease-soft);
+}
 .ns-feat .row .k {
   font-family: var(--f-mono, monospace);
   font-size: 11px;
   letter-spacing: 0.06em;
-  color: var(--ns-accent);
+  color: var(--ns-sub);
   width: 42px;
   flex-shrink: 0;
+  transition: color .3s var(--ns-ease-soft);
 }
-.ns-feat .row .t { font-size: 15px; color: rgba(245,243,238,0.82); }
+.ns-feat .row .t {
+  font-size: 15px;
+  color: rgba(245,243,238,0.82);
+  transition: color .3s var(--ns-ease-soft);
+}
+@media (hover: hover) {
+  .ns-feat .row:hover { background: var(--ns-sub-soft); padding-left: 10px; }
+  .ns-feat .row:hover .t { color: var(--ns-paper); }
+}
+
+/* ── Division sub-identity ─────────────────────────────────── */
+/* A 1px accent top-rule + tinted eyebrow makes each division read "designed".
+   Fiber = laser marker style; software = green, with a leading caret marker. */
+.ns-div .ns-sec-head .idx {
+  position: relative;
+  padding-top: 18px;
+  color: var(--ns-sub);
+}
+/* full-strength accent once revealed (base .idx is 0.5 muted) */
+.ns-div .ns-sec-head .idx.in { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .ns-div .ns-sec-head .idx { opacity: 1; }
+}
+.ns-div .ns-sec-head .idx::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 1px;
+  background: var(--ns-sub);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .8s var(--ns-ease-soft) .1s;
+}
+.ns-div .ns-sec-head .idx.in::before { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ns-div .ns-sec-head .idx::before { transform: scaleX(1); transition: none; }
+}
+
+/* Fiber: square laser markers (tactile/field) */
+.ns-div[data-accent="laser"] .ns-feat .row .k::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 9px;
+  vertical-align: 1px;
+  background: var(--ns-sub);
+}
+/* Software: terminal-style caret marker (green-on-dark) */
+.ns-div[data-accent="green"] .ns-feat .row .k::before {
+  content: '›';
+  margin-right: 8px;
+  color: var(--ns-sub);
+  font-weight: 600;
+}
 
 .ns-terminal {
+  position: relative;
   background: #05060A;
   border: 1px solid var(--ns-line);
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 40px 90px -30px rgba(0,0,0,0.7);
+  transition: border-color .5s var(--ns-ease-soft), box-shadow .5s var(--ns-ease-soft), transform .6s var(--ns-ease-spring);
+}
+@media (hover: hover) {
+  .ns-terminal:hover {
+    border-color: var(--ns-sub-soft);
+    box-shadow: 0 48px 100px -30px rgba(0,0,0,0.75), 0 0 50px -24px var(--ns-sub-glow);
+    transform: translateY(-3px);
+  }
+}
+/* faint green scanline drifting down the terminal body */
+.ns-terminal .body::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ns-sub-glow), transparent);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: ns-scanline 5.5s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-terminal .body::before { display: none; }
+  .ns-terminal:hover { transform: none; }
+}
+@keyframes ns-scanline {
+  0% { top: 56px; opacity: 0; }
+  8% { opacity: 0.5; }
+  92% { opacity: 0.5; }
+  100% { top: 100%; opacity: 0; }
 }
 .ns-terminal .bar {
   display: flex;
@@ -519,7 +814,7 @@
   border-bottom: 1px solid var(--ns-line);
 }
 .ns-terminal .bar .d { width: 9px; height: 9px; border-radius: 50%; background: rgba(245,243,238,0.16); }
-.ns-terminal .bar .d.r { background: var(--ns-accent); }
+.ns-terminal .bar .d.r { background: var(--ns-sub); }
 .ns-terminal .bar .label {
   margin-left: auto;
   font-family: var(--f-mono, monospace);
@@ -529,28 +824,83 @@
   color: rgba(245,243,238,0.5);
 }
 .ns-terminal .body {
+  position: relative;
   padding: 24px;
   font-family: var(--f-mono, monospace);
   font-size: 13px;
   line-height: 1.9;
   min-height: 300px;
 }
-.ns-terminal .ln { display: flex; gap: 16px; opacity: 0; transition: opacity .3s; }
-.ns-terminal .ln.show { opacity: 1; }
+.ns-terminal .ln {
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .45s var(--ns-ease-soft), transform .45s var(--ns-ease-soft);
+}
+.ns-terminal .ln.show { opacity: 1; transform: none; }
 .ns-terminal .ln .l { color: rgba(245,243,238,0.45); width: 90px; flex-shrink: 0; }
 .ns-terminal .ln .v { color: var(--ns-paper); }
-.ns-terminal .ln.ok .v { color: #4ADE80; }
-.ns-terminal .ln.acc .v { color: var(--ns-accent); }
+.ns-terminal .ln.ok .v { color: var(--ns-green); }
+.ns-terminal .ln.acc .v { color: var(--ns-sub); }
 .ns-caret {
   display: inline-block;
   width: 8px;
   height: 15px;
-  background: var(--ns-accent);
+  background: var(--ns-sub);
   margin-left: 2px;
   vertical-align: -2px;
   animation: ns-blink 1s steps(2) infinite;
 }
 @keyframes ns-blink { 50% { opacity: 0; } }
+
+/* ═══════════════ FIELD MAP (Division 01 media) ═══════════════ */
+/* The fiber counterpart to the software terminal: a framed field diagram
+   with a corner label and a laser pulse running the duct path. */
+.ns-fieldmap {
+  position: relative;
+  width: 100%;
+  background: var(--ns-ink-2);
+  border: 1px solid var(--ns-line);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,0.7);
+  transition: border-color .5s var(--ns-ease-soft), box-shadow .5s var(--ns-ease-soft), transform .6s var(--ns-ease-spring);
+}
+@media (hover: hover) {
+  .ns-fieldmap:hover {
+    border-color: var(--ns-sub-soft);
+    box-shadow: 0 48px 100px -30px rgba(0,0,0,0.75), 0 0 50px -24px var(--ns-sub-glow);
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-fieldmap:hover { transform: none; }
+}
+.ns-fieldmap .bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--ns-line);
+}
+.ns-fieldmap .bar .d { width: 9px; height: 9px; border-radius: 50%; background: rgba(245,243,238,0.16); }
+.ns-fieldmap .bar .d.r { background: var(--ns-sub); }
+.ns-fieldmap .bar .label {
+  margin-left: auto;
+  font-family: var(--f-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,243,238,0.5);
+}
+.ns-fieldmap .canvas { padding: 28px; }
+.ns-fieldmap svg { width: 100%; height: auto; display: block; }
+/* laser pulse traveling the duct path */
+.ns-fieldmap .fm-pulse { fill: var(--ns-accent); }
+@media (prefers-reduced-motion: reduce) {
+  .ns-fieldmap .fm-pulse-anim { display: none; }
+}
 
 /* ═══════════════ PROCESS timeline ═══════════════ */
 .ns-process { position: relative; }
@@ -728,8 +1078,35 @@
   font-weight: 400;
 }
 .ns-footer li { list-style: none; font-size: 14px; line-height: 2; color: rgba(245,243,238,0.78); }
-.ns-footer li a { transition: color .3s; color: rgba(245,243,238,0.78); text-decoration: none; }
-.ns-footer li a:hover { color: var(--ns-accent); }
+/* Footer links + button-links: left-anchored 1px underline reveal, no browser default. */
+.ns-footer li a,
+.ns-footer li button {
+  position: relative;
+  display: inline-block;
+  color: rgba(245,243,238,0.78);
+  text-decoration: none;
+  transition: color .3s var(--ns-ease-soft);
+}
+.ns-footer li a::after,
+.ns-footer li button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--ns-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .4s var(--ns-ease-soft);
+}
+.ns-footer li a:hover,
+.ns-footer li button:hover { color: var(--ns-paper); }
+.ns-footer li a:hover::after,
+.ns-footer li button:hover::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .ns-footer li a::after, .ns-footer li button::after { transition: none; }
+}
 .ns-footer .legal {
   margin-top: 64px;
   padding-top: 26px;
@@ -830,14 +1207,25 @@
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ns-accent);
+  color: var(--ns-sub);
 }
 .ns-fo-hero .eyebrow .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--ns-accent);
+  background: var(--ns-sub);
+  box-shadow: 0 0 0 0 var(--ns-sub-glow);
+  animation: ns-ping-sub 2.4s var(--ns-ease-io) infinite;
 }
+@keyframes ns-ping-sub {
+  0% { box-shadow: 0 0 0 0 var(--ns-sub-glow); }
+  70% { box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-fo-hero .eyebrow .dot { animation: none; }
+}
+.ns-fo-hero h1 .hl { color: var(--ns-sub); }
 .ns-fo-hero h1 {
   font-family: var(--f-display, sans-serif);
   font-weight: 300;
@@ -847,7 +1235,7 @@
   max-width: 18ch;
 }
 .ns-fo-hero h1 em { font-style: italic; font-weight: 400; }
-.ns-fo-hero h1 .hl { color: var(--ns-accent); font-weight: 500; }
+.ns-fo-hero h1 .hl { font-weight: 500; }
 .ns-fo-hero .sub {
   max-width: 54ch;
   margin-top: 34px;
@@ -890,7 +1278,7 @@
   align-items: center;
   gap: 14px;
 }
-.ns-fo-verbs .chip::after { content: '/'; color: var(--ns-accent); opacity: 0.7; font-weight: 300; }
+.ns-fo-verbs .chip::after { content: '/'; color: var(--ns-sub); opacity: 0.7; font-weight: 300; }
 .ns-fo-verbs .chip:last-child::after { display: none; }
 
 /* ═══════════════ FLOW / TIMELINE ═══════════════ */
@@ -916,8 +1304,8 @@
   top: 0;
   width: 100%;
   height: 0;
-  background: var(--ns-accent);
-  box-shadow: 0 0 14px rgba(255,77,46,0.5);
+  background: var(--ns-sub);
+  box-shadow: 0 0 14px var(--ns-sub-glow);
   transition: height 0.1s linear;
 }
 .ns-fo-stage {
@@ -938,7 +1326,7 @@
   height: 16px;
   border-radius: 50%;
   background: var(--ns-ink);
-  border: 1px solid var(--ns-accent);
+  border: 1px solid var(--ns-sub);
   z-index: 3;
 }
 .ns-fo-stage .node::after {
@@ -946,9 +1334,9 @@
   position: absolute;
   inset: 3px;
   border-radius: 50%;
-  background: var(--ns-accent);
+  background: var(--ns-sub);
   transform: scale(0);
-  transition: transform .5s var(--ns-ease);
+  transition: transform .5s var(--ns-ease-soft);
 }
 .ns-fo-stage.in .node::after { transform: scale(1); }
 
@@ -959,9 +1347,19 @@
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  transition: border-color .5s, transform .7s var(--ns-ease);
+  transition: border-color .5s var(--ns-ease-soft), box-shadow .5s var(--ns-ease-soft), transform .6s var(--ns-ease-spring);
 }
-.ns-fo-diagram:hover { border-color: var(--ns-line-2); }
+@media (hover: hover) {
+  .ns-fo-diagram:hover {
+    border-color: var(--ns-sub-soft);
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,0.6), 0 0 46px -26px var(--ns-sub-glow);
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ns-fo-diagram { transition: none; }
+  .ns-fo-diagram:hover { transform: none; }
+}
 .ns-fo-diagram svg { width: 100%; height: 100%; display: block; }
 .ns-fo-diagram .corner {
   position: absolute;
@@ -975,12 +1373,31 @@
 }
 
 .ns-fo-text .num {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-family: var(--f-mono, monospace);
   font-size: 12px;
   letter-spacing: 0.16em;
-  color: var(--ns-accent);
+  color: var(--ns-sub);
   margin-bottom: 18px;
 }
+/* number badge treatment differs per division:
+   laser = leading tick rule (field/measurement feel)
+   green = leading caret (terminal/code feel) */
+[data-accent="laser"] .ns-fo-text .num::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--ns-sub);
+  display: inline-block;
+}
+[data-accent="green"] .ns-fo-text .num::before {
+  content: '›';
+  color: var(--ns-sub);
+  font-weight: 600;
+}
+[data-accent="green"] .ns-fo-stage:nth-child(even) .ns-fo-text .num { flex-direction: row-reverse; }
 .ns-fo-text h3 {
   font-family: var(--f-display, sans-serif);
   font-weight: 400;
@@ -1011,9 +1428,13 @@
   border: 1px solid var(--ns-line);
   border-radius: 99px;
   padding: 6px 12px;
-  transition: border-color .3s, color .3s;
+  transition: border-color .3s var(--ns-ease-soft), color .3s var(--ns-ease-soft), background-color .3s var(--ns-ease-soft);
 }
-.ns-fo-text .specs span:hover { border-color: var(--ns-accent); color: var(--ns-paper); }
+.ns-fo-text .specs span:hover {
+  border-color: var(--ns-sub);
+  color: var(--ns-paper);
+  background: var(--ns-sub-soft);
+}
 
 /* alternate sides — .ns-fo-spine is child 1 of .ns-fo-flow, so stages sit at
    children 2,3,4… `even` therefore matches stages 1,3,5…, which is exactly
@@ -1036,7 +1457,7 @@
 .ns-fo-cta .glowbg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 120%, rgba(255,77,46,0.12), transparent 60%);
+  background: radial-gradient(circle at 50% 120%, var(--ns-sub-soft), transparent 60%);
   pointer-events: none;
 }
 .ns-fo-cta .inner { position: relative; z-index: 2; }
@@ -1045,7 +1466,7 @@
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ns-accent);
+  color: var(--ns-sub);
   margin-bottom: 26px;
 }
 .ns-fo-cta h2 {
@@ -1063,11 +1484,11 @@
 /* SVG diagram primitive classes */
 .dg-line { stroke: rgba(245,243,238,0.5); stroke-width: 1.4; fill: none; }
 .dg-line-2 { stroke: rgba(245,243,238,0.22); stroke-width: 1; fill: none; }
-.dg-acc { stroke: var(--ns-accent); stroke-width: 1.8; fill: none; }
+.dg-acc { stroke: var(--ns-sub); stroke-width: 1.8; fill: none; }
 .dg-fill { fill: rgba(245,243,238,0.06); }
-.dg-fill-acc { fill: rgba(255,77,46,0.14); }
+.dg-fill-acc { fill: var(--ns-sub-soft); }
 .dg-node { fill: var(--ns-paper); }
-.dg-node-acc { fill: var(--ns-accent); }
+.dg-node-acc { fill: var(--ns-sub); }
 .dg-txt { font-family: var(--f-mono, monospace); font-size: 11px; fill: rgba(245,243,238,0.55); letter-spacing: 0.06em; }
 .dg-dash { stroke-dasharray: 4 4; }
 

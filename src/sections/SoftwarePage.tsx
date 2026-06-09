@@ -105,7 +105,7 @@ const DiagramAnalysis = () => (
       <text x="155" y="134">FLOW</text>
       <text x="295" y="134">USERS</text>
       <text x="155" y="264">DATA</text>
-      <text x="295" y="264" fill="var(--ns-accent,#FF4D2E)">PROBLEM</text>
+      <text x="295" y="264" fill="var(--ns-sub,#FF4D2E)">PROBLEM</text>
     </g>
     <circle cx="295" cy="260" r="34" className="dg-acc" fill="none" />
     <line x1="320" y1="285" x2="350" y2="315" className="dg-acc" />
@@ -186,7 +186,7 @@ const DiagramDev = () => (
     <text x="76" y="248" className="dg-txt">WEB APP</text>
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-fill-acc" />
     <rect x="210" y="150" width="60" height="60" rx="6" className="dg-acc" />
-    <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">API</text>
+    <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">API</text>
     <g className="dg-fill" stroke="rgba(245,243,238,0.35)">
       <ellipse cx="360" cy="148" rx="40" ry="12" />
       <path d="M320 148 V212 a40 12 0 0 0 80 0 V148" />
@@ -216,7 +216,7 @@ const DiagramAI = () => (
     <path d="M240 130 L290 160 L290 215 L240 245 L190 215 L190 160 Z" className="dg-fill-acc" />
     <path d="M240 130 L290 160 L290 215 L240 245 L190 215 L190 160 Z" className="dg-acc" />
     <path d="M232 172 l-14 26 h18 l-6 22 l22 -32 h-18 l8 -16 z" className="dg-node-acc" />
-    <text x="240" y="270" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AI AGENT</text>
+    <text x="240" y="270" textAnchor="middle" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">AI AGENT</text>
     <rect x="330" y="150" width="96" height="80" rx="4" className="dg-fill" stroke="rgba(245,243,238,0.3)" />
     <g className="dg-acc">
       <path d="M344 170 l5 5 l9 -10" />
@@ -238,7 +238,7 @@ const DiagramIntegrations = () => (
   <svg viewBox="0 0 480 360" aria-hidden="true">
     <circle cx="240" cy="180" r="34" className="dg-fill-acc" />
     <circle cx="240" cy="180" r="34" className="dg-acc" />
-    <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">NEXUS</text>
+    <text x="240" y="184" textAnchor="middle" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">NEXUS</text>
     <g className="dg-line-2">
       <path d="M240 146 V92" />
       <path d="M274 180 H360" />
@@ -307,7 +307,7 @@ const DiagramDeploy = () => (
     <g className="dg-line-2">
       <line x1="250" y1="166" x2="410" y2="166" />
     </g>
-    <text x="262" y="138" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">MONITORING</text>
+    <text x="262" y="138" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">MONITORING</text>
     <g className="dg-acc" fill="none" strokeWidth="1.6">
       <path d="M170 250 a40 40 0 1 1 12 28" />
     </g>
@@ -347,15 +347,15 @@ export function SoftwarePage(_props: SoftwarePageProps) {
   const stageKeys = ['01','02','03','04','05','06','07','08'] as const;
 
   return (
-    <div className="ns-root">
+    <div className="ns-root" data-accent="green">
       {/* HERO */}
       <section className="ns-fo-hero">
         <div className="bg" aria-hidden="true">
           <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 700" fill="none">
             <defs>
               <radialGradient id="ns-sw-hz" cx="0.75" cy="0.15" r="0.85">
-                <stop stopColor="#FF4D2E" stopOpacity="0.10" />
-                <stop offset="1" stopColor="#FF4D2E" stopOpacity="0" />
+                <stop stopColor="var(--ns-sub)" stopOpacity="0.10" />
+                <stop offset="1" stopColor="var(--ns-sub)" stopOpacity="0" />
               </radialGradient>
             </defs>
             <rect width="1440" height="700" fill="url(#ns-sw-hz)" />
@@ -363,11 +363,11 @@ export function SoftwarePage(_props: SoftwarePageProps) {
               <path d="M0 175 H1440 M0 350 H1440 M0 525 H1440" />
               <path d="M360 0 V700 M720 0 V700 M1080 0 V700" />
             </g>
-            <g stroke="rgba(255,77,46,0.35)" strokeWidth="1.2" fill="none">
+            <g stroke="var(--ns-sub)" strokeOpacity="0.35" strokeWidth="1.2" fill="none">
               <path d="M180 480 L420 360 L660 420 L900 300 L1180 360" />
               <path d="M420 360 L520 200 M660 420 L760 560 M900 300 L1040 180" />
             </g>
-            <g fill="#FF4D2E">
+            <g fill="var(--ns-sub)">
               <circle cx="180" cy="480" r="3" />
               <circle cx="420" cy="360" r="3" />
               <circle cx="660" cy="420" r="3" />

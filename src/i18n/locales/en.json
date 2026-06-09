@@ -704,7 +704,8 @@
           "04": "FTTH Activation",
           "05": "NE3 / NE4 Project management"
         },
-        "cta": "View fibre work"
+        "cta": "View fibre work",
+        "mapLabel": "field.live · trench K-042"
       },
       "stats": {
         "idx": "By the numbers",

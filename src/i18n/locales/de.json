@@ -704,7 +704,8 @@
           "04": "FTTH-Aktivierung",
           "05": "NE3 / NE4 Projektleitung"
         },
-        "cta": "Glasfaserarbeiten ansehen"
+        "cta": "Glasfaserarbeiten ansehen",
+        "mapLabel": "field.live · trench K-042"
       },
       "stats": {
         "idx": "In Zahlen",

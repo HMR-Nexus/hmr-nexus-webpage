@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import type { PageId } from '@/lib/navigation';
 import { consumePendingAnchor } from '@/lib/navAnchor';
 import type { LegalPage } from '@/components/LegalOverlay';
@@ -241,20 +241,6 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
     });
   }, []);
 
-  /* Hero fibre parallax */
-  useEffect(() => {
-    const fibre = heroRef.current?.querySelector('.fibre') as HTMLElement | null;
-    if (!fibre) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y < window.innerHeight) fibre.style.transform = `translateY(${y * 0.18}px)`;
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   /* Generic reveal observer — runs on every render so it catches FibraPage/SoftwarePage too */
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -272,18 +258,25 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
 
   const reduced = prefersReduced();
 
+  /* Hero fibre scroll-parallax — GPU transform only, ±20px over the hero scroll.
+     useScroll/useTransform keep this off the main thread (no scroll handler). */
+  const motionReduced = useReducedMotion();
+  const { scrollY } = useScroll();
+  const fibreY = useTransform(scrollY, [0, 800], [0, motionReduced ? 0 : 20]);
+
   /* Framer-motion hero stagger variants */
+  const softEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
   const heroContainer = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.11, delayChildren: 0.1 } },
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
   };
   const heroLine = {
-    hidden: { opacity: 0, y: reduced ? 0 : 28 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
+    hidden: { opacity: 0, y: reduced ? 0 : 26 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: softEase } },
   };
   const heroSub = {
     hidden: { opacity: 0, y: reduced ? 0 : 14 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: softEase } },
   };
 
   return (
@@ -295,7 +288,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
         ref={heroRef as React.RefObject<HTMLElement>}
         aria-label="Hero"
       >
-        <div className="fibre" aria-hidden="true">
+        <motion.div className="fibre" aria-hidden="true" style={{ y: fibreY }}>
           <svg width="100%" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1440 900" fill="none">
             <defs>
               <linearGradient id="ns-fg" x1="0" y1="0" x2="1440" y2="900" gradientUnits="userSpaceOnUse">
@@ -338,7 +331,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
               <animate attributeName="opacity" values="0;0.5;0.5;0" dur="5s" repeatCount="indefinite" />
             </circle>
           </svg>
-        </div>
+        </motion.div>
 
         <div className="ticker" aria-label="Live status">
           <div><span className="live">●</span> {t('nexus.home.ticker.live')}</div>
@@ -374,9 +367,9 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
 
           <motion.div
             className="actions"
-            initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-            animate={heroIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-            transition={{ delay: 0.6, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: reduced ? 0 : 12 }}
+            animate={heroIn ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+            transition={{ delay: 0.55, duration: 0.6, ease: softEase }}
           >
             <button
               className="ns-btn ns-btn-primary"
@@ -409,7 +402,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
       </div>
 
       {/* ═══ DIVISION 01 · FIELD ═══ */}
-      <section className="ns-blk" id="ns-work">
+      <section className="ns-blk ns-div" id="ns-work" data-accent="laser">
         <div className="inner">
           <div className="ns-sec-head">
             <div className="idx" data-ns-reveal>{t('nexus.home.div01.idx')}</div>
@@ -437,25 +430,49 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
                 {t('nexus.home.div01.cta')} <span className="ar">→</span>
               </button>
             </div>
-            <div data-ns-reveal style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg viewBox="0 0 480 360" style={{ width: '100%', maxWidth: 480, opacity: 0.85 }} fill="none" aria-hidden="true">
-                <rect width="480" height="360" fill="rgba(245,243,238,0.02)" rx="8" />
-                <line x1="40" y1="200" x2="440" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.4" />
-                <text x="44" y="190" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="rgba(245,243,238,0.5)" letterSpacing="0.06em">SURFACE</text>
-                <path d="M160 200 L180 310 L300 310 L320 200" fill="rgba(245,243,238,0.05)" stroke="rgba(245,243,238,0.3)" strokeWidth="1.2" />
-                <rect x="195" y="255" width="90" height="30" rx="15" fill="rgba(245,243,238,0.06)" stroke="rgba(245,243,238,0.35)" strokeWidth="1.2" />
-                <circle cx="240" cy="270" r="8" fill="rgba(255,77,46,0.18)" stroke="#FF4D2E" strokeWidth="1.5" />
-                <circle cx="240" cy="270" r="3" fill="#FF4D2E" />
-                <text x="300" y="275" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="var(--ns-accent,#FF4D2E)" letterSpacing="0.08em">FIBRE</text>
-                <g stroke="rgba(245,243,238,0.2)" strokeWidth="1">
-                  <line x1="40" y1="225" x2="440" y2="225" />
-                  <line x1="40" y1="250" x2="440" y2="250" />
-                </g>
-                <line x1="80" y1="120" x2="80" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
-                <line x1="400" y1="100" x2="400" y2="200" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
-                <line x1="80" y1="120" x2="400" y2="100" stroke="rgba(245,243,238,0.18)" strokeWidth="1" strokeDasharray="4 4" />
-                <text x="120" y="310" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="9" fill="rgba(245,243,238,0.35)" letterSpacing="0.08em">TIEFBAU · NE3 · DACH REGION</text>
-              </svg>
+            <div data-ns-reveal style={{ display: 'flex', alignItems: 'center' }}>
+              <div className="ns-fieldmap">
+                <div className="bar">
+                  <span className="d r" />
+                  <span className="d" />
+                  <span className="d" />
+                  <span className="label">{t('nexus.home.div01.mapLabel')}</span>
+                </div>
+                <div className="canvas">
+                  <svg viewBox="0 0 480 320" fill="none" aria-hidden="true">
+                    {/* surface line + strata */}
+                    <line x1="40" y1="180" x2="440" y2="180" stroke="rgba(245,243,238,0.4)" strokeWidth="1.4" />
+                    <text x="44" y="170" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="rgba(245,243,238,0.5)" letterSpacing="0.06em">SURFACE</text>
+                    <g stroke="rgba(245,243,238,0.18)" strokeWidth="1">
+                      <line x1="40" y1="205" x2="440" y2="205" />
+                      <line x1="40" y1="230" x2="440" y2="230" />
+                    </g>
+                    {/* trench */}
+                    <path d="M160 180 L180 290 L300 290 L320 180" fill="rgba(245,243,238,0.05)" stroke="rgba(245,243,238,0.3)" strokeWidth="1.2" />
+                    {/* duct path the pulse travels */}
+                    <path id="ns-ductPath" d="M40 250 L210 250 L240 250 L440 250" stroke="rgba(255,77,46,0.5)" strokeWidth="1.6" fill="none" />
+                    {/* CTO node */}
+                    <rect x="195" y="236" width="90" height="28" rx="14" fill="rgba(245,243,238,0.06)" stroke="rgba(245,243,238,0.35)" strokeWidth="1.2" />
+                    <circle cx="240" cy="250" r="8" fill="rgba(255,77,46,0.18)" stroke="#FF4D2E" strokeWidth="1.5" />
+                    <circle cx="240" cy="250" r="3" fill="#FF4D2E" />
+                    <text x="300" y="245" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="10" fill="#FF4D2E" letterSpacing="0.08em">FIBRE</text>
+                    {/* triangulation to surface markers */}
+                    <line x1="80" y1="100" x2="80" y2="180" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
+                    <line x1="400" y1="80" x2="400" y2="180" stroke="rgba(245,243,238,0.4)" strokeWidth="1.5" />
+                    <line x1="80" y1="100" x2="400" y2="80" stroke="rgba(245,243,238,0.18)" strokeWidth="1" strokeDasharray="4 4" />
+                    {/* traveling laser pulse */}
+                    <circle r="4" className="fm-pulse fm-pulse-anim">
+                      <animateMotion dur="4.5s" repeatCount="indefinite" path="M40 250 L210 250 L240 250 L440 250" />
+                      <animate attributeName="opacity" values="0;1;1;0" dur="4.5s" repeatCount="indefinite" />
+                    </circle>
+                    <circle r="10" fill="none" stroke="#FF4D2E" strokeOpacity="0.4" className="fm-pulse-anim">
+                      <animateMotion dur="4.5s" repeatCount="indefinite" path="M40 250 L210 250 L240 250 L440 250" />
+                      <animate attributeName="opacity" values="0;0.45;0.45;0" dur="4.5s" repeatCount="indefinite" />
+                    </circle>
+                    <text x="44" y="308" fontFamily="var(--f-mono,'JetBrains Mono',monospace)" fontSize="9" fill="rgba(245,243,238,0.35)" letterSpacing="0.08em">TIEFBAU · NE3 · DACH REGION</text>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -478,7 +495,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
       </section>
 
       {/* ═══ DIVISION 02 · CODE ═══ */}
-      <section className="ns-blk" id="ns-software">
+      <section className="ns-blk ns-div" id="ns-software" data-accent="green">
         <div className="inner">
           <div className="ns-sec-head">
             <div className="idx" data-ns-reveal>{t('nexus.home.div02.idx')}</div>
@@ -577,7 +594,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
             <ul>
               <li>
                 <button
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                   onClick={() => onNavigate('fibra')}
                 >
                   {t('nexus.home.footer.company.fibra')}
@@ -585,7 +602,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
               </li>
               <li>
                 <button
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                   onClick={() => onNavigate('software')}
                 >
                   {t('nexus.home.footer.company.software')}
@@ -593,7 +610,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
               </li>
               <li>
                 <button
-                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                   onClick={() => document.getElementById('ns-process')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   {t('nexus.home.footer.company.process')}
@@ -610,7 +627,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
                 <>
                   <li>
                     <button
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                       onClick={() => onLegal('imprint')}
                     >
                       {t('nexus.home.footer.legal.imprint')}
@@ -618,7 +635,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
                   </li>
                   <li>
                     <button
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                       onClick={() => onLegal('privacy')}
                     >
                       {t('nexus.home.footer.legal.privacy')}
@@ -626,7 +643,7 @@ export function NexusHome({ onNavigate, onLegal }: NexusHomeProps) {
                   </li>
                   <li>
                     <button
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 0, font: 'inherit' }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, font: 'inherit' }}
                       onClick={() => onLegal('terms')}
                     >
                       {t('nexus.home.footer.legal.terms')}

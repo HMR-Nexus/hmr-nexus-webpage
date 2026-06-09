@@ -34,41 +34,14 @@ function LangSwitcher({ mobile = false }: { mobile?: boolean }) {
     if (current !== lng) i18n.changeLanguage(lng);
   };
 
-  const containerStyle: React.CSSProperties = mobile
-    ? { display: 'flex', alignItems: 'center', gap: 8, padding: '12px 0' }
-    : { display: 'flex', alignItems: 'center', gap: 6 };
-
-  const btnBase: React.CSSProperties = {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    fontFamily: "var(--f-mono, 'JetBrains Mono', monospace)",
-    fontSize: 11,
-    fontWeight: 500,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase',
-    padding: '2px 0',
-    transition: 'color 0.18s',
-  };
-
-  const sep: React.CSSProperties = {
-    fontFamily: "var(--f-mono, 'JetBrains Mono', monospace)",
-    fontSize: 11,
-    color: 'rgba(245,243,238,0.25)',
-    userSelect: 'none',
-  };
-
   return (
-    <div style={containerStyle} aria-label="Language selection">
+    <div className={`ns-lang${mobile ? ' mobile' : ''}`} aria-label="Language selection">
       {(['en', 'de'] as const).map((lng, i) => (
         <span key={lng} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          {i > 0 && <span style={sep}>/</span>}
+          {i > 0 && <span className="sep">/</span>}
           <button
             onClick={() => switchTo(lng)}
-            style={{
-              ...btnBase,
-              color: current === lng ? '#FF4D2E' : 'rgba(245,243,238,0.45)',
-            }}
+            className={current === lng ? 'active' : ''}
             aria-label={`Switch to ${lng === 'en' ? 'English' : 'German'}`}
             aria-pressed={current === lng}
           >
@@ -92,7 +65,7 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
 
     const onScroll = () => {
       const y = window.scrollY;
-      setScrolled(y > 40);
+      setScrolled(y > 24);
       if (!prefersReduced) {
         if (y > lastY.current && y > 400) setHidden(true);
         else setHidden(false);
@@ -165,7 +138,7 @@ export function NexusNav({ activePage, onNavigate }: NexusNavProps) {
               navigate('home');
             }}
           >
-            {t('nexus.nav.letsTalk')} <span>→</span>
+            {t('nexus.nav.letsTalk')} <span className="ar">→</span>
           </button>
 
           <button

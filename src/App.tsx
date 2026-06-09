@@ -16,10 +16,11 @@ const prefersReduced = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const softEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const pageVariants = {
-  initial: { opacity: 0, y: prefersReduced() ? 0 : 12 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number,number,number,number] } },
-  exit:    { opacity: 0, y: prefersReduced() ? 0 : -6, transition: { duration: 0.2 } },
+  initial: { opacity: 0, y: prefersReduced() ? 0 : 14 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: softEase } },
+  exit:    { opacity: 0, y: prefersReduced() ? 0 : -8, transition: { duration: 0.28, ease: softEase } },
 };
 
 function App() {

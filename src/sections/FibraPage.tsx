@@ -134,7 +134,7 @@ const Diagram02 = () => (
       <text x="140" y="240">ACTIVATION</text><text x="318" y="240" textAnchor="end" fill="rgba(245,243,238,0.7)">— —</text>
     </g>
     <line x1="140" y1="258" x2="320" y2="258" className="dg-line-2" />
-    <text x="140" y="284" className="dg-txt" fill="var(--ns-accent,#FF4D2E)" style={{ letterSpacing: '0.1em' }}>TOTAL</text>
+    <text x="140" y="284" className="dg-txt" fill="var(--ns-sub,#FF4D2E)" style={{ letterSpacing: '0.1em' }}>TOTAL</text>
     <rect x="270" y="272" width="50" height="14" rx="2" className="dg-fill-acc" />
     <rect x="270" y="272" width="50" height="14" rx="2" className="dg-acc" />
   </svg>
@@ -193,7 +193,7 @@ const Diagram04 = () => (
       <line x1="40" y1="200" x2="440" y2="200" />
       <line x1="40" y1="240" x2="440" y2="240" />
     </g>
-    <text x="300" y="245" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">DUCT</text>
+    <text x="300" y="245" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">DUCT</text>
   </svg>
 );
 
@@ -216,7 +216,7 @@ const Diagram05 = () => (
       <line x1="300" y1="142" x2="324" y2="142" />
     </g>
     <text x="44" y="110" className="dg-txt">MAIN ROUTE</text>
-    <text x="300" y="86" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">HANDOVER POINT</text>
+    <text x="300" y="86" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">HANDOVER POINT</text>
   </svg>
 );
 
@@ -238,7 +238,7 @@ const Diagram06 = () => (
     </g>
     <text x="150" y="84" className="dg-txt">ENCLOSURE · ODF / CTO</text>
     <rect x="90" y="210" width="300" height="110" rx="4" stroke="rgba(245,243,238,0.18)" fill="none" />
-    <text x="102" y="230" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">OTDR</text>
+    <text x="102" y="230" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">OTDR</text>
     <path d="M100 300 L160 270 L160 282 L240 258 L240 268 L320 246 L380 244" className="dg-acc" />
     <g stroke="rgba(245,243,238,0.1)">
       <line x1="90" y1="270" x2="390" y2="270" />
@@ -260,7 +260,7 @@ const Diagram07 = () => (
       <path d="M360 168 L385 180 L360 192" />
     </g>
     <text x="56" y="138" className="dg-txt">MICRODUCT</text>
-    <text x="318" y="232" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">AIR → FIBRE</text>
+    <text x="318" y="232" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">AIR → FIBRE</text>
     <text x="70" y="258" className="dg-txt">ROUTE VALIDATION</text>
     <path d="M70 270 H410" className="dg-line-2 dg-dash" />
   </svg>
@@ -280,7 +280,7 @@ const Diagram08 = () => (
     <path d="M200 230 H300" className="dg-acc" />
     <rect x="300" y="212" width="64" height="40" rx="4" className="dg-fill-acc" />
     <rect x="300" y="212" width="64" height="40" rx="4" className="dg-acc" />
-    <text x="300" y="204" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">ONT / ROUTER</text>
+    <text x="300" y="204" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">ONT / ROUTER</text>
     <circle cx="316" cy="232" r="3" className="dg-node-acc" />
     <g className="dg-line-2" fill="none">
       <path d="M376 222 a14 14 0 0 1 0 20" />
@@ -294,7 +294,7 @@ const Diagram09 = () => (
   <svg viewBox="0 0 480 360" aria-hidden="true">
     <rect x="130" y="64" width="180" height="232" rx="4" className="dg-fill" stroke="rgba(245,243,238,0.22)" />
     <line x1="130" y1="98" x2="310" y2="98" className="dg-line-2" />
-    <text x="152" y="90" className="dg-txt" fill="var(--ns-accent,#FF4D2E)">FINAL REPORT</text>
+    <text x="152" y="90" className="dg-txt" fill="var(--ns-sub,#FF4D2E)">FINAL REPORT</text>
     <g className="dg-acc">
       <path d="M156 126 l6 6 l10 -12" />
       <path d="M156 156 l6 6 l10 -12" />
@@ -342,7 +342,7 @@ export function FibraPage(_props: FibraPageProps) {
   const stageKeys = ['01','02','03','04','05','06','07','08','09'] as const;
 
   return (
-    <div className="ns-root">
+    <div className="ns-root" data-accent="laser">
       {/* HERO */}
       <section className="ns-fo-hero">
         <div className="bg" aria-hidden="true">
